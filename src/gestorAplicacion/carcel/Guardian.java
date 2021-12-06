@@ -14,28 +14,26 @@ public class Guardian extends Apostador{
         
     public Guardian(int identificacion, String nombre, int saldo, int salario) {
 		super(identificacion, nombre, saldo);
-		this.salario = salario;
+		this.setSalario(salario);
 	}
     
 	public Guardian(int identificacion, String nombre, int saldo, int salario, Hashtable<Integer, Celda> celdas) {
 		super(identificacion, nombre, saldo);
-		this.salario = salario;
+		this.setSalario(salario);
 		this.celdas = celdas;
 	}
 
-    
-    public
-    void trasladarPrisionero(Prisionero prisionero, Celda celda) {
+    public void trasladarPrisionero(Prisionero prisionero, Celda celda) {
 		/*
-		 * Utiliza el método agregarTraslado y le pasa un Object[3] donde
+		 * Utiliza el mï¿½todo agregarTraslado y le pasa un Object[3] donde
 		 * el primero elemento es la Celda de origen, el segundo es el prisionero
 		 * trasladado y la tercera es la celda destino
 		 */
     }
     
-    private
-    void agregarTraslado(Object[] objetos) {
-//    	agrega la información del traslado al los 'traslados'(atributo) que ha hecho this Apostador 
+    public ArrayList<Object[]> getTraslados() {return traslados;}
+    private void agregarTraslado(Object[] objetos) {
+//    	agrega la informaciï¿½n del traslado al los 'traslados'(atributo) que ha hecho this Apostador 
     }
 
 	@Override
@@ -44,8 +42,13 @@ public class Guardian extends Apostador{
 		return null;
 	}
 	
-	public
-	void agregarCelda(Celda celda) {
+	public Hashtable<Integer, Celda> getCeldas() {return celdas;}
+	public void agregarCelda(Celda celda) {
 		celdas.put(celda.getNumero(), celda);
 	}
+
+	public int getSalario() {return salario;}
+	public void setSalario(int salario) {this.salario = salario;}
+	
+	public static Hashtable<Integer, Guardian> getGuardianes() {return guardianes;}
 }
