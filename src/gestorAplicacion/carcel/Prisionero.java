@@ -12,4 +12,16 @@ public class Prisionero {
     
     private static Hashtable<Integer, Celda> celdas;
     
+    public void agregarDelito(Delito delito) {
+    	
+    }
+    public void agregarAntidelito(Antidelito antidelito) {
+    	
+    }
+    private void incrementarCondena(Long meses) { //reciben como argumento el tiempoCondena de Delito
+    	// usar el método LocalDate.plusMonths() y devuelve una copia
+    }
+    private void dismnuirCondena(Long meses) { //reciben como argumento el rebajarCondena de Antidelito
+    	
+    }  
 }
