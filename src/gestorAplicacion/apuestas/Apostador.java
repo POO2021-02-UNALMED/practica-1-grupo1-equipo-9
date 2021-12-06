@@ -5,7 +5,13 @@ public abstract class Apostador {
     protected String nombre;
     protected int saldo;
     
-    public void aumentarSaldo(double dinero) {
+    public Apostador(int identificacion, String nombre, int saldo) {
+		this.identificacion = identificacion;
+		this.nombre = nombre;
+		this.saldo = saldo;
+	}
+
+	public void aumentarSaldo(double dinero) {
     	
     }
     
