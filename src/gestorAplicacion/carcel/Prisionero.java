@@ -12,7 +12,7 @@ public class Prisionero extends Apostador{
     private Hashtable<Integer, Delito> delitos; 
     private Hashtable<Integer, Antidelito> antidelitos;
     
-    private static Hashtable<Integer, Celda> celdas;
+    private static Hashtable<Integer, Prisionero> prisioneros;
     
     public Prisionero(int identificacion, String nombre, gestorAplicacion.carcel.genero genero, Celda celda, Hashtable<Integer, Delito> delitos) {
     	this(identificacion,nombre,0, genero, celda, delitos);
@@ -48,4 +48,24 @@ public class Prisionero extends Apostador{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public gestorAplicacion.carcel.genero getGenero() {	return genero;	}
+	public void setGenero(gestorAplicacion.carcel.genero genero) {this.genero = genero;}
+
+	public Celda getCelda() {return celda;}
+	public void setCelda(Celda celda) {	this.celda = celda;	}
+
+	public LocalDate getInicioCondena() {return inicioCondena;}
+
+	public LocalDate getFinCondena() {return finCondena;}
+
+	public void setFinCondena(LocalDate finCondena) {	this.finCondena = finCondena;	}
+
+	public Hashtable<Integer, Delito> getDelitos() {	return delitos; }
+
+	public Hashtable<Integer, Antidelito> getAntidelitos() {	return antidelitos;	}
+
+	public static Hashtable<Integer, Prisionero> getPrisioneros() {	return prisioneros;	}
+    
+    
 }
