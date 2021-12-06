@@ -18,4 +18,7 @@ public class Celda {
     public void ingresarPrisionero(Prisionero prisionero) {
 //    	Hace prisionero.celda = this y this.add(prisionero)
     }
+	public Hashtable<Integer, Prisionero> getPrisioneros() {
+		return prisioneros;
+	}
 }
