@@ -20,4 +20,30 @@ public abstract class Apostador {
     }
     
     public abstract String toString();
+
+	public int getIdentificacion() {
+		return identificacion;
+	}
+
+	public void setIdentificacion(int identificacion) {
+		this.identificacion = identificacion;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(int saldo) {
+		this.saldo = saldo;
+	}
+    
+    
 }
