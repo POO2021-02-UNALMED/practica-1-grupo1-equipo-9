@@ -13,9 +13,9 @@ public class Celda {
     private static Hashtable<Integer, Celda> celdas;
     
     public void extraerPrisionero(Prisionero prisionero) {
-    	
+//    	Hace prisionero.celda = null y prisionero.celda.remove(prisionero)
     }
     public void ingresarPrisionero(Prisionero prisionero) {
-    	
+//    	Hace prisionero.celda = this y this.add(prisionero)
     }
 }
