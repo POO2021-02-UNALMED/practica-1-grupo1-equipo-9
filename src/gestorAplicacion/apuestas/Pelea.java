@@ -17,21 +17,24 @@ public class Pelea {
     
     private static Hashtable<Integer, Pelea> peleas;
     
-    public
-    void setGanador(Prisionero prisionero) {
-//    	TODO llama al método apuesta.resolverApuesta
+    public void setGanador(Prisionero prisionero) {
+//    	TODO llama al mï¿½todo apuesta.resolverApuesta
     }
+    public Prisionero getGanador() {return ganador;}
     
-    public
-    void setLuchadores(Prisionero luch1, Prisionero luch2) {
+    public void setLuchadores(Prisionero luch1, Prisionero luch2) {
 //    	TODO
+    }
+    public Prisionero[] getLuchadores() {
+		Prisionero[] luchadores = {luchador1, luchador2};
+    	return luchadores;
     }
     
     public 
     Object battleRoyale(ArrayList<Celda> celdas){
 		/*
 		 * Devuelve un arraylist de strings, donde cada string es un comentario tipo
-		 * "prisionero 1 a derrotado a prisionero 2", etc también debe devolver el
+		 * "prisionero 1 a derrotado a prisionero 2", etc tambiï¿½n debe devolver el
 		 * prisionero ganador
 		 */
 //		TODO
@@ -40,4 +43,21 @@ public class Pelea {
     	Object[] resultado = {ganador, combates};
     	return resultado;
     }
+
+    public int getCodigo() {return codigo;}
+	public void setCodigo(int codigo) {this.codigo = codigo;}
+    
+	public gestorAplicacion.carcel.genero getGenero() {return genero;}
+	public void setGenero(gestorAplicacion.carcel.genero genero) {this.genero = genero;}
+
+	public String getArmaLuchador1() {return armaLuchador1;}
+	public void setArmaLuchador1(String armaLuchador1) {this.armaLuchador1 = armaLuchador1;}
+
+	public String getArmaLuchador2() {return armaLuchador2;}
+	public void setArmaLuchador2(String armaLuchador2) {this.armaLuchador2 = armaLuchador2;}
+	
+	public Apuesta getApuesta() {return apuesta;}
+	public void setApuesta(Apuesta apuesta) {this.apuesta = apuesta;}
+	
+	public static Hashtable<Integer, Pelea> getPeleas() {return peleas;}  
 }

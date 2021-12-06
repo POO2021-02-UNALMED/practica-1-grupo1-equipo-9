@@ -33,5 +33,31 @@ public class Celda {
 	public int getNumero() {
 		return numero;
 	}
+
+	public gestorAplicacion.carcel.genero getGenero() {
+		return genero;
+	}
+
+	public int getLargo() {
+		return largo;
+	}
+
+	public int getAncho() {
+		return ancho;
+	}
+
+	public int getCapMax() {
+		return capMax;
+	}
+
+	public static Hashtable<Integer, Celda> getCeldas() {
+		return celdas;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	
+	
 	
 }
