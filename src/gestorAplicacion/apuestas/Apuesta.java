@@ -1,14 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestorAplicacion.apuestas;
 
-/**
- *
- * @author camilo
- */
+import java.util.ArrayList;
+import java.util.Hashtable;
+import gestorAplicacion.carcel.Prisionero;
+
 public class Apuesta {
+    private int codigo;
+    private ArrayList<Object[]> apostadores= new ArrayList<Object[]>(); 
+    private Hashtable<Integer,Apuesta> apuestas= new Hashtable<Integer,Apuesta>();
+    private Pelea pelea;
     
+    public void resultadoApuesta() {
+    	
+    }
+    
+    public void resolverApuesta() {
+    	
+    }
+    
+    public void agregarApostador(Apostador apostador,Prisionero prisionero,Integer apuesta) {
+    	
+    }
 }
