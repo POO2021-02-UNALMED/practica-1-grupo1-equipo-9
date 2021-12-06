@@ -25,4 +25,26 @@ public class Apuesta {
     public void agregarApostador(Apostador apostador,Prisionero prisionero,Integer apuesta) {
     	
     }
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public Pelea getPelea() {
+		return pelea;
+	}
+
+	public void setPelea(Pelea pelea) {
+		this.pelea = pelea;
+	}
+
+	public ArrayList<Object[]> getApostadores() {
+		return apostadores;
+	}
+    
+    
 }
