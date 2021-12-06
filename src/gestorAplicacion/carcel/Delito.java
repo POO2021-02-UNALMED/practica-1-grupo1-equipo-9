@@ -1,5 +1,4 @@
 package gestorAplicacion.carcel;
-
 import java.util.Hashtable;
 
 public class Delito {
@@ -30,4 +29,6 @@ public class Delito {
 
 	public long getTiempoCondena() {return tiempoCondena;}
 	public void setTiempoCondena(long tiempoCondena) {this.tiempoCondena = tiempoCondena;}
+	
+	public static Hashtable<Integer, Delito> getDelitos() {return delitos;}
 }
