@@ -19,7 +19,7 @@ public class Pelea {
     
     public
     void setGanador(Prisionero prisionero) {
-//    	TODO 
+//    	TODO llama al método apuesta.resolverApuesta
     }
     
     public

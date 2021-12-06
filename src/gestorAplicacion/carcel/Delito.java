@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestorAplicacion.carcel;
 
-/**
- *
- * @author camilo
- */
+import java.util.Hashtable;
+
 public class Delito {
-    
+	private static Hashtable<Integer,Delito> delitos= new Hashtable<Integer,Delito>();
+    private int codigo;
+    private String categoria;
+    private String nivel;
+    private long tiempoCondena; /*meses*/
 }
