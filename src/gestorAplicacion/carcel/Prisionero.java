@@ -14,18 +14,20 @@ public class Prisionero extends Apostador{
     
     private static Hashtable<Integer, Celda> celdas;
     
-    public Prisionero(int identificacion, String nombre, Celda celda, Hashtable<Integer, Delito> delitos) {
-    	this(identificacion,nombre,0,celda,delitos);
+    public Prisionero(int identificacion, String nombre, gestorAplicacion.carcel.genero genero, Celda celda, Hashtable<Integer, Delito> delitos) {
+    	this(identificacion,nombre,0, genero, celda, delitos);
     }
     
-    public Prisionero(int identificacion, String nombre, int saldo, Celda celda, Hashtable<Integer, Delito> delitos) {
-    	super(identificacion, nombre, saldo);
-    	this.celda = celda;
-    	this.delitos = delitos;
-    	// calcular inicioCondena y finCondena
-    }
-    
-    public void agregarDelito(Delito delito) {
+    public Prisionero(int identificacion, String nombre, int saldo, gestorAplicacion.carcel.genero genero, Celda celda,
+			Hashtable<Integer, Delito> delitos) {
+		super(identificacion, nombre, saldo);
+		this.genero = genero;
+		this.celda = celda;
+		this.delitos = delitos;
+		// TODO calcular inicioCondena y finCondena
+	}
+
+	public void agregarDelito(Delito delito) {
     	
     }
     
