@@ -26,25 +26,13 @@ public class Apuesta {
     	
     }
 
-	public int getCodigo() {
-		return codigo;
-	}
+	public int getCodigo() {return codigo;}
+	public void setCodigo(int codigo) {	this.codigo = codigo;}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+	public Pelea getPelea() {return pelea;}
+	public void setPelea(Pelea pelea) {	this.pelea = pelea;}
 
-	public Pelea getPelea() {
-		return pelea;
-	}
-
-	public void setPelea(Pelea pelea) {
-		this.pelea = pelea;
-	}
-
-	public ArrayList<Object[]> getApostadores() {
-		return apostadores;
-	}
+	public ArrayList<Object[]> getApostadores() {return apostadores;}
     
     
 }

@@ -26,37 +26,21 @@ public class Celda {
     public void ingresarPrisionero(Prisionero prisionero) {
 //    	Hace prisionero.celda = this y this.add(prisionero)
     }
-	public Hashtable<Integer, Prisionero> getPrisioneros() {
-		return prisioneros;
-	}
+	public Hashtable<Integer, Prisionero> getPrisioneros() {return prisioneros;}
+	public static Hashtable<Integer, Celda> getCeldas() {return celdas;}
 
-	public int getNumero() {
-		return numero;
-	}
+	public int getNumero() {return numero;}
+	public void setNumero(int numero) {this.numero = numero;}
 
-	public gestorAplicacion.carcel.genero getGenero() {
-		return genero;
-	}
+	public gestorAplicacion.carcel.genero getGenero() {return genero;}
 
-	public int getLargo() {
-		return largo;
-	}
+	public int getLargo() {return largo;}
 
-	public int getAncho() {
-		return ancho;
-	}
+	public int getAncho() {return ancho;}
 
-	public int getCapMax() {
-		return capMax;
-	}
+	public int getCapMax() {return capMax;}
 
-	public static Hashtable<Integer, Celda> getCeldas() {
-		return celdas;
-	}
 
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
 	
 	
 	
