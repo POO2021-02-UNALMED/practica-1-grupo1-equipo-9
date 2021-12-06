@@ -11,6 +11,18 @@ public class Guardian extends Apostador{
     private Hashtable<Integer, Celda> celdas = new Hashtable<>();
     
     private static Hashtable<Integer, Guardian> guardianes = new Hashtable<>();
+        
+    public Guardian(int identificacion, String nombre, int saldo, int salario) {
+		super(identificacion, nombre, saldo);
+		this.salario = salario;
+	}
+    
+	public Guardian(int identificacion, String nombre, int saldo, int salario, Hashtable<Integer, Celda> celdas) {
+		super(identificacion, nombre, saldo);
+		this.salario = salario;
+		this.celdas = celdas;
+	}
+
     
     public
     void trasladarPrisionero(Prisionero prisionero, Celda celda) {
