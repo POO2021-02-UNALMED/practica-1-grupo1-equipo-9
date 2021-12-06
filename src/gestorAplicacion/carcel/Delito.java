@@ -18,4 +18,16 @@ public class Delito {
     	this.tiempoCondena = tiempoCondena;
     	delitos.put(this.codigo, this);
     }
+
+	public String getNombre() {return nombre;}
+	public void setNombre(String nombre) {this.nombre = nombre;}
+
+	public String getDescripcion() {return descripcion;}
+	public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
+
+	public int getNivel() {return nivel;}
+	public void setNivel(int nivel) {this.nivel = nivel;}
+
+	public long getTiempoCondena() {return tiempoCondena;}
+	public void setTiempoCondena(long tiempoCondena) {this.tiempoCondena = tiempoCondena;}
 }
