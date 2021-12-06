@@ -29,4 +29,9 @@ public class Celda {
 	public Hashtable<Integer, Prisionero> getPrisioneros() {
 		return prisioneros;
 	}
+
+	public int getNumero() {
+		return numero;
+	}
+	
 }

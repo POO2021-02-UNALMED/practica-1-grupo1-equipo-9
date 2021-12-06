@@ -43,4 +43,9 @@ public class Guardian extends Apostador{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public
+	void agregarCelda(Celda celda) {
+		celdas.put(celda.getNumero(), celda);
+	}
 }
