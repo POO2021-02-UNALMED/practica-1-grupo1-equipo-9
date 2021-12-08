@@ -33,7 +33,7 @@ public class Apuesta {
     	
     	double montoTotal = 0;
     	double totalGanadores = 0;
-//    	Primero necesito saber cuánto se recogió en total y entre cuantos hay que dividirlo
+//    	Primero necesito saber cuánto se recogió en total y cuanto se recogió entre los ganadores
     	for (Object[] objects : apostadores) {
     		Prisionero prisionero = (Prisionero) objects[1];
     		double apuesta = (Integer) objects[2];
@@ -41,6 +41,7 @@ public class Apuesta {
     		if (pelea.getGanador().equals(prisionero)) {totalGanadores += apuesta;}
 		}
     	
+//    	Se paga a los apostadores ganadores proporcionalmente al dinero que apostaron.
     	for (Object[] objects : apostadores) {
 //    		Casteo explícito de un objeto Object a Apostador, Prisionero e Int.
     		Apostador apostador = (Apostador) objects[0];
@@ -63,6 +64,10 @@ public class Apuesta {
 		 * prisionero es el luchador por el que apostador va a apostar 
 		 * apuesta es la cantidad que se va a apostar
 		 */
+    	
+//    	Revisa si el apostador tiene saldo suficiente para apostar.
+    	if (apuesta > apostador.getSaldo()) {return;}
+    	
     	Object[] agregando = {apostador, prisionero, apuesta};
     	apostadores.add(agregando);
     }
