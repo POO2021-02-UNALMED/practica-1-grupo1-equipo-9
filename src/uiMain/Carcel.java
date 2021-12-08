@@ -6,11 +6,22 @@ import gestorAplicacion.carcel.Antidelito;
 import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Prisionero;
 import gestorAplicacion.carcel.genero;
+import gestorAplicacion.carcel.Delito; 
 
 public class Carcel {
 	
 	static {
 //		crearDelitos
+		Delito delito1 = new Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10);
+		Delito delito2 = new Delito(2, "Pelea callejera", "Enfrentarse fisicamente con otra persona o animal en lugares publicos", 1, 12);
+		Delito delito3 = new Delito(3, "3", "3", 6, 48);
+		Delito delito4 = new Delito(4, "4", "4", 8, 200);
+		Delito delito5 = new Delito(5, "5", "5", 9, 360);
+		Delito delito6 = new Delito(6, "6", "6", 3, 24);
+		Delito delito7 = new Delito(7, "Batalla", "Participar en la batalla del Departamento de Misterios como mortífago", 5, 360);
+		Delito delito8 = new Delito(8, "Batalla", "Participar en la batalla del Departamento de Misterios", 5, 50);
+		Delito delito9 = new Delito(9, "9", "9", 7, 500);
+		Delito delito10 = new Delito(10, "10", "10", 4, 10);
 		
 		
 //		crearCeldas
