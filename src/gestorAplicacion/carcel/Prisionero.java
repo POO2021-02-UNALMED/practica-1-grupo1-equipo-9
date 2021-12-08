@@ -9,10 +9,10 @@ public class Prisionero extends Apostador{
     private Celda celda;
     private LocalDate inicioCondena;
     private LocalDate finCondena;
-    private Hashtable<Integer, Delito> delitos; 
-    private Hashtable<Integer, Antidelito> antidelitos;
+    private Hashtable<Integer, Delito> delitos = new Hashtable<>(); 
+    private Hashtable<Integer, Antidelito> antidelitos = new Hashtable<>();
     
-    private static Hashtable<Integer, Prisionero> prisioneros;
+    private static Hashtable<Integer, Prisionero> prisioneros = new Hashtable<>();
     //Se agrego inicio condena y fin condena
     
     public Prisionero(int identificacion, String nombre, gestorAplicacion.carcel.genero genero, Celda celda, LocalDate inicioCondena, LocalDate finCondena,Hashtable<Integer, Delito> delitos) {
