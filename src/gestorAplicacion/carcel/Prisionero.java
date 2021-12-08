@@ -64,8 +64,25 @@ public class Prisionero extends Apostador{
     
     @Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+    	String nombresDelitos = "";
+		for(Integer k: delitos.keySet()) {
+			nombresDelitos += delitos.get(k).getNombre() + " ";
+		}
+		
+		String nombresAntidelitos = "";
+		for(Integer k: antidelitos.keySet()) {
+			nombresAntidelitos += antidelitos.get(k).getNombre() + " ";
+		}
+		
+		return "PRISIONERO: " + getIdentificacion() + "\n" 
+				+ "Nombre: " + getNombre() + "\n"
+				+ "Genero: " + getGenero() + "\n"
+				+ "Saldo: " + getSaldo() + "\n"
+				+ "Celda: " + getCelda() + "\n"
+				+ "Inicio de Condena: " + getInicioCondena() + "\n"
+				+ "Fin de Condena: " + getFinCondena() + "\n"
+				+ "Delitos: " + nombresDelitos + "\n"
+				+ "Antidelitos: " + nombresAntidelitos + "\n" + "\n";
 	}
 
 	public gestorAplicacion.carcel.genero getGenero() {	return genero;	}
