@@ -25,8 +25,9 @@ public class Guardian extends Apostador{
 	}
 
     public void trasladarPrisionero(Prisionero prisionero, Celda celda) {
-		Celda celdaOrigen = prisionero.getCelda(); 
-    	prisionero.getCelda().extraerPrisionero(prisionero);
+//    	TODO testear esto
+		Celda celdaOrigen = prisionero.getCelda();
+    	celdaOrigen.extraerPrisionero(prisionero);
 		celda.ingresarPrisionero(prisionero);
 		
 		Object[] traslado = {celdaOrigen, prisionero, celda};
