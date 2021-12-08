@@ -83,7 +83,11 @@ public class Carcel {
 		Prisionero prisionero9 = new Prisionero(9, "nombre9", 700, genero.MASCULINO, celda4, delitos55);
 		Prisionero prisionero10 = new Prisionero(10, "nombre10", 1000, genero.MASCULINO, celda3, delitos33);
 		Prisionero prisionero11 = new Prisionero(11, "nombre11", 1200, genero.FEMENINO, celda9, delitos77);
-		Prisionero prisionero12 = new Prisionero(12, "nombre12", 200, genero.FEMENINO, celda9, delitos66);
+		Prisionero prisionero12 = new Prisionero(12, "nombre12", 200, genero.FEMENINO, celda8, delitos66);
+		Prisionero prisionero13 = new Prisionero(13, "nombre13", 120, genero.MASCULINO, celda2, delitos66);
+		Prisionero prisionero14 = new Prisionero(14, "nombre14", 50, genero.FEMENINO, celda6, delitos77);
+		Prisionero prisionero15 = new Prisionero(15, "nombre15", 0, genero.FEMENINO, celda7, delitos44);
+		
 		
 //		crearGuardianes
 		Hashtable<Integer, Celda> celdas1 = new Hashtable<>();
