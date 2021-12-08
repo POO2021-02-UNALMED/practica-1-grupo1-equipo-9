@@ -57,7 +57,27 @@ public class Carcel {
 		Celda celda7 = new Celda(7, genero.FEMENINO, 1.5, 4, 6);
 		Celda celda8 = new Celda(8, genero.FEMENINO, 1.5, 4, 2);
 		Celda celda9 = new Celda(9, genero.FEMENINO, 1.5, 4, 3);
-//		crearPrisioneros
+		
+//		crearPrisioneros 
+		Hashtable<Integer, Delito>  delitos0 = new Hashtable<>(); delitos0.put(delito1.getCodigo(), delito1);
+		Hashtable<Integer, Delito>  delitos1 = new Hashtable<>(); delitos1.put(delito1.getCodigo(), delito1); delitos1.put(delito2.getCodigo(), delito2);
+		Hashtable<Integer, Delito>  delitos2 = new Hashtable<>(); delitos2.put(delito1.getCodigo(), delito1); delitos2.put(delito3.getCodigo(), delito3); delitos2.put(delito4.getCodigo(), delito4);
+		Hashtable<Integer, Delito>  delitos3 = new Hashtable<>(); delitos3.put(delito4.getCodigo(), delito4); delitos3.put(delito2.getCodigo(), delito2); delitos3.put(delito5.getCodigo(), delito5); delitos3.put(delito9.getCodigo(), delito9);
+		Hashtable<Integer, Delito>  delitos4 = new Hashtable<>(); delitos4.put(delito6.getCodigo(), delito6); delitos4.put(delito2.getCodigo(), delito2); delitos4.put(delito10.getCodigo(), delito10);
+		Hashtable<Integer, Delito>  delitos5 = new Hashtable<>(); delitos5.put(delito6.getCodigo(), delito6); delitos5.put(delito5.getCodigo(), delito5);
+		Hashtable<Integer, Delito>  delitos6 = new Hashtable<>(); delitos6.put(delito7.getCodigo(), delito7); delitos6.put(delito8.getCodigo(), delito8); delitos6.put(delito9.getCodigo(), delito9);
+		Hashtable<Integer, Delito>  delitos7 = new Hashtable<>(); delitos7.put(delito8.getCodigo(), delito8); delitos7.put(delito5.getCodigo(), delito5); delitos7.put(delito10.getCodigo(), delito10);
+		
+		Prisionero prisionero0 = new Prisionero(0, "nombre0", 100, genero.MASCULINO, celda0, delitos0);
+		Prisionero prisionero1 = new Prisionero(1, "nombre1", 200, genero.MASCULINO, celda0, delitos1);
+		Prisionero prisionero2 = new Prisionero(2, "nombre2", 300, genero.MASCULINO, celda1, delitos2);
+		Prisionero prisionero3 = new Prisionero(3, "nombre3", 100, genero.MASCULINO, celda1, delitos3);
+		Prisionero prisionero4 = new Prisionero(4, "nombre4", 200, genero.FEMENINO, celda5, delitos4);
+		Prisionero prisionero5 = new Prisionero(5, "nombre5", 300, genero.FEMENINO, celda6, delitos5);
+		Prisionero prisionero6 = new Prisionero(6, "nombre6", 400, genero.FEMENINO, celda7, delitos6);
+		Prisionero prisionero7 = new Prisionero(7, "nombre7", 500, genero.FEMENINO, celda5, delitos7);
+		
+		
 		
 //		crearGuardianes
 		Hashtable<Integer, Celda> celdas1 = new Hashtable<>();
