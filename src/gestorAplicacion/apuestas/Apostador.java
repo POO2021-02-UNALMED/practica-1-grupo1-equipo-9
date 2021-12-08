@@ -12,10 +12,11 @@ public abstract class Apostador {
 	}
 
 	public void aumentarSaldo(double dinero) {
-    	
+    	this.saldo += dinero;
     }
     
     public void reducirSaldo(double dinero) {
+    	this.saldo -= dinero;
     	
     }
     
