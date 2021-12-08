@@ -17,7 +17,16 @@ public class Pelea {
     
     private static Hashtable<Integer, Pelea> peleas;
     
-    public void setGanador(Prisionero prisionero) {
+    public Pelea(int codigo, gestorAplicacion.carcel.genero genero, Prisionero luchador1, Prisionero luchador2,
+			String armaLuchador1, String armaLuchador2) {
+		this.codigo = codigo;
+		this.genero = genero;
+		this.luchador1 = luchador1;
+		this.luchador2 = luchador2;
+		this.armaLuchador1 = armaLuchador1;
+		this.armaLuchador2 = armaLuchador2;
+	}
+	public void setGanador(Prisionero prisionero) {
 //    	TODO llama al m�todo apuesta.resolverApuesta
     }
     public Prisionero getGanador() {return ganador;}
