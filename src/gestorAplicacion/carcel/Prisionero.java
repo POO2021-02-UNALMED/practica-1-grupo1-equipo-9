@@ -24,40 +24,41 @@ public class Prisionero extends Apostador{
 		super(identificacion, nombre, saldo);
 		this.genero = genero;
 		this.inicioCondena = LocalDate.now();
-		this.finCondena = 0;
 		this.celda = celda; celda.ingresarPrisionero(this);
 		this.delitos = delitos;
+		
+		//Se suma el total de meses que el prisionero va a estar en la carcel y se agregan al inicio de su condena
+		int meses=0;
+    	for(Integer k: delitos.keySet()) {
+    		meses+=delitos.get(k).getTiempoCondena();
+    	}
+    	
+    	this.finCondena = this.inicioCondena;
+    	incrementarCondena(meses);
 		
 		prisioneros.put(this.identificacion, this);
 		// TODO calcular inicioCondena y finCondena
 	}
-
+    
 	public void agregarDelito(Delito delito) {
+		//Este metodo se utiliza cuando un prisionero ya esta en la carcel y se le quiere agregar otro delito
 		delitos.put(delito.getCodigo(), delito);
-		incrementarCondena(delitos);
+		incrementarCondena(delito.getTiempoCondena());
     }
     
     public void agregarAntidelito(Antidelito antidelito) {
     	antidelitos.put(antidelito.getCodigo(), antidelito);
-    	disminuirCondena(antidelitos);
+    	disminuirCondena(antidelito.getRebajaCondena());
     }
-	//se cambio long meses por la hashtable
     
-    private void incrementarCondena(Hashtable<Integer, Delito> delitos) { //reciben como argumento el tiempoCondena de Delito
+    private void incrementarCondena(long meses) { //reciben como argumento el tiempoCondena de Delito
     	// usar el metodo LocalDate.plusMonths() y devuelve una copia
-    	int meses=0;
-    	for(Integer k: delitos.keySet()) {
-    		meses+=delitos.get(k).getTiempoCondena();
-    	}
-    	finCondena = inicioCondena.plusMonths(meses);
+    	finCondena = finCondena.plusMonths(meses);
     }
     
-    private void disminuirCondena(Hashtable<Integer, Antidelito> antidelitos) { //reciben como argumento el rebajarCondena de Antidelito
-    	int meses=0;
-    	for(Integer k: antidelitos.keySet()) {
-    		meses+=antidelitos.get(k).getRebajaCondena();
-    	}
-    	finCondena= inicioCondena.minusMonths(meses);
+    private void disminuirCondena(long meses) { //reciben como argumento el rebajarCondena de Antidelito
+    	
+    	finCondena= finCondena.minusMonths(meses);
     
     }
     
