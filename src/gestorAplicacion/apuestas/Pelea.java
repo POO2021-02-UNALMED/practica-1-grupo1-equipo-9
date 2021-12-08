@@ -6,7 +6,7 @@ import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Prisionero;
 
 public class Pelea {
-    private int codigo;
+    private int codigo; //Cada pelea tiene el mismo código que su respectiva apuesta
     private gestorAplicacion.carcel.genero genero;
     private Prisionero luchador1;
     private Prisionero luchador2;
@@ -25,6 +25,11 @@ public class Pelea {
 		this.luchador2 = luchador2;
 		this.armaLuchador1 = armaLuchador1;
 		this.armaLuchador2 = armaLuchador2;
+		
+		this.apuesta = new Apuesta(codigo, this);
+//		Se crea automaticamente la apuesta correspondiente a esta pelea
+		
+		peleas.put(codigo, this);
 	}
 	public void setGanador(Prisionero prisionero) {
 //    	TODO llama al mï¿½todo apuesta.resolverApuesta

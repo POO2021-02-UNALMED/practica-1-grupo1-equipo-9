@@ -6,11 +6,21 @@ import gestorAplicacion.carcel.Prisionero;
 
 public class Apuesta {
 	private static Hashtable<Integer,Apuesta> apuestas= new Hashtable<Integer,Apuesta>();
-	private int codigo;
+	private int codigo; //Cada pelea tiene el mismo código que su respectiva apuesta
     private ArrayList<Object[]> apostadores= new ArrayList<Object[]>(); 
     private Pelea pelea;
     
-    public String resultadoApuesta() {
+    public Apuesta(int codigo, Pelea pelea) {
+//    	Las apuestas se crean automatica cuando se crea una pelea
+		this.codigo = codigo;
+		this.pelea = pelea;
+		/*
+		 * Si el arreglo apostadores está vacío, es porque nadie apostó en esta pelea
+		 */
+		apuestas.put(codigo, this);
+	}
+
+	public String resultadoApuesta() {
     	/*
     	 * Retorna una lista de los apostadores que participaron en una apuesta en 
     	 * particular, y el dinero que ganaron o perdieron
