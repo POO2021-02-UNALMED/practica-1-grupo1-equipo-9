@@ -9,7 +9,7 @@ public class Celda {
     private final int capMax;
     private Hashtable<Integer, Prisionero> prisioneros = new Hashtable<Integer, Prisionero>();
     
-    private static Hashtable<Integer, Celda> celdas;
+    private static Hashtable<Integer, Celda> celdas = new Hashtable<>();
     
     public Celda(int numero, gestorAplicacion.carcel.genero genero, int largo, int ancho,int capMax) {
     	this.numero=numero;
