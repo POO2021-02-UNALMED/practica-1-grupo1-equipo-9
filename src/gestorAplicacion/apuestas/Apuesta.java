@@ -68,6 +68,7 @@ public class Apuesta {
 //    	Revisa si el apostador tiene saldo suficiente para apostar.
     	if (apuesta > apostador.getSaldo()) {return;}
     	
+    	apostador.reducirSaldo(apuesta);
     	Object[] agregando = {apostador, prisionero, apuesta};
     	apostadores.add(agregando);
     }
