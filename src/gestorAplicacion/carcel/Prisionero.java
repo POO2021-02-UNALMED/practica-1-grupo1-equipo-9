@@ -13,34 +13,50 @@ public class Prisionero extends Apostador{
     private Hashtable<Integer, Antidelito> antidelitos;
     
     private static Hashtable<Integer, Prisionero> prisioneros;
+    //Se agrego inicio condena y fin condena
     
-    public Prisionero(int identificacion, String nombre, gestorAplicacion.carcel.genero genero, Celda celda, Hashtable<Integer, Delito> delitos) {
-    	this(identificacion,nombre,0, genero, celda, delitos);
+    public Prisionero(int identificacion, String nombre, gestorAplicacion.carcel.genero genero, Celda celda, LocalDate inicioCondena, LocalDate finCondena,Hashtable<Integer, Delito> delitos) {
+    	this(identificacion,nombre,0, genero, celda, inicioCondena, finCondena, delitos);
     }
     
-    public Prisionero(int identificacion, String nombre, int saldo, gestorAplicacion.carcel.genero genero, Celda celda,
-			Hashtable<Integer, Delito> delitos) {
+    public Prisionero(int identificacion, String nombre, int saldo, gestorAplicacion.carcel.genero genero, Celda celda, 
+    		LocalDate inicioCondena, LocalDate finCondena, Hashtable<Integer, Delito> delitos) {
 		super(identificacion, nombre, saldo);
 		this.genero = genero;
 		this.celda = celda; celda.getPrisioneros().put(this.identificacion, this);
+		this.inicioCondena = LocalDate.now();
+		this.finCondena = LocalDate.now();
 		this.delitos = delitos;
 		// TODO calcular inicioCondena y finCondena
 	}
 
 	public void agregarDelito(Delito delito) {
-    	
+		delitos.put(this.identificacion, delito);
+		incrementarCondena(delitos);
     }
     
     public void agregarAntidelito(Antidelito antidelito) {
-    	
+    	antidelitos.put(this.identificacion, antidelito);
+    	disminuirCondena(antidelitos);
+    }
+	//se cambio long meses por la hashtable
+    
+    private void incrementarCondena(Hashtable<Integer, Delito> delitos) { //reciben como argumento el tiempoCondena de Delito
+    	// usar el metodo LocalDate.plusMonths() y devuelve una copia
+    	int meses=0;
+    	for(Integer k: delitos.keySet()) {
+    		meses+=delitos.get(k).getTiempoCondena();
+    	}
+    	finCondena = inicioCondena.plusMonths(meses);
     }
     
-    private void incrementarCondena(Long meses) { //reciben como argumento el tiempoCondena de Delito
-    	// usar el m�todo LocalDate.plusMonths() y devuelve una copia
-    }
+    private void disminuirCondena(Hashtable<Integer, Antidelito> antidelitos) { //reciben como argumento el rebajarCondena de Antidelito
+    	int meses=0;
+    	for(Integer k: antidelitos.keySet()) {
+    		meses+=antidelitos.get(k).getRebajaCondena();
+    	}
+    	finCondena= inicioCondena.minusMonths(meses);
     
-    private void dismnuirCondena(Long meses) { //reciben como argumento el rebajarCondena de Antidelito
-    	
     }
     
     @Override
