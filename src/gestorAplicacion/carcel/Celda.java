@@ -55,10 +55,10 @@ public class Celda {
 			claves += keys.nextElement() + " ";
 		}
 		
-		return "Número: " + this.getNumero() + "\n" 
+		return "Numero: " + this.getNumero() + "\n" 
 				+ "Genero: " + this.getGenero() + "\n"
 				+ "Medidas: " + this.getLargo() + "x" + this.getAncho() + "\n"
-				+ "Capacidad máxima: " + this.getCapMax() + "\n"
+				+ "Capacidad maxima: " + this.getCapMax() + "\n"
 				+ "Prisioneros: " + claves + "\n" + "\n";
 	}
 
