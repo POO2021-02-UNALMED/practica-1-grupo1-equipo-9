@@ -7,9 +7,9 @@ public class Celda {
     private final int largo;
     private final int ancho;
     private final int capMax;
-    private Hashtable<Integer, Prisionero> prisioneros;
+    private Hashtable<Integer, Prisionero> prisioneros = new Hashtable<Integer, Prisionero>();
     
-    private static Hashtable<Integer, Celda> celdas;
+    private static Hashtable<Integer, Celda> celdas = new Hashtable<>();
     
     public Celda(int numero, gestorAplicacion.carcel.genero genero, int largo, int ancho,int capMax) {
     	this.numero=numero;
@@ -21,11 +21,17 @@ public class Celda {
     }
     
     public void extraerPrisionero(Prisionero prisionero) {
+    	prisionero.setCelda(null);
+    	prisioneros.remove(prisionero.getIdentificacion());
 //    	Hace prisionero.celda = null y prisionero.celda.remove(prisionero)
     }
+    
     public void ingresarPrisionero(Prisionero prisionero) {
+    	prisionero.setCelda(this);
+    	prisioneros.put(prisionero.getIdentificacion(), prisionero);
 //    	Hace prisionero.celda = this y this.add(prisionero)
     }
+    
 	public Hashtable<Integer, Prisionero> getPrisioneros() {return prisioneros;}
 	public static Hashtable<Integer, Celda> getCeldas() {return celdas;}
 

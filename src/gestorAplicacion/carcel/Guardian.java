@@ -24,7 +24,15 @@ public class Guardian extends Apostador{
 	}
 
     public void trasladarPrisionero(Prisionero prisionero, Celda celda) {
-		/*
+		Celda celdaOrigen = prisionero.getCelda(); 
+    	prisionero.getCelda().extraerPrisionero(prisionero);
+		celda.ingresarPrisionero(prisionero);
+		
+		Object[] traslado = {celdaOrigen, prisionero, celda};
+		
+		this.agregarTraslado(traslado);
+		
+    	/*
 		 * Utiliza el m�todo agregarTraslado y le pasa un Object[3] donde
 		 * el primero elemento es la Celda de origen, el segundo es el prisionero
 		 * trasladado y la tercera es la celda destino
@@ -33,6 +41,7 @@ public class Guardian extends Apostador{
     
     public ArrayList<Object[]> getTraslados() {return traslados;}
     private void agregarTraslado(Object[] objetos) {
+    	traslados.add(objetos);
 //    	agrega la informaci�n del traslado al los 'traslados'(atributo) que ha hecho this Apostador 
     }
 
