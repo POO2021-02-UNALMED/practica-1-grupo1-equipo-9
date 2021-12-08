@@ -42,6 +42,6 @@ public class Delito {
 				+ "Nombre: " + this.getNombre() + "\n"
 				+ "Descripcion: " + this.getDescripcion() + "\n"
 				+ "Nivel: " + this.getNivel() + "\n"
-				+ "Aumento condena: " + this.getTiempoCondena() + " meses" + "\n";
+				+ "Aumento condena: " + this.getTiempoCondena() + " meses" + "\n" + "\n";
 	}
 }

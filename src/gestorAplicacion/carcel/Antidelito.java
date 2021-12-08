@@ -1,5 +1,4 @@
 package gestorAplicacion.carcel;
-import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class Antidelito {
@@ -31,6 +30,6 @@ public class Antidelito {
 		
 		return "Codigo: " + this.getCodigo() + "\n" 
 				+ "Nombre: " + this.getNombre() + "\n"
-				+ "Rebaja condena: " + this.getRebajaCondena() + " meses" + "\n";
+				+ "Rebaja condena: " + this.getRebajaCondena() + " meses" + "\n" + "\n";
 	}
 }
