@@ -24,7 +24,8 @@ public class Guardian extends Apostador{
 	}
 
     public void trasladarPrisionero(Prisionero prisionero, Celda celda) {
-		/*
+		prisionero.
+    	/*
 		 * Utiliza el m�todo agregarTraslado y le pasa un Object[3] donde
 		 * el primero elemento es la Celda de origen, el segundo es el prisionero
 		 * trasladado y la tercera es la celda destino
