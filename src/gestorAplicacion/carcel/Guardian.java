@@ -58,7 +58,7 @@ public class Guardian extends Apostador{
 				+ "Nombre: " + this.getNombre() + "\n"
 				+ "Saldo: " + this.getSaldo() + "\n"
 				+ "Salario: " + this.getSalario() + "\n"
-				+ "Celdas a Cargo: " + claves;
+				+ "Celdas a Cargo: " + claves + "\n" + "\n";
 	}
 	
 	public Hashtable<Integer, Celda> getCeldas() {return celdas;}
