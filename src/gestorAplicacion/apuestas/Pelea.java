@@ -32,13 +32,11 @@ public class Pelea {
 		peleas.put(codigo, this);
 	}
 	public void setGanador(Prisionero prisionero) {
-//    	TODO llama al m�todo apuesta.resolverApuesta
-    }
+		this.ganador = prisionero;
+		apuesta.resolverApuesta();
+	}
     public Prisionero getGanador() {return ganador;}
-    
-    public void setLuchadores(Prisionero luch1, Prisionero luch2) {
-//    	TODO
-    }
+
     public Prisionero[] getLuchadores() {
 		Prisionero[] luchadores = {luchador1, luchador2};
     	return luchadores;
