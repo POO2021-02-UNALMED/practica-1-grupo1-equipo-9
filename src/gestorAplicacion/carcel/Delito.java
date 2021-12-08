@@ -17,7 +17,10 @@ public class Delito {
     	this.tiempoCondena = tiempoCondena;
     	delitos.put(this.codigo, this);
     }
-
+	
+    public int getCodigo() {return codigo;}
+    public void setCodigo() {this.codigo=codigo;}
+    
 	public String getNombre() {return nombre;}
 	public void setNombre(String nombre) {this.nombre = nombre;}
 

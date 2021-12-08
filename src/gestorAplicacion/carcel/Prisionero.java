@@ -15,15 +15,16 @@ public class Prisionero extends Apostador{
     private static Hashtable<Integer, Prisionero> prisioneros = new Hashtable<>();
     //Se agrego inicio condena y fin condena
     
-    public Prisionero(int identificacion, String nombre, gestorAplicacion.carcel.genero genero, Celda celda, LocalDate inicioCondena, Hashtable<Integer, Delito> delitos) {
-    	this(identificacion,nombre,0, genero, celda, inicioCondena, delitos);
+    public Prisionero(int identificacion, String nombre, gestorAplicacion.carcel.genero genero, Celda celda, Hashtable<Integer, Delito> delitos) {
+    	this(identificacion,nombre,0, genero, celda, delitos);
     }
     
     public Prisionero(int identificacion, String nombre, int saldo, gestorAplicacion.carcel.genero genero, Celda celda, 
-    		LocalDate inicioCondena, Hashtable<Integer, Delito> delitos) {
+    		Hashtable<Integer, Delito> delitos) {
 		super(identificacion, nombre, saldo);
 		this.genero = genero;
 		this.inicioCondena = LocalDate.now();
+		this.finCondena = 0;
 		this.celda = celda; celda.ingresarPrisionero(this);
 		this.delitos = delitos;
 		
@@ -32,7 +33,7 @@ public class Prisionero extends Apostador{
 	}
 
 	public void agregarDelito(Delito delito) {
-		delitos.put(this.identificacion, delito);
+		delitos.put(delito.getCodigo(), delito);
 		incrementarCondena(delitos);
     }
     
