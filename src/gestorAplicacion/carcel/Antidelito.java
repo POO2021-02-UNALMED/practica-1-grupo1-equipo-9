@@ -5,11 +5,13 @@ public class Antidelito {
     private static Hashtable<Integer,Antidelito> antidelitos= new Hashtable<Integer,Antidelito>();
 	private int codigo;
     private String nombre;
+    private String descripcion;
     private long rebajaCondena; /*meses*/
     
-    public Antidelito(int codigo, String nombre, long rebajaCondena) {
+    public Antidelito(int codigo, String nombre, String descripcion, long rebajaCondena) {
     	this.codigo = codigo;
     	this.nombre = nombre;
+    	this.descripcion = descripcion;
     	this.rebajaCondena = rebajaCondena;
     	antidelitos.put(this.codigo, this);
     }
