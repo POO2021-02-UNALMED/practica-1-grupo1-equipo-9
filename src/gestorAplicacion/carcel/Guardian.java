@@ -1,6 +1,7 @@
 package gestorAplicacion.carcel;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
 
 import gestorAplicacion.apuestas.Apostador;
@@ -47,8 +48,17 @@ public class Guardian extends Apostador{
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		String claves = "";
+		Enumeration<Integer> keys = celdas.keys();
+		while (keys.hasMoreElements()) {
+			claves += keys.nextElement() + " ";
+		}
+		
+		return "GUARDIAN: " + this.getIdentificacion() + "\n" 
+				+ "Nombre: " + this.getNombre() + "\n"
+				+ "Saldo: " + this.getSaldo() + "\n"
+				+ "Salario: " + this.getSalario() + "\n"
+				+ "Celdas a Cargo: " + claves;
 	}
 	
 	public Hashtable<Integer, Celda> getCeldas() {return celdas;}
