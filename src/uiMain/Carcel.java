@@ -13,7 +13,9 @@ import gestorAplicacion.carcel.Delito;
 
 public class Carcel {
 	
-	static {
+    public static void main(String[] args) {
+        // TODO code application logic here
+    	
 //		crearDelitos
 		Delito delito1 = new Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10);
 		Delito delito2 = new Delito(2, "Pelea callejera", "Enfrentarse fisicamente con otra persona o animal en lugares publicos", 1, 12);
@@ -130,10 +132,15 @@ public class Carcel {
 		Pelea pelea2 = new Pelea(2, genero.FEMENINO, prisionero4, prisionero5, "arma12", "arma22");
 		Pelea pelea3 = new Pelea(3, genero.FEMENINO, prisionero6, prisionero7, "arma13", "arma23");
 		
-	}
-
-    public static void main(String[] args) {
-        // TODO code application logic here
 		
+//		---------------------------------------------------------------------------------------------------
+		
+		System.out.println(delito1);
+		System.out.println(celda5);
+		System.out.println(guardian3);
+		System.out.println(prisionero11);
+		System.out.println(prisionero1);
+		System.out.println(prisionero0);
+		System.out.println(pelea0);
     }
 }

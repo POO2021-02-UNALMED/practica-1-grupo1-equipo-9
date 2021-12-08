@@ -78,7 +78,7 @@ public class Prisionero extends Apostador{
 				+ "Nombre: " + getNombre() + "\n"
 				+ "Genero: " + getGenero() + "\n"
 				+ "Saldo: " + getSaldo() + "\n"
-				+ "Celda: " + getCelda() + "\n"
+				+ "Celda: " + getCelda().getNumero() + "\n"
 				+ "Inicio de Condena: " + getInicioCondena() + "\n"
 				+ "Fin de Condena: " + getFinCondena() + "\n"
 				+ "Delitos: " + nombresDelitos + "\n"

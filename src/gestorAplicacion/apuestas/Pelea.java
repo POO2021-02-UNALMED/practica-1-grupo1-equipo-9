@@ -15,7 +15,7 @@ public class Pelea {
     private Prisionero ganador;
     private Apuesta apuesta;
     
-    private static Hashtable<Integer, Pelea> peleas;
+    private static Hashtable<Integer, Pelea> peleas = new Hashtable<>();
     
     public Pelea(int codigo, gestorAplicacion.carcel.genero genero, Prisionero luchador1, Prisionero luchador2,
 			String armaLuchador1, String armaLuchador2) {
@@ -77,10 +77,10 @@ public class Pelea {
 		
 		return "PELEA: " + codigo + "\n" 
 				+ "Genero: " + genero + "\n" 
-				+ "Luchador 1:" + luchador1.getNombre() +"\n" 
-				+ "Luchador 2:" + luchador2.getNombre() + "\n" 
-				+ "Arma luchador 1:" + armaLuchador1 + "\n" 
-				+ "Arma luchador 2:" + armaLuchador2 + "\n" 
+				+ "Luchador 1: " + luchador1.getNombre() +"\n" 
+				+ "Luchador 2: " + luchador2.getNombre() + "\n" 
+				+ "Arma luchador 1: " + armaLuchador1 + "\n" 
+				+ "Arma luchador 2: " + armaLuchador2 + "\n" 
 				+ "Ganador: " + (ganador == null ? "Aún no hay ganador" : ganador.getNombre()) + "\n";
 	}  
 	
