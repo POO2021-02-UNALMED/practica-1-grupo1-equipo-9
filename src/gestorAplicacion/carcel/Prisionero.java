@@ -38,7 +38,7 @@ public class Prisionero extends Apostador{
     }
     
     public void agregarAntidelito(Antidelito antidelito) {
-    	antidelitos.put(this.identificacion, antidelito);
+    	antidelitos.put(antidelito.getCodigo(), antidelito);
     	disminuirCondena(antidelitos);
     }
 	//se cambio long meses por la hashtable
