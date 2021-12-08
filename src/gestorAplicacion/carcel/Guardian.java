@@ -54,10 +54,10 @@ public class Guardian extends Apostador{
 			claves += keys.nextElement() + " ";
 		}
 		
-		return "GUARDIAN: " + this.getIdentificacion() + "\n" 
-				+ "Nombre: " + this.getNombre() + "\n"
-				+ "Saldo: " + this.getSaldo() + "\n"
-				+ "Salario: " + this.getSalario() + "\n"
+		return "GUARDIAN: " + getIdentificacion() + "\n" 
+				+ "Nombre: " + getNombre() + "\n"
+				+ "Saldo: " + getSaldo() + "\n"
+				+ "Salario: " + getSalario() + "\n"
 				+ "Celdas a Cargo: " + claves + "\n" + "\n";
 	}
 	
