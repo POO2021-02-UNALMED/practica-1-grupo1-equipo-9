@@ -1,9 +1,11 @@
 package uiMain;
 
 import java.time.LocalDate;
+import java.util.Hashtable;
 
 import gestorAplicacion.carcel.Antidelito;
 import gestorAplicacion.carcel.Celda;
+import gestorAplicacion.carcel.Guardian;
 import gestorAplicacion.carcel.Prisionero;
 import gestorAplicacion.carcel.genero;
 import gestorAplicacion.carcel.Delito; 
@@ -18,11 +20,10 @@ public class Carcel {
 		Delito delito4 = new Delito(4, "4", "4", 8, 200);
 		Delito delito5 = new Delito(5, "5", "5", 9, 360);
 		Delito delito6 = new Delito(6, "6", "6", 3, 24);
-		Delito delito7 = new Delito(7, "Batalla", "Participar en la batalla del Departamento de Misterios como mortífago", 5, 360);
+		Delito delito7 = new Delito(7, "Batalla", "Participar en la batalla del Departamento de Misterios como mortï¿½fago", 5, 360);
 		Delito delito8 = new Delito(8, "Batalla", "Participar en la batalla del Departamento de Misterios", 5, 50);
 		Delito delito9 = new Delito(9, "9", "9", 7, 500);
 		Delito delito10 = new Delito(10, "10", "10", 4, 10);
-		
 		
 //		crearCeldas
 		Celda celda0 = new Celda(0, genero.MASCULINO, 1.5, 4, 2);
@@ -35,10 +36,39 @@ public class Carcel {
 		Celda celda7 = new Celda(7, genero.FEMENINO, 1.5, 4, 6);
 		Celda celda8 = new Celda(8, genero.FEMENINO, 1.5, 4, 2);
 		Celda celda9 = new Celda(9, genero.FEMENINO, 1.5, 4, 3);
-		
 //		crearPrisioneros
 		
 //		crearGuardianes
+		Hashtable<Integer, Celda> celdas1 = new Hashtable<>();
+		celdas1.put(celda0.getNumero(), celda0);
+		celdas1.put(celda9.getNumero(), celda9);
+		celdas1.put(celda5.getNumero(), celda5);
+		
+		Hashtable<Integer, Celda> celdas2 = new Hashtable<>();
+		celdas2.put(celda1.getNumero(), celda1);
+		celdas2.put(celda8.getNumero(), celda8);
+		celdas2.put(celda4.getNumero(), celda4);
+		
+		Hashtable<Integer, Celda> celdas3 = new Hashtable<>();
+		celdas3.put(celda3.getNumero(), celda3);
+		celdas3.put(celda7.getNumero(), celda7);
+		celdas3.put(celda2.getNumero(), celda2);
+		
+		Hashtable<Integer, Celda> celdas4 = new Hashtable<>();
+		celdas4.put(celda2.getNumero(), celda2);
+		celdas4.put(celda6.getNumero(), celda6);
+		celdas4.put(celda9.getNumero(), celda9);
+		
+		Hashtable<Integer, Celda> celdas5 = new Hashtable<>();
+		celdas5.put(celda5.getNumero(), celda5);
+		celdas5.put(celda8.getNumero(), celda8);
+		celdas5.put(celda7.getNumero(), celda7);
+		
+		Guardian guardian1 = new Guardian(1001,"Chuck Norris",4500,5430,celdas1);
+		Guardian guardian2 = new Guardian(1002,"Jhon Wick",10000,6360,celdas2);
+		Guardian guardian3 = new Guardian(1003,"Arnold Schwarzenegger",2035,5700,celdas3);
+		Guardian guardian4 = new Guardian(1004,"Sylvester Stallone",8600,6100,celdas4);
+		Guardian guardian5 = new Guardian(1005,"Jean_Claude Van Damme",6700,7480,celdas5);
 		
 //		crearAntidelitos
 		Antidelito antidelito0 = new Antidelito(0, "nombre0", "descripcion0",1);
