@@ -71,5 +71,18 @@ public class Pelea {
 	public Apuesta getApuesta() {return apuesta;}
 	public void setApuesta(Apuesta apuesta) {this.apuesta = apuesta;}
 	
-	public static Hashtable<Integer, Pelea> getPeleas() {return peleas;}  
+	public static Hashtable<Integer, Pelea> getPeleas() {return peleas;}
+	@Override
+	public String toString() {
+		
+		return "PELEA: " + codigo + "\n" 
+				+ "Genero: " + genero + "\n" 
+				+ "Luchador 1:" + luchador1.getNombre() +"\n" 
+				+ "Luchador 2:" + luchador2.getNombre() + "\n" 
+				+ "Arma luchador 1:" + armaLuchador1 + "\n" 
+				+ "Arma luchador 2:" + armaLuchador2 + "\n" 
+				+ "Ganador: " + (ganador == null ? "Aún no hay ganador" : ganador.getNombre()) + "\n";
+	}  
+	
+	
 }
