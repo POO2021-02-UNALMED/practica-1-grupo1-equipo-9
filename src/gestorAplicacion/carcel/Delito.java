@@ -31,4 +31,6 @@ public class Delito {
 	public void setTiempoCondena(long tiempoCondena) {this.tiempoCondena = tiempoCondena;}
 	
 	public static Hashtable<Integer, Delito> getDelitos() {return delitos;}
+	
+	
 }
