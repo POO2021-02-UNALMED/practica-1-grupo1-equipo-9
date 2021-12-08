@@ -1,4 +1,5 @@
 package gestorAplicacion.carcel;
+import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class Celda {
@@ -46,6 +47,20 @@ public class Celda {
 
 	public int getCapMax() {return capMax;}
 
+	@Override
+	public String toString() {
+		String claves = "";
+		Enumeration<Integer> keys = prisioneros.keys();
+		while (keys.hasMoreElements()) {
+			claves += keys.nextElement() + " ";
+		}
+		
+		return "Número: " + this.getNumero() + "\n" 
+				+ "Genero: " + this.getGenero() + "\n"
+				+ "Medidas: " + this.getLargo() + "x" + this.getAncho() + "\n"
+				+ "Capacidad máxima: " + this.getCapMax() + "\n"
+				+ "Prisioneros: " + claves + "\n" + "\n";
+	}
 
 	
 	
