@@ -30,13 +30,13 @@ public class Carcel {
 //		crearGuardianes
 		
 //		crearAntidelitos
-		Antidelito antidelito0 = new Antidelito(0, "", 0)
-		Antidelito antidelito1 = new 
-		Antidelito antidelito2 = new 
-		Antidelito antidelito3 = new 
-		Antidelito antidelito4 = new 
-		Antidelito antidelito5 = new 
-		Antidelito antidelito6 = new 
+		Antidelito antidelito0 = new Antidelito(0, "nombre0", "descripcion0",1);
+		Antidelito antidelito1 = new Antidelito(1, "nombre1", "descripcion1",2);
+		Antidelito antidelito2 = new Antidelito(2, "nombre2", "descripcion2",3);
+		Antidelito antidelito3 = new Antidelito(3, "nombre3", "descripcion3",4);
+		Antidelito antidelito4 = new Antidelito(4, "nombre4", "descripcion4",5);
+		Antidelito antidelito5 = new Antidelito(5, "nombre5", "descripcion5",6);
+		Antidelito antidelito6 = new Antidelito(6, "nombre6", "descripcion6",7);
 		
 //		crearPeleas
 		

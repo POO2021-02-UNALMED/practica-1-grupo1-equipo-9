@@ -41,9 +41,9 @@ public class Celda {
 
 	public gestorAplicacion.carcel.genero getGenero() {return genero;}
 
-	public int getLargo() {return largo;}
+	public double getLargo() {return largo;}
 
-	public int getAncho() {return ancho;}
+	public double getAncho() {return ancho;}
 
 	public int getCapMax() {return capMax;}
 
