@@ -3,6 +3,7 @@ package uiMain;
 import java.time.LocalDate;
 import java.util.Hashtable;
 
+import gestorAplicacion.apuestas.Pelea;
 import gestorAplicacion.carcel.Antidelito;
 import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Guardian;
@@ -121,6 +122,10 @@ public class Carcel {
 		Antidelito antidelito6 = new Antidelito(6, "nombre6", "descripcion6",7);
 		
 //		crearPeleas
+		Pelea pelea0 = new Pelea(0, genero.MASCULINO, prisionero0, prisionero1, "arma10", "arma20");
+		Pelea pelea1 = new Pelea(1, genero.MASCULINO, prisionero2, prisionero3, "arma11", "arma21");
+		Pelea pelea2 = new Pelea(2, genero.FEMENINO, prisionero4, prisionero5, "arma12", "arma22");
+		Pelea pelea3 = new Pelea(3, genero.FEMENINO, prisionero6, prisionero7, "arma13", "arma23");
 		
 	}
 
