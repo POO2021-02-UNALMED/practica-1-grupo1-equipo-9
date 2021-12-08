@@ -9,6 +9,9 @@ public class Apuesta {
 	private int codigo; //Cada pelea tiene el mismo código que su respectiva apuesta
     private ArrayList<Object[]> apostadores= new ArrayList<Object[]>(); 
     private Pelea pelea;
+    private double montoTotal;
+    private double montoTotalGanadores;
+    
     
     public Apuesta(int codigo, Pelea pelea) {
 //    	Las apuestas se crean automatica cuando se crea una pelea
@@ -55,7 +58,8 @@ public class Apuesta {
     		}
 		}
     	
-    	System.out.println(montoTotal);
+    	this.montoTotal = montoTotal;
+    	this.montoTotalGanadores = totalGanadores;
     }
     
     public void agregarApostador(Apostador apostador, Prisionero prisionero, Integer apuesta) {
