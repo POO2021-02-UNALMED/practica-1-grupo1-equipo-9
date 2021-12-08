@@ -35,5 +35,13 @@ public class Delito {
 	
 	public static Hashtable<Integer, Delito> getDelitos() {return delitos;}
 	
-	
+	@Override
+	public String toString() {
+		
+		return "Codigo: " + this.getCodigo() + "\n" 
+				+ "Nombre: " + this.getNombre() + "\n"
+				+ "Descripcion: " + this.getDescripcion() + "\n"
+				+ "Nivel: " + this.getNivel() + "\n"
+				+ "Aumento condena: " + this.getTiempoCondena() + " meses" + "\n";
+	}
 }
