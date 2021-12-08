@@ -2,6 +2,7 @@ package uiMain;
 
 import java.time.LocalDate;
 
+import gestorAplicacion.carcel.Antidelito;
 import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Prisionero;
 import gestorAplicacion.carcel.genero;
@@ -29,6 +30,13 @@ public class Carcel {
 //		crearGuardianes
 		
 //		crearAntidelitos
+		Antidelito antidelito0 = new Antidelito(0, "", 0)
+		Antidelito antidelito1 = new 
+		Antidelito antidelito2 = new 
+		Antidelito antidelito3 = new 
+		Antidelito antidelito4 = new 
+		Antidelito antidelito5 = new 
+		Antidelito antidelito6 = new 
 		
 //		crearPeleas
 		
