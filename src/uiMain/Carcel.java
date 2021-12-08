@@ -146,5 +146,15 @@ public class Carcel {
 		System.out.println(prisionero1);
 		System.out.println(prisionero0);
 		System.out.println(pelea0);
+		
+		pelea0.getApuesta().agregarApostador(guardian5, prisionero0, 30);
+		pelea0.getApuesta().agregarApostador(guardian4, prisionero0, 10);
+		pelea0.getApuesta().agregarApostador(prisionero10, prisionero1, 20);
+		pelea0.getApuesta().agregarApostador(prisionero14, prisionero1, 10);
+		
+		pelea0.setGanador(prisionero0);
+		System.out.println(pelea0.getApuesta().resultadoApuesta());
+		
     }
+    
 }

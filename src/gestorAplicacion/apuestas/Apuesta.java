@@ -11,6 +11,7 @@ public class Apuesta {
     private Pelea pelea;
     private double montoTotal;
     private double montoTotalGanadores;
+    private ArrayList<String> estadisticas;
     
     
     public Apuesta(int codigo, Pelea pelea) {
@@ -28,7 +29,19 @@ public class Apuesta {
     	 * Retorna una lista de los apostadores que participaron en una apuesta en 
     	 * particular, y el dinero que ganaron o perdieron
     	 */
-    	return null;
+		
+		if (pelea.getGanador() == null) {return "La pelea aún no tiene ganador";}
+		
+		String resultadoMonto1 = "El monto total recogido en la apuesta fue: " + montoTotal + "\n" ;
+		String resultadoMonto2 = "El dinero total apostado por los ganadores de esta apuesta fue: " + montoTotalGanadores + "\n\n" ;
+		
+		String resulta3 = "Las estadísticas de esta apuesta son las siguientes: \n";
+		String resulta4 = "";
+		for (String string : estadisticas) {
+			resulta4 += string + "\n"; 
+		}
+		
+    	return resultadoMonto1 + resultadoMonto2 + resulta3 + resulta4;
     }
     
     public void resolverApuesta() {
@@ -44,6 +57,8 @@ public class Apuesta {
     		if (pelea.getGanador().equals(prisionero)) {totalGanadores += apuesta;}
 		}
     	
+    	ArrayList<String> estadisticas = new ArrayList<>();
+    	
 //    	Se paga a los apostadores ganadores proporcionalmente al dinero que apostaron.
     	for (Object[] objects : apostadores) {
 //    		Casteo explícito de un objeto Object a Apostador, Prisionero e Int.
@@ -53,13 +68,18 @@ public class Apuesta {
     		
     		if (pelea.getGanador().equals(prisionero)) {
     			double k = apuesta/totalGanadores;
-    			apostador.aumentarSaldo(k*montoTotal);
+    			double ganancia = k*montoTotal;
+    			apostador.aumentarSaldo(ganancia);
+    			estadisticas.add("ID Apostador: " + apostador.getIdentificacion() + "\t\t+" + (ganancia - apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo());
     			
+    		} else {
+    			estadisticas.add("ID Apostador: " + apostador.getIdentificacion() + "\t\t-" + (apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo());
     		}
 		}
     	
     	this.montoTotal = montoTotal;
     	this.montoTotalGanadores = totalGanadores;
+    	this.estadisticas = estadisticas;
     }
     
     public void agregarApostador(Apostador apostador, Prisionero prisionero, Integer apuesta) {
