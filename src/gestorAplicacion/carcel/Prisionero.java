@@ -75,10 +75,10 @@ public class Prisionero extends Apostador{
 	public void setCelda(Celda celda) {	this.celda = celda;	}
 
 	public LocalDate getInicioCondena() {return inicioCondena;}
+	public void setInicioCondena(LocalDate inicioCondena) {this.inicioCondena=inicioCondena;}
 
 	public LocalDate getFinCondena() {return finCondena;}
-
-	public void setFinCondena(LocalDate finCondena) {	this.finCondena = finCondena;	}
+	public void setFinCondena(LocalDate finCondena) {this.finCondena=finCondena;}
 
 	public Hashtable<Integer, Delito> getDelitos() {	return delitos; }
 
