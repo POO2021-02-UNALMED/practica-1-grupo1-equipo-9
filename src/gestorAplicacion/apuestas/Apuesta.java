@@ -10,7 +10,7 @@ public class Apuesta {
     private ArrayList<Object[]> apostadores= new ArrayList<Object[]>(); 
     private Pelea pelea;
     
-    public Apuesta(int codigo, Pelea pelea) {
+    Apuesta(int codigo, Pelea pelea) {
 //    	Las apuestas se crean automatica cuando se crea una pelea
 		this.codigo = codigo;
 		this.pelea = pelea;
@@ -29,11 +29,25 @@ public class Apuesta {
     }
     
     public void resolverApuesta() {
-   
+    	if (apostadores.isEmpty()) {return;}
+    	
+    	double montoTotal = 0;
+    	for (Object[] objects : apostadores) {
+    		double apuesta = (Integer) objects[2];
+    		montoTotal += apuesta;
+		}
+    	
+    	
     }
     
-    public void agregarApostador(Apostador apostador,Prisionero prisionero,Integer apuesta) {
-    	
+    public void agregarApostador(Apostador apostador, Prisionero prisionero, Integer apuesta) {
+		/*
+		 * apostador es el Apostador que ingresa a this Apuesta 
+		 * prisionero es el luchador por el que apostador va a apostar 
+		 * apuesta es la cantidad que se va a apostar
+		 */
+    	Object[] agregando = {apostador, prisionero, apuesta};
+    	apostadores.add(agregando);
     }
 
 	public int getCodigo() {return codigo;}
