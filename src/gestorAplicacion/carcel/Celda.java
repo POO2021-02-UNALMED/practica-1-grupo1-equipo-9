@@ -5,14 +5,14 @@ import java.util.Hashtable;
 public class Celda {
 	private int numero;
     private gestorAplicacion.carcel.genero genero;
-    private final int largo;
-    private final int ancho;
+    private final double largo;
+    private final double ancho;
     private final int capMax;
     private Hashtable<Integer, Prisionero> prisioneros = new Hashtable<Integer, Prisionero>();
     
     private static Hashtable<Integer, Celda> celdas = new Hashtable<>();
     
-    public Celda(int numero, gestorAplicacion.carcel.genero genero, int largo, int ancho,int capMax) {
+    public Celda(int numero, gestorAplicacion.carcel.genero genero, double largo, double ancho,int capMax) {
     	this.numero=numero;
     	this.genero=genero;
     	this.largo=largo;
