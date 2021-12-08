@@ -5,7 +5,7 @@ public abstract class Apostador {
     protected String nombre;
     protected int saldo;
     
-    public Apostador(int identificacion, String nombre, int saldo) {
+    protected Apostador(int identificacion, String nombre, int saldo) {
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.saldo = saldo;
