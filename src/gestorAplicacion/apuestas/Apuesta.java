@@ -10,7 +10,7 @@ public class Apuesta {
     private ArrayList<Object[]> apostadores= new ArrayList<Object[]>(); 
     private Pelea pelea;
     
-    Apuesta(int codigo, Pelea pelea) {
+    public Apuesta(int codigo, Pelea pelea) {
 //    	Las apuestas se crean automatica cuando se crea una pelea
 		this.codigo = codigo;
 		this.pelea = pelea;
@@ -32,12 +32,29 @@ public class Apuesta {
     	if (apostadores.isEmpty()) {return;}
     	
     	double montoTotal = 0;
+    	double totalGanadores = 0;
+//    	Primero necesito saber cuánto se recogió en total y entre cuantos hay que dividirlo
     	for (Object[] objects : apostadores) {
+    		Prisionero prisionero = (Prisionero) objects[1];
     		double apuesta = (Integer) objects[2];
     		montoTotal += apuesta;
+    		if (pelea.getGanador().equals(prisionero)) {totalGanadores += apuesta;}
 		}
     	
+    	for (Object[] objects : apostadores) {
+//    		Casteo explícito de un objeto Object a Apostador, Prisionero e Int.
+    		Apostador apostador = (Apostador) objects[0];
+    		Prisionero prisionero = (Prisionero) objects[1];
+    		double apuesta = (Integer) objects[2];
+    		
+    		if (pelea.getGanador().equals(prisionero)) {
+    			double k = apuesta/totalGanadores;
+    			apostador.aumentarSaldo(k*montoTotal);
+    			
+    		}
+		}
     	
+    	System.out.println(montoTotal);
     }
     
     public void agregarApostador(Apostador apostador, Prisionero prisionero, Integer apuesta) {
