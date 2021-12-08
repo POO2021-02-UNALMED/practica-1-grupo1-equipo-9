@@ -9,24 +9,25 @@ public class Prisionero extends Apostador{
     private Celda celda;
     private LocalDate inicioCondena;
     private LocalDate finCondena;
-    private Hashtable<Integer, Delito> delitos = new Hashtable<>(); 
+    private Hashtable<Integer, Delito> delitos; 
     private Hashtable<Integer, Antidelito> antidelitos = new Hashtable<>();
     
     private static Hashtable<Integer, Prisionero> prisioneros = new Hashtable<>();
     //Se agrego inicio condena y fin condena
     
-    public Prisionero(int identificacion, String nombre, gestorAplicacion.carcel.genero genero, Celda celda, LocalDate inicioCondena, LocalDate finCondena,Hashtable<Integer, Delito> delitos) {
-    	this(identificacion,nombre,0, genero, celda, inicioCondena, finCondena, delitos);
+    public Prisionero(int identificacion, String nombre, gestorAplicacion.carcel.genero genero, Celda celda, LocalDate inicioCondena, Hashtable<Integer, Delito> delitos) {
+    	this(identificacion,nombre,0, genero, celda, inicioCondena, delitos);
     }
     
     public Prisionero(int identificacion, String nombre, int saldo, gestorAplicacion.carcel.genero genero, Celda celda, 
-    		LocalDate inicioCondena, LocalDate finCondena, Hashtable<Integer, Delito> delitos) {
+    		LocalDate inicioCondena, Hashtable<Integer, Delito> delitos) {
 		super(identificacion, nombre, saldo);
 		this.genero = genero;
 		this.inicioCondena = LocalDate.now();
-		this.finCondena = LocalDate.now();
 		this.celda = celda; celda.ingresarPrisionero(this);
 		this.delitos = delitos;
+		
+		prisioneros.put(this.identificacion, this);
 		// TODO calcular inicioCondena y finCondena
 	}
 
