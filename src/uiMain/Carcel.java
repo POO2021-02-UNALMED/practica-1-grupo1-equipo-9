@@ -20,10 +20,31 @@ public class Carcel {
 		Delito delito4 = new Delito(4, "4", "4", 8, 200);
 		Delito delito5 = new Delito(5, "5", "5", 9, 360);
 		Delito delito6 = new Delito(6, "6", "6", 3, 24);
-		Delito delito7 = new Delito(7, "Batalla", "Participar en la batalla del Departamento de Misterios como mort�fago", 5, 360);
+		Delito delito7 = new Delito(7, "Batalla", "Participar en la batalla del Departamento de Misterios como mortifago", 5, 360);
 		Delito delito8 = new Delito(8, "Batalla", "Participar en la batalla del Departamento de Misterios", 5, 50);
 		Delito delito9 = new Delito(9, "9", "9", 7, 500);
 		Delito delito10 = new Delito(10, "10", "10", 4, 10);
+		
+		Hashtable<Integer, Delito> delitos1 = new Hashtable<>();
+		delitos1.put(delito1.getCodigo(), delito1);
+		delitos1.put(delito5.getCodigo(), delito5);
+		delitos1.put(delito9.getCodigo(), delito9);
+		
+		Hashtable<Integer, Delito> delitos2 = new Hashtable<>();
+		delitos2.put(delito9.getCodigo(), delito9);
+		
+		Hashtable<Integer, Delito> delitos3 = new Hashtable<>();
+		delitos3.put(delito7.getCodigo(), delito7);
+		delitos3.put(delito3.getCodigo(), delito3);
+		
+		Hashtable<Integer, Delito> delitos4 = new Hashtable<>();
+		delitos4.put(delito10.getCodigo(), delito10);
+		
+		Hashtable<Integer, Delito> delitos5 = new Hashtable<>();
+		delitos5.put(delito2.getCodigo(), delito2);
+		delitos5.put(delito4.getCodigo(), delito4);
+		delitos5.put(delito6.getCodigo(), delito6);
+		delitos5.put(delito8.getCodigo(), delito8);
 		
 //		crearCeldas
 		Celda celda0 = new Celda(0, genero.MASCULINO, 1.5, 4, 2);
