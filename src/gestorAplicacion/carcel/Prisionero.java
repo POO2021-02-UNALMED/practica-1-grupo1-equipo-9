@@ -22,8 +22,7 @@ public class Prisionero extends Apostador{
 			Hashtable<Integer, Delito> delitos) {
 		super(identificacion, nombre, saldo);
 		this.genero = genero;
-		this.celda = celda; celda.getPrisioneros().put(this.identificacion, this);
-		
+		this.celda = celda; celda.ingresarPrisionero(this);
 		this.delitos = delitos;
 		// TODO calcular inicioCondena y finCondena
 	}
