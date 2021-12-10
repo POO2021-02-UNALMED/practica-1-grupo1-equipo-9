@@ -167,6 +167,7 @@ public class Carcel {
 				System.out.println("2. Modificar informacion");
 				System.out.println("3. Eliminar informacion");
 				System.out.println("4. Consultar informacion");
+				System.out.println("0. Salir");
 				opcion = input.nextInt();
 				switch(opcion) {
 					case 1: ingresarInfo(); break;
@@ -174,7 +175,7 @@ public class Carcel {
 					case 3: eliminarInfo(); break;
 					case 4: consultarInfo(); break;
 				}
-			}while(opcion!=3);	
+			}while(opcion!=0);	
     }	
 
 	static void ingresarInfo() {
