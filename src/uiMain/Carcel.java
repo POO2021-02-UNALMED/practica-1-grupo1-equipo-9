@@ -178,10 +178,9 @@ public class Carcel {
     }	
 
 	static void ingresarInfo() {
-		
 		int opcion;
 		do {
-			System.out.println("1. Ingresas nuevo prisionero");
+			System.out.println("1. Ingresar nuevo prisionero");
 			System.out.println("2. Ingresar nuevo guardia");
 			System.out.println("3. Registrar delito");
 			System.out.println("4. Registrar antidelito");
@@ -196,6 +195,66 @@ public class Carcel {
 			}
 		}while(opcion!=5);	
 	}
+	
+	static void modificarInfo() {	
+		int opcion;
+		do {
+			System.out.println("1. Modificar prisionero");
+			System.out.println("2. Modificar guardia");
+			System.out.println("3. Modificar delito");
+			System.out.println("4. Modificar antidelito");
+			System.out.println("5. Regresar");
+			opcion=input.nextInt();
+			switch(opcion) {
+				case 1: modificarPrisionero(); break;
+				case 2: modificarGuardia(); break;
+				case 3: modificarDelito(); break;
+				case 4: modificarAntidelito(); break;
+				case 5: break;
+			}
+		}while(opcion!=5);	
+	}
+
+	static void consultarInfo() {
+	
+		int opcion;
+		do {
+			System.out.println("1. Consultar nuevo prisionero");
+			System.out.println("2. Consultar nuevo guardia");
+			System.out.println("3. Consultar delito");
+			System.out.println("4. Consultar antidelito");
+			System.out.println("5. Regresar");
+			opcion=input.nextInt();
+			switch(opcion) {
+				case 1: consultarPrisionero(); break;
+				case 2: consultarGuardia(); break;
+				case 3: consultarDelito(); break;
+				case 4: consultarAntidelito(); break;
+				case 5: break;
+			}
+		}while(opcion!=5);	
+	}
+	
+	static void eliminarInfo() {
+		
+		int opcion;
+		do {
+			System.out.println("1. Eliminar nuevo prisionero");
+			System.out.println("2. Eliminar nuevo guardia");
+			System.out.println("3. Eliminar delito");
+			System.out.println("4. Eliminar antidelito");
+			System.out.println("5. Regresar");
+			opcion=input.nextInt();
+			switch(opcion) {
+				case 1: eliminarPrisionero(); break;
+				case 2: eliminarGuardia(); break;
+				case 3: eliminarDelito(); break;
+				case 4: eliminarAntidelito(); break;
+				case 5: break;
+			}
+		}while(opcion!=5);	
+	}
+	
 	static void ingresarPrisionero() {
 		
 	}
@@ -209,4 +268,42 @@ public class Carcel {
 		
 	}
     
+	static void modificarPrisionero() {
+		
+	}
+	static void modificarGuardia() {
+		
+	}
+	static void modificarDelito() {
+		
+	}
+	static void modificarAntidelito() {
+		
+	}
+	
+	static void eliminarPrisionero() {
+		
+	}
+	static void eliminarGuardia() {
+		
+	}
+	static void eliminarDelito() {
+		
+	}
+	static void eliminarAntidelito() {
+		
+	}
+	
+	static void consultarPrisionero() {
+		
+	}
+	static void consultarGuardia() {
+		
+	}
+	static void consultarDelito() {
+		
+	}
+	static void consultarAntidelito() {
+		
+	}
 }
