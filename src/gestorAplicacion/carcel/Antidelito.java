@@ -1,8 +1,14 @@
 package gestorAplicacion.carcel;
+import java.io.Serializable;
 import java.util.Hashtable;
 
-public class Antidelito {
-    private static Hashtable<Integer,Antidelito> antidelitos= new Hashtable<Integer,Antidelito>();
+public class Antidelito implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private static Hashtable<Integer,Antidelito> antidelitos= new Hashtable<Integer,Antidelito>();
 	private int codigo;
     private String nombre;
     private String descripcion;

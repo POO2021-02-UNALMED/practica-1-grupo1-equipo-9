@@ -1,8 +1,9 @@
 package gestorAplicacion.carcel;
+import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class Celda {
+public class Celda implements Serializable{
 	private int numero;
     private gestorAplicacion.carcel.genero genero;
     private final double largo;

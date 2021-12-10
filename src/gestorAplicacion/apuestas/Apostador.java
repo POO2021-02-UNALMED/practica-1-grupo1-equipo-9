@@ -1,6 +1,13 @@
 package gestorAplicacion.apuestas;
 
-public abstract class Apostador {
+import java.io.Serializable;
+
+public abstract class Apostador implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	protected int identificacion;
     protected String nombre;
     protected int saldo;
