@@ -4,6 +4,11 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class Celda implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int numero;
     private gestorAplicacion.carcel.genero genero;
     private final double largo;
