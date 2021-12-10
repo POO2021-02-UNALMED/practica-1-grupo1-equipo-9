@@ -158,25 +158,27 @@ public class Carcel {
 		
 		pelea0.setGanador(prisionero0);
 		System.out.println(pelea0.getApuesta().resultadoApuesta());
-		
-		System.out.println(System.getProperty("user.dir"));
-		
-		int opcion;
+
+			int opcion;
 			
-		do {
-			System.out.println("Escoga la opcion que desea realizar: ");
-			System.out.println("1. Ingresar nueva informacion");
-			System.out.println("2. ");
-			System.out.println("3. ");
-			
-			opcion = input.nextInt();
-			switch(opcion) {
-				case 1: ingresarInfo();
-			}
-		} while(opcion!=3);	
+			do {
+				System.out.println("Escoga la opcion que desea realizar: ");
+				System.out.println("1. Ingresar nueva informacion");
+				System.out.println("2. Modificar informacion");
+				System.out.println("3. Eliminar informacion");
+				System.out.println("4. Consultar informacion");
+				opcion = input.nextInt();
+				switch(opcion) {
+					case 1: ingresarInfo(); break;
+					case 2: modificarInfo(); break;
+					case 3: eliminarInfo(); break;
+					case 4: consultarInfo(); break;
+				}
+			}while(opcion!=3);	
     }	
 
 	static void ingresarInfo() {
+		
 		int opcion;
 		do {
 			System.out.println("1. Ingresas nuevo prisionero");
@@ -184,7 +186,6 @@ public class Carcel {
 			System.out.println("3. Registrar delito");
 			System.out.println("4. Registrar antidelito");
 			System.out.println("5. Regresar");
-			
 			opcion=input.nextInt();
 			switch(opcion) {
 				case 1: ingresarPrisionero(); break;

@@ -52,10 +52,9 @@ public class Pelea implements Serializable{
     Object battleRoyale(ArrayList<Celda> celdas){
 		/*
 		 * Devuelve un arraylist de strings, donde cada string es un comentario tipo
-		 * "prisionero 1 a derrotado a prisionero 2", etc tambi�n debe devolver el
+		 * "prisionero 1 ha derrotado a prisionero 2", etc tambien debe devolver el
 		 * prisionero ganador
 		 */
-//		TODO
     	ArrayList<String> combates = new ArrayList<String>();
     	Prisionero ganador = null;
     	Object[] resultado = {ganador, combates};
