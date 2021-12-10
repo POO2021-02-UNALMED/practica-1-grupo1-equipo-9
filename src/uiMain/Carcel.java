@@ -159,6 +159,8 @@ public class Carcel {
 		pelea0.setGanador(prisionero0);
 		System.out.println(pelea0.getApuesta().resultadoApuesta());
 		
+		System.out.println(System.getProperty("user.dir"));
+		
 		
 			System.out.println("Escoga la opción que desea realizar: ");
 			System.out.println("1. Ingresar nueva informacion");
@@ -167,7 +169,7 @@ public class Carcel {
 			int opcion = input.nextInt();
 			
 			switch(opcion) {
-				case 1: ingresarInfo(); break;
+				case 1: ingresarInfo();
 			}
     }	
 
