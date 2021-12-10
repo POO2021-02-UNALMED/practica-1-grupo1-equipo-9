@@ -7,7 +7,12 @@ import java.util.Hashtable;
 import gestorAplicacion.apuestas.Apostador;
 
 public class Guardian extends Apostador{
-    private int salario;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private int salario;
     private ArrayList<Object[]> traslados = new ArrayList<>();
     private Hashtable<Integer, Celda> celdas = new Hashtable<>();
     

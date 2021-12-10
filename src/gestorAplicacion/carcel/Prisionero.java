@@ -5,7 +5,12 @@ import java.time.LocalDate;
 import gestorAplicacion.apuestas.Apostador;
 
 public class Prisionero extends Apostador{
-    private gestorAplicacion.carcel.genero genero;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private gestorAplicacion.carcel.genero genero;
     private Celda celda;
     private LocalDate inicioCondena;
     private LocalDate finCondena;

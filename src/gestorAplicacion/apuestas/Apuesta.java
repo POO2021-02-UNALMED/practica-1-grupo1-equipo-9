@@ -1,10 +1,16 @@
 package gestorAplicacion.apuestas;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 import gestorAplicacion.carcel.Prisionero;
 
-public class Apuesta {
+public class Apuesta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private static Hashtable<Integer,Apuesta> apuestas= new Hashtable<Integer,Apuesta>();
 	private int codigo; //Cada pelea tiene el mismo código que su respectiva apuesta
     private ArrayList<Object[]> apostadores= new ArrayList<Object[]>(); 
