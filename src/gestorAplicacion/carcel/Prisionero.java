@@ -87,7 +87,7 @@ public class Prisionero extends Apostador{
 				+ "Inicio de Condena: " + getInicioCondena() + "\n"
 				+ "Fin de Condena: " + getFinCondena() + "\n"
 				+ "Delitos: " + nombresDelitos + "\n"
-				+ "Antidelitos: " + nombresAntidelitos + "\n" + "\n";
+				+ "Antidelitos: " + (antidelitos == null ? "Aun no tiene Antidelitos registrados" : nombresAntidelitos) + "\n" + "\n";
 	}
 
 	public gestorAplicacion.carcel.genero getGenero() {	return genero;	}
