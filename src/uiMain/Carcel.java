@@ -2,6 +2,7 @@ package uiMain;
 
 import java.time.LocalDate;
 import java.util.Hashtable;
+import java.util.Scanner;
 
 import gestorAplicacion.apuestas.Pelea;
 import gestorAplicacion.carcel.Antidelito;
@@ -12,9 +13,12 @@ import gestorAplicacion.carcel.genero;
 import gestorAplicacion.carcel.Delito; 
 
 public class Carcel {
+	static Scanner input = new Scanner(System.in);
+	static long readLong() {
+		return input.nextLong();
+	}
 	
     public static void main(String[] args) {
-        // TODO code application logic here
     	
 //		crearDelitos
 		Delito delito1 = new Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10);
@@ -155,6 +159,47 @@ public class Carcel {
 		pelea0.setGanador(prisionero0);
 		System.out.println(pelea0.getApuesta().resultadoApuesta());
 		
-    }
+		
+			System.out.println("Escoga la opción que desea realizar: ");
+			System.out.println("1. Ingresar nueva informacion");
+			System.out.println("2. ");
+			System.out.println("3. ");
+			int opcion = input.nextInt();
+			
+			switch(opcion) {
+				case 1: ingresarInfo(); break;
+			}
+    }	
+
+	static void ingresarInfo() {
+		System.out.println("1. Ingresas nuevo prisionero");
+		System.out.println("2. Ingresar nuevo guardia");
+		System.out.println("3. Registrar delito");
+		System.out.println("4. Registrar antidelito");
+		System.out.println("5. Regresar");
+		
+		int opcion=input.nextInt();
+		
+		switch(opcion) {
+		case 1: ingresarPrisionero(); break;
+		case 2: ingresarGuardia(); break;
+		case 3: registrarDelito(); break;
+		case 4: registrarAntidelito(); break;
+		case 5: break;
+		
+		}
+	}
+	static void ingresarPrisionero() {
+		
+	}
+	static void ingresarGuardia() {
+		
+	}
+	static void registrarDelito() {
+		
+	}
+	static void registrarAntidelito() {
+		
+	}
     
 }
