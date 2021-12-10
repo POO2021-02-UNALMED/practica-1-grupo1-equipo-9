@@ -55,6 +55,7 @@ public class Pelea implements Serializable{
 		 * "prisionero 1 ha derrotado a prisionero 2", etc tambien debe devolver el
 		 * prisionero ganador
 		 */
+    	
     	ArrayList<String> combates = new ArrayList<String>();
     	Prisionero ganador = null;
     	Object[] resultado = {ganador, combates};
