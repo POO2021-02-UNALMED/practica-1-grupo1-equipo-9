@@ -47,6 +47,10 @@ public class Celda implements Serializable{
 	public double getAncho() {return ancho;}
 
 	public int getCapMax() {return capMax;}
+	
+	public static void setCeldas(Hashtable<Integer, Celda> celdas) {
+		Celda.celdas = celdas;
+	}
 
 	@Override
 	public String toString() {

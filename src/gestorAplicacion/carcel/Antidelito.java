@@ -23,7 +23,8 @@ public class Antidelito implements Serializable{
     }
 
 	public static Hashtable<Integer, Antidelito> getAntidelitos() {return antidelitos;}
-
+	public static void setAntidelitos(Hashtable<Integer, Antidelito> antidelitos) {Antidelito.antidelitos = antidelitos;}
+	
 	public int getCodigo() {return codigo;}
 	public void setCodigo(int codigo) {this.codigo = codigo;}
 
@@ -40,4 +41,7 @@ public class Antidelito implements Serializable{
 				+ "Nombre: " + this.getNombre() + "\n"
 				+ "Rebaja condena: " + this.getRebajaCondena() + " meses" + "\n" + "\n";
 	}
+
+	public String getDescripcion() {return descripcion;}
+	public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
 }

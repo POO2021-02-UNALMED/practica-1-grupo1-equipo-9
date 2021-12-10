@@ -12,7 +12,7 @@ public class Pelea implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private int codigo; //Cada pelea tiene el mismo código que su respectiva apuesta
+	private int codigo; //Cada pelea tiene el mismo cï¿½digo que su respectiva apuesta
     private gestorAplicacion.carcel.genero genero;
     private Prisionero luchador1;
     private Prisionero luchador2;
@@ -77,6 +77,8 @@ public class Pelea implements Serializable{
 	public void setApuesta(Apuesta apuesta) {this.apuesta = apuesta;}
 	
 	public static Hashtable<Integer, Pelea> getPeleas() {return peleas;}
+	public static void setPeleas(Hashtable<Integer, Pelea> peleas) {Pelea.peleas = peleas;}
+	
 	@Override
 	public String toString() {
 		
@@ -86,7 +88,7 @@ public class Pelea implements Serializable{
 				+ "Luchador 2: " + luchador2.getNombre() + "\n" 
 				+ "Arma luchador 1: " + armaLuchador1 + "\n" 
 				+ "Arma luchador 2: " + armaLuchador2 + "\n" 
-				+ "Ganador: " + (ganador == null ? "Aún no hay ganador" : ganador.getNombre()) + "\n";
+				+ "Ganador: " + (ganador == null ? "Aï¿½n no hay ganador" : ganador.getNombre()) + "\n";
 	}  
 	
 	

@@ -76,4 +76,5 @@ public class Guardian extends Apostador{
 	public void setSalario(int salario) {this.salario = salario;}
 	
 	public static Hashtable<Integer, Guardian> getGuardianes() {return guardianes;}
+	public static void setGuardianes(Hashtable<Integer, Guardian> guardianes) {Guardian.guardianes = guardianes;}
 }

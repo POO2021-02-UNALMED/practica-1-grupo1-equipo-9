@@ -107,6 +107,6 @@ public class Prisionero extends Apostador{
 	public Hashtable<Integer, Antidelito> getAntidelitos() {	return antidelitos;	}
 
 	public static Hashtable<Integer, Prisionero> getPrisioneros() {	return prisioneros;	}
-    
+    public static void setPrisioneros(Hashtable<Integer, Prisionero> prisioneros) {Prisionero.prisioneros = prisioneros;}
     
 }
