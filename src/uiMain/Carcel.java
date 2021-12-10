@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Hashtable;
 import java.util.Scanner;
 
+import baseDatos.Deserializador;
+import baseDatos.Serializador;
 import gestorAplicacion.apuestas.Pelea;
 import gestorAplicacion.carcel.Antidelito;
 import gestorAplicacion.carcel.Celda;
@@ -158,6 +160,9 @@ public class Carcel {
 		
 		pelea0.setGanador(prisionero0);
 		System.out.println(pelea0.getApuesta().resultadoApuesta());
+		
+		Serializador.serializar();
+		Deserializador.deserializar();
 
 			int opcion;
 			
