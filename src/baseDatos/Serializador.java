@@ -13,7 +13,7 @@ import gestorAplicacion.carcel.Guardian;
 import gestorAplicacion.carcel.Prisionero;
 
 public class Serializador {
-	private static String rutaTemp = System.getProperty("user.dir") + "src\\baseDatos\\temp";
+	private static String rutaTemp = System.getProperty("user.dir") + "\\src\\baseDatos\\temp";
 	private static FileOutputStream fileOut;
 
 	public static void serializar() {

@@ -37,12 +37,12 @@ public class Apuesta implements Serializable{
     	 * particular, y el dinero que ganaron o perdieron
     	 */
 		
-		if (pelea.getGanador() == null) {return "La pelea a�n no tiene ganador";}
+		if (pelea.getGanador() == null) {return "La pelea aun no tiene ganador";}
 		
 		String resultadoMonto1 = "El monto total recogido en la apuesta fue: " + montoTotal + "\n" ;
 		String resultadoMonto2 = "El dinero total apostado por los ganadores de esta apuesta fue: " + montoTotalGanadores + "\n\n" ;
 		
-		String resulta3 = "Las estad�sticas de esta apuesta son las siguientes: \n";
+		String resulta3 = "Las estadisticas de esta apuesta son las siguientes: \n";
 		String resulta4 = "";
 		for (String string : estadisticas) {
 			resulta4 += string + "\n"; 
