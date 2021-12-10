@@ -3,6 +3,11 @@ import java.io.Serializable;
 import java.util.Hashtable;
 
 public class Delito implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private static Hashtable<Integer,Delito> delitos= new Hashtable<Integer,Delito>();
     private int codigo;
     private String nombre;
