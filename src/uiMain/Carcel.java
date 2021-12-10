@@ -181,6 +181,7 @@ public class Carcel {
 					case 3: eliminarInfo(); break;
 					case 4: consultarInfo(); break;
 					case 5: peleasApuestas(); break;
+					case 0: Serializador.serializar();
 				}
 			}while(opcion!=0);	
     }	
