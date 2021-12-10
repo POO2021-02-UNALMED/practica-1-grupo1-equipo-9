@@ -161,35 +161,37 @@ public class Carcel {
 		
 		System.out.println(System.getProperty("user.dir"));
 		
-		
-			System.out.println("Escoga la opci�n que desea realizar: ");
+		int opcion;
+			
+		do {
+			System.out.println("Escoga la opcion que desea realizar: ");
 			System.out.println("1. Ingresar nueva informacion");
 			System.out.println("2. ");
 			System.out.println("3. ");
-			int opcion = input.nextInt();
 			
-			do {
-				switch(opcion) {
-					case 1: ingresarInfo(); break;
-				}
-			}while(opcion!=3);	
+			opcion = input.nextInt();
+			switch(opcion) {
+				case 1: ingresarInfo();
+			}
+		} while(opcion!=3);	
     }	
 
 	static void ingresarInfo() {
-		System.out.println("1. Ingresas nuevo prisionero");
-		System.out.println("2. Ingresar nuevo guardia");
-		System.out.println("3. Registrar delito");
-		System.out.println("4. Registrar antidelito");
-		System.out.println("5. Regresar");
-		
-		int opcion=input.nextInt();
+		int opcion;
 		do {
+			System.out.println("1. Ingresas nuevo prisionero");
+			System.out.println("2. Ingresar nuevo guardia");
+			System.out.println("3. Registrar delito");
+			System.out.println("4. Registrar antidelito");
+			System.out.println("5. Regresar");
+			
+			opcion=input.nextInt();
 			switch(opcion) {
 				case 1: ingresarPrisionero(); break;
 				case 2: ingresarGuardia(); break;
 				case 3: registrarDelito(); break;
 				case 4: registrarAntidelito(); break;
-				case 5: ;
+				case 5: break;
 			}
 		}while(opcion!=5);	
 	}
