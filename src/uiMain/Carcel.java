@@ -219,8 +219,8 @@ public class Carcel {
 	
 		int opcion;
 		do {
-			System.out.println("1. Consultar nuevo prisionero");
-			System.out.println("2. Consultar nuevo guardia");
+			System.out.println("1. Consultar prisionero");
+			System.out.println("2. Consultar guardia");
 			System.out.println("3. Consultar delito");
 			System.out.println("4. Consultar antidelito");
 			System.out.println("5. Regresar");
@@ -239,8 +239,8 @@ public class Carcel {
 		
 		int opcion;
 		do {
-			System.out.println("1. Eliminar nuevo prisionero");
-			System.out.println("2. Eliminar nuevo guardia");
+			System.out.println("1. Eliminar prisionero");
+			System.out.println("2. Eliminar guardia");
 			System.out.println("3. Eliminar delito");
 			System.out.println("4. Eliminar antidelito");
 			System.out.println("5. Regresar");
