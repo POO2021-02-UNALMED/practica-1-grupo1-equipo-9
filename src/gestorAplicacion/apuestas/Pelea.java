@@ -89,7 +89,7 @@ public class Pelea implements Serializable{
 				+ "Luchador 2: " + luchador2.getNombre() + "\n" 
 				+ "Arma luchador 1: " + armaLuchador1 + "\n" 
 				+ "Arma luchador 2: " + armaLuchador2 + "\n" 
-				+ "Ganador: " + (ganador == null ? "A�n no hay ganador" : ganador.getNombre()) + "\n";
+				+ "Ganador: " + (ganador == null ? "Aun no hay ganador" : ganador.getNombre()) + "\n";
 	}  
 	
 	
