@@ -167,6 +167,7 @@ public class Carcel {
 				System.out.println("2. Modificar informacion");
 				System.out.println("3. Eliminar informacion");
 				System.out.println("4. Consultar informacion");
+				System.out.println("5. Peleas y apuestas");
 				System.out.println("0. Salir");
 				opcion = input.nextInt();
 				switch(opcion) {
@@ -174,6 +175,7 @@ public class Carcel {
 					case 2: modificarInfo(); break;
 					case 3: eliminarInfo(); break;
 					case 4: consultarInfo(); break;
+					case 5: peleasApuestas(); break;
 				}
 			}while(opcion!=0);	
     }	
@@ -200,7 +202,7 @@ public class Carcel {
 	static void modificarInfo() {	
 		int opcion;
 		do {
-			System.out.println("1. Modificar prisionero");
+			System.out.println("1. Modificar prisionero"); 
 			System.out.println("2. Modificar guardia");
 			System.out.println("3. Modificar delito");
 			System.out.println("4. Modificar antidelito");
@@ -268,9 +270,31 @@ public class Carcel {
 	static void registrarAntidelito() {
 		
 	}
-    
+    static void peleasApuestas() {
+    	int opcion;
+		do {
+			System.out.println("1. Resolver pelea"); //se ingresas los ganadores y se llama al método serGanador()
+			System.out.println("2. Consultar pelea");//se imprimen las peleas
+			System.out.println("3. Consultar apuesta");
+			System.out.println("4. Agregar apostador"); //se llama al metodo agregarApostador de apuesta de la pelea agregada
+			System.out.println("5. Regresar");
+			opcion=input.nextInt();
+			switch(opcion) {
+				case 1: resolverPelea(); break;
+				case 2: consultarPelea(); break;
+				case 3: consultarApuesta(); break;
+				case 4: agregarApostador(); break;
+				case 5: break;
+			}
+		}while(opcion!=5);	
+	}
 	static void modificarPrisionero() {
+		/*Desde este metodo se da la opcion de trasladar prisionero primero se pide
+		 * numero de celda, se debe comprobar que sea el mismo genero, despues se muestran
+		 * todos los guardias que tienen a cargo esa celda,se llama al metodo trasladar 
+		 * prisionero del guardia que se decidio que iba a trasladar al prisionero*/
 		
+		// Tambien esta la opcion de agregarDelito y agregarAntidelitos
 	}
 	static void modificarGuardia() {
 		
@@ -306,5 +330,17 @@ public class Carcel {
 	}
 	static void consultarAntidelito() {
 		
+	}
+	static void resolverPelea() {
+
+	}
+	static void consultarPelea() {
+
+	}
+	static void consultarApuesta(){
+
+	}
+	static void agregarApostador(){
+
 	}
 }
