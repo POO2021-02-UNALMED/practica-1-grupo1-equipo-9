@@ -13,7 +13,7 @@ public class Apuesta implements Serializable{
 	
 	private static Hashtable<Integer,Apuesta> apuestas= new Hashtable<Integer,Apuesta>();
 
-	private int codigo; //Cada pelea tiene el mismo cï¿½digo que su respectiva apuesta
+	private int codigo; //Cada pelea tiene el mismo codigo que su respectiva apuesta
     private ArrayList<Object[]> apostadores= new ArrayList<Object[]>(); 
     private Pelea pelea;
     private double montoTotal;
@@ -26,7 +26,7 @@ public class Apuesta implements Serializable{
 		this.codigo = codigo;
 		this.pelea = pelea;
 		/*
-		 * Si el arreglo apostadores estï¿½ vacï¿½o, es porque nadie apostï¿½ en esta pelea
+		 * Si el arreglo apostadores esta vacio, es porque nadie aposto en esta pelea
 		 */
 		apuestas.put(codigo, this);
 	}
@@ -38,6 +38,7 @@ public class Apuesta implements Serializable{
     	 */
 		
 		if (pelea.getGanador() == null) {return "La pelea aun no tiene ganador";}
+		if (getApostadores().isEmpty()) {return "La pelea con código " + getCodigo() + "no tuvo apuestas";}
 		
 		String resultadoMonto1 = "El monto total recogido en la apuesta fue: " + montoTotal + "\n" ;
 		String resultadoMonto2 = "El dinero total apostado por los ganadores de esta apuesta fue: " + montoTotalGanadores + "\n\n" ;
@@ -56,7 +57,7 @@ public class Apuesta implements Serializable{
     	
     	double montoTotal = 0;
     	double totalGanadores = 0;
-//    	Primero necesito saber cuï¿½nto se recogiï¿½ en total y cuanto se recogiï¿½ entre los ganadores
+//    	Primero necesito saber cuanto se recogio en total y cuanto se recogio entre los ganadores
     	for (Object[] objects : apostadores) {
     		Prisionero prisionero = (Prisionero) objects[1];
     		double apuesta = (Integer) objects[2];
@@ -68,7 +69,7 @@ public class Apuesta implements Serializable{
     	
 //    	Se paga a los apostadores ganadores proporcionalmente al dinero que apostaron.
     	for (Object[] objects : apostadores) {
-//    		Casteo explï¿½cito de un objeto Object a Apostador, Prisionero e Int.
+//    		Casteo explicito de un objeto Object a Apostador, Prisionero e Int.
     		Apostador apostador = (Apostador) objects[0];
     		Prisionero prisionero = (Prisionero) objects[1];
     		double apuesta = (Integer) objects[2];
