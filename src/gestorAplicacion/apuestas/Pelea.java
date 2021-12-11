@@ -56,10 +56,48 @@ public class Pelea implements Serializable{
 		 * prisionero ganador
 		 */
     	
+    	/*Hashtable<Integer,Prisionero> luchadores = new Hashtable<Integer,Prisionero>();
+    	for (Celda c: celdas) {
+    		c.getPrisioneros().forEach((k,v)-> luchadores.put(k,v));
+    		//while o for
+    			int rN1 = (int)(Math.random()*(luchadores.size()));
+    			int rN2 = (int)(Math.random()*(luchadores.size()));
+    			if(rN1==rN2) {rN2 = (int)(Math.random()*(luchadores.size()));}
+    			else {
+    				
+    			}
+    	}*/
+    	int l1;
+    	int l2;
+    	ArrayList<Integer> luchadores = new ArrayList<Integer>();
     	ArrayList<String> combates = new ArrayList<String>();
-    	Prisionero ganador = null;
+    	for(Celda c:celdas) {
+    		c.getPrisioneros().forEach((k,v)-> luchadores.add(k));
+    		
+    		int rN1 = (int)(Math.random()*(luchadores.size()));
+    		l1=luchadores.get(rN1);
+    		luchadores.remove(rN1); //luchadores.remove(luchadores.indexOf(rN1))
+			int rN2 = (int)(Math.random()*(luchadores.size()));
+			l2=luchadores.get(rN2);
+			luchadores.remove(rN2);
+			
+			/*pelea entre l1 y l2
+			*if (l1 gana){
+			*	luchadores.add(l1);
+			*	combates.add("El prisionero 1 ha derrotado al prisionero 2")
+			*	return combates + Prisioneros.get(l1)}
+			*else{
+			*	luchadores.add(l2);
+			*	combates.add("El prisionero 2 ha derrotado al prisionero 1")
+			*	return combates+ Prisioneros.get(l2)}
+			*/
+    		
+    	}
+    	
+    	return combates;
+    	/*Prisionero ganador = null;
     	Object[] resultado = {ganador, combates};
-    	return resultado;
+    	return resultado;*/
     }
 
     public int getCodigo() {return codigo;}
@@ -89,7 +127,7 @@ public class Pelea implements Serializable{
 				+ "Luchador 2: " + luchador2.getNombre() + "\n" 
 				+ "Arma luchador 1: " + armaLuchador1 + "\n" 
 				+ "Arma luchador 2: " + armaLuchador2 + "\n" 
-				+ "Ganador: " + (ganador == null ? "Aun no hay ganador" : ganador.getNombre()) + "\n" + "\n";
+				+ "Ganador: " + (ganador == null ? "Aun no hay ganador" : ganador.getNombre()) + "\n";
 	}  
 	
 	

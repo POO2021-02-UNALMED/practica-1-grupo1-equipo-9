@@ -3,6 +3,7 @@ package uiMain;
 import java.time.LocalDate;
 import java.util.Hashtable;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 import baseDatos.Deserializador;
 import baseDatos.Serializador;
@@ -142,6 +143,12 @@ public class Carcel {
 		Pelea pelea2 = new Pelea(2, genero.FEMENINO, prisionero4, prisionero5, "arma12", "arma22");
 		Pelea pelea3 = new Pelea(3, genero.FEMENINO, prisionero6, prisionero7, "arma13", "arma23");
 		
+		/*ArrayList<Celda> battleRoyal1 = new ArrayList<>();
+		battleRoyal1.add(celda1);
+		battleRoyal1.add(celda2);
+		battleRoyal1.add(celda3);
+		
+		System.out.println(pelea1.battleRoyale(battleRoyal1));*/
 		
 //		---------------------------------------------------------------------------------------------------
 		
