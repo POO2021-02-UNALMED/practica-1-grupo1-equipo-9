@@ -60,34 +60,32 @@ public class Pelea implements Serializable{
     	ArrayList<String> combates = new ArrayList<String>();
     	for(Celda c:celdas) {
     		c.getPrisioneros().forEach((k,v)-> luchadores.add(k));
+      	}	
+    	do{
+    		int rN1 = (int)(Math.random()*(luchadores.size()));
+    		l1=luchadores.get(rN1);
+    		luchadores.remove(rN1);
     		
-    		do {
-    			int rN1 = (int)(Math.random()*(luchadores.size()));
-    			l1=luchadores.get(rN1);
-    			luchadores.remove(rN1); //luchadores.remove(luchadores.indexOf(rN1))
-    			int rN2 = (int)(Math.random()*(luchadores.size()));
-    			l2=luchadores.get(rN2);
-    			luchadores.remove(rN2);
-			
-    			/*pelea entre l1 y l2
-    			 *if (l1 gana){
-    			 *	luchadores.add(l1);
-    			 *	combates.add("El prisionero 1 ha derrotado al prisionero 2")
-    			 *	return combates + Prisioneros.get(l1)}
-    			 *else{
-    			 *	luchadores.add(l2);
-    			 *	combates.add("El prisionero 2 ha derrotado al prisionero 1")
-    			 *	return combates+ Prisioneros.get(l2)}
-    			 */
-    		}while(luchadores.size()>1);
+    		int rN2 = (int)(Math.random()*(luchadores.size()));
+    		l2=luchadores.get(rN2);
+    		luchadores.remove(rN2);
     		
-    		/*Prisionero ganador = null;
+			/*pelea entre l1 y l2
+    		*if (l1 gana){
+    		*	luchadores.add(l1);
+    		*	combates.add("El prisionero 1 ha derrotado al prisionero 2")
+    		*}
+    		*else{
+    		*	luchadores.add(l2);
+    		*	combates.add("El prisionero 2 ha derrotado al prisionero 1")
+    		*}
+    		*/
+    	}while(luchadores.size()>1);
+    		
+    		/*Prisionero ganador = Prisionero.get(luchadores.get(0);
         	Object[] resultado = {ganador, combates};
         	return resultado;*/
-    	}
     	return combates;
-    	
-    	
     }
 
     public int getCodigo() {return codigo;}
