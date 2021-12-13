@@ -55,18 +55,6 @@ public class Pelea implements Serializable{
 		 * "prisionero 1 ha derrotado a prisionero 2", etc tambien debe devolver el
 		 * prisionero ganador
 		 */
-    	
-    	/*Hashtable<Integer,Prisionero> luchadores = new Hashtable<Integer,Prisionero>();
-    	for (Celda c: celdas) {
-    		c.getPrisioneros().forEach((k,v)-> luchadores.put(k,v));
-    		//while o for
-    			int rN1 = (int)(Math.random()*(luchadores.size()));
-    			int rN2 = (int)(Math.random()*(luchadores.size()));
-    			if(rN1==rN2) {rN2 = (int)(Math.random()*(luchadores.size()));}
-    			else {
-    				
-    			}
-    	}*/
     	int l1;
     	int l2;
     	ArrayList<Integer> luchadores = new ArrayList<Integer>();
