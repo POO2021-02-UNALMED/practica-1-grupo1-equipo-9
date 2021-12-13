@@ -48,8 +48,7 @@ public class Pelea implements Serializable{
     	return luchadores;
     }
     
-    public 
-    Object battleRoyale(ArrayList<Celda> celdas){
+    public Object battleRoyale(ArrayList<Celda> celdas){
 		/*
 		 * Devuelve un arraylist de strings, donde cada string es un comentario tipo
 		 * "prisionero 1 ha derrotado a prisionero 2", etc tambien debe devolver el
@@ -81,11 +80,14 @@ public class Pelea implements Serializable{
     			 *	return combates+ Prisioneros.get(l2)}
     			 */
     		}while(luchadores.size()>1);
-    		return combates;
+    		
+    		/*Prisionero ganador = null;
+        	Object[] resultado = {ganador, combates};
+        	return resultado;*/
     	}
-    	/*Prisionero ganador = null;
-    	Object[] resultado = {ganador, combates};
-    	return resultado;*/
+    	return combates;
+    	
+    	
     }
 
     public int getCodigo() {return codigo;}
