@@ -90,6 +90,9 @@ public class Pelea implements Serializable{
     	Prisionero ganador = Prisionero.getPrisioneros().get(luchadores.get(0));
         Object[] resultado = {ganador, combates};
         return resultado;
+        /*return ganador;
+         return combates;*/
+         
     }
 
     public int getCodigo() {return codigo;}

@@ -149,17 +149,17 @@ public class Carcel {
 		battleRoyal1.add(celda3);
 		Object br = pelea1.battleRoyale(battleRoyal1);
 		
-		System.out.println(br);
+		System.out.print(br);
 		
 //		---------------------------------------------------------------------------------------------------
 		
-		/*System.out.println(delito1);
+		System.out.println(delito1);
 		System.out.println(celda5);
 		System.out.println(guardian3);
 		System.out.println(prisionero11);
 		System.out.println(prisionero1);
 		System.out.println(prisionero0);
-		System.out.println(pelea0);*/
+		System.out.println(pelea0);
 		
 		pelea0.getApuesta().agregarApostador(guardian5, prisionero0, 30);
 		pelea0.getApuesta().agregarApostador(guardian4, prisionero0, 10);
@@ -167,7 +167,7 @@ public class Carcel {
 		pelea0.getApuesta().agregarApostador(prisionero14, prisionero1, 10);
 		
 		pelea0.setGanador(prisionero0);
-		//System.out.println(pelea0.getApuesta().resultadoApuesta());
+		System.out.println(pelea0.getApuesta().resultadoApuesta());
 		
 		Serializador.serializar();
 		Deserializador.deserializar();
