@@ -143,22 +143,23 @@ public class Carcel {
 		Pelea pelea2 = new Pelea(2, genero.FEMENINO, prisionero4, prisionero5, "arma12", "arma22");
 		Pelea pelea3 = new Pelea(3, genero.FEMENINO, prisionero6, prisionero7, "arma13", "arma23");
 		
-		/*ArrayList<Celda> battleRoyal1 = new ArrayList<>();
+		ArrayList<Celda> battleRoyal1 = new ArrayList<>();
 		battleRoyal1.add(celda1);
 		battleRoyal1.add(celda2);
 		battleRoyal1.add(celda3);
+		Object br = pelea1.battleRoyale(battleRoyal1);
 		
-		System.out.println(pelea1.battleRoyale(battleRoyal1));*/
+		System.out.println(br);
 		
 //		---------------------------------------------------------------------------------------------------
 		
-		System.out.println(delito1);
+		/*System.out.println(delito1);
 		System.out.println(celda5);
 		System.out.println(guardian3);
 		System.out.println(prisionero11);
 		System.out.println(prisionero1);
 		System.out.println(prisionero0);
-		System.out.println(pelea0);
+		System.out.println(pelea0);*/
 		
 		pelea0.getApuesta().agregarApostador(guardian5, prisionero0, 30);
 		pelea0.getApuesta().agregarApostador(guardian4, prisionero0, 10);
@@ -166,7 +167,7 @@ public class Carcel {
 		pelea0.getApuesta().agregarApostador(prisionero14, prisionero1, 10);
 		
 		pelea0.setGanador(prisionero0);
-		System.out.println(pelea0.getApuesta().resultadoApuesta());
+		//System.out.println(pelea0.getApuesta().resultadoApuesta());
 		
 		Serializador.serializar();
 		Deserializador.deserializar();

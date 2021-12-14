@@ -1,5 +1,6 @@
 package gestorAplicacion.apuestas;
 import java.io.Serializable;
+import java.util.Random;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -56,36 +57,39 @@ public class Pelea implements Serializable{
 		 */
     	int l1;
     	int l2;
+    	Random r = new Random();
     	ArrayList<Integer> luchadores = new ArrayList<Integer>();
+    	ArrayList<Integer> pelea = new ArrayList<Integer>();
     	ArrayList<String> combates = new ArrayList<String>();
     	for(Celda c:celdas) {
     		c.getPrisioneros().forEach((k,v)-> luchadores.add(k));
       	}	
     	do{
-    		int rN1 = (int)(Math.random()*(luchadores.size()));
+    		int rN1 = r.nextInt(luchadores.size());
     		l1=luchadores.get(rN1);
     		luchadores.remove(rN1);
+    		pelea.add(rN1);
     		
-    		int rN2 = (int)(Math.random()*(luchadores.size()));
+    		int rN2 = r.nextInt(luchadores.size());
     		l2=luchadores.get(rN2);
     		luchadores.remove(rN2);
+    		pelea.add(rN2);
     		
-			/*pelea entre l1 y l2
-    		*if (l1 gana){
-    		*	luchadores.add(l1);
-    		*	combates.add("El prisionero 1 ha derrotado al prisionero 2")
-    		*}
-    		*else{
-    		*	luchadores.add(l2);
-    		*	combates.add("El prisionero 2 ha derrotado al prisionero 1")
-    		*}
-    		*/
+    		int g = r.nextInt(2);
+    		
+    		if (l1==pelea.get(g)){
+    			luchadores.add(l1);
+    			combates.add("El prisionero 1 ha derrotado al prisionero 2");
+    		}
+    		else{
+    			luchadores.add(l2);
+    			combates.add("El prisionero 2 ha derrotado al prisionero 1");
+    		}
     	}while(luchadores.size()>1);
-    		
-    		/*Prisionero ganador = Prisionero.get(luchadores.get(0);
-        	Object[] resultado = {ganador, combates};
-        	return resultado;*/
-    	return combates;
+    	
+    	Prisionero ganador = Prisionero.getPrisioneros().get(luchadores.get(0));
+        Object[] resultado = {ganador, combates};
+        return resultado;
     }
 
     public int getCodigo() {return codigo;}
