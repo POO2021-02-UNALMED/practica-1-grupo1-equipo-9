@@ -79,16 +79,20 @@ public class Pelea implements Serializable{
     		
     		if (l1==pelea.get(g)){
     			luchadores.add(l1);
-    			combates.add("El prisionero 1 ha derrotado al prisionero 2");
+    			combates.add("El prisionero "+ l1 +" ha derrotado al prisionero "+ l2);
     		}
     		else{
     			luchadores.add(l2);
-    			combates.add("El prisionero 2 ha derrotado al prisionero 1");
+    			combates.add("El prisionero "+ l2 +" ha derrotado al prisionero "+ l1);
     		}
     	}while(luchadores.size()>1);
     	
     	Prisionero ganador = Prisionero.getPrisioneros().get(luchadores.get(0));
+    	combates.add("El prisionero "+ luchadores.get(0) + " es el ganador y recibio 1000 dolares");
         Object[] resultado = {ganador, combates};
+        // prisionero ganador.aumentar saldo = 1000
+        Prisionero.getPrisioneros().get(luchadores.get(0)).aumentarSaldo(1000);
+        //combates.add(String.valueOf(Prisionero.getPrisioneros().get(luchadores.get(0)).getSaldo()));
         return resultado;
         /*return ganador;
          return combates;*/
