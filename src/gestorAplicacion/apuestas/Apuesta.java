@@ -1,7 +1,7 @@
 /*
- * La clase Apuesta tiene como finalidad realizar todos los procesos que una apuesta común involucra:
+ * La clase Apuesta tiene como finalidad realizar todos los procesos que una apuesta comun involucra:
  * - Ingresar a los participantes.
- * - Repartir premios a los gandores.
+ * - Repartir premios a los ganadores.
  * 
  * Cada apuesta se asigna a su respectiva Pelea.
  * En una Apuesta puede participar Apostadores los cuales son en concreto Guardias o Prisioneros.
@@ -71,7 +71,7 @@ public class Apuesta implements Serializable{
     }
     
 	/*
-	 * El método resolverApuesta funciona con la siguiente logica:
+	 * El metodo resolverApuesta funciona con la siguiente logica:
 	 * - Primero se encuentra cual es el monto total recogido entre los apostadores y los ganadores.
 	 * - Luego se les agrega al saldo de los ganadores una cantidad proporcional a su apuesta en relacion al 
 	 *   monto total apostado.
