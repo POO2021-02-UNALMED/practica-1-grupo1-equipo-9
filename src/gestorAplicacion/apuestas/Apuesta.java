@@ -1,4 +1,9 @@
 /*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ * 
  * La clase Apuesta tiene como finalidad realizar todos los procesos que una apuesta comun involucra:
  * - Ingresar a los participantes.
  * - Repartir premios a los ganadores.
@@ -76,7 +81,7 @@ public class Apuesta implements Serializable{
 	 * - Luego se les agrega al saldo de los ganadores una cantidad proporcional a su apuesta en relacion al 
 	 *   monto total apostado.
 	 * 
-	 * Nota: Se hace uso del resultado que tuvo la pela para definir a los ganadores y tambien del casteo 
+	 * Nota: Se hace uso del resultado que tuvo la pelea para definir a los ganadores y tambien del casteo 
 	 * explicito.
 	 */
     public void resolverApuesta() {
@@ -86,6 +91,10 @@ public class Apuesta implements Serializable{
     	double totalGanadores = 0;
     	
     	for (Object[] objects : apostadores) {
+			/* Este for se encarga de calcular el monto total de la apuesta
+			 * y lo guarda en montoTotal.
+			 * Tambien calcula el total apostador POR LOS GANADORES, y 
+			 * lo guarda en totalGanadores*/
     		Prisionero prisionero = (Prisionero) objects[1];
     		double apuesta = (Integer) objects[2];
     		montoTotal += apuesta;
@@ -96,18 +105,24 @@ public class Apuesta implements Serializable{
     	
     	for (Object[] objects : apostadores) {
 
+//    		Castea cada uno de los componentes de las "tuplas" en su respectivo tipo original
     		Apostador apostador = (Apostador) objects[0];
     		Prisionero prisionero = (Prisionero) objects[1];
     		double apuesta = (Integer) objects[2];
     		
+    		/* Este if-else se encarga de revisar si cada apostador gano. Si es asi, entonces
+    		 * se calcula la ganancia con base en lo que aposto y se agrega a su sueldo.
+    		 * Tambien se agrega a this.estadistica el resultado de este apostador, es decir,
+    		 * su ID, cuanto gano y su saldo actual.
+    		 * En caso de que haya perdido, se pone cuanto perdio. */
     		if (pelea.getGanador().equals(prisionero)) {
     			double k = apuesta/totalGanadores;
     			double ganancia = k*montoTotal;
     			apostador.aumentarSaldo(ganancia);
-    			estadisticas.add("ID Apostador: " + apostador.getIdentificacion() + "\t\t+" + (ganancia - apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo());
+    			estadisticas.add(apostador.infoApostador() + "\t\t+" + (ganancia - apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo());
     			
     		} else {
-    			estadisticas.add("ID Apostador: " + apostador.getIdentificacion() + "\t\t-" + (apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo());
+    			estadisticas.add(apostador.infoApostador() + "\t\t-" + (apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo());
     		}
 		}
     	

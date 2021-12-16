@@ -1,4 +1,9 @@
 /*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ * 
  * La clase Guardian representa a los guardianes o celadores que una carcel posee.
  * A cada guardian se le asigna una o varias celdas de la cual esta encargado de cuidar.
  * Se hereda de la clase Apostador, es decir todo Guardian es un Apostador.
@@ -39,10 +44,7 @@ public class Guardian extends Apostador{
      * Constructor usado para guardianes que aun no se les asignan celdas para cuidar.
      */
     public Guardian(int identificacion, String nombre, int saldo, int salario) {
-		super(identificacion, nombre, saldo);
-		this.setSalario(salario);
-		
-		guardianes.put(identificacion, this);
+		this(identificacion,nombre,saldo,salario,null);
 	}
     
     /*
@@ -50,14 +52,14 @@ public class Guardian extends Apostador{
      */
 	public Guardian(int identificacion, String nombre, int saldo, int salario, Hashtable<Integer, Celda> celdas) {
 		super(identificacion, nombre, saldo);
-		this.setSalario(salario);
+		this.salario = salario;
 		this.celdas = celdas;
 		
 		guardianes.put(identificacion, this);
 	}
 
 	/*
-	 * Recibe como parametros el prisionero a trasladar y la celdad donde va a ser trasladado,
+	 * Recibe como parametros el prisionero a trasladar y la celda donde va a ser trasladado,
 	 * se debe eliminar el prisionero de la lista de la celda original y agregarlo a la nueva
 	 * celda. 
 	 * Se agregan los traslados en la lista de traslados de los guardianes.
@@ -114,4 +116,9 @@ public class Guardian extends Apostador{
 	
 	public static Hashtable<Integer, Guardian> getGuardianes() {return guardianes;}
 	public static void setGuardianes(Hashtable<Integer, Guardian> guardianes) {Guardian.guardianes = guardianes;}
+
+	@Override
+	public String infoApostador() {
+		return "Guardia con ID: " + getIdentificacion();
+	}
 }

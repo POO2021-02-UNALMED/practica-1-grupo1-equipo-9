@@ -1,4 +1,9 @@
 /*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ *  
  * La clase Apostador tiene como finalidad aplicar el concepto de clase Abstracta y Herencia.
  * Esta clase es Padre de las clases Guardian y Prisionero las cuales comparten los siguientes atributos:
  * - identificacion (int): Permite la identificacion de cada apostador por medio de un entero.
@@ -45,6 +50,9 @@ public abstract class Apostador implements Serializable{
     }
     
     public abstract String toString();
+    
+    public abstract
+    String infoApostador();
 
 	public int getIdentificacion() {return identificacion;	}
 	public void setIdentificacion(int identificacion) {	this.identificacion = identificacion;}

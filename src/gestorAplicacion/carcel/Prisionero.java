@@ -1,4 +1,9 @@
 /*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ * 
  * La clase Prisionero cumple con la funcionalidad de representar a las personas que han sido
  * condenadas a pasar un tiempo en prision por delitos cometidos.
  * Cada Prisionero reside en una Celda de la prision.
@@ -153,5 +158,10 @@ public class Prisionero extends Apostador{
 
 	public static Hashtable<Integer, Prisionero> getPrisioneros() {	return prisioneros;	}
     public static void setPrisioneros(Hashtable<Integer, Prisionero> prisioneros) {Prisionero.prisioneros = prisioneros;}
+
+	@Override
+	public String infoApostador() {
+		return "Prisionero con ID: " + getIdentificacion();
+	}
     
 }

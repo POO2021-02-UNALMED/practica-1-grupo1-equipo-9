@@ -1,4 +1,9 @@
 /*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ * 
  * La clase Antidelito representa las posibles acciones o trabajos que prisionero puede realizar para
  * disminuir su tiempo de condena. Se relaciona directamente con la clase Prisionero.
  * 

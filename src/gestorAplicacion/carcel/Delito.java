@@ -1,4 +1,9 @@
 /*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ * 
  * La clase Delito representa cada delito por el cual se enjuicia a un Prisionero.
  * Se relaciona directamente con la clase Prisionero.
  * 
