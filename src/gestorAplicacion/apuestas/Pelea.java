@@ -13,7 +13,7 @@ public class Pelea implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private int codigo; //Cada pelea tiene el mismo c�digo que su respectiva apuesta
+	private int codigo; //Cada pelea tiene el mismo codigo que su respectiva apuesta
     private gestorAplicacion.carcel.genero genero;
     private Prisionero luchador1;
     private Prisionero luchador2;
@@ -77,7 +77,7 @@ public class Pelea implements Serializable{
     		
     		int g = r.nextInt(2);
     		
-    		if (l1==pelea.get(g)){
+    		if (g==0){
     			luchadores.add(l1);
     			combates.add("El prisionero "+ l1 +" ha derrotado al prisionero "+ l2);
     		}
@@ -90,7 +90,6 @@ public class Pelea implements Serializable{
     	Prisionero ganador = Prisionero.getPrisioneros().get(luchadores.get(0));
     	combates.add("El prisionero "+ luchadores.get(0) + " es el ganador y recibio 1000 dolares");
         Object[] resultado = {ganador, combates};
-        // prisionero ganador.aumentar saldo = 1000
         Prisionero.getPrisioneros().get(luchadores.get(0)).aumentarSaldo(1000);
         //combates.add(String.valueOf(Prisionero.getPrisioneros().get(luchadores.get(0)).getSaldo()));
         return resultado;
