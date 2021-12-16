@@ -11,6 +11,8 @@
  * - Prisioneros (Hashtable<Integer, Prisionero>): Permite llevar un registro de los Prisioneros que 
  *   se encuentran en la Celda, donde la clave de la Hashtable es la identificacion del Prisionero 
  *   y su valor es el Prisionero con dicha identificacion.
+ * - celdas (Hashtable<Integer, Celda>): Es registro de las celdas en la prision, donde
+ *   la clave de la Hashtable es el numero de la celda y su valor es la Celda con dicho numero.
  */
 
 package gestorAplicacion.carcel;
