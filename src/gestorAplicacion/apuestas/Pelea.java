@@ -83,7 +83,8 @@ public class Pelea implements Serializable{
      * Durante la ejecucion el metodo retorna un arraylist de strings, que muestra los resultados de los combates
 	 * y quien es el Prisionero ganador.
      */
-    public Object battleRoyale(ArrayList<Celda> celdas){
+    public static
+    Object battleRoyale(ArrayList<Celda> celdas){
 		
     	int l1;
     	int l2;
