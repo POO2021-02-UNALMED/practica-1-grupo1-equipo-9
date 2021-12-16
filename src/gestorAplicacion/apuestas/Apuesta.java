@@ -114,7 +114,7 @@ public class Apuesta implements Serializable{
     		 * se calcula la ganancia con base en lo que aposto y se agrega a su sueldo.
     		 * Tambien se agrega a this.estadistica el resultado de este apostador, es decir,
     		 * su ID, cuanto gano y su saldo actual.
-    		 * En caso de que halla perdido, se pone cuanto perdio. */
+    		 * En caso de que haya perdido, se pone cuanto perdio. */
     		if (pelea.getGanador().equals(prisionero)) {
     			double k = apuesta/totalGanadores;
     			double ganancia = k*montoTotal;
