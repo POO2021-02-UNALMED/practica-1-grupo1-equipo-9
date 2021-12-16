@@ -24,6 +24,12 @@ public class Serializador {
 		serializarGuardianes();
 		serializarDelitos();
 		serializarCeldas();
+		/* 
+		 * Por la forma en que se diseño el programa, cada que se crea un objeto este se agrega
+		 * a la Hashtable de esa clase, entonces no se serializa cada objeto individualmente 
+		 * sino que se guardan en una Hashtable todos los objetos que fueron creados y se serializa
+		 * esta Hashtable.
+		 */
 	}
 
 	private static 
