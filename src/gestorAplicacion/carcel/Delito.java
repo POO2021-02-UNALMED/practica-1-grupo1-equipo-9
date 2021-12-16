@@ -1,11 +1,24 @@
+/*
+ * La clase Delito representa cada delito por el cual se enjuicia a un Prisionero.
+ * Se relaciona directamente con la clase Prisionero.
+ * 
+ * Posee los siguientes atributos:
+ * - codigo (int): Permite la identificacion del Delito por medio de un entero.
+ * - nombre (String): Permite la identificacion del Delito por medio de un String.
+ * - descripcion (String): Contiene la descripcion del delito por el cual Prisionero es juzgado.
+ * - delitos (Hashtable<Integer,Delito>): Permite llevar un registro de los Delitos creados, donde
+ *   la clave de la Hashtable es el codigo del Delito y su valor es el Delito con dicho codigo.
+ * - nivel (int): Representa el nivel de gravedad del Delito.
+ * - tiempoCondena (long): Representa el tiempo en meses que el Prisionero debe pasar en la carcel para cumplir
+ *   su condena. 
+ */
+
 package gestorAplicacion.carcel;
 import java.io.Serializable;
 import java.util.Hashtable;
 
 public class Delito implements Serializable{
-	/**
-	 * Seriakizar es poder coger objetos y guardarlos
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
 	private static Hashtable<Integer,Delito> delitos= new Hashtable<Integer,Delito>();
@@ -15,6 +28,9 @@ public class Delito implements Serializable{
     private int nivel;
     private long tiempoCondena; /*meses*/
     
+    /*
+     * Cada vez que se crea un Delito, se agrega a una lista general de Delitos.
+     */
     public Delito(int codigo, String nombre, String descripcion, int nivel, long tiempoCondena) {
     	this.codigo = codigo;
     	this.nombre = nombre;
