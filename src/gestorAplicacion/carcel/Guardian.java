@@ -21,12 +21,16 @@ public class Guardian extends Apostador{
     public Guardian(int identificacion, String nombre, int saldo, int salario) {
 		super(identificacion, nombre, saldo);
 		this.setSalario(salario);
+		
+		guardianes.put(identificacion, this);
 	}
     
 	public Guardian(int identificacion, String nombre, int saldo, int salario, Hashtable<Integer, Celda> celdas) {
 		super(identificacion, nombre, saldo);
 		this.setSalario(salario);
 		this.celdas = celdas;
+		
+		guardianes.put(identificacion, this);
 	}
 
     public void trasladarPrisionero(Prisionero prisionero, Celda celda) {

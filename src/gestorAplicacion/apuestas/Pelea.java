@@ -8,9 +8,7 @@ import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Prisionero;
 
 public class Pelea implements Serializable{
-    /**
-	 * 
-	 */
+  
 	private static final long serialVersionUID = 1L;
 	
 	private int codigo; //Cada pelea tiene el mismo codigo que su respectiva apuesta
@@ -24,6 +22,9 @@ public class Pelea implements Serializable{
     
     private static Hashtable<Integer, Pelea> peleas = new Hashtable<>();
     
+    /*
+     * Cuando se crea una Pelea, automaticamente se crea su respectiva Apuesta.
+     */
     public Pelea(int codigo, gestorAplicacion.carcel.genero genero, Prisionero luchador1, Prisionero luchador2,
 			String armaLuchador1, String armaLuchador2) {
 		this.codigo = codigo;
@@ -34,7 +35,6 @@ public class Pelea implements Serializable{
 		this.armaLuchador2 = armaLuchador2;
 		
 		this.apuesta = new Apuesta(codigo, this);
-//		Se crea automaticamente la apuesta correspondiente a esta pelea
 		
 		peleas.put(codigo, this);
 	}
@@ -42,24 +42,37 @@ public class Pelea implements Serializable{
 		this.ganador = prisionero;
 		apuesta.resolverApuesta();
 	}
+	
     public Prisionero getGanador() {return ganador;}
 
+    /*
+     * Cada Pelea puede tener unicamente 2 luchadores.
+     */
     public Prisionero[] getLuchadores() {
 		Prisionero[] luchadores = {luchador1, luchador2};
     	return luchadores;
     }
     
+    /*
+     * El metodo battleRoyale recibe como parametro una lista de celdas.
+     * Toma los prisioneros de las celdas que recibe como parametro y las ingresa en una lista temporal,
+     * luego los empareja de manera aleatoria y se enfrentan en un combate en el cual cada participante tiene
+     * una probabiblidad de 50% de ganar.
+     * Cada pareja realiza un combate y se elimina de la lista general al prisionero perdedor.
+     * Este proceso se repite hasta que en la lista general quede un solo prisionero el cual es el ganador del
+     * battleRoyale y recibe como premio un ingremento de 1000 a su saldo.
+     * 
+     * Durante la ejecucion el metodo retorna un arraylist de strings, que muestra los resultados de los combates
+	 * y quien es el Prisionero ganador.
+     */
     public Object battleRoyale(ArrayList<Celda> celdas){
-		/*
-		 * Devuelve un arraylist de strings, donde cada string es un comentario tipo
-		 * "prisionero 1 ha derrotado a prisionero 2", etc tambien debe devolver el
-		 * prisionero ganador
-		 */
+		
     	int l1;
     	int l2;
     	Random r = new Random();
     	ArrayList<Integer> luchadores = new ArrayList<Integer>();
     	ArrayList<String> combates = new ArrayList<String>();
+    	
     	for(Celda c:celdas) {
     		c.getPrisioneros().forEach((k,v)-> luchadores.add(k));
       	}	
@@ -88,11 +101,8 @@ public class Pelea implements Serializable{
     	combates.add("El prisionero "+ luchadores.get(0) + " es el ganador y recibio 1000 dolares");
         Object[] resultado = {ganador, combates};
         Prisionero.getPrisioneros().get(luchadores.get(0)).aumentarSaldo(1000);
-        //combates.add(String.valueOf(Prisionero.getPrisioneros().get(luchadores.get(0)).getSaldo()));
+       
         return resultado;
-        /*return ganador;
-         return combates;*/
-         
     }
 
     public int getCodigo() {return codigo;}
@@ -124,6 +134,4 @@ public class Pelea implements Serializable{
 				+ "Arma luchador 2: " + armaLuchador2 + "\n" 
 				+ "Ganador: " + (ganador == null ? "Aun no hay ganador" : ganador.getNombre()) + "\n";
 	}  
-	
-	
 }
