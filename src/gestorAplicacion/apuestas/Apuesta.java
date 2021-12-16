@@ -110,10 +110,10 @@ public class Apuesta implements Serializable{
     		Prisionero prisionero = (Prisionero) objects[1];
     		double apuesta = (Integer) objects[2];
     		
-    		/* Este if-else se encarga de revisar si cada apostador gan�. Si es as�, entonces
-    		 * se calcula la ganancia con base en lo que apost� y se agrega a su sueldo.
+    		/* Este if-else se encarga de revisar si cada apostador gano. Si es asi, entonces
+    		 * se calcula la ganancia con base en lo que aposto y se agrega a su sueldo.
     		 * Tambien se agrega a this.estadistica el resultado de este apostador, es decir,
-    		 * su ID, cuanto gan� y su saldo actual.
+    		 * su ID, cuanto gano y su saldo actual.
     		 * En caso de que halla perdido, se pone cuanto perdio. */
     		if (pelea.getGanador().equals(prisionero)) {
     			double k = apuesta/totalGanadores;
