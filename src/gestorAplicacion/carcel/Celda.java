@@ -1,12 +1,25 @@
+/*
+ * La clase Celda representa la unidad de espacio en donde se encierra a varios Prisioneros.
+ * Esta clase se relaciona con las clases Guardian y Prisionero.
+ * 
+ * Posee los siguientes atributos:
+ * - numero (int): Identificacion unica de la celda con un entero.
+ * - genero (genero): Representa si los prisioneros que se encuentran en ella son hombre o mujeres.
+ * - largo (double): Dimension largo de la Celda.
+ * - ancho (double): Dimension ancho de la Celda.
+ * - capMax (int): Representa el numero maximo de prisioneros que puede albergar la Celda.
+ * - Prisioneros (Hashtable<Integer, Prisionero>): Permite llevar un registro de los Prisioneros que 
+ *   se encuentran en la Celda, donde la clave de la Hashtable es la identificacion del Prisionero 
+ *   y su valor es el Prisionero con dicha identificacion.
+ */
+
 package gestorAplicacion.carcel;
 import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class Celda implements Serializable{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	private int numero;
@@ -26,17 +39,20 @@ public class Celda implements Serializable{
     	this.capMax=capMax;
     	
     	celdas.put(numero, this);
-
     }
     
+    /*
+     * Extrae de la lista de prisioneros que posee la Celda a un Prisionero.
+     */
     public void extraerPrisionero(Prisionero prisionero) {
-//    	Hace prisionero.celda = null y prisionero.celda.remove(prisionero)
     	prisionero.setCelda(null);
     	prisioneros.remove(prisionero.getIdentificacion());
     }
     
+    /*
+     * Ingresa un Prisionero a la lista de prisioneros que posee la Celda.
+     */
     public void ingresarPrisionero(Prisionero prisionero) {
-//    	Hace prisionero.celda = this y this.add(prisionero)
     	prisionero.setCelda(this);
     	prisioneros.put(prisionero.getIdentificacion(), prisionero);
     }

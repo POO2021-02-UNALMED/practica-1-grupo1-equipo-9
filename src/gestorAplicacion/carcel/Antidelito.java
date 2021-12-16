@@ -6,7 +6,7 @@
  * - codigo (int): Permite la identificacion del Antidelito por medio de un entero.
  * - nombre (String): Permite la identificacion del Antidelito por medio de un String.
  * - descripcion (String): Contiene la descripcion de la accion o trabajo que el Prisionero puede realizar.
- * - antidelitos (Hashtable<Integer,Antidelito>): Permite llevar un registro de de los Antidelitos creados, donde
+ * - antidelitos (Hashtable<Integer,Antidelito>): Permite llevar un registro de los Antidelitos creados, donde
  *   la clave de la Hashtable es el codigo del Antidelito y Antidelito es this.Antidelito.
  * - rebajaCondena (long): Representa el tiempo en meses que disminuye el Antidelito al tiempo de condena del 
  *   Prisionero que la realiza.
