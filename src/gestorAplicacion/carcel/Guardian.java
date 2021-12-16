@@ -57,7 +57,7 @@ public class Guardian extends Apostador{
 	}
 
 	/*
-	 * Recibe como parametros el prisionero a trasladar y la celdad donde va a ser trasladado,
+	 * Recibe como parametros el prisionero a trasladar y la celda donde va a ser trasladado,
 	 * se debe eliminar el prisionero de la lista de la celda original y agregarlo a la nueva
 	 * celda. 
 	 * Se agregan los traslados en la lista de traslados de los guardianes.
