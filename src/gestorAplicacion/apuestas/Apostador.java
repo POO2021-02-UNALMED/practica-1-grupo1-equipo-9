@@ -1,7 +1,7 @@
 /*
  * La clase Apostador tiene como finalidad aplicar el concepto de clase Abstracta y Herencia.
  * Esta clase es Padre de las clases Guardian y Prisionero las cuales comparten los siguientes atributos:
- * - identificación (int): Permite la identificacion de cada apostador por medio de un entero.
+ * - identificacion (int): Permite la identificacion de cada apostador por medio de un entero.
  * - nombre (String): Permite la identificacion por medio de String.
  * - saldo (int): Representa la cantidad de dinero que un Apostador tiene en su cuenta. 
  */
