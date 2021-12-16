@@ -52,23 +52,26 @@ public class Prisionero extends Apostador{
     }
     
     public void agregarAntidelito(Antidelito antidelito) {
+    	//Este metodo se utiliza cuando un prisionero ya esta en la carcel y se le quiere agregar un antidelito
     	antidelitos.put(antidelito.getCodigo(), antidelito);
     	disminuirCondena(antidelito.getRebajaCondena());
     }
     
     private void incrementarCondena(long meses) { //reciben como argumento el tiempoCondena de Delito
-    	// usar el metodo LocalDate.plusMonths() y devuelve una copia
+    	// usa el metodo plusMonths() y devuelve una copia
     	finCondena = finCondena.plusMonths(meses);
     }
     
     private void disminuirCondena(long meses) { //reciben como argumento el rebajarCondena de Antidelito
-    	
     	finCondena= finCondena.minusMonths(meses);
     
     }
     
     @Override
 	public String toString() {
+    	/*
+    	 * Se imprimen los datos del prisionero con la lista de delitos y antidelitos de este
+    	 */
     	String nombresDelitos = "";
 		for(Integer k: delitos.keySet()) {
 			nombresDelitos += delitos.get(k).getNombre() + " ";
