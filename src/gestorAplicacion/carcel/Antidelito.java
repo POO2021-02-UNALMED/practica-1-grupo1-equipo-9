@@ -1,11 +1,23 @@
+/*
+ * La clase Antidelito representa las posibles acciones o trabajos que prisionero puede realizar para
+ * disminuir su tiempo de condena. Se relaciona directamente con la clase Prisionero.
+ * 
+ * Posee los siguientes atributos:
+ * - codigo (int): Permite la identificacion del Antidelito por medio de un entero.
+ * - nombre (String): Permite la identificacion del Antidelito por medio de un String.
+ * - descripcion (String): Contiene la descripcion de la accion o trabajo que el Prisionero puede realizar.
+ * - antidelitos (Hashtable<Integer,Antidelito>): Permite llevar un registro de de los Antidelitos creados, donde
+ *   la clave de la Hashtable es el codigo del Antidelito y Antidelito es this.Antidelito.
+ * - rebajaCondena (long): Representa el tiempo en meses que disminuye el Antidelito al tiempo de condena del 
+ *   Prisionero que la realiza.
+ */
+
 package gestorAplicacion.carcel;
 import java.io.Serializable;
 import java.util.Hashtable;
 
 public class Antidelito implements Serializable{
-    /**
-	 * 
-	 */
+   
 	private static final long serialVersionUID = 1L;
 	
 	private static Hashtable<Integer,Antidelito> antidelitos= new Hashtable<Integer,Antidelito>();
@@ -14,6 +26,9 @@ public class Antidelito implements Serializable{
     private String descripcion;
     private long rebajaCondena; /*meses*/
     
+    /*
+     * Cuando se crea un Antidelito, se agrega a una lista general de antidelitos.
+     */
     public Antidelito(int codigo, String nombre, String descripcion, long rebajaCondena) {
     	this.codigo = codigo;
     	this.nombre = nombre;
