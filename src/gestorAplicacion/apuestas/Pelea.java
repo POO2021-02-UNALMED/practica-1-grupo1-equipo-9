@@ -59,7 +59,6 @@ public class Pelea implements Serializable{
     	int l2;
     	Random r = new Random();
     	ArrayList<Integer> luchadores = new ArrayList<Integer>();
-    	ArrayList<Integer> pelea = new ArrayList<Integer>();
     	ArrayList<String> combates = new ArrayList<String>();
     	for(Celda c:celdas) {
     		c.getPrisioneros().forEach((k,v)-> luchadores.add(k));
@@ -68,12 +67,10 @@ public class Pelea implements Serializable{
     		int rN1 = r.nextInt(luchadores.size());
     		l1=luchadores.get(rN1);
     		luchadores.remove(rN1);
-    		pelea.add(rN1);
     		
     		int rN2 = r.nextInt(luchadores.size());
     		l2=luchadores.get(rN2);
     		luchadores.remove(rN2);
-    		pelea.add(rN2);
     		
     		int g = r.nextInt(2);
     		
