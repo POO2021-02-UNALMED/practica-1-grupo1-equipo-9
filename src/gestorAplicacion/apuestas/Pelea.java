@@ -1,3 +1,21 @@
+/*
+ * La clase Pelea tiene como finalidad implementar métodos para ejecucion de una pelea:
+ * - Definir los peleadores (en cada Pelea solo se involucran dos Prisioneros).
+ * - Definir un ganador.
+ * - Definir una clase de Pelea especial la cuall nombramos BattleRoyale.
+ * - Cada pelea posee su respectiva Apuesta.
+ * 
+ * Posee los siguientes atributos:
+ * - codigo (int): Permite la identificacion de cada apuesta (es el mismo que posee la clase Pelea).
+ * - genero (genero): Permite identificar si la pelea es entre mujeres u hombres.
+ * - peleas (Hashtable<Integer, Pelea>): Permite llevar un registro de de las peleas realizadas, donde
+ *   la clave de la Hashtable es el codigo de la pelea y Pelea es this.Pelea.
+ * - luchador1 y luchador2 (Prisionero): Los prisioneros involucrados en la Pelea.
+ * - armaLuchador1 y armaLuchador2 (String): Cada luchador tiene derecho a un arma.
+ * - ganador (Prisionero): El ganador de la Pelea.
+ * - apuesta (Apuesta): La apuesta a la cual se dirige this.Pelea.
+ */
+
 package gestorAplicacion.apuestas;
 import java.io.Serializable;
 import java.util.Random;

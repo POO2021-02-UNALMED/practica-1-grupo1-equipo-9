@@ -7,7 +7,7 @@
  * En una Apuesta puede participar Apostadores los cuales son en concreto Guardias o Prisioneros.
  * En ella participan las clases Pelea y Apostador.
  * Tiene los siguientes atributos:
- * - codigo (int): Permite la identificacion de cada apuesta.
+ * - codigo (int): Permite la identificacion de cada apuesta (es el mismo que posee la clase Pelea).
  * - apostadores (ArrayList<Object[3]): Recibe una lista de listas, donde cada lista interna tiene:
  *     - apostador (Apostador): La persona que quiere apostar.
  *     - prisionero (Prisionero): Peleador (luchador) a quien se le apuesta.
