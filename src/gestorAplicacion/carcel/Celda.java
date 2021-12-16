@@ -31,6 +31,11 @@ public class Celda implements Serializable{
     
     private static Hashtable<Integer, Celda> celdas = new Hashtable<>();
     
+    /*
+     * Cada vez que se crea un objeto Celda, se agrega a una lista general de Celdas creadas.
+     * Al inicio del programa, todas las celdas disponibles ya se encontraran creadas, no se 
+     * podra crear nuevas celdas.
+     */
     public Celda(int numero, gestorAplicacion.carcel.genero genero, double largo, double ancho,int capMax) {
     	this.numero=numero;
     	this.genero=genero;
