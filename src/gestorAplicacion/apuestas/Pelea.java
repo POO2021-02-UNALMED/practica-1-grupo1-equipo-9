@@ -1,4 +1,9 @@
 /*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ * 
  * La clase Pelea tiene como finalidad implementar metodos para ejecucion de una pelea:
  * - Definir los peleadores (en cada Pelea solo se involucran dos Prisioneros).
  * - Definir un ganador.

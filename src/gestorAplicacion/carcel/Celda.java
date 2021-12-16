@@ -1,4 +1,9 @@
 /*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ * 
  * La clase Celda representa la unidad de espacio en donde se encierra a varios Prisioneros.
  * Esta clase se relaciona con las clases Guardian y Prisionero.
  * 
