@@ -1,4 +1,9 @@
 /*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ * 
  * La clase Guardian representa a los guardianes o celadores que una carcel posee.
  * A cada guardian se le asigna una o varias celdas de la cual esta encargado de cuidar.
  * Se hereda de la clase Apostador, es decir todo Guardian es un Apostador.

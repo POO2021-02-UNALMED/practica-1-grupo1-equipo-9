@@ -1,4 +1,9 @@
 /*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ * 
  * La clase Apuesta tiene como finalidad realizar todos los procesos que una apuesta comun involucra:
  * - Ingresar a los participantes.
  * - Repartir premios a los ganadores.
@@ -105,10 +110,10 @@ public class Apuesta implements Serializable{
     		Prisionero prisionero = (Prisionero) objects[1];
     		double apuesta = (Integer) objects[2];
     		
-    		/* Este if-else se encarga de revisar si cada apostador ganó. Si es así, entonces
-    		 * se calcula la ganancia con base en lo que apostó y se agrega a su sueldo.
+    		/* Este if-else se encarga de revisar si cada apostador ganï¿½. Si es asï¿½, entonces
+    		 * se calcula la ganancia con base en lo que apostï¿½ y se agrega a su sueldo.
     		 * Tambien se agrega a this.estadistica el resultado de este apostador, es decir,
-    		 * su ID, cuanto ganó y su saldo actual.
+    		 * su ID, cuanto ganï¿½ y su saldo actual.
     		 * En caso de que halla perdido, se pone cuanto perdio. */
     		if (pelea.getGanador().equals(prisionero)) {
     			double k = apuesta/totalGanadores;
