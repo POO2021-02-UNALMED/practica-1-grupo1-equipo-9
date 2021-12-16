@@ -6,39 +6,37 @@ import java.util.Hashtable;
 import gestorAplicacion.carcel.Prisionero;
 
 public class Apuesta implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
 	private static Hashtable<Integer,Apuesta> apuestas= new Hashtable<Integer,Apuesta>();
 
-	private int codigo; //Cada pelea tiene el mismo codigo que su respectiva apuesta
+	private int codigo; //Cada pelea tiene el mismo codigo que su respectiva apuesta.
     private ArrayList<Object[]> apostadores= new ArrayList<Object[]>(); 
     private Pelea pelea;
     private double montoTotal;
     private double montoTotalGanadores;
     private ArrayList<String> estadisticas;
     
-    
-    public Apuesta(int codigo, Pelea pelea) {
-//    	Las apuestas se crean automatica cuando se crea una pelea
+    /*
+     * Las apuestas se crean automaticamente cuando se crea una pelea.
+     * Cada vez que es creado una apuesta, esta es agragada a una lista general de apuestas.
+     */
+    public Apuesta(int codigo, Pelea pelea) {	
 		this.codigo = codigo;
 		this.pelea = pelea;
-		/*
-		 * Si el arreglo apostadores esta vacio, es porque nadie aposto en esta pelea
-		 */
 		apuestas.put(codigo, this);
 	}
 
+    /*
+     * Retorna un resumen general de las estadisticas de las apuestas:
+     * - Muestra el monto total apostado que se repartira entre los ganadores.
+     * - Si la pelea aun no tiene ganador.
+     * - Si la pelea no tuvo apostadores.
+     */
 	public String resultadoApuesta() {
-    	/*
-    	 * Retorna una lista de los apostadores que participaron en una apuesta en 
-    	 * particular, y el dinero que ganaron o perdieron
-    	 */
-		
 		if (pelea.getGanador() == null) {return "La pelea aun no tiene ganador";}
-		if (getApostadores().isEmpty()) {return "La pelea con código " + getCodigo() + "no tuvo apuestas";}
+		if (getApostadores().isEmpty()) {return "La pelea con codigo " + getCodigo() + "no tuvo apuestas";}
 		
 		String resultadoMonto1 = "El monto total recogido en la apuesta fue: " + montoTotal + "\n" ;
 		String resultadoMonto2 = "El dinero total apostado por los ganadores de esta apuesta fue: " + montoTotalGanadores + "\n\n" ;
@@ -52,12 +50,21 @@ public class Apuesta implements Serializable{
     	return resultadoMonto1 + resultadoMonto2 + resulta3 + resulta4;
     }
     
+	/*
+	 * El mÃ©todo resolverApuesta funciona con la siguiente logica:
+	 * - Primero se encuentra cual es el monto total recogido entre los apostadores y los ganadores.
+	 * - Luego se les agrega al saldo de los ganadores una cantidad proporcional a su apuesta en relacion al 
+	 *   monto total apostado.
+	 * 
+	 * Nota: Se hace uso del resultado que tuvo la pela para definir a los ganadores y tambien del casteo 
+	 * explicito.
+	 */
     public void resolverApuesta() {
     	if (apostadores.isEmpty()) {return;}
     	
     	double montoTotal = 0;
     	double totalGanadores = 0;
-//    	Primero necesito saber cuanto se recogio en total y cuanto se recogio entre los ganadores
+    	
     	for (Object[] objects : apostadores) {
     		Prisionero prisionero = (Prisionero) objects[1];
     		double apuesta = (Integer) objects[2];
@@ -67,9 +74,8 @@ public class Apuesta implements Serializable{
     	
     	ArrayList<String> estadisticas = new ArrayList<>();
     	
-//    	Se paga a los apostadores ganadores proporcionalmente al dinero que apostaron.
     	for (Object[] objects : apostadores) {
-//    		Casteo explicito de un objeto Object a Apostador, Prisionero e Int.
+
     		Apostador apostador = (Apostador) objects[0];
     		Prisionero prisionero = (Prisionero) objects[1];
     		double apuesta = (Integer) objects[2];
@@ -90,14 +96,17 @@ public class Apuesta implements Serializable{
     	this.estadisticas = estadisticas;
     }
     
+    /*
+     * Tiene como finalidad agregar un Apostador a la lista de apostadores de una Apuesta en particular.
+     * Recibe tres parametros:
+     * - apostador: Apostador que ingresa a this Apuesta.
+     * - prisionero luchador por el que apostador va a apostar
+     * - apuesta: cantidad a apostar
+     * 
+     * El metodo comprueba si el apostador que desea ingresar a la apuesta tiene suficiente saldo.
+     * Si no posee suficiente saldo, no es agregado a la lista de apostadores.
+     */
     public void agregarApostador(Apostador apostador, Prisionero prisionero, Integer apuesta) {
-		/*
-		 * apostador es el Apostador que ingresa a this Apuesta 
-		 * prisionero es el luchador por el que apostador va a apostar 
-		 * apuesta es la cantidad que se va a apostar
-		 */
-    	
-//    	Revisa si el apostador tiene saldo suficiente para apostar.
     	if (apuesta > apostador.getSaldo()) {return;}
     	
     	apostador.reducirSaldo(apuesta);
