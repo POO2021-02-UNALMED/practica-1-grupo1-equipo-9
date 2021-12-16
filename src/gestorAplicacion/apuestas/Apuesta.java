@@ -1,3 +1,23 @@
+/*
+ * La clase Apuesta tiene como finalidad realizar todos los procesos que una apuesta común involucra:
+ * - Ingresar a los participantes.
+ * - Repartir premios a los gandores.
+ * 
+ * Cada apuesta se asigna a su respectiva Pelea.
+ * En una Apuesta puede participar Apostadores los cuales son en concreto Guardias o Prisioneros.
+ * En ella participan las clases Pelea y Apostador.
+ * Tiene los siguientes atributos:
+ * - codigo (int): Permite la identificacion de cada apuesta.
+ * - apostadores (ArrayList<Object[3]): Recibe una lista de listas, donde cada lista interna tiene:
+ *     - apostador (Apostador): La persona que quiere apostar.
+ *     - prisionero (Prisionero): Peleador (luchador) a quien se le apuesta.
+ *     - apuesta (int): Monto que desea apostar.
+ * - pelea (Pelea): La pelea a la cual esta dirigida la apuesta.
+ * - montoTotal (double): Suma total de dinero recogida entre todos los apostadores.
+ * - montoTotalGanadores (double): Suma total recogida entre los ganadores.
+ * - estadisticas (ArrayList<String>): Lista de Strings, la cual servira para conocer los resultados de la apuesta.  
+ */
+
 package gestorAplicacion.apuestas;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -100,7 +120,7 @@ public class Apuesta implements Serializable{
      * Tiene como finalidad agregar un Apostador a la lista de apostadores de una Apuesta en particular.
      * Recibe tres parametros:
      * - apostador: Apostador que ingresa a this Apuesta.
-     * - prisionero luchador por el que apostador va a apostar
+     * - prisionero: luchador por el que apostador va a apostar
      * - apuesta: cantidad a apostar
      * 
      * El metodo comprueba si el apostador que desea ingresar a la apuesta tiene suficiente saldo.
