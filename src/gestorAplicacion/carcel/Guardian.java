@@ -30,7 +30,12 @@ public class Guardian extends Apostador{
 	}
 
     public void trasladarPrisionero(Prisionero prisionero, Celda celda) {
-//    	TODO testear esto
+    	/*
+		 * Utiliza el metodo agregarTraslado y le pasa un Object[3] donde el primer
+		 * elemento es la Celda de origen, el segundo elemento es el prisionero
+		 * trasladado y la tercera es la celda destino
+		 */
+    	
 		Celda celdaOrigen = prisionero.getCelda();
     	celdaOrigen.extraerPrisionero(prisionero);
 		celda.ingresarPrisionero(prisionero);
@@ -38,12 +43,6 @@ public class Guardian extends Apostador{
 		Object[] traslado = {celdaOrigen, prisionero, celda};
 		
 		this.agregarTraslado(traslado);
-		
-    	/*
-		 * Utiliza el m�todo agregarTraslado y le pasa un Object[3] donde
-		 * el primero elemento es la Celda de origen, el segundo es el prisionero
-		 * trasladado y la tercera es la celda destino
-		 */
     }
     
     public ArrayList<Object[]> getTraslados() {return traslados;}
