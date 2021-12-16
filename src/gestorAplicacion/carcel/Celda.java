@@ -24,6 +24,8 @@ public class Celda implements Serializable{
     	this.largo=largo;
     	this.ancho=ancho;
     	this.capMax=capMax;
+    	
+    	celdas.put(numero, this);
 
     }
     
