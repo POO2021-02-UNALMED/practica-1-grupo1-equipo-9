@@ -1,5 +1,5 @@
 /*
- * La clase Pelea tiene como finalidad implementar métodos para ejecucion de una pelea:
+ * La clase Pelea tiene como finalidad implementar metodos para ejecucion de una pelea:
  * - Definir los peleadores (en cada Pelea solo se involucran dos Prisioneros).
  * - Definir un ganador.
  * - Definir una clase de Pelea especial la cuall nombramos BattleRoyale.
