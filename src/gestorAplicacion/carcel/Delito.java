@@ -4,7 +4,7 @@ import java.util.Hashtable;
 
 public class Delito implements Serializable{
 	/**
-	 * 
+	 * Seriakizar es poder coger objetos y guardarlos
 	 */
 	private static final long serialVersionUID = 1L;
 	
