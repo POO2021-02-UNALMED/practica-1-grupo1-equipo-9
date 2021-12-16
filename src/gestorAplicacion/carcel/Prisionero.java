@@ -158,5 +158,10 @@ public class Prisionero extends Apostador{
 
 	public static Hashtable<Integer, Prisionero> getPrisioneros() {	return prisioneros;	}
     public static void setPrisioneros(Hashtable<Integer, Prisionero> prisioneros) {Prisionero.prisioneros = prisioneros;}
+
+	@Override
+	public String infoApostador() {
+		return "Prisionero con ID: " + getIdentificacion();
+	}
     
 }

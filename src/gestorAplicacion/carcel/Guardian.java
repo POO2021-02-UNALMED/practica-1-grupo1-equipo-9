@@ -119,4 +119,9 @@ public class Guardian extends Apostador{
 	
 	public static Hashtable<Integer, Guardian> getGuardianes() {return guardianes;}
 	public static void setGuardianes(Hashtable<Integer, Guardian> guardianes) {Guardian.guardianes = guardianes;}
+
+	@Override
+	public String infoApostador() {
+		return "Guardia con ID: " + getIdentificacion();
+	}
 }

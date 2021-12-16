@@ -50,6 +50,9 @@ public abstract class Apostador implements Serializable{
     }
     
     public abstract String toString();
+    
+    public abstract
+    String infoApostador();
 
 	public int getIdentificacion() {return identificacion;	}
 	public void setIdentificacion(int identificacion) {	this.identificacion = identificacion;}

@@ -119,10 +119,10 @@ public class Apuesta implements Serializable{
     			double k = apuesta/totalGanadores;
     			double ganancia = k*montoTotal;
     			apostador.aumentarSaldo(ganancia);
-    			estadisticas.add("ID Apostador: " + apostador.getIdentificacion() + "\t\t+" + (ganancia - apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo());
+    			estadisticas.add(apostador.infoApostador() + "\t\t+" + (ganancia - apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo());
     			
     		} else {
-    			estadisticas.add("ID Apostador: " + apostador.getIdentificacion() + "\t\t-" + (apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo());
+    			estadisticas.add(apostador.infoApostador() + "\t\t-" + (apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo());
     		}
 		}
     	
