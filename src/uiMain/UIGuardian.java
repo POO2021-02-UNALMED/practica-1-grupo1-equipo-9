@@ -21,21 +21,13 @@ public class UIGuardian extends UI {
 		System.out.println("**Listado de celdas**");
 
 		Enumeration<Integer> e = Celda.getCeldas().keys();
-		
-		System.out.println("Numero  | Genero  | Largo  | Ancho   | Capacidad maxima");
 
         while (e.hasMoreElements()) {
             int key = e.nextElement();
             
             Celda celda = Celda.getCeldas().get(key);
             
-            System.out.println(
-            		key + " | "
-            + celda.getNumero() + " | "
-            + celda.getGenero() + " | "
-            + celda.getLargo() + " | "
-            + celda.getAncho() + " | "
-            + celda.getCapMax());
+            System.out.println(celda.toString());
         }
         System.out.println("");
 	}
@@ -147,18 +139,13 @@ public class UIGuardian extends UI {
 		System.out.println("**Listado guardianes**");
 
 		Enumeration<Integer> e = Guardian.getGuardianes().keys();
-		System.out.println("Identificacion  | Nombre   | Salario  | Saldo");
 
         while (e.hasMoreElements()) {
             int key = e.nextElement();
             
             Guardian guardian = Guardian.getGuardianes().get(key);
             
-            System.out.println(
-            		key + " | "
-            + guardian.getNombre() + " | "
-            + guardian.getSalario() + " | "
-            + guardian.getSaldo());
+            System.out.println(guardian.toString());
         }
         System.out.println("");
 	}
