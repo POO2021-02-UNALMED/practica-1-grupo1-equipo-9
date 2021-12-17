@@ -38,8 +38,8 @@ public class Celda implements Serializable, infoTraslado{
     private Hashtable<Integer, Prisionero> prisioneros = new Hashtable<Integer, Prisionero>();
     
     private static Hashtable<Integer, Celda> celdas = new Hashtable<>();
-    private static ArrayList<Integer> celdasMASCULINAS = new ArrayList<>();
-    private static ArrayList<Integer> celdasFEMENINAS = new ArrayList<>();
+    static ArrayList<Integer> celdasMASCULINAS = new ArrayList<>();
+    static ArrayList<Integer> celdasFEMENINAS = new ArrayList<>();
     
     /*
      * Cada vez que se crea un objeto Celda, se agrega a una lista general de Celdas creadas.
@@ -96,6 +96,9 @@ public class Celda implements Serializable, infoTraslado{
 	public static void setCeldas(Hashtable<Integer, Celda> celdas) {
 		Celda.celdas = celdas;
 	}
+	
+	public static ArrayList<Integer> getCeldasMASCULINAS() {return celdasMASCULINAS;}
+	public static ArrayList<Integer> getCeldasFEMENINAS() {return celdasFEMENINAS;}
 
 	@Override
 	public String toString() {
