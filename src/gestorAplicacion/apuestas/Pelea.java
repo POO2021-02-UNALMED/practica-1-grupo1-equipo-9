@@ -1,5 +1,29 @@
+/*
+ * Autores: 
+ * - Beatriz Valentina Gomez Valencia.
+ * - Alejandro Salazar Mejia.
+ * - Juan Pablo Martinez Echavarria.
+ * 
+ * La clase Pelea tiene como finalidad implementar metodos para ejecucion de una pelea:
+ * - Definir los peleadores (en cada Pelea solo se involucran dos Prisioneros).
+ * - Definir un ganador.
+ * - Definir una clase de Pelea especial la cuall nombramos BattleRoyale.
+ * - Cada pelea posee su respectiva Apuesta.
+ * 
+ * Posee los siguientes atributos:
+ * - codigo (int): Permite la identificacion de cada apuesta (es el mismo que posee la clase Pelea).
+ * - genero (genero): Permite identificar si la pelea es entre mujeres u hombres.
+ * - peleas (Hashtable<Integer, Pelea>): Permite llevar un registro de de las peleas realizadas, donde
+ *   la clave de la Hashtable es el codigo de la pelea y Pelea es this.Pelea.
+ * - luchador1 y luchador2 (Prisionero): Los prisioneros involucrados en la Pelea.
+ * - armaLuchador1 y armaLuchador2 (String): Cada luchador tiene derecho a un arma.
+ * - ganador (Prisionero): El ganador de la Pelea.
+ * - apuesta (Apuesta): La apuesta a la cual se dirige this.Pelea.
+ */
+
 package gestorAplicacion.apuestas;
 import java.io.Serializable;
+import java.util.Random;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -7,12 +31,10 @@ import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Prisionero;
 
 public class Pelea implements Serializable{
-    /**
-	 * 
-	 */
+  
 	private static final long serialVersionUID = 1L;
 	
-	private int codigo; //Cada pelea tiene el mismo c�digo que su respectiva apuesta
+	private int codigo; //Cada pelea tiene el mismo codigo que su respectiva apuesta
     private gestorAplicacion.carcel.genero genero;
     private Prisionero luchador1;
     private Prisionero luchador2;
@@ -23,6 +45,9 @@ public class Pelea implements Serializable{
     
     private static Hashtable<Integer, Pelea> peleas = new Hashtable<>();
     
+    /*
+     * Cuando se crea una Pelea, automaticamente se crea su respectiva Apuesta.
+     */
     public Pelea(int codigo, gestorAplicacion.carcel.genero genero, Prisionero luchador1, Prisionero luchador2,
 			String armaLuchador1, String armaLuchador2) {
 		this.codigo = codigo;
@@ -33,7 +58,6 @@ public class Pelea implements Serializable{
 		this.armaLuchador2 = armaLuchador2;
 		
 		this.apuesta = new Apuesta(codigo, this);
-//		Se crea automaticamente la apuesta correspondiente a esta pelea
 		
 		peleas.put(codigo, this);
 	}
@@ -41,63 +65,68 @@ public class Pelea implements Serializable{
 		this.ganador = prisionero;
 		apuesta.resolverApuesta();
 	}
+	
     public Prisionero getGanador() {return ganador;}
 
+    /*
+     * Cada Pelea puede tener unicamente 2 luchadores.
+     */
     public Prisionero[] getLuchadores() {
 		Prisionero[] luchadores = {luchador1, luchador2};
     	return luchadores;
     }
     
-    public 
+    /*
+     * El metodo battleRoyale recibe como parametro una lista de celdas.
+     * Toma los prisioneros de las celdas que recibe como parametro y las ingresa en una lista temporal,
+     * luego los empareja de manera aleatoria y se enfrentan en un combate en el cual cada participante tiene
+     * una probabiblidad de 50% de ganar.
+     * Cada pareja realiza un combate y se elimina de la lista general al prisionero perdedor.
+     * Este proceso se repite hasta que en la lista general quede un solo prisionero el cual es el ganador del
+     * battleRoyale y recibe como premio un ingremento de 1000 a su saldo.
+     * 
+     * Durante la ejecucion el metodo retorna un arraylist de strings, que muestra los resultados de los combates
+	 * y quien es el Prisionero ganador.
+     */
+    public static
     Object battleRoyale(ArrayList<Celda> celdas){
-		/*
-		 * Devuelve un arraylist de strings, donde cada string es un comentario tipo
-		 * "prisionero 1 ha derrotado a prisionero 2", etc tambien debe devolver el
-		 * prisionero ganador
-		 */
-    	
-    	/*Hashtable<Integer,Prisionero> luchadores = new Hashtable<Integer,Prisionero>();
-    	for (Celda c: celdas) {
-    		c.getPrisioneros().forEach((k,v)-> luchadores.put(k,v));
-    		//while o for
-    			int rN1 = (int)(Math.random()*(luchadores.size()));
-    			int rN2 = (int)(Math.random()*(luchadores.size()));
-    			if(rN1==rN2) {rN2 = (int)(Math.random()*(luchadores.size()));}
-    			else {
-    				
-    			}
-    	}*/
+		
     	int l1;
     	int l2;
+    	Random r = new Random();
     	ArrayList<Integer> luchadores = new ArrayList<Integer>();
     	ArrayList<String> combates = new ArrayList<String>();
+    	
     	for(Celda c:celdas) {
     		c.getPrisioneros().forEach((k,v)-> luchadores.add(k));
-    		
-    		int rN1 = (int)(Math.random()*(luchadores.size()));
+      	}	
+    	do{
+    		int rN1 = r.nextInt(luchadores.size());
     		l1=luchadores.get(rN1);
-    		luchadores.remove(rN1); //luchadores.remove(luchadores.indexOf(rN1))
-			int rN2 = (int)(Math.random()*(luchadores.size()));
-			l2=luchadores.get(rN2);
-			luchadores.remove(rN2);
-			
-			/*pelea entre l1 y l2
-			*if (l1 gana){
-			*	luchadores.add(l1);
-			*	combates.add("El prisionero 1 ha derrotado al prisionero 2")
-			*	return combates + Prisioneros.get(l1)}
-			*else{
-			*	luchadores.add(l2);
-			*	combates.add("El prisionero 2 ha derrotado al prisionero 1")
-			*	return combates+ Prisioneros.get(l2)}
-			*/
+    		luchadores.remove(rN1);
     		
-    	}
+    		int rN2 = r.nextInt(luchadores.size());
+    		l2=luchadores.get(rN2);
+    		luchadores.remove(rN2);
+    		
+    		int g = r.nextInt(2);
+    		
+    		if (g==0){
+    			luchadores.add(l1);
+    			combates.add("El prisionero "+ l1 +" ha derrotado al prisionero "+ l2);
+    		}
+    		else{
+    			luchadores.add(l2);
+    			combates.add("El prisionero "+ l2 +" ha derrotado al prisionero "+ l1);
+    		}
+    	}while(luchadores.size()>1);
     	
-    	return combates;
-    	/*Prisionero ganador = null;
-    	Object[] resultado = {ganador, combates};
-    	return resultado;*/
+    	Prisionero ganador = Prisionero.getPrisioneros().get(luchadores.get(0));
+    	combates.add("El prisionero "+ luchadores.get(0) + " es el ganador y recibio 1000 dolares");
+        Object[] resultado = {ganador, combates};
+        Prisionero.getPrisioneros().get(luchadores.get(0)).aumentarSaldo(1000);
+       
+        return resultado;
     }
 
     public int getCodigo() {return codigo;}
@@ -129,6 +158,4 @@ public class Pelea implements Serializable{
 				+ "Arma luchador 2: " + armaLuchador2 + "\n" 
 				+ "Ganador: " + (ganador == null ? "Aun no hay ganador" : ganador.getNombre()) + "\n";
 	}  
-	
-	
 }

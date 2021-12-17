@@ -1,3 +1,4 @@
+
 package uiMain;
 
 import java.time.LocalDate;
@@ -22,6 +23,18 @@ public class Carcel {
 	}
 	
     public static void main(String[] args) {
+    	
+		Hashtable<Integer, String> menu_actual = new Hashtable<>();
+		menu_actual.put(1, "Gestionar Guardianes");
+		menu_actual.put(2, "Gestionar Prisioneros");
+		menu_actual.put(3, "Gestionar Delitos");
+		menu_actual.put(4, "Gestionar Antidelitos");
+		menu_actual.put(5, "Gestionar Peleas");
+		menu_actual.put(6, "Salir");
+		
+		Menu m = new Menu();
+		Menu menu = new Menu(menu_actual, m);
+		menu.leerOpcion();
     	
 //		crearDelitos
 		Delito delito1 = new Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10);
@@ -143,12 +156,13 @@ public class Carcel {
 		Pelea pelea2 = new Pelea(2, genero.FEMENINO, prisionero4, prisionero5, "arma12", "arma22");
 		Pelea pelea3 = new Pelea(3, genero.FEMENINO, prisionero6, prisionero7, "arma13", "arma23");
 		
-		/*ArrayList<Celda> battleRoyal1 = new ArrayList<>();
+		ArrayList<Celda> battleRoyal1 = new ArrayList<>();
 		battleRoyal1.add(celda1);
 		battleRoyal1.add(celda2);
 		battleRoyal1.add(celda3);
+		Object br = pelea1.battleRoyale(battleRoyal1);
 		
-		System.out.println(pelea1.battleRoyale(battleRoyal1));*/
+		System.out.print(br);
 		
 //		---------------------------------------------------------------------------------------------------
 		
@@ -167,6 +181,20 @@ public class Carcel {
 		
 		pelea0.setGanador(prisionero0);
 		System.out.println(pelea0.getApuesta().resultadoApuesta());
+		
+		System.out.println("\n---------------------------------------------------------------\n");
+		
+		ArrayList<Object[]> temp1 =  guardian1.getTraslados();
+		Object[] trasnaldo0 = {celda0, prisionero0, celda0};
+		temp1.add(trasnaldo0);
+		Object[] trasnaldo1 = {celda1, prisionero1, celda1};
+		temp1.add(trasnaldo1);
+		Object[] trasnaldo2 = {celda2, prisionero2, celda2};
+		temp1.add(trasnaldo2);
+		Object[] trasnaldo3 = {celda3, prisionero3, celda3};
+		temp1.add(trasnaldo3);
+		
+		guardian1.listaTraslados().forEach(x -> System.out.println(x));
 		
 		Serializador.serializar();
 		Deserializador.deserializar();
@@ -191,7 +219,7 @@ public class Carcel {
 					case 0: Serializador.serializar();
 				}
 			}while(opcion!=0);	
-    }	
+    }
 
 	static void ingresarInfo() {
 		int opcion;
@@ -286,7 +314,7 @@ public class Carcel {
     static void peleasApuestas() {
     	int opcion;
 		do {
-			System.out.println("1. Resolver pelea"); //se ingresas los ganadores y se llama al método serGanador()
+			System.out.println("1. Resolver pelea"); //se ingresas los ganadores y se llama al mï¿½todo serGanador()
 			System.out.println("2. Consultar pelea");//se imprimen las peleas
 			System.out.println("3. Consultar apuesta");
 			System.out.println("4. Agregar apostador"); //se llama al metodo agregarApostador de apuesta de la pelea agregada
