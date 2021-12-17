@@ -79,6 +79,14 @@ public class Guardian extends Apostador{
     
     public
     ArrayList<String> listaTraslados(){
+    	
+		/* Este metodo devuelve una lista de Strings, 
+		 * donde cada String contiene informacion sobre un 
+		 * traslado hecho por este guardian
+		 * Esta informacion contiene al prisionero que se traslado, la cela de origen y 
+		 * la celda destino
+		*/
+    	
     	ArrayList<String> trasladosString = new ArrayList<>();
     	
     	for (Object[] traslado : traslados) {
