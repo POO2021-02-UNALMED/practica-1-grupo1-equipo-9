@@ -79,7 +79,7 @@ public class Menu {
 		}
 		System.out.print(": ");
 		
-		// Es la ultima opción del menu
+		// Es la ultima opcion del menu
 		return item - 1;
 	}
 	
