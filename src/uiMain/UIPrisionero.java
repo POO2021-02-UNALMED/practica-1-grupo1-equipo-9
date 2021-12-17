@@ -3,6 +3,7 @@ package uiMain;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Scanner;
@@ -40,42 +41,39 @@ public class UIPrisionero extends UI{
         if (gen == 1) { gene = genero.MASCULINO; }
         else { gene = genero.FEMENINO; }
         
-        System.out.println("Ingrese el numero de celda del prisionero.\n"
+        System.out.println("Ingrese el número de celda del prisionero.\n"
         		+ "Las celdas disponibles se mostraran a continuación:");
+        Hashtable<Integer, Celda> celdas = Celda.getCeldas(); 
         if (gen == 1) {
-        	for (Integer numeroa: Celda.getCeldasMASCULINAS()) {
-        		for (Integer numerob: Celda.getCeldas().keySet()) {
-        			if (numeroa == numerob && Celda.getCeldas().get(numeroa).getCapMax() < Celda.getCeldas().get(numeroa).getPrisioneros().size()) {
-        				System.out.println(numeroa);
-        			}
+        	ArrayList<Integer> celdashombres = Celda.getCeldasMASCULINAS();
+        	for (int k: celdashombres) {
+        		if (celdas.get(k).getCapMax() > celdas.get(k).getPrisioneros().size()) {
+        			System.out.println("Número: " + celdas.get(k).getNumero());
         		}
         	}
         }else {
-        	for (Integer numeroa: Celda.getCeldasFEMENINAS()) {
-        		for (Integer numerob: Celda.getCeldas().keySet()) {
-        			if (numeroa == numerob && Celda.getCeldas().get(numeroa).getCapMax() < Celda.getCeldas().get(numeroa).getPrisioneros().size()) {
-        				System.out.println(numeroa);
-        			}
+        	ArrayList<Integer> celdasmujeres = Celda.getCeldasFEMENINAS();
+        	for (int k: celdasmujeres) {
+        		if (celdas.get(k).getCapMax() > celdas.get(k).getPrisioneros().size()) {
+        			System.out.println("Número: " + celdas.get(k).getNumero());
         		}
         	}
         }
         
-        int numero = input.nextInt();
-        if (gen==1 && !Celda.getCeldasMASCULINAS().contains(numero)) {
-        	System.out.println("La celda seleccionada no es valida");
-        	return;
-        } else if (!Celda.getCeldasFEMENINAS().contains(numero)) {
-        	System.out.println("La celda seleccionada no es valida");
+        int num = input.nextInt();
+        if(!celdas.containsKey(num)) {
+        	System.out.println("No se ha encontrado la celda ingresada");
         	return;
         }
-        Celda celda = Celda.getCeldas().get(numero);  
+        
+        Celda celda = Celda.getCeldas().get(num);
         
         System.out.println("Ingrese los codigos de los delitos del prisionero dando enter entre cada uno.\n"
         		+ "Ingrese -1 para terminar su entrada."
         		+ "Los delitos se encuentran listados a continuación:");
         for (Integer k: Delito.getDelitos().keySet()) {
         	System.out.println("Código: " + Delito.getDelitos().get(k).getCodigo()
-        			+ "Nombre: " + Delito.getDelitos().get(k).getNombre());
+        			+ " Nombre: " + Delito.getDelitos().get(k).getNombre());
         }
         int delito;
         Hashtable<Integer, Delito> delitos = new Hashtable<>();
@@ -119,7 +117,7 @@ public class UIPrisionero extends UI{
 					+ "Los delitos se listan a continuación:");
 			for(Integer k: Delito.getDelitos().keySet()) {
 				System.out.println("Código: " + Delito.getDelitos().get(k).getCodigo()
-						+ "nombre: " + Delito.getDelitos().get(k).getNombre());
+						+ " Nombre: " + Delito.getDelitos().get(k).getNombre());
 			}
 			int codigo = input.nextInt();
 			Delito delito = Delito.getDelitos().get(codigo);
