@@ -3,12 +3,14 @@ package uiMain;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Scanner;
 
 import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Guardian;
+import gestorAplicacion.carcel.Prisionero;
 
 public class UIGuardian extends UI {
 	static Scanner input = new Scanner(System.in);
@@ -161,6 +163,54 @@ public class UIGuardian extends UI {
         System.out.println("");
 	}
 	
+	public void transladarPrisionero() {
+		System.out.print("Elija un guardian ingresando el identificador: ");
+		int codigo = input.nextInt();
+		Guardian guardian = Guardian.getGuardianes().get(codigo);
+		
+		if (guardian!=null) {
+			System.out.print("Ingresa el identificador del prisionero: ");
+			int codigo_prisionero = input.nextInt();
+			Prisionero prisionero = Prisionero.getPrisioneros().get(codigo_prisionero);
+			
+			if (prisionero!=null) {
+				System.out.print("Ingresa el numero de celda: ");
+				int numero_celda = input.nextInt();
+				Celda celda = Celda.getCeldas().get(numero_celda);
+				
+				if (celda!=null) {
+					guardian.trasladarPrisionero(prisionero, celda);
+					System.out.println("Prisionero transladado exitosamente");
+				} else {
+					System.out.println("Lo sentimos la celda no existe.");
+				}
+				
+			} else {
+				System.out.println("Lo sentimos el prisionero no existe.");
+			}
+			
+			
+		} else {
+			System.out.println("El guardían no exitosamente!\n");
+		}
+		
+
+	}
+	
+	public void listarTraslados() {
+		System.out.print("Ingrese identificador de guardian: ");
+		int codigo = input.nextInt();
+		Guardian guardian = Guardian.getGuardianes().get(codigo);
+
+		if (guardian!=null) {
+			ArrayList<String> translados = guardian.listaTraslados();
+			for(String s: translados) {
+				System.out.println(s);
+			}
+		} else {
+			System.out.println("El guardían no exitosamente!\n");
+		}
+	}
 
 	@Override
 	public Hashtable<Integer, String> getMenu() {
@@ -169,8 +219,8 @@ public class UIGuardian extends UI {
 		lista_menu.put(2, "Borrar guardian");
 		lista_menu.put(3, "Editar guardian");
 		lista_menu.put(4, "Listar guardian");
-		lista_menu.put(5, "guardia.trasladarPrisionero(prisionero, celda)");
-		lista_menu.put(6, "listaTraslados()");
+		lista_menu.put(5, "Transladar prisionero");
+		lista_menu.put(6, "Listar transladados");
 		lista_menu.put(7, "Salir");
 		return lista_menu;
 	}
@@ -182,7 +232,8 @@ public class UIGuardian extends UI {
 			case 2: borrarGuardian(); break;
 			case 3: editarGuardian(); break;
 			case 4: listarGuardianes(); break;
-	//		case 5: gestionarPeleas(); break;
+			case 5: transladarPrisionero(); break;
+			case 6: listarTraslados(); break;
 		}
 	}
 
