@@ -22,6 +22,7 @@
 
 package gestorAplicacion.carcel;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
@@ -37,6 +38,8 @@ public class Celda implements Serializable, infoTraslado{
     private Hashtable<Integer, Prisionero> prisioneros = new Hashtable<Integer, Prisionero>();
     
     private static Hashtable<Integer, Celda> celdas = new Hashtable<>();
+    private static ArrayList<Integer> celdasMASCULINAS = new ArrayList<>();
+    private static ArrayList<Integer> celdasFEMENINAS = new ArrayList<>();
     
     /*
      * Cada vez que se crea un objeto Celda, se agrega a una lista general de Celdas creadas.
@@ -51,6 +54,13 @@ public class Celda implements Serializable, infoTraslado{
     	this.capMax=capMax;
     	
     	celdas.put(numero, this);
+    	
+    	switch (genero) {
+        case MASCULINO: 
+            celdasMASCULINAS.add(numero);
+        case FEMENINO:
+            celdasFEMENINAS.add(numero);
+    	}    
     }
     
     /*
