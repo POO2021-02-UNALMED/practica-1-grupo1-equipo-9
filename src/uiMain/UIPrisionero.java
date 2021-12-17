@@ -91,7 +91,7 @@ public class UIPrisionero extends UI{
         	}
         }
         
-        Prisionero prisionero1 = new Prisionero(identificacion,nombre,saldo,gene,celda,delitos);
+        new Prisionero(identificacion,nombre,saldo,gene,celda,delitos);
         System.out.println("Prisionero ingresado correctamente");
 	}
 	
