@@ -44,8 +44,8 @@ public class Prisionero extends Apostador implements infoTraslado{
     private Hashtable<Integer, Antidelito> antidelitos = new Hashtable<>();
     
     private static Hashtable<Integer, Prisionero> prisioneros = new Hashtable<>();
-    static ArrayList<String> prisionerosMASCULINOS = new ArrayList<>();
-    static ArrayList<String> prisionerosFEMENINOS = new ArrayList<>();
+    public static ArrayList<String> prisionerosMASCULINOS = new ArrayList<>();
+    public static ArrayList<String> prisionerosFEMENINOS = new ArrayList<>();
    
     /*
      * Constructor usado si un Prisionero no posee saldo al momento de ser ingresado.
