@@ -3,6 +3,7 @@ package uiMain;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Scanner;
 
@@ -159,15 +160,31 @@ public class UIPrisionero extends UI{
 		}
 	}
 	
+	public void listarPrisionero() {
+		System.out.println("**Listado Prisioneros**");
+
+		Enumeration<Integer> e = Prisionero.getPrisioneros().keys();
+
+        while (e.hasMoreElements()) {
+            int key = e.nextElement();
+            
+            Prisionero prisionero = Prisionero.getPrisioneros().get(key);
+            
+            System.out.println(prisionero.toString());
+        }
+        System.out.println("");
+	}
+	
 	@Override
 	public Hashtable<Integer, String> getMenu() {
 		Hashtable<Integer, String> lista_menu = new Hashtable<>();
 		lista_menu.put(1, "Ingresar prisionero");
 		lista_menu.put(2, "Borrar prisionero");
-		lista_menu.put(3, "Agregar delito");
-		lista_menu.put(4, "Agregar antidelito");
+		lista_menu.put(3, "Listar prisioneros");
+		lista_menu.put(4, "Agregar delito");
+		lista_menu.put(5, "Agregar antidelito");
 	
-		lista_menu.put(5, "Salir");
+		lista_menu.put(6, "Salir");
 		return lista_menu;
 	}
 
@@ -176,8 +193,9 @@ public class UIPrisionero extends UI{
 		switch(op) {
     		case 1: ingresarPrisionero(); break;
 			case 2: borrarPrisionero(); break;
-			case 3: agregarDelito(); break;
-			case 4: agregarAntidelito(); break;
+			case 3: listarPrisionero(); break;
+			case 4: agregarDelito(); break;
+			case 5: agregarAntidelito(); break;
 		}
 	}
 
