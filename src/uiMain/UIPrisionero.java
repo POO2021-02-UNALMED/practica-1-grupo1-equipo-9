@@ -164,11 +164,10 @@ public class UIPrisionero extends UI{
 		Hashtable<Integer, String> lista_menu = new Hashtable<>();
 		lista_menu.put(1, "Ingresar prisionero");
 		lista_menu.put(2, "Borrar prisionero");
-		lista_menu.put(3, "Editar prisionero");
-		lista_menu.put(4, "Listar prisionero");
-		lista_menu.put(5, "Imprimir algo");
+		lista_menu.put(3, "Agregar delito");
+		lista_menu.put(4, "Agregar antidelito");
 	
-		lista_menu.put(6, "Salir");
+		lista_menu.put(5, "Salir");
 		return lista_menu;
 	}
 
