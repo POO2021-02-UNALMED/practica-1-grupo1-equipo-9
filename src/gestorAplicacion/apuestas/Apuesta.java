@@ -60,10 +60,10 @@ public class Apuesta implements Serializable{
      * - Si la pelea no tuvo apostadores.
      */
 	public String resultadoApuesta() {
-		if (pelea.getGanador() == null) {return "La pelea aun no tiene ganador";}
+		if (pelea.getGanador() == null) {return "La pelea con codigo " + getCodigo() + " aun no tiene ganador";}
 		if (getApostadores().isEmpty()) {return "La pelea con codigo " + getCodigo() + "no tuvo apuestas";}
 		
-		String resultadoMonto1 = "El monto total recogido en la apuesta fue: " + montoTotal + "\n" ;
+		String resultadoMonto1 = "Pelea: " + getCodigo() + "\nEl monto total recogido en la apuesta fue: " + montoTotal + "\n" ;
 		String resultadoMonto2 = "El dinero total apostado por los ganadores de esta apuesta fue: " + montoTotalGanadores + "\n\n" ;
 		
 		String resulta3 = "Las estadisticas de esta apuesta son las siguientes: \n";
