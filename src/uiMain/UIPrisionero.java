@@ -21,7 +21,7 @@ public class UIPrisionero extends UI{
 	static BufferedReader bufrObj = new BufferedReader(inputStrObj);
 	
 	public void ingresarPrisionero() throws IOException{
-		System.out.println("Ingrese el código de identificación del prisionero: ");
+		System.out.println("Ingrese el codigo de identificacion del prisionero: ");
 		int identificacion = input.nextInt();
 		if (Prisionero.getPrisioneros().containsKey(identificacion) || Guardian.getGuardianes().containsKey(identificacion)) {
 			System.out.println("Esta identificacion ya se encuentra registrada");
@@ -34,7 +34,7 @@ public class UIPrisionero extends UI{
 		System.out.print("Ingrese el saldo del prisionero: ");
 		int saldo = input.nextInt();
 		
-		System.out.println("Ingrese el género del prisionero:\n"
+		System.out.println("Ingrese el genero del prisionero:\n"
                 + "1. MASCULINO \n"
                 + "2. FEMENINA");
         int gen = input.nextInt();
@@ -42,21 +42,21 @@ public class UIPrisionero extends UI{
         if (gen == 1) { gene = genero.MASCULINO; }
         else { gene = genero.FEMENINO; }
         
-        System.out.println("Ingrese el número de celda del prisionero.\n"
-        		+ "Las celdas disponibles se mostraran a continuación:");
+        System.out.println("Ingrese el numero de celda del prisionero.\n"
+        		+ "Las celdas disponibles se mostraran a continuacion:");
         Hashtable<Integer, Celda> celdas = Celda.getCeldas(); 
         if (gen == 1) {
         	ArrayList<Integer> celdashombres = Celda.getCeldasMASCULINAS();
         	for (int k: celdashombres) {
         		if (celdas.get(k).getCapMax() > celdas.get(k).getPrisioneros().size()) {
-        			System.out.println("Número: " + celdas.get(k).getNumero());
+        			System.out.println("Numero: " + celdas.get(k).getNumero());
         		}
         	}
         }else {
         	ArrayList<Integer> celdasmujeres = Celda.getCeldasFEMENINAS();
         	for (int k: celdasmujeres) {
         		if (celdas.get(k).getCapMax() > celdas.get(k).getPrisioneros().size()) {
-        			System.out.println("Número: " + celdas.get(k).getNumero());
+        			System.out.println("Numero: " + celdas.get(k).getNumero());
         		}
         	}
         }
@@ -71,9 +71,9 @@ public class UIPrisionero extends UI{
         
         System.out.println("Ingrese los codigos de los delitos del prisionero dando enter entre cada uno.\n"
         		+ "Ingrese -1 para terminar su entrada."
-        		+ "Los delitos se encuentran listados a continuación:");
+        		+ "Los delitos se encuentran listados a continuacion:");
         for (Integer k: Delito.getDelitos().keySet()) {
-        	System.out.println("Código: " + Delito.getDelitos().get(k).getCodigo()
+        	System.out.println("Codigo: " + Delito.getDelitos().get(k).getCodigo()
         			+ " Nombre: " + Delito.getDelitos().get(k).getNombre());
         }
         int delito;
@@ -96,7 +96,7 @@ public class UIPrisionero extends UI{
 	}
 	
 	public void borrarPrisionero() throws IOException {
-		System.out.print("Ingrese la identificación del prisionero que desea eliminar: ");
+		System.out.print("Ingrese la identificacion del prisionero que desea eliminar: ");
 		int identificacion = input.nextInt();
 		if (Prisionero.getPrisioneros().containsKey(identificacion)) {
 			Prisionero.getPrisioneros().get(identificacion).getCelda().extraerPrisionero(Prisionero.getPrisioneros().get(identificacion));
@@ -114,10 +114,10 @@ public class UIPrisionero extends UI{
 		int identificacion = input.nextInt();
 		Prisionero prisionero = Prisionero.getPrisioneros().get(identificacion);
 		if(prisionero != null) {
-			System.out.println("Ingrese el código del delito que desea agregar.\n"
-					+ "Los delitos se listan a continuación:");
+			System.out.println("Ingrese el codigo del delito que desea agregar.\n"
+					+ "Los delitos se listan a continuacion:");
 			for(Integer k: Delito.getDelitos().keySet()) {
-				System.out.println("Código: " + Delito.getDelitos().get(k).getCodigo()
+				System.out.println("Codigo: " + Delito.getDelitos().get(k).getCodigo()
 						+ " Nombre: " + Delito.getDelitos().get(k).getNombre());
 			}
 			int codigo = input.nextInt();
@@ -139,10 +139,10 @@ public class UIPrisionero extends UI{
 		int identificacion = input.nextInt();
 		Prisionero prisionero = Prisionero.getPrisioneros().get(identificacion);
 		if(prisionero != null) {
-			System.out.println("Ingrese el código del antidelito que desea agregar.\n"
-					+ "Los antidelitos se listan a continuación:");
+			System.out.println("Ingrese el codigo del antidelito que desea agregar.\n"
+					+ "Los antidelitos se listan a continuacion:");
 			for(Integer k: Antidelito.getAntidelitos().keySet()) {
-				System.out.println("Código: " + Antidelito.getAntidelitos().get(k).getCodigo()
+				System.out.println("Codigo: " + Antidelito.getAntidelitos().get(k).getCodigo()
 						+ " Nombre: " + Antidelito.getAntidelitos().get(k).getNombre());
 			}
 			int codigo = input.nextInt();

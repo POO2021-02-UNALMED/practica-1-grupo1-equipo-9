@@ -21,12 +21,12 @@ public class UIAntidelito extends UI{
 		// Verificacion de codigo de delito existente
 		Antidelito antidelito = Antidelito.getAntidelitos().get(codigo);
 		if (antidelito!=null) {
-			System.out.println("El antidelito ya exíste!\n");
+			System.out.println("El antidelito ya existe!\n");
 		} else {
 			System.out.print("Ingrese Nombre: ");
 			String nombre = bufrObj.readLine();
 			
-			System.out.print("Ingrese Descripción: ");
+			System.out.print("Ingrese Descripcion: ");
 			String descripcion = bufrObj.readLine();
 			
 			System.out.print("Ingrese tiempo condena: ");
@@ -43,7 +43,7 @@ public class UIAntidelito extends UI{
 		
 		Antidelito antidelito = Antidelito.getAntidelitos().remove(codigo);
 		if (antidelito==null) {
-			System.out.println("El antidelito no exíste!\n");
+			System.out.println("El antidelito no existe!\n");
 		} else {
 			System.out.println("El antidelito fue borrado exitosamente!\n");
 		}		
