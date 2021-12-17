@@ -44,8 +44,8 @@ public class Prisionero extends Apostador implements infoTraslado{
     private Hashtable<Integer, Antidelito> antidelitos = new Hashtable<>();
     
     private static Hashtable<Integer, Prisionero> prisioneros = new Hashtable<>();
-    public static ArrayList<String> prisionerosMASCULINOS = new ArrayList<>();
-    public static ArrayList<String> prisionerosFEMENINOS = new ArrayList<>();
+    public static ArrayList<Integer> prisionerosMASCULINOS = new ArrayList<>();
+    public static ArrayList<Integer> prisionerosFEMENINOS = new ArrayList<>();
    
     /*
      * Constructor usado si un Prisionero no posee saldo al momento de ser ingresado.
@@ -69,9 +69,11 @@ public class Prisionero extends Apostador implements infoTraslado{
 		
 		switch (genero) {
 		case MASCULINO: 
-			prisionerosMASCULINOS.add("ID: " + identificacion + ", Nombre: "+ nombre);
+			prisionerosMASCULINOS.add(identificacion);
+			break;
 		case FEMENINO:
-			prisionerosFEMENINOS.add("ID: " + identificacion + ", Nombre: "+ nombre);
+			prisionerosFEMENINOS.add(identificacion);
+			break;
 		}
 		
 		//Se suma el total de meses que el prisionero va a estar en la carcel y se agregan al inicio de su condena
