@@ -89,7 +89,7 @@ public class Pelea implements Serializable{
 	 * y quien es el Prisionero ganador.
      */
     public static
-    Object battleRoyale(ArrayList<Celda> celdas){
+    Object[] battleRoyale(ArrayList<Celda> celdas){
 		
     	int l1;
     	int l2;
@@ -99,7 +99,15 @@ public class Pelea implements Serializable{
     	
     	for(Celda c:celdas) {
     		c.getPrisioneros().forEach((k,v)-> luchadores.add(k));
-      	}	
+      	}
+    	
+    	if (luchadores.size() < 3 ) {
+    		combates.add("No hay suficientes luchadores");
+    		Object[] resultado = {combates};
+    		return resultado;
+    	}
+    	
+    	
     	do{
     		int rN1 = r.nextInt(luchadores.size());
     		l1=luchadores.get(rN1);
@@ -123,7 +131,7 @@ public class Pelea implements Serializable{
     	
     	Prisionero ganador = Prisionero.getPrisioneros().get(luchadores.get(0));
     	combates.add("El prisionero "+ luchadores.get(0) + " es el ganador y recibio 1000 dolares");
-        Object[] resultado = {ganador, combates};
+        Object[] resultado = {combates ,ganador};
         Prisionero.getPrisioneros().get(luchadores.get(0)).aumentarSaldo(1000);
        
         return resultado;

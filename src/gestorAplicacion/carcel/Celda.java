@@ -58,8 +58,10 @@ public class Celda implements Serializable, infoTraslado{
     	switch (genero) {
         case MASCULINO: 
             celdasMASCULINAS.add(numero);
+            break;
         case FEMENINO:
             celdasFEMENINAS.add(numero);
+            break;
     	}    
     }
     
