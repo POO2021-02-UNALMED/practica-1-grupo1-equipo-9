@@ -26,6 +26,7 @@
  */
 
 package gestorAplicacion.carcel;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.time.LocalDate;
 
@@ -43,6 +44,8 @@ public class Prisionero extends Apostador implements infoTraslado{
     private Hashtable<Integer, Antidelito> antidelitos = new Hashtable<>();
     
     private static Hashtable<Integer, Prisionero> prisioneros = new Hashtable<>();
+    static ArrayList<String> prisionerosMASCULINOS = new ArrayList<>();
+    static ArrayList<String> prisionerosFEMENINOS = new ArrayList<>();
    
     /*
      * Constructor usado si un Prisionero no posee saldo al momento de ser ingresado.
@@ -63,6 +66,13 @@ public class Prisionero extends Apostador implements infoTraslado{
 		this.inicioCondena = LocalDate.now();
 		this.celda = celda; celda.ingresarPrisionero(this);
 		this.delitos = delitos;
+		
+		switch (genero) {
+		case MASCULINO: 
+			prisionerosMASCULINOS.add("ID: " + identificacion + ", Nombre: "+ nombre);
+		case FEMENINO:
+			prisionerosFEMENINOS.add("ID: " + identificacion + ", Nombre: "+ nombre);
+		}
 		
 		//Se suma el total de meses que el prisionero va a estar en la carcel y se agregan al inicio de su condena
 		int meses=0;
@@ -168,5 +178,4 @@ public class Prisionero extends Apostador implements infoTraslado{
 	public String infoTraslados() {
 		return "prisionero con identificacion " + getIdentificacion();
 	}
-    
 }
