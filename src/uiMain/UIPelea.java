@@ -1,5 +1,6 @@
 package uiMain;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Scanner;
 
@@ -58,42 +59,76 @@ public class UIPelea extends UI{
 			return;
 		}
 		
-		System.out.println("\nEstos son los peleadores disponibles con este género:");
-		
+		ArrayList<Integer> idprisioneros = null;
 		switch (gene) {
 		case FEMENINO: 
-			for (String prisionerosFEMENINOS : Prisionero.prisionerosFEMENINOS) {
-				System.out.println(prisionerosFEMENINOS);
-			}
+			idprisioneros = Prisionero.prisionerosFEMENINOS;
+			break;
 		case MASCULINO:
-			for (String prisionerosMASCULINO : Prisionero.prisionerosMASCULINOS) {
-				System.out.println(prisionerosMASCULINO);
-			}
+			idprisioneros = Prisionero.prisionerosMASCULINOS;
+			break;
+		}
+		
+		System.out.println("\nEstos son los peleadores disponibles con este género:");
+		for (Integer id : idprisioneros) {
+			System.out.println("ID: " + id + ". Nombre : " + Prisionero.getPrisioneros().get(id).getNombre());
 		}
 		
 		int luch1;
 		do {
 			System.out.print("Ingrese el ID del luchador 1: ");
 			luch1 = input.nextInt();
-		} while (!Prisionero.getPrisioneros().containsKey(luch1));
+		} while (!idprisioneros.contains(luch1));
 		
 		int luch2;
 		do {
 			System.out.print("Ingrese el ID del luchador 2: ");
 			luch2 = input.nextInt();
-		} while (!Prisionero.getPrisioneros().containsKey(luch2) || luch1 == luch2);
+		} while (!idprisioneros.contains(luch2) || luch1 == luch2);
 		
 		System.out.print("ingrese el arma del luchador 1: ");
+		input.nextLine();
 		String arma1 = input.nextLine();
 		System.out.print("ingrese el arma del luchador 2: ");
 		String arma2 = input.nextLine();
 		
-		new Pelea(codigo, gene, Prisionero.getPrisioneros().get(luch1), Prisionero.getPrisioneros().get(luch2), arma1, arma2);
-		System.out.println("\nSe registró la nueva pelea exitosamente\n");
+		
+		System.out.println("\nSe registró la siguiente pelea exitosamente\n");
+		System.out.println(new Pelea(codigo, gene, Prisionero.getPrisioneros().get(luch1), Prisionero.getPrisioneros().get(luch2), arma1, arma2));
 	}
 	
 	public void
 	definirPelea() {
+		Hashtable<Integer, Pelea> peleas = Pelea.getPeleas();
+		
+		System.out.println("\nLas siguientes peleas aún no tienen ganador: \n");
+		
+		for (Integer k : peleas.keySet()) {
+			if (peleas.get(k).getGanador() == null) {
+				System.out.println(peleas.get(k));
+			}
+		}
+		
+		int cod;
+		do {
+			System.out.print("\nIngrese el código de la pelea: ");
+			cod = input.nextInt();
+		} while (!peleas.containsKey(cod) || peleas.get(cod).getGanador() != null);
+		
+		System.out.println("\nEscoja al ganador de esta pelea: \n"
+				+ "1. " + peleas.get(cod).getLuchadores()[0].infoApostador() + "\n"
+				+ "2. " + peleas.get(cod).getLuchadores()[1].infoApostador());
+		int ganador = input.nextInt();
+		
+		if(ganador == 1) {
+			peleas.get(cod).setGanador(peleas.get(cod).getLuchadores()[0]);
+			System.out.println("\nSe registró al ganador con éxito\n");
+		} else if (ganador == 2) {
+			peleas.get(cod).setGanador(peleas.get(cod).getLuchadores()[1]);
+			System.out.println("\nSe registró al ganador con éxito\n");
+		} else {
+			System.out.println("Número inválido");
+		}
 		
 	}
 	
