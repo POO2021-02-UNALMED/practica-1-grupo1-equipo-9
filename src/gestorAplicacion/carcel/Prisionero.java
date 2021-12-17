@@ -31,7 +31,7 @@ import java.time.LocalDate;
 
 import gestorAplicacion.apuestas.Apostador;
 
-public class Prisionero extends Apostador{
+public class Prisionero extends Apostador implements infoTraslado{
  
 	private static final long serialVersionUID = 1L;
 	
@@ -162,6 +162,11 @@ public class Prisionero extends Apostador{
 	@Override
 	public String infoApostador() {
 		return "Prisionero con ID: " + getIdentificacion();
+	}
+
+	@Override
+	public String infoTraslados() {
+		return "prisionero con identificacion " + getIdentificacion();
 	}
     
 }

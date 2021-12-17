@@ -25,7 +25,7 @@ import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class Celda implements Serializable{
+public class Celda implements Serializable, infoTraslado{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -100,6 +100,11 @@ public class Celda implements Serializable{
 				+ "Medidas: " + this.getLargo() + "x" + this.getAncho() + "\n"
 				+ "Capacidad maxima: " + this.getCapMax() + "\n"
 				+ "Prisioneros: " + claves + "\n" + "\n";
+	}
+
+	@Override
+	public String infoTraslados() {
+		return "celda con numero " + getNumero();
 	}
 
 	

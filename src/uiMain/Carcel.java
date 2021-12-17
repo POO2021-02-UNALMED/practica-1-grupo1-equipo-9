@@ -169,6 +169,20 @@ public class Carcel {
 		pelea0.setGanador(prisionero0);
 		System.out.println(pelea0.getApuesta().resultadoApuesta());
 		
+		System.out.println("\n---------------------------------------------------------------\n");
+		
+		ArrayList<Object[]> temp1 =  guardian1.getTraslados();
+		Object[] trasnaldo0 = {celda0, prisionero0, celda0};
+		temp1.add(trasnaldo0);
+		Object[] trasnaldo1 = {celda1, prisionero1, celda1};
+		temp1.add(trasnaldo1);
+		Object[] trasnaldo2 = {celda2, prisionero2, celda2};
+		temp1.add(trasnaldo2);
+		Object[] trasnaldo3 = {celda3, prisionero3, celda3};
+		temp1.add(trasnaldo3);
+		
+		guardian1.listaTraslados().forEach(x -> System.out.println(x));
+		
 		Serializador.serializar();
 		Deserializador.deserializar();
 

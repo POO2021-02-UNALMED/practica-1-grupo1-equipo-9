@@ -77,6 +77,20 @@ public class Guardian extends Apostador{
 		this.agregarTraslado(traslado);
     }
     
+    public
+    ArrayList<String> listaTraslados(){
+    	ArrayList<String> trasladosString = new ArrayList<>();
+    	
+    	for (Object[] traslado : traslados) {
+    		String mensaje = "Se traslado al " + ((infoTraslado) traslado[1]).infoTraslados() +
+    				" desde " + ((infoTraslado) traslado[0]).infoTraslados() + 
+    				" a la " + ((infoTraslado) traslado[2]).infoTraslados();
+    		trasladosString.add(mensaje);
+    	}
+    	
+    	return trasladosString;
+    }
+    
     public ArrayList<Object[]> getTraslados() {return traslados;}
     
     /*
