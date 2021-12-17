@@ -193,7 +193,8 @@ public class Carcel {
 		menu_actual.put(3, "Gestionar Delitos");
 		menu_actual.put(4, "Gestionar Antidelitos");
 		menu_actual.put(5, "Gestionar Peleas");
-		menu_actual.put(6, "Salir");
+		menu_actual.put(6, "Gestionar Apuestas");
+		menu_actual.put(7, "Salir");
 		
 		Menu m = new Menu();
 		Menu menu = new Menu(menu_actual, m);

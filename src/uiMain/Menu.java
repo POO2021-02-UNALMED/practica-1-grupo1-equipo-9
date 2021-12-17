@@ -60,6 +60,8 @@ public class Menu {
 				((UIAntidelito)Menu.objecto_actual).ejecutarOpcion(op);
 			} else if (Menu.objecto_actual instanceof UIPelea) {
 				((UIPelea)Menu.objecto_actual).ejecutarOpcion(op);
+			} else if (Menu.objecto_actual instanceof UIApuesta) {
+				((UIApuesta)Menu.objecto_actual).ejecutarOpcion(op);
 			}
 			
 		} while(op < option_out);
@@ -125,6 +127,13 @@ public class Menu {
 		menu.leerOpcion();
 	}
 	
+	public void gestionarApuestas() throws IOException {
+		UIApuesta ap = new UIApuesta();
+		Hashtable<Integer, String> ht1 = ap.getMenu();
+		Menu menu = new Menu(ht1, ap);
+		menu.leerOpcion();
+	}
+	
 	
 	/*
 	 * Debe implementarse en todos las clases
@@ -136,6 +145,7 @@ public class Menu {
 			case 3: gestionarDelitos(); break;
 			case 4: gestionarAntidelitos(); break;
 			case 5: gestionarPeleas(); break;
+			case 6: gestionarApuestas(); break;
 		}
 	}
 	
