@@ -71,7 +71,7 @@ public class UIPrisionero extends UI{
         
         System.out.println("Ingrese los codigos de los delitos del prisionero dando enter entre cada uno.\n"
         		+ "Ingrese -1 para terminar su entrada."
-        		+ "Los delitos se encuentran listados a continuación:");
+        		+ "Los delitos se encuentran listados a continuacion:");
         for (Integer k: Delito.getDelitos().keySet()) {
         	System.out.println("Codigo: " + Delito.getDelitos().get(k).getCodigo()
         			+ " Nombre: " + Delito.getDelitos().get(k).getNombre());
