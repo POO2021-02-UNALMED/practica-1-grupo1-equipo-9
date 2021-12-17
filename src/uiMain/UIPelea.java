@@ -114,7 +114,7 @@ public class UIPelea extends UI {
 
 		int cod;
 		do {
-			System.out.print("\nIngrese el c�digo de la pelea: ");
+			System.out.print("\nIngrese el codigo de la pelea: ");
 			cod = input.nextInt();
 		} while (!peleas.containsKey(cod) || peleas.get(cod).getGanador() != null);
 
@@ -146,7 +146,7 @@ public class UIPelea extends UI {
 	}
 
 	public void battleRoyal() {
-		System.out.println("Seleccione el g�nero de este Battle Royal: \n" + "1. MASCULINA. \n" + "2. FEMENINA.");
+		System.out.println("Seleccione el genero de este Battle Royal: \n" + "1. MASCULINA. \n" + "2. FEMENINA.");
 		int gen = input.nextInt();
 		genero gene;
 		if (gen == 1) {
