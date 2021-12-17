@@ -38,7 +38,8 @@ public class UIGuardian extends UI {
 
 		// Verificacion de codigo de guardian existente
 		Guardian guardian = Guardian.getGuardianes().get(codigo);
-		if (guardian!=null) {
+		Prisionero prisionero = Prisionero.getPrisioneros().get(codigo);
+		if (guardian!=null || prisionero!=null) {
 			System.out.println("El guardían ya exíste!\n");
 		} else {
 			System.out.print("Ingrese Nombre: ");
@@ -78,9 +79,9 @@ public class UIGuardian extends UI {
 				} while(nueva_celda.equals("y"));
 				
 				
-				Guardian guardian1 = new Guardian(codigo, nombre, saldo, salario, celdas1);
+				new Guardian(codigo, nombre, saldo, salario, celdas1);
 			} else {
-				Guardian guardian1 = new Guardian(codigo, nombre, saldo, salario);
+				new Guardian(codigo, nombre, saldo, salario);
 			}
 		}
 		

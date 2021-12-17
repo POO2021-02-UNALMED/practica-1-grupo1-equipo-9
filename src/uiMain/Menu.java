@@ -2,15 +2,11 @@ package uiMain;
 import java.io.IOException;
 import java.util.*;
 
-import baseDatos.Serializador;
-import gestorAplicacion.apuestas.*;
-import gestorAplicacion.carcel.*;
-
 public class Menu {
 	static Scanner input = new Scanner(System.in);
 	static int option_out = 6;
 	
-	public static ArrayList<Hashtable> pila_menu = new ArrayList<>();
+	public static ArrayList<Hashtable<Integer, String>> pila_menu = new ArrayList<>();
 	public static Hashtable<Integer, String> menu_actual = new Hashtable<Integer, String>();
 	public static ArrayList<Object> pila_objecto_actual = new ArrayList<>();
 	public static Object objecto_actual;

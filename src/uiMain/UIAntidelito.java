@@ -32,7 +32,7 @@ public class UIAntidelito extends UI{
 			System.out.print("Ingrese tiempo condena: ");
 			long rebajaCondena = input.nextInt();
 			
-			Antidelito antidelito1 = new Antidelito(codigo, nombre, descripcion, rebajaCondena);			
+			new Antidelito(codigo, nombre, descripcion, rebajaCondena);			
 			
 		}
 	}

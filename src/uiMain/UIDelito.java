@@ -7,9 +7,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Scanner;
 
-import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Delito;
-import gestorAplicacion.carcel.Guardian;
 
 public class UIDelito extends UI {
 	static Scanner input = new Scanner(System.in);
@@ -37,7 +35,7 @@ public class UIDelito extends UI {
 			System.out.print("Ingrese tiempo condena: ");
 			long tiempoCondena = input.nextInt();
 			
-			Delito delito1 = new Delito(codigo, nombre, descripcion, nivel, tiempoCondena);			
+			new Delito(codigo, nombre, descripcion, nivel, tiempoCondena);			
 			
 		}
 	}

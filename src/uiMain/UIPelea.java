@@ -104,7 +104,7 @@ public class UIPelea extends UI {
 	public void definirPelea() {
 		Hashtable<Integer, Pelea> peleas = Pelea.getPeleas();
 
-		System.out.println("\nLas siguientes peleas aún no tienen ganador: \n");
+		System.out.println("\nLas siguientes peleas aï¿½n no tienen ganador: \n");
 
 		for (Integer k : peleas.keySet()) {
 			if (peleas.get(k).getGanador() == null) {
@@ -114,7 +114,7 @@ public class UIPelea extends UI {
 
 		int cod;
 		do {
-			System.out.print("\nIngrese el código de la pelea: ");
+			System.out.print("\nIngrese el cï¿½digo de la pelea: ");
 			cod = input.nextInt();
 		} while (!peleas.containsKey(cod) || peleas.get(cod).getGanador() != null);
 
@@ -146,7 +146,7 @@ public class UIPelea extends UI {
 	}
 
 	public void battleRoyal() {
-		System.out.println("Seleccione el género de este Battle Royal: \n" + "1. MASCULINA. \n" + "2. FEMENINA.");
+		System.out.println("Seleccione el gï¿½nero de este Battle Royal: \n" + "1. MASCULINA. \n" + "2. FEMENINA.");
 		int gen = input.nextInt();
 		genero gene;
 		if (gen == 1) {
@@ -165,7 +165,7 @@ public class UIPelea extends UI {
 			break;
 		}
 		
-		System.out.println("Las siguientes celdas están disponibles: ");
+		System.out.println("Las siguientes celdas estï¿½n disponibles: ");
 		for (Integer id : idceldas) {
 			System.out.println(id);
 		}
@@ -196,6 +196,7 @@ public class UIPelea extends UI {
 		}
 		
 		Object[] BY = Pelea.battleRoyale(celdasParticipantes2);
+		@SuppressWarnings("unchecked")
 		ArrayList<String> combates = (ArrayList<String>) BY[0];
 		
 		System.out.println("\n El Battle Royal transcurrio de la siguiente manera...");
