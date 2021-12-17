@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 import gestorAplicacion.apuestas.Apuesta;
@@ -98,6 +99,30 @@ public class Deserializador {
 			Prisionero.setPrisioneros(hashtable);
 			
 			in.close();
+			fileIn.close();
+			
+			
+			fileIn = new FileInputStream(rutaTemp + "\\prisionerosMASCULINOS.txt");
+			
+			ObjectInputStream in2 = new ObjectInputStream(fileIn);
+			
+			ArrayList<Integer> tabla2 = (ArrayList<Integer>) in2.readObject();
+			
+			Prisionero.prisionerosMASCULINOS = tabla2;
+			
+			in2.close();
+			fileIn.close();
+			
+			
+			fileIn = new FileInputStream(rutaTemp + "\\prisionerosFEMENINOS.txt");
+			
+			ObjectInputStream in3 = new ObjectInputStream(fileIn);
+			
+			ArrayList<Integer> tabla3 = (ArrayList<Integer>) in3.readObject();
+			
+			Prisionero.prisionerosFEMENINOS = tabla3;
+			
+			in3.close();
 			fileIn.close();
 			
 		} catch (FileNotFoundException e) {

@@ -82,6 +82,22 @@ public class Serializador {
 		out.writeObject(Prisionero.getPrisioneros());
 		out.close();
 		fileOut.close();
+		
+		fileOut = new FileOutputStream(rutaTemp + "\\prisionerosMASCULINOS.txt");
+		
+		ObjectOutputStream out2 = new ObjectOutputStream(fileOut);
+		
+		out2.writeObject(Prisionero.prisionerosMASCULINOS);
+		out2.close();
+		fileOut.close();
+		
+		fileOut = new FileOutputStream(rutaTemp + "\\prisionerosFEMENINOS.txt");
+		
+		ObjectOutputStream out3 = new ObjectOutputStream(fileOut);
+		
+		out3.writeObject(Prisionero.prisionerosFEMENINOS);
+		out3.close();
+		fileOut.close();
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
