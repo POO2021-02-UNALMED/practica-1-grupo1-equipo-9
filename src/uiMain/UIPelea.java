@@ -165,7 +165,7 @@ public class UIPelea extends UI {
 			break;
 		}
 		
-		System.out.println("Las siguientes celdas est�n disponibles: ");
+		System.out.println("Las siguientes celdas estan disponibles: ");
 		for (Integer id : idceldas) {
 			System.out.println(id);
 		}
