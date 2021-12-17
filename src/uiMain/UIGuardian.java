@@ -40,7 +40,7 @@ public class UIGuardian extends UI {
 		Guardian guardian = Guardian.getGuardianes().get(codigo);
 		Prisionero prisionero = Prisionero.getPrisioneros().get(codigo);
 		if (guardian!=null || prisionero!=null) {
-			System.out.println("El guardían ya exíste!\n");
+			System.out.println("El guardian ya existe!\n");
 		} else {
 			System.out.print("Ingrese Nombre: ");
 			String nombre = bufrObj.readLine();
@@ -93,9 +93,9 @@ public class UIGuardian extends UI {
 		
 		Guardian guardian = Guardian.getGuardianes().remove(codigo);
 		if (guardian==null) {
-			System.out.println("El guardían no exíste!\n");
+			System.out.println("El guardian no existe!\n");
 		} else {
-			System.out.println("El guardían fue borrado exitosamente!\n");
+			System.out.println("El guardian fue borrado exitosamente!\n");
 		}
 	}
 	
@@ -132,7 +132,7 @@ public class UIGuardian extends UI {
 			
 			
 		} else {
-			System.out.println("El guardían no exitosamente!\n");
+			System.out.println("El guardian no existe!\n");
 		}
 	}
 	
@@ -168,7 +168,7 @@ public class UIGuardian extends UI {
 				
 				if (celda!=null) {
 					guardian.trasladarPrisionero(prisionero, celda);
-					System.out.println("Prisionero transladado exitosamente");
+					System.out.println("Prisionero trasladado exitosamente");
 				} else {
 					System.out.println("Lo sentimos la celda no existe.");
 				}
@@ -179,7 +179,7 @@ public class UIGuardian extends UI {
 			
 			
 		} else {
-			System.out.println("El guardían no exitosamente!\n");
+			System.out.println("El guardian no existe!\n");
 		}
 		
 
@@ -196,7 +196,7 @@ public class UIGuardian extends UI {
 				System.out.println(s);
 			}
 		} else {
-			System.out.println("El guardían no exitosamente!\n");
+			System.out.println("El guardian no existe!\n");
 		}
 	}
 
@@ -207,8 +207,8 @@ public class UIGuardian extends UI {
 		lista_menu.put(2, "Borrar guardian");
 		lista_menu.put(3, "Editar guardian");
 		lista_menu.put(4, "Listar guardian");
-		lista_menu.put(5, "Transladar prisionero");
-		lista_menu.put(6, "Listar transladados");
+		lista_menu.put(5, "Trasladar prisionero");
+		lista_menu.put(6, "Listar trasladados");
 		lista_menu.put(7, "Salir");
 		return lista_menu;
 	}
