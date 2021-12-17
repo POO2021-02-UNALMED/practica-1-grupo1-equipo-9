@@ -33,7 +33,7 @@ public class UIApuesta extends UI{
 	public void 
 	ingresarApostador() {
 		
-		System.out.print("\nIngrese la identificaci�n del apostador: ");
+		System.out.print("\nIngrese la identificacion del apostador: ");
 		int id = input.nextInt();
 		Apostador ap;
 		if (Prisionero.getPrisioneros().containsKey(id)) {
@@ -46,7 +46,7 @@ public class UIApuesta extends UI{
 		}
 		
 		Hashtable<Integer, Pelea> peleas = Pelea.getPeleas();
-		System.out.println("\nEn las siguientes peleas a�n se puede apostar: \n");
+		System.out.println("\nEn las siguientes peleas aun se puede apostar: \n");
 
 		for (Integer k : peleas.keySet()) {
 			if (peleas.get(k).getGanador() == null) {
@@ -56,7 +56,7 @@ public class UIApuesta extends UI{
 		
 		int cod;
 		do {
-			System.out.print("\nIngrese el c�digo de la pelea: ");
+			System.out.print("\nIngrese el codigo de la pelea: ");
 			cod = input.nextInt();
 		} while (!peleas.containsKey(cod) || peleas.get(cod).getGanador() != null);
 		
@@ -81,7 +81,7 @@ public class UIApuesta extends UI{
 		
 		
 		pelea.getApuesta().agregarApostador(ap, prisionero, apuesta);
-		System.out.println("\nApostador registrado con �xito\n");
+		System.out.println("\nApostador registrado con exito\n");
 
 		
 	}
@@ -90,9 +90,8 @@ public class UIApuesta extends UI{
 	resultadosApuestas() {
 		System.out.println("\nLos siguientes son los resultados actuales de cada apuesta registrada en el sistema: \n");
 		
-		Hashtable<Integer, Apuesta> apuestas = Apuesta.getApuestas();
-		for (Integer k : apuestas.keySet()) {
-			System.out.println(apuestas.get(k).resultadoApuesta());
+		for (Integer k : Apuesta.getApuestas().keySet()) {
+			System.out.println(Pelea.getPeleas().get(k).getApuesta().resultadoApuesta());
 			System.out.println("\n---------------\n");
 		}
 		

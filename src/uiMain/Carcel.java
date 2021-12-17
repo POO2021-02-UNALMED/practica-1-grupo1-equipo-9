@@ -25,6 +25,8 @@ public class Carcel {
 	
     public static void main(String[] args) throws IOException {
     	
+		
+    	
 		Deserializador.deserializar();
 		
     	// Inicicializador de Menu principal
@@ -41,8 +43,8 @@ public class Carcel {
 		Menu menu = new Menu(menu_actual, m);
 		menu.leerOpcion();
 		
-		Serializador.serializar();
 
+		Serializador.serializar();
 
     }
 
