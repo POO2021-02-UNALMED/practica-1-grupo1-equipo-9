@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Scanner;
 
+import gestorAplicacion.carcel.Antidelito;
 import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Delito;
 import gestorAplicacion.carcel.Prisionero;
@@ -91,6 +92,71 @@ public class UIPrisionero extends UI{
         }
         
         Prisionero prisionero1 = new Prisionero(identificacion,nombre,saldo,gene,celda,delitos);
+        System.out.println("Prisionero ingresado correctamente");
+	}
+	
+	public void borrarPrisionero() throws IOException {
+		System.out.print("Ingrese la identificación del prisionero que desea eliminar: ");
+		int identificacion = input.nextInt();
+		if (Prisionero.getPrisioneros().containsKey(identificacion)) {
+			Prisionero.getPrisioneros().get(identificacion).getCelda().extraerPrisionero(Prisionero.getPrisioneros().get(identificacion));
+			Prisionero.getPrisioneros().remove(identificacion);
+			System.out.println("Prisionero eliminado correctamente");
+		}else {
+			System.out.println("El prisionero ingresado no se encuentra en la base de datos");
+			return;
+		}
+		
+	}
+	
+	public void agregarDelito() throws IOException{
+		System.out.println("Ingrese la identificacion del prisionero:");
+		int identificacion = input.nextInt();
+		Prisionero prisionero = Prisionero.getPrisioneros().get(identificacion);
+		if(prisionero != null) {
+			System.out.println("Ingrese el código del delito que desea agregar.\n"
+					+ "Los delitos se listan a continuación:");
+			for(Integer k: Delito.getDelitos().keySet()) {
+				System.out.println("Código: " + Delito.getDelitos().get(k).getCodigo()
+						+ "nombre: " + Delito.getDelitos().get(k).getNombre());
+			}
+			int codigo = input.nextInt();
+			Delito delito = Delito.getDelitos().get(codigo);
+			if(delito != null) {
+				prisionero.agregarDelito(delito);
+				System.out.println("Se ha ingresado correctamente el delito");
+			}else {
+				System.out.println("No se encuentra el delito ingresado");
+			}
+		}
+		else {
+			System.out.println("El prisionero ingresado no se encuentra en la base de datos");
+		}
+	}
+	
+	public void agregarAntidelito() throws IOException{
+		System.out.println("Ingrese la identificacion del prisionero:");
+		int identificacion = input.nextInt();
+		Prisionero prisionero = Prisionero.getPrisioneros().get(identificacion);
+		if(prisionero != null) {
+			System.out.println("Ingrese el código del antidelito que desea agregar.\n"
+					+ "Los antidelitos se listan a continuación:");
+			for(Integer k: Antidelito.getAntidelitos().keySet()) {
+				System.out.println("Código: " + Antidelito.getAntidelitos().get(k).getCodigo()
+						+ "nombre: " + Antidelito.getAntidelitos().get(k).getNombre());
+			}
+			int codigo = input.nextInt();
+			Antidelito antidelito = Antidelito.getAntidelitos().get(codigo);
+			if(antidelito != null) {
+				prisionero.agregarAntidelito(antidelito);
+				System.out.println("Se ha ingresado correctamente el antidelito");
+			}else {
+				System.out.println("No se encuentra el antidelito ingresado");
+			}
+		}
+		else {
+			System.out.println("El prisionero ingresado no se encuentra en la base de datos");
+		}
 	}
 	
 	@Override
@@ -110,10 +176,9 @@ public class UIPrisionero extends UI{
 	public void ejecutarOpcion(int op) throws IOException{
 		switch(op) {
     		case 1: ingresarPrisionero(); break;
-	//		case 2: borrarPrisionero(); break;
-	//		case 3: editarPrisionero(); break;
-	//		case 4: listarPrisionero(); break;
-	//		case 5: imprimirAlgo(); break;
+			case 2: borrarPrisionero(); break;
+			case 3: agregarDelito(); break;
+			case 4: agregarAntidelito(); break;
 		}
 	}
 
