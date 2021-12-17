@@ -111,9 +111,13 @@ public class Guardian extends Apostador{
 	@Override
 	public String toString() {
 		String claves = "";
-		Enumeration<Integer> keys = celdas.keys();
-		while (keys.hasMoreElements()) {
-			claves += keys.nextElement() + " ";
+		if(celdas!=null) {
+			Enumeration<Integer> keys = celdas.keys();
+			while (keys.hasMoreElements()) {
+				claves += keys.nextElement() + " ";
+			}			
+		} else {
+			claves = "";
 		}
 		
 		return "GUARDIAN: " + getIdentificacion() + "\n" 
