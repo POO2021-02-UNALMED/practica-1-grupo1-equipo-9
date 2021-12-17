@@ -1,4 +1,5 @@
 package uiMain;
+import java.io.IOException;
 import java.util.*;
 
 import baseDatos.Serializador;
@@ -40,7 +41,7 @@ public class Menu {
 		
 	}
 	
-	public void leerOpcion() {
+	public void leerOpcion() throws IOException {
 		int op;
 		
 		do {
@@ -49,7 +50,6 @@ public class Menu {
 			
 			if (Menu.objecto_actual instanceof Menu) {
 				((Menu)Menu.objecto_actual).ejecutarOpcion(op);
-				
 			} else if (Menu.objecto_actual instanceof UIGuardian) {
 				((UIGuardian)Menu.objecto_actual).ejecutarOpcion(op);
 			} else if (Menu.objecto_actual instanceof UIPrisionero) {
@@ -63,7 +63,7 @@ public class Menu {
 			}
 			
 		} while(op < option_out);
-		
+
 		setMenuAnterior();
 		
 	}
@@ -79,6 +79,7 @@ public class Menu {
 			System.out.println(item +". " + valor);
 			item += 1;
 		}
+		System.out.print(": ");
 		
 		// Es la ultima opción del menu
 		return item - 1;
@@ -87,7 +88,7 @@ public class Menu {
 	/*
 	 *  Opciones de menu
 	 */
-	public void gestionarGuardianes() {
+	public void gestionarGuardianes() throws IOException {
 		UIGuardian g = new UIGuardian();
 		Hashtable <Integer,String> ht1 = g.getMenu();
 		Menu menu = new Menu(ht1, g);
@@ -96,28 +97,28 @@ public class Menu {
 		
 	}
 		
-	public void gestionarPrisioneros() {
+	public void gestionarPrisioneros() throws IOException {
 		UIPrisionero p = new UIPrisionero();
 		Hashtable<Integer, String> ht1 = p.getMenu();
 		Menu menu = new Menu(ht1, p);
 		menu.leerOpcion();
 	}
 	
-	public void gestionarDelitos() {
+	public void gestionarDelitos() throws IOException {
 		UIDelito d = new UIDelito();
 		Hashtable<Integer, String> ht1 = d.getMenu();
 		Menu menu = new Menu(ht1, d);
 		menu.leerOpcion();
 	}
 	
-	public void gestionarAntidelitos() {
+	public void gestionarAntidelitos() throws IOException {
 		UIAntidelito d = new UIAntidelito();
 		Hashtable<Integer, String> ht1 = d.getMenu();
 		Menu menu = new Menu(ht1, d);
 		menu.leerOpcion();
 	}
 	
-	public void gestionarPeleas() {
+	public void gestionarPeleas() throws IOException {
 		UIPelea pl = new UIPelea();
 		Hashtable<Integer, String> ht1 = pl.getMenu();
 		Menu menu = new Menu(ht1, pl);
@@ -128,7 +129,7 @@ public class Menu {
 	/*
 	 * Debe implementarse en todos las clases
 	 */
-	public void ejecutarOpcion(int op) {
+	public void ejecutarOpcion(int op) throws IOException {
 		switch(op) {
 			case 1: gestionarGuardianes(); break;
 			case 2: gestionarPrisioneros(); break;

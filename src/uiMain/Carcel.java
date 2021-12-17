@@ -1,6 +1,7 @@
 
 package uiMain;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Hashtable;
 import java.util.Scanner;
@@ -22,7 +23,7 @@ public class Carcel {
 		return input.nextLong();
 	}
 	
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
     	
 		Hashtable<Integer, String> menu_actual = new Hashtable<>();
 		menu_actual.put(1, "Gestionar Guardianes");

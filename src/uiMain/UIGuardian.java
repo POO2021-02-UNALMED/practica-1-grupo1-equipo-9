@@ -1,5 +1,9 @@
 package uiMain;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Scanner;
 
@@ -8,15 +12,17 @@ import gestorAplicacion.carcel.Guardian;
 
 public class UIGuardian extends UI {
 	static Scanner input = new Scanner(System.in);
+	static InputStreamReader inputStrObj = new InputStreamReader(System.in);
+	static BufferedReader bufrObj = new BufferedReader(inputStrObj);
 	
-	public void ingresarGuardian() {
+	public void ingresarGuardian() throws IOException {
 		System.out.print("Ingrese codigo: ");
 		int codigo = input.nextInt();
 		// TODO: Verificar codigo existente
 		
+		
 		System.out.print("Ingrese Nombre: ");
-		String nombre = input.nextLine();
-		input.nextLine();
+		String nombre = bufrObj.readLine();
 		
 		System.out.print("Ingrese saldo: ");
 		int saldo = input.nextInt();
@@ -25,8 +31,8 @@ public class UIGuardian extends UI {
 		int salario = input.nextInt();
 		
 		System.out.print("Ingresar celda? [y/n]: ");
-		String nueva_celda = input.nextLine();
-		input.nextLine();
+		String nueva_celda = bufrObj.readLine();
+		
 		
 		if(nueva_celda.equals("y")) {
 			// TODO: Listar celdas
@@ -46,8 +52,19 @@ public class UIGuardian extends UI {
 	}
 	
 	public void listarGuardian() {
-		System.out.println("Listado guardianes");
-		System.out.println(Guardian.getGuardianes().toString());
+		System.out.println("**Listado guardianes**");
+
+		Enumeration<Integer> e = Guardian.getGuardianes().keys();
+
+        while (e.hasMoreElements()) {
+ 
+            // Getting the key of a particular entry
+            int key = e.nextElement();
+ 
+            // Print and display the Rank and Name
+            System.out.println("Identificacion  | Nombre ");
+            System.out.println(key + Guardian.getGuardianes().get(key).getNombre());
+        }
 	}
 	
 
@@ -66,7 +83,7 @@ public class UIGuardian extends UI {
 	}
 
 	@Override
-	public void ejecutarOpcion(int op) {
+	public void ejecutarOpcion(int op) throws IOException {
 		switch(op) {
 			case 1: ingresarGuardian(); break;
 	//		case 2: gestionarPrisioneros(); break;
