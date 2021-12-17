@@ -21,12 +21,12 @@ public class UIDelito extends UI {
 		// Verificacion de codigo de delito existente
 		Delito delito = Delito.getDelitos().get(codigo);
 		if (delito!=null) {
-			System.out.println("El delito ya exíste!\n");
+			System.out.println("El delito ya existe!\n");
 		} else {
 			System.out.print("Ingrese Nombre: ");
 			String nombre = bufrObj.readLine();
 			
-			System.out.print("Ingrese Descripción: ");
+			System.out.print("Ingrese Descripcion: ");
 			String descripcion = bufrObj.readLine();
 			
 			System.out.print("Ingrese Nivel: ");
@@ -46,7 +46,7 @@ public class UIDelito extends UI {
 		
 		Delito delito = Delito.getDelitos().remove(codigo);
 		if (delito==null) {
-			System.out.println("El delito no exíste!\n");
+			System.out.println("El delito no existe!\n");
 		} else {
 			System.out.println("El delito fue borrado exitosamente!\n");
 		}
@@ -91,7 +91,7 @@ public class UIDelito extends UI {
 			
 			
 		} else {
-			System.out.println("El delito no exitosamente!\n");
+			System.out.println("El delito no existe!\n");
 		}
 	}
 	
