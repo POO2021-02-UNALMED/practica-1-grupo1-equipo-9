@@ -25,7 +25,7 @@ public class Serializador {
 		serializarDelitos();
 		serializarCeldas();
 		/* 
-		 * Por la forma en que se diseño el programa, cada que se crea un objeto este se agrega
+		 * Por la forma en que se diseï¿½o el programa, cada que se crea un objeto este se agrega
 		 * a la Hashtable de esa clase, entonces no se serializa cada objeto individualmente 
 		 * sino que se guardan en una Hashtable todos los objetos que fueron creados y se serializa
 		 * esta Hashtable.
@@ -178,7 +178,23 @@ public class Serializador {
 		out.writeObject(Celda.getCeldas());
 		out.close();
 		fileOut.close();
-			
+		
+        fileOut = new FileOutputStream(rutaTemp + "\\celdasMASCULINAS.txt");
+		
+		ObjectOutputStream out2 = new ObjectOutputStream(fileOut);
+		
+		out2.writeObject(Celda.getCeldasMASCULINAS());
+		out2.close();
+		fileOut.close();
+		
+		fileOut = new FileOutputStream(rutaTemp + "\\celdasFEMENINAS.txt");
+		
+		ObjectOutputStream out3 = new ObjectOutputStream(fileOut);
+		
+		out3.writeObject(Celda.getCeldasFEMENINAS());
+		out3.close();
+		fileOut.close();
+		
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

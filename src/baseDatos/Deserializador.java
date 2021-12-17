@@ -28,7 +28,7 @@ public class Deserializador {
 		deserializarDelitos();
 		deserializarCeldas();
 		/* 
-		 * Por la forma en que se diseño el programa, cada que se crea un objeto este se agrega
+		 * Por la forma en que se diseï¿½o el programa, cada que se crea un objeto este se agrega
 		 * a la Hashtable de esa clase, entonces no se deserializa cada objeto individualmente 
 		 * sino que se guardan en una Hashtable todos los objetos que fueron creados, se deserializa
 		 * esta Hashtable y se le asigna a la Hashtable de la clase.
@@ -227,6 +227,29 @@ public class Deserializador {
 			Celda.setCeldas(hashtable);
 			
 			in.close();
+			fileIn.close();
+			
+			fileIn = new FileInputStream(rutaTemp + "\\celdasMASCULINAS.txt");
+			
+			ObjectInputStream in2 = new ObjectInputStream(fileIn);
+			
+			ArrayList<Integer> tabla2 = (ArrayList<Integer>) in2.readObject();
+			
+			Celda.setCeldasMASCULINAS(tabla2);
+			
+			in2.close();
+			fileIn.close();
+			
+			
+			fileIn = new FileInputStream(rutaTemp + "\\celdasFEMENINAS.txt");
+			
+			ObjectInputStream in3 = new ObjectInputStream(fileIn);
+			
+			ArrayList<Integer> tabla3 = (ArrayList<Integer>) in3.readObject();
+			
+			Celda.setCeldasFEMENINAS(tabla3);
+			
+			in3.close();
 			fileIn.close();
 			
 		} catch (FileNotFoundException e) {

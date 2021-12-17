@@ -102,6 +102,14 @@ public class Celda implements Serializable, infoTraslado{
 	public static ArrayList<Integer> getCeldasMASCULINAS() {return celdasMASCULINAS;}
 	public static ArrayList<Integer> getCeldasFEMENINAS() {return celdasFEMENINAS;}
 
+	public static void setCeldasMASCULINAS(ArrayList<Integer> celdasMASCULINAS) {
+		Celda.celdasMASCULINAS = celdasMASCULINAS;
+	}
+
+	public static void setCeldasFEMENINAS(ArrayList<Integer> celdasFEMENINAS) {
+		Celda.celdasFEMENINAS = celdasFEMENINAS;
+	}
+
 	@Override
 	public String toString() {
 		String claves = "";
