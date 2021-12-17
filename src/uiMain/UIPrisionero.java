@@ -11,6 +11,7 @@ import java.util.Scanner;
 import gestorAplicacion.carcel.Antidelito;
 import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Delito;
+import gestorAplicacion.carcel.Guardian;
 import gestorAplicacion.carcel.Prisionero;
 import gestorAplicacion.carcel.genero;
 
@@ -22,8 +23,8 @@ public class UIPrisionero extends UI{
 	public void ingresarPrisionero() throws IOException{
 		System.out.println("Ingrese el código de identificación del prisionero: ");
 		int identificacion = input.nextInt();
-		if (Prisionero.getPrisioneros().containsKey(identificacion)) {
-			System.out.println("Este prisionero ya se encuentra en la base de datos");
+		if (Prisionero.getPrisioneros().containsKey(identificacion) || Guardian.getGuardianes().containsKey(identificacion)) {
+			System.out.println("Esta identificacion ya se encuentra registrada");
 			return;
 		}
 		
@@ -142,7 +143,7 @@ public class UIPrisionero extends UI{
 					+ "Los antidelitos se listan a continuación:");
 			for(Integer k: Antidelito.getAntidelitos().keySet()) {
 				System.out.println("Código: " + Antidelito.getAntidelitos().get(k).getCodigo()
-						+ "nombre: " + Antidelito.getAntidelitos().get(k).getNombre());
+						+ " Nombre: " + Antidelito.getAntidelitos().get(k).getNombre());
 			}
 			int codigo = input.nextInt();
 			Antidelito antidelito = Antidelito.getAntidelitos().get(codigo);
