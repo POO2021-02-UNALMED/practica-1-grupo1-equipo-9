@@ -25,18 +25,7 @@ public class Carcel {
 	
     public static void main(String[] args) throws IOException {
     	
-		Hashtable<Integer, String> menu_actual = new Hashtable<>();
-		menu_actual.put(1, "Gestionar Guardianes");
-		menu_actual.put(2, "Gestionar Prisioneros");
-		menu_actual.put(3, "Gestionar Delitos");
-		menu_actual.put(4, "Gestionar Antidelitos");
-		menu_actual.put(5, "Gestionar Peleas");
-		menu_actual.put(6, "Salir");
-		
-		Menu m = new Menu();
-		Menu menu = new Menu(menu_actual, m);
-		menu.leerOpcion();
-    	
+
 //		crearDelitos
 		Delito delito1 = new Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10);
 		Delito delito2 = new Delito(2, "Pelea callejera", "Enfrentarse fisicamente con otra persona o animal en lugares publicos", 1, 12);
@@ -196,6 +185,19 @@ public class Carcel {
 		temp1.add(trasnaldo3);
 		
 		guardian1.listaTraslados().forEach(x -> System.out.println(x));
+		
+    	// Inicicializador de Menu principal
+		Hashtable<Integer, String> menu_actual = new Hashtable<>();
+		menu_actual.put(1, "Gestionar Guardianes");
+		menu_actual.put(2, "Gestionar Prisioneros");
+		menu_actual.put(3, "Gestionar Delitos");
+		menu_actual.put(4, "Gestionar Antidelitos");
+		menu_actual.put(5, "Gestionar Peleas");
+		menu_actual.put(6, "Salir");
+		
+		Menu m = new Menu();
+		Menu menu = new Menu(menu_actual, m);
+		menu.leerOpcion();
 		
 		Serializador.serializar();
 		Deserializador.deserializar();
