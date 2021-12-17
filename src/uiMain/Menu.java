@@ -31,10 +31,13 @@ public class Menu {
 	
 	private static void setMenuAnterior() {
 		pila_menu.remove(pila_menu.size()-1);
-		Menu.menu_actual = pila_menu.get(pila_menu.size()-1);
-		
 		pila_objecto_actual.remove(pila_objecto_actual.size()-1);
-		Menu.objecto_actual = pila_objecto_actual.get(pila_objecto_actual.size()-1);
+		
+		if(pila_menu.size() > 0) {
+			Menu.menu_actual = pila_menu.get(pila_menu.size()-1);			
+			Menu.objecto_actual = pila_objecto_actual.get(pila_objecto_actual.size()-1);
+		}
+		
 	}
 	
 	public void leerOpcion() {
