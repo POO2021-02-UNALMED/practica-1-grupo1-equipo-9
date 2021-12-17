@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 import gestorAplicacion.apuestas.Pelea;
+import gestorAplicacion.carcel.Celda;
 import gestorAplicacion.carcel.Prisionero;
 import gestorAplicacion.carcel.genero;
 
@@ -145,6 +146,63 @@ public class UIPelea extends UI {
 	}
 
 	public void battleRoyal() {
+		System.out.println("Seleccione el género de este Battle Royal: \n" + "1. MASCULINA. \n" + "2. FEMENINA.");
+		int gen = input.nextInt();
+		genero gene;
+		if (gen == 1) {
+			gene = genero.MASCULINO;
+		} else {
+			gene = genero.FEMENINO;
+		}
+		
+		ArrayList<Integer> idceldas = null;
+		switch (gene) {
+		case FEMENINO:
+			idceldas = Celda.getCeldasFEMENINAS();
+			break;
+		case MASCULINO:
+			idceldas = Celda.getCeldasMASCULINAS();
+			break;
+		}
+		
+		System.out.println("Las siguientes celdas están disponibles: ");
+		for (Integer id : idceldas) {
+			System.out.println(id);
+		}
+		
+		ArrayList<Integer> celdasParticipantes = new ArrayList<>();
+		
+		System.out.println("\nSeleccione las celdas que participaran en el Battle Royal. \n"
+				+ "Cuando termine de seleccionar todas celdas que desee, ingrese por pantalla -1: ");
+		int opc;
+		do {
+			opc = input.nextInt();
+			if (opc == -1) {break;}
+			if (idceldas.contains(opc)) {
+				if (!celdasParticipantes.contains(opc)) {
+					celdasParticipantes.add(opc);
+				}
+			}
+		} while (true);
+		
+		System.out.println("Las celdas participantes son:");
+		for (Integer integer : celdasParticipantes) {
+			System.out.print(integer + " ");
+		}
+		
+		ArrayList<Celda> celdasParticipantes2 = new ArrayList<>();
+		for (Integer integer : celdasParticipantes) {
+			celdasParticipantes2.add(Celda.getCeldas().get(integer));
+		}
+		
+		Object[] BY = Pelea.battleRoyale(celdasParticipantes2);
+		ArrayList<String> combates = (ArrayList<String>) BY[0];
+		
+		System.out.println("\n El Battle Royal transcurrio de la siguiente manera...");
+		for (String string : combates) {
+			System.out.println(string);
+		}
+		
 		
 	}
 
