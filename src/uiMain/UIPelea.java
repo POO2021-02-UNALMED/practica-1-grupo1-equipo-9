@@ -104,7 +104,7 @@ public class UIPelea extends UI {
 	public void definirPelea() {
 		Hashtable<Integer, Pelea> peleas = Pelea.getPeleas();
 
-		System.out.println("\nLas siguientes peleas a�n no tienen ganador: \n");
+		System.out.println("\nLas siguientes peleas aun no tienen ganador: \n");
 
 		for (Integer k : peleas.keySet()) {
 			if (peleas.get(k).getGanador() == null) {

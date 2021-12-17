@@ -18,7 +18,7 @@ public class UIApuesta extends UI{
 		Hashtable<Integer, String> lista_menu = new Hashtable<>();
 		lista_menu.put(1, "Ingresar apostador");
 		lista_menu.put(2, "Resultados de apuestas");
-		lista_menu.put(5, "Salir");
+		lista_menu.put(3, "Salir");
 		return lista_menu;
 	}
 
