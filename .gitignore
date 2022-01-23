@@ -5,3 +5,6 @@
 nbproject
 build.xml
 manifest.mf
+
+# python
+*.pyc
