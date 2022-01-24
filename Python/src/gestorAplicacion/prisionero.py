@@ -8,7 +8,6 @@ class Prisionero(Apostador):
     prisionerosMASCULINOS = []
     prisionerosFEMENINOS = []
 
-
     def __init__(self, identificacion, nombre, saldo, _genero, _celda, _delitos):
         Apostador.__init__(self, identificacion, nombre, saldo)
         self._genero = _genero
@@ -75,10 +74,11 @@ class Prisionero(Apostador):
     def getAntidelitos(self):
         return self._antidelitos 
 
-    def getPrisioneros(self):
-        return self._prisioneros
-    def setPrisioneros(self, _prisioneros):
-        self._prisioneros = _prisioneros
+    @classmethod
+    def getPrisioneros(cls):
+        return cls._prisioneros
+    def setPrisioneros(cls, _prisioneros):
+        cls._prisioneros = _prisioneros
 
     '''override
     def __str__(self):'''
