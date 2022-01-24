@@ -55,30 +55,28 @@ def btn_imagenes_sistema_event(e):
     
 
 
-
 # Window Making
 window = tk.Tk()
 window.geometry("850x400")
+window.option_add("*tearOff", False)
 window.title("Presentación")
 
 menu_principal = MenuPrincipal(window)
 # Menu Inicio
+menu_opciones = [
+    ("Descripción", menuOpciones.menu_descripcion_event),
+    ("Salir", window.quit),
+]
+menu_principal.add_menu_options("Inicio", menu_opciones)
+
+# Menu Dos para ejemplificar la creación de nuevos menus
 menu_opciones = [
     ("Opcion 1", menuOpciones.opcion1),
     ("Opcion 2", menuOpciones.opcion2),
     ("Opcion 3", menuOpciones.opcion3),
     ("Opcion 4", menuOpciones.opcion4),
 ]
-menu_principal.add_menu_options("Inicio", menu_opciones)
-
-# Menu Dos
-menu_opciones = [
-    ("Opcion 1 ayuda", menuOpciones.opcion1),
-    ("Opcion 2 ayuda", menuOpciones.opcion2),
-    ("Opcion 3 ayuda", menuOpciones.opcion3),
-    ("Opcion 4 ayuda", menuOpciones.opcion4),
-]
-menu_principal.add_menu_options("Ayuda", menu_opciones)
+menu_principal.add_menu_options("Menu Dos", menu_opciones)
 
 
 # Frame left

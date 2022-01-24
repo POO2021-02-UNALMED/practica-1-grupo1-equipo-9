@@ -1,5 +1,8 @@
 
 
+def menu_descripcion_event():
+    print("Descripción")
+
 def opcion1():
     print("Opcion 1")
 
