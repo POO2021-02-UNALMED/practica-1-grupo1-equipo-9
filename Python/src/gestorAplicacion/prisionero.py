@@ -38,12 +38,12 @@ class Prisionero(Apostador):
 
     def agregarAntidelito(self, antidelito):
         _antidelitos[antidelito.getCodigo()] = antidelito
-        disminuirCondena(antidelito.getTiempoCondena())
+        disminuirCondena(antidelito.getRebajaCondena())
 
-    def incrementarCondena(meses):
+    def incrementarCondena(self,meses):
         self._finCondena = self._finCondena + timedelta(months=meses)
 
-    def disminuirCondena(meses):  
+    def disminuirCondena(self,meses):  
         self._finCondena = self._finCondena - timedelta(months=meses)      
 
     '''#override
