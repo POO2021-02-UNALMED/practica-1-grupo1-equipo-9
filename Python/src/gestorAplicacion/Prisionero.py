@@ -1,5 +1,5 @@
 from apostador import Apostador
-from datetime import date
+from datetime import date, timedelta
 
 class Prisionero(Apostador):
     _delitos = {}
@@ -13,7 +13,7 @@ class Prisionero(Apostador):
         Apostador.__init__(self, identificacion, nombre, saldo)
         self._genero = _genero
         self._inicioCondena = date.today()
-        self._celda = _celda
+        self._celda = _celda # _celda.ingresarPrisionero(self)
         self._delitos = _delitos
 
         if self._genero=="MASCULINO":
@@ -21,6 +21,33 @@ class Prisionero(Apostador):
 
         elif self._genero=="FEMENINO":
             Prisionero.prisionerosFEMENINOS.append(self.identificacion) 
+        
+        '''meses=0
+        for(Integer k: delitos.keySet())
+            meses+=delitos.get(k).getTiempoCondena();   
+        this.finCondena = this.inicioCondena;
+        incrementarCondena(meses)
+
+        prisioneros.put(this.identificacion, this)
+'''
+        self._finCondena = self._inicioCondena
+        incrementarCondena(meses)
+
+        _prisioneros[self.identificacion] = self
+
+    def agregarDelito(self, delito):
+        _delitos[delito.getCodigo()] = delito
+        incrementarCondena(delito.getTiempoCondena())
+
+    def agregarAntidelito(self, antidelito):
+        _antidelitos[antidelito.getCodigo()] = antidelito
+        disminuirCondena(antidelito.getTiempoCondena())
+
+    def incrementarCondena(meses):
+        self._finCondena = self._finCondena + timedelta(months=meses)
+
+    def disminuirCondena(meses):  
+        self._finCondena = self._finCondena - timedelta(months=meses)      
 
     def getGenero(self):
         return self._genero
@@ -43,16 +70,12 @@ class Prisionero(Apostador):
         self._finCondena = _finCondena      
 
     def getDelitos(self):
-        return self._delitos
-    def setDelitos(self, _delitos):
-        self._delitos = _delitos    
+        return self._delitos    
 
     def getAntidelitos(self):
-        return self.antidelitos
-    def setAntiDelitos(self, antidelitos):
-        self.antidelitos = antidelitos  
+        return self._antidelitos 
 
     def getPrisioneros(self):
         return self._prisioneros
     def setPrisioneros(self, _prisioneros):
-        self._prisioneros = _prisioneros          
+        #self._prisioneros = _prisioneros          
