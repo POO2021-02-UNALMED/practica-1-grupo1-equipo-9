@@ -1,2 +1,0 @@
-class Apuesta:
-    pass

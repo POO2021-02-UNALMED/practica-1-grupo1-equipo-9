@@ -78,4 +78,4 @@ class Prisionero(Apostador):
     def getPrisioneros(self):
         return self._prisioneros
     def setPrisioneros(self, _prisioneros):
-        #self._prisioneros = _prisioneros          
+        self._prisioneros = _prisioneros          
