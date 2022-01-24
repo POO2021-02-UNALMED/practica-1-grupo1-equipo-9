@@ -1,2 +1,4 @@
 class Pelea:
-    pass
+    
+    def __init__(self) -> None:
+        self._ganador = None
