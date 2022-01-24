@@ -1,0 +1,2 @@
+class Antidelito:
+    pass
