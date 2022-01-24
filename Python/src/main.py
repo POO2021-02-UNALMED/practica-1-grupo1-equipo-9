@@ -12,6 +12,12 @@ info_desarrolladores = [
 ]
 info_desarrolladores_iter = 1
 
+imagenes_sistema = [
+    os.path.join(BASE_DIR, "src", "dev1.png"),
+    os.path.join(BASE_DIR, "src", "dev2.jpeg")
+]
+imagenes_sistema_iter = 1
+
 # Button events
 def btn_desarrolladores_event(e):
     global var_desarrolladores, lbl_presentacion, info_desarrolladores, info_desarrolladores_iter
@@ -31,6 +37,22 @@ def btn_desarrolladores_event(e):
     lbl_image.photo_ref = img_desarrolladores
 
     info_desarrolladores_iter += 1
+
+
+def btn_imagenes_sistema_event(e):
+    global lbl_sistema, imagenes_sistema, imagenes_sistema_iter
+
+    # Validación de iterador de lista de desarrollares
+    if imagenes_sistema_iter >= len(imagenes_sistema):
+        imagenes_sistema_iter = 0
+
+    image_open = Image.open(imagenes_sistema[imagenes_sistema_iter]).resize((320,320))
+    img_sistema = ImageTk.PhotoImage(image_open)
+    lbl_sistema.config(image=img_sistema)
+    lbl_sistema.photo_ref = img_sistema
+
+    imagenes_sistema_iter += 1
+    
 
 
 
@@ -70,6 +92,13 @@ lbl_bienvenida.pack(fill=tk.BOTH, expand=True)
 
 frm_p4 = tk.Frame(frm_p1, borderwidth=2, relief="solid")
 frm_p4.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
+image_open = Image.open(imagenes_sistema[0]).resize((320,320))
+img_sistema = ImageTk.PhotoImage(image_open)
+lbl_sistema = tk.Label(frm_p4, image=img_sistema)
+lbl_sistema.pack()
+lbl_sistema.bind("<Enter>", btn_imagenes_sistema_event)
+btn_sistema = tk.Button(frm_p4, text="Ingresar a sistema")
+btn_sistema.pack()
 
 
 
@@ -85,7 +114,7 @@ Cargo: {info_desarrolladores[0][1]}
 Experiencia: {info_desarrolladores[0][2]}""")
 lbl_presentacion = tk.Label(frm_p5, textvariable=var_desarrolladores)
 lbl_presentacion.pack()
-
+lbl_presentacion.bind("<ButtonPress-1>", btn_desarrolladores_event)
 
 frm_p6 = tk.Frame(frm_p2, borderwidth=2, relief="solid")
 frm_p6.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
@@ -94,8 +123,6 @@ img_desarrolladores = ImageTk.PhotoImage(image_open)
 lbl_image = tk.Label(frm_p6, image=img_desarrolladores)
 lbl_image.pack(fill=tk.BOTH, expand=True)
 
-# event to p5 label
-lbl_presentacion.bind("<ButtonPress-1>", btn_desarrolladores_event)
 
 # clicked = tk.StringVar() 
 # clicked.set("Monday")
