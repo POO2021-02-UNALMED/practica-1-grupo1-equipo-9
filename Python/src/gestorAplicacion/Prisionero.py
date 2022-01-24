@@ -1,19 +1,21 @@
 from apostador import Apostador;
 
 class Prisionero(Apostador):
+    prisionerosMASCULINOS = []
+    prisionerosFEMENINOS = []
+
+
     def __init__(self, identificacion, nombre, saldo, genero, celda, delitos):
-        self.identificacion = identificacion
-        self.nombre = nombre
-        self.saldo = saldo
+        Apostador.__init__(self, identificacion, nombre, saldo)
         self.genero = genero
         self.celda = celda
         self.delitos = delitos
 
         if self.genero=="MASCULINO":
-            prisionerosMASCULINOS.append(identificacion)
+            Prisionero.prisionerosMASCULINOS.append(self.identificacion)
 
         elif self.genero=="FEMENINO":
-            prisionerosFEMENINOS.append(identificacion) 
+            Prisionero.prisionerosFEMENINOS.append(self.identificacion) 
 
     def getGenero(self):
         return self.genero
@@ -40,10 +42,10 @@ class Prisionero(Apostador):
     def setDelitos(self, delitos):
         self.delitos = delitos    
 
-    def getAntiDelitos(self):
-        return self.antiDelitos
-    def setAntiDelitos(self, antiDelitos):
-        self.antiDelitos = antiDelitos  
+    def getAntidelitos(self):
+        return self.antidelitos
+    def setAntiDelitos(self, antidelitos):
+        self.antidelitos = antidelitos  
 
     def getPrisioneros(self):
         return self.prisioneros
