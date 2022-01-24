@@ -28,22 +28,22 @@ class Prisionero(Apostador):
             meses += _delitos[i].getTiempoCondena();
 
         self._finCondena = self._inicioCondena
-        incrementarCondena(meses)
+        self.incrementarCondena(meses)
 
-        _prisioneros[self.identificacion] = self
+        Prisionero._prisioneros[self.identificacion] = self
 
     def agregarDelito(self, delito):
-        _delitos[delito.getCodigo()] = delito
-        incrementarCondena(delito.getTiempoCondena())
+        Prisionero._delitos[delito.getCodigo()] = delito
+        self.incrementarCondena(delito.getTiempoCondena())
 
     def agregarAntidelito(self, antidelito):
-        _antidelitos[antidelito.getCodigo()] = antidelito
-        disminuirCondena(antidelito.getTiempoCondena())
+        Prisionero._antidelitos[antidelito.getCodigo()] = antidelito
+        self.disminuirCondena(antidelito.getRebajaCondena())
 
-    def incrementarCondena(meses):
+    def incrementarCondena(self,meses):
         self._finCondena = self._finCondena + timedelta(months=meses)
 
-    def disminuirCondena(meses):  
+    def disminuirCondena(self,meses):  
         self._finCondena = self._finCondena - timedelta(months=meses)      
 
     '''#override
