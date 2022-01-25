@@ -1,12 +1,14 @@
 from prisionero import Prisionero
-from apuesta import Apuesta
 from random import randint
 
 class Pelea:
+    import apuesta
+    
     _peleas = {}
 
     def __init__(self, codigo:int, genero, luchador1: Prisionero, luchador2: Prisionero,
                 armaLuchador1: str, armaLuchador2: str) -> None:
+        import apuesta
         self._ganador = None
         self._codigo = codigo
         self._genero = genero
@@ -15,7 +17,7 @@ class Pelea:
         self._armaLuchador1 = armaLuchador1
         self._armaLuchador2 = armaLuchador2
 
-        self._apuesta = Apuesta(codigo, self)
+        self._apuesta = apuesta.Apuesta(codigo, self)
 
         Pelea._peleas[codigo] = self
 
@@ -76,7 +78,7 @@ class Pelea:
     def setArmaLuchador2(self, armaLuchador2: str): self._armaLuchador2 = armaLuchador2
 	
     def getApuesta(self): return self._apuesta
-    def setApuesta(self, apuesta: Apuesta): self._apuesta = apuesta
+    def setApuesta(self, apuesta: apuesta.Apuesta): self._apuesta = apuesta
 	
     @classmethod
     def getPeleas(clc): return clc._peleas

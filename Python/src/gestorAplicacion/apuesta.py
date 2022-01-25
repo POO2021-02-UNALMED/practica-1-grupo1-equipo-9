@@ -1,11 +1,10 @@
-from pelea import Pelea
 from prisionero import Prisionero
 from apostador import Apostador
 
 class Apuesta:
     _apuestas = {}
 
-    def __init__(self, codigo: int, pelea: Pelea):
+    def __init__(self, codigo: int, pelea):
         self._codigo = codigo
         self._pelea = pelea
         self._apostadores = []
@@ -77,7 +76,7 @@ class Apuesta:
     def setCodigo(self, codigo: int): self._codigo = codigo
     
     def getPelea(self): return self._pelea
-    def setPelea(self, pelea: Pelea): self._pelea = pelea
+    def setPelea(self, pelea): self._pelea = pelea
 
     def getApostadores(self): return self._apostadores
     
