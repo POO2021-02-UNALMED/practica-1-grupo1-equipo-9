@@ -6,61 +6,62 @@ from gestorAplicacion.delito import Delito
 from gestorAplicacion.genero import genero
 from gestorAplicacion.pelea import Pelea
 from gestorAplicacion.prisionero import Prisionero
+from gestorAplicacion.guardian import Guardian
 
 
-Delito delito1 = new Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10);
-		Delito delito2 = new Delito(2, "Pelea callejera", "Enfrentarse fisicamente con otra persona o animal en lugares publicos", 1, 12);
-		Delito delito3 = new Delito(3, "3", "3", 6, 48);
-		Delito delito4 = new Delito(4, "4", "4", 8, 200);
-		Delito delito5 = new Delito(5, "5", "5", 9, 360);
-		Delito delito6 = new Delito(6, "6", "6", 3, 24);
-		Delito delito7 = new Delito(7, "Batalla", "Participar en la batalla del Departamento de Misterios como mortifago", 5, 360);
-		Delito delito8 = new Delito(8, "Batalla", "Participar en la batalla del Departamento de Misterios", 5, 50);
-		Delito delito9 = new Delito(9, "9", "9", 7, 500);
-		Delito delito10 = new Delito(10, "10", "10", 4, 10);
+delito1 = Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10)
+delito2 = Delito(2, "Pelea callejera", "Enfrentarse fisicamente con otra persona o animal en lugares publicos", 1, 12)
+delito3 = Delito(3, "3", "3", 6, 48)
+delito4 = Delito(4, "4", "4", 8, 200)
+delito5 = Delito(5, "5", "5", 9, 360)
+delito6 = Delito(6, "6", "6", 3, 24)
+delito7 = Delito(7, "Batalla", "Participar en la batalla del Departamento de Misterios como mortifago", 5, 360)
+delito8 = Delito(8, "Batalla", "Participar en la batalla del Departamento de Misterios", 5, 50)
+delito9 = Delito(9, "9", "9", 7, 500)
+delito10 = Delito(10, "10", "10", 4, 10)
 		
-		Hashtable<Integer, Delito> delitos1 = new Hashtable<>();
-		delitos1.put(delito1.getCodigo(), delito1);
-		delitos1.put(delito5.getCodigo(), delito5);
-		delitos1.put(delito9.getCodigo(), delito9);
+delitos1 = {}
+delitos1[delito1.getCodigo()] =  delito1
+delitos1[delito5.getCodigo()] = delito5
+delitos1[delito9.getCodigo()] = delito9
 		
-		Hashtable<Integer, Delito> delitos2 = new Hashtable<>();
-		delitos2.put(delito9.getCodigo(), delito9);
+delitos2 = {}
+delitos2[delito9.getCodigo()] = delito9
 		
-		Hashtable<Integer, Delito> delitos3 = new Hashtable<>();
-		delitos3.put(delito7.getCodigo(), delito7);
-		delitos3.put(delito3.getCodigo(), delito3);
+delitos3 = {}
+delitos3[delito7.getCodigo()] = delito7
+delitos3[delito3.getCodigo()] = delito3
+	
+delitos4 = {}
+delitos4[delito10.getCodigo()] = delito10
 		
-		Hashtable<Integer, Delito> delitos4 = new Hashtable<>();
-		delitos4.put(delito10.getCodigo(), delito10);
+delitos5 = {}
+delitos5[delito2.getCodigo()] = delito2
+delitos5[delito4.getCodigo()] = delito4
+delitos5[delito6.getCodigo()] = delito6
+delitos5[delito8.getCodigo()] = delito8
 		
-		Hashtable<Integer, Delito> delitos5 = new Hashtable<>();
-		delitos5.put(delito2.getCodigo(), delito2);
-		delitos5.put(delito4.getCodigo(), delito4);
-		delitos5.put(delito6.getCodigo(), delito6);
-		delitos5.put(delito8.getCodigo(), delito8);
+#		crearCeldas
+celda0 = Celda(0, genero.M, 1.5, 4, 2)
+celda1 = Celda(1, genero.M, 1.5, 4, 3)
+celda2 = Celda(2, genero.M, 1.5, 4, 4)
+celda3 = Celda(3, genero.M, 1.5, 4, 2)
+celda4 = Celda(4, genero.M, 1.5, 4, 3)
+celda5 = Celda(5, genero.F, 1.5, 4, 4)
+celda6 = Celda(6, genero.F, 1.5, 4, 5)
+celda7 = Celda(7, genero.F, 1.5, 4, 6)
+celda8 = Celda(8, genero.F, 1.5, 4, 2)
+celda9 = Celda(9, genero.F, 1.5, 4, 3)
 		
-//		crearCeldas
-		Celda celda0 = new Celda(0, genero.MASCULINO, 1.5, 4, 2);
-		Celda celda1 = new Celda(1, genero.MASCULINO, 1.5, 4, 3);
-		Celda celda2 = new Celda(2, genero.MASCULINO, 1.5, 4, 4);
-		Celda celda3 = new Celda(3, genero.MASCULINO, 1.5, 4, 2);
-		Celda celda4 = new Celda(4, genero.MASCULINO, 1.5, 4, 3);
-		Celda celda5 = new Celda(5, genero.FEMENINO, 1.5, 4, 4);
-		Celda celda6 = new Celda(6, genero.FEMENINO, 1.5, 4, 5);
-		Celda celda7 = new Celda(7, genero.FEMENINO, 1.5, 4, 6);
-		Celda celda8 = new Celda(8, genero.FEMENINO, 1.5, 4, 2);
-		Celda celda9 = new Celda(9, genero.FEMENINO, 1.5, 4, 3);
-		
-//		crearPrisioneros 
-		Hashtable<Integer, Delito>  delitos00 = new Hashtable<>(); delitos00.put(delito1.getCodigo(), delito1);
-		Hashtable<Integer, Delito>  delitos11 = new Hashtable<>(); delitos11.put(delito1.getCodigo(), delito1); delitos11.put(delito2.getCodigo(), delito2);
-		Hashtable<Integer, Delito>  delitos22 = new Hashtable<>(); delitos22.put(delito1.getCodigo(), delito1); delitos22.put(delito3.getCodigo(), delito3); delitos22.put(delito4.getCodigo(), delito4);
-		Hashtable<Integer, Delito>  delitos33 = new Hashtable<>(); delitos33.put(delito4.getCodigo(), delito4); delitos33.put(delito2.getCodigo(), delito2); delitos33.put(delito5.getCodigo(), delito5); delitos3.put(delito9.getCodigo(), delito9);
-		Hashtable<Integer, Delito>  delitos44 = new Hashtable<>(); delitos44.put(delito6.getCodigo(), delito6); delitos44.put(delito2.getCodigo(), delito2); delitos44.put(delito10.getCodigo(), delito10);
-		Hashtable<Integer, Delito>  delitos55 = new Hashtable<>(); delitos55.put(delito6.getCodigo(), delito6); delitos55.put(delito5.getCodigo(), delito5);
-		Hashtable<Integer, Delito>  delitos66 = new Hashtable<>(); delitos66.put(delito7.getCodigo(), delito7); delitos66.put(delito8.getCodigo(), delito8); delitos66.put(delito9.getCodigo(), delito9);
-		Hashtable<Integer, Delito>  delitos77 = new Hashtable<>(); delitos77.put(delito8.getCodigo(), delito8); delitos77.put(delito5.getCodigo(), delito5); delitos77.put(delito10.getCodigo(), delito10);
+#		crearPrisioneros 
+delitos00 = {}; delitos00[delito1.getCodigo()] = delito1
+delitos11 = {}; delitos11[delito1.getCodigo()] = delito1; delitos11[delito2.getCodigo()] = delito2
+delitos22 = {}; delitos22[delito1.getCodigo()] = delito1; delitos22[delito3.getCodigo()] = delito3; delitos22[delito4.getCodigo()] = delito4
+delitos33 = {}; delitos33[delito4.getCodigo()] = delito4; delitos33[delito2.getCodigo()] = delito2; delitos33[delito5.getCodigo()] = delito5; delitos3[delito9.getCodigo()] = delito9
+delitos44 = {}; delitos44[delito6.getCodigo()] = delito6; delitos44[delito2.getCodigo()] = delito2; delitos44[delito10.getCodigo()] = delito10
+delitos55 = {}; delitos55[delito6.getCodigo()] = delito6; delitos55[delito5.getCodigo()] = delito5
+delitos66 = {}; delitos66[delito7.getCodigo()] = delito7; delitos66[delito8.getCodigo()] = delito8; delitos66[delito9.getCodigo()] = delito9
+delitos77 = {}; delitos77[delito8.getCodigo()] = delito8; delitos77[delito5.getCodigo()] = delito5; delitos77[delito10.getCodigo()] = delito10
 		
 #################################################################################################3
 
@@ -124,7 +125,7 @@ antidelito5 = Antidelito(5, "nombre5", "descripcion5",6)
 antidelito6 = Antidelito(6, "nombre6", "descripcion6",7)
 		
 #		crearPeleas
-pelea0 = Pelea(0, genero.MASCULINO, prisionero0, prisionero1, "arma10", "arma20")
-pelea1 = Pelea(1, genero.MASCULINO, prisionero2, prisionero3, "arma11", "arma21")
-pelea2 = Pelea(2, genero.FEMENINO, prisionero4, prisionero5, "arma12", "arma22")
-pelea3 = Pelea(3, genero.FEMENINO, prisionero6, prisionero7, "arma13", "arma23")
+pelea0 = Pelea(0, genero.M, prisionero0, prisionero1, "arma10", "arma20")
+pelea1 = Pelea(1, genero.M, prisionero2, prisionero3, "arma11", "arma21")
+pelea2 = Pelea(2, genero.F, prisionero4, prisionero5, "arma12", "arma22")
+pelea3 = Pelea(3, genero.F, prisionero6, prisionero7, "arma13", "arma23")
