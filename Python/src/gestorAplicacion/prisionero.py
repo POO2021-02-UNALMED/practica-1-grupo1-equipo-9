@@ -43,7 +43,7 @@ class Prisionero(Apostador):
         self._finCondena = self._finCondena + timedelta(weeks=meses*4)
 
     def disminuirCondena(self,meses):  
-        self._finCondena = self._finCondena - 4*timedelta(weeks=meses*4)      
+        self._finCondena = self._finCondena - timedelta(weeks=meses*4)      
 
     '''#override
     def __str__(self):'''
