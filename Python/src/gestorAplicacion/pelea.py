@@ -7,7 +7,7 @@ class Pelea:
 
     def __init__(self, codigo:int, genero, luchador1: Prisionero, luchador2: Prisionero,
                 armaLuchador1: str, armaLuchador2: str) -> None:
-        import apuesta
+        from gestorAplicacion.apuesta import Apuesta
         self._ganador = None
         self._codigo = codigo
         self._genero = genero
@@ -16,7 +16,7 @@ class Pelea:
         self._armaLuchador1 = armaLuchador1
         self._armaLuchador2 = armaLuchador2
 
-        self._apuesta = apuesta.Apuesta(codigo, self)
+        self._apuesta = Apuesta(codigo, self)
 
         Pelea._peleas[codigo] = self
 
