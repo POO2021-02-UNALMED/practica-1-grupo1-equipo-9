@@ -125,7 +125,7 @@ antidelito5 = Antidelito(5, "nombre5", "descripcion5",6)
 antidelito6 = Antidelito(6, "nombre6", "descripcion6",7)
 		
 #		crearPeleas
-pelea0 = Pelea(0, genero.MASCULINO, prisionero0, prisionero1, "arma10", "arma20")
-pelea1 = Pelea(1, genero.MASCULINO, prisionero2, prisionero3, "arma11", "arma21")
-pelea2 = Pelea(2, genero.FEMENINO, prisionero4, prisionero5, "arma12", "arma22")
-pelea3 = Pelea(3, genero.FEMENINO, prisionero6, prisionero7, "arma13", "arma23")
+pelea0 = Pelea(0, genero.M, prisionero0, prisionero1, "arma10", "arma20")
+pelea1 = Pelea(1, genero.M, prisionero2, prisionero3, "arma11", "arma21")
+pelea2 = Pelea(2, genero.F, prisionero4, prisionero5, "arma12", "arma22")
+pelea3 = Pelea(3, genero.F, prisionero6, prisionero7, "arma13", "arma23")
