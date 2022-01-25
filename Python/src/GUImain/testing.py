@@ -64,68 +64,67 @@ Delito delito1 = new Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fr
 		
 #################################################################################################3
 
-
-		Prisionero prisionero0 = new Prisionero(0, "nombre0", 100, genero.MASCULINO, celda0, delitos00);
-		Prisionero prisionero1 = new Prisionero(1, "nombre1", 200, genero.MASCULINO, celda0, delitos11);
-		Prisionero prisionero2 = new Prisionero(2, "nombre2", 300, genero.MASCULINO, celda1, delitos22);
-		Prisionero prisionero3 = new Prisionero(3, "nombre3", 100, genero.MASCULINO, celda1, delitos33);
-		Prisionero prisionero4 = new Prisionero(4, "nombre4", 200, genero.FEMENINO, celda5, delitos44);
-		Prisionero prisionero5 = new Prisionero(5, "nombre5", 300, genero.FEMENINO, celda6, delitos55);
-		Prisionero prisionero6 = new Prisionero(6, "nombre6", 400, genero.FEMENINO, celda7, delitos66);
-		Prisionero prisionero7 = new Prisionero(7, "nombre7", 500, genero.FEMENINO, celda5, delitos77);
-		Prisionero prisionero8 = new Prisionero(8, "nombre8", 400, genero.MASCULINO, celda4, delitos00);
-		Prisionero prisionero9 = new Prisionero(9, "nombre9", 700, genero.MASCULINO, celda4, delitos55);
-		Prisionero prisionero10 = new Prisionero(10, "nombre10", 1000, genero.MASCULINO, celda3, delitos33);
-		Prisionero prisionero11 = new Prisionero(11, "nombre11", 1200, genero.FEMENINO, celda9, delitos77);
-		Prisionero prisionero12 = new Prisionero(12, "nombre12", 200, genero.FEMENINO, celda8, delitos66);
-		Prisionero prisionero13 = new Prisionero(13, "nombre13", 120, genero.MASCULINO, celda2, delitos66);
-		Prisionero prisionero14 = new Prisionero(14, "nombre14", 50, genero.FEMENINO, celda6, delitos77);
-		Prisionero prisionero15 = new Prisionero(15, "nombre15", 0, genero.FEMENINO, celda7, delitos44);
+prisionero0 = Prisionero(0, "nombre0", 100, genero.M, celda0, delitos00)
+prisionero1 = Prisionero(1, "nombre1", 200, genero.M, celda0, delitos11)
+prisionero2 = Prisionero(2, "nombre2", 300, genero.M, celda1, delitos22)
+prisionero3 = Prisionero(3, "nombre3", 100, genero.M, celda1, delitos33)
+prisionero4 = Prisionero(4, "nombre4", 200, genero.F, celda5, delitos44)
+prisionero5 = Prisionero(5, "nombre5", 300, genero.F, celda6, delitos55)
+prisionero6 = Prisionero(6, "nombre6", 400, genero.F, celda7, delitos66)
+prisionero7 = Prisionero(7, "nombre7", 500, genero.F, celda5, delitos77)
+prisionero8 = Prisionero(8, "nombre8", 400, genero.M, celda4, delitos00)
+prisionero9 = Prisionero(9, "nombre9", 700, genero.M, celda4, delitos55)
+prisionero10 = Prisionero(10, "nombre10", 1000, genero.M, celda3, delitos33)
+prisionero11 = Prisionero(11, "nombre11", 1200, genero.F, celda9, delitos77)
+prisionero12 = Prisionero(12, "nombre12", 200, genero.F, celda8, delitos66)
+prisionero13 = Prisionero(13, "nombre13", 120, genero.M, celda2, delitos66)
+prisionero14 = Prisionero(14, "nombre14", 50, genero.F, celda6, delitos77)
+prisionero15 = Prisionero(15, "nombre15", 0, genero.F, celda7, delitos44)
 		
 		
-//		crearGuardianes
-		Hashtable<Integer, Celda> celdas1 = new Hashtable<>();
-		celdas1.put(celda0.getNumero(), celda0);
-		celdas1.put(celda9.getNumero(), celda9);
-		celdas1.put(celda5.getNumero(), celda5);
+#		crearGuardianes
+celdas1 = {}
+celdas1[celda0.getNumero()] = celda0
+celdas1[celda9.getNumero()] = celda9
+celdas1[celda5.getNumero()] = celda5
 		
-		Hashtable<Integer, Celda> celdas2 = new Hashtable<>();
-		celdas2.put(celda1.getNumero(), celda1);
-		celdas2.put(celda8.getNumero(), celda8);
-		celdas2.put(celda4.getNumero(), celda4);
+celdas2 = {}
+celdas2[celda1.getNumero()] = celda1
+celdas2[celda8.getNumero()] = celda8
+celdas2[celda4.getNumero()] = celda4
 		
-		Hashtable<Integer, Celda> celdas3 = new Hashtable<>();
-		celdas3.put(celda3.getNumero(), celda3);
-		celdas3.put(celda7.getNumero(), celda7);
-		celdas3.put(celda2.getNumero(), celda2);
+celdas3 = {}
+celdas3[celda3.getNumero()] = celda3
+celdas3[celda7.getNumero()] = celda7
+celdas3[celda2.getNumero()] = celda2
 		
-		Hashtable<Integer, Celda> celdas4 = new Hashtable<>();
-		celdas4.put(celda2.getNumero(), celda2);
-		celdas4.put(celda6.getNumero(), celda6);
-		celdas4.put(celda9.getNumero(), celda9);
+celdas4 = {}
+celdas4[celda2.getNumero()] = celda2
+celdas4[celda6.getNumero()] = celda6
+celdas4[celda9.getNumero()] = celda9
 		
-		Hashtable<Integer, Celda> celdas5 = new Hashtable<>();
-		celdas5.put(celda5.getNumero(), celda5);
-		celdas5.put(celda8.getNumero(), celda8);
-		celdas5.put(celda7.getNumero(), celda7);
+celdas5 = {}
+celdas5[celda5.getNumero()] = celda5
+celdas5[celda8.getNumero()] = celda8
+celdas5[celda7.getNumero()] = celda7
 		
-		Guardian guardian1 = new Guardian(1001,"Chuck Norris",4500,5430,celdas1);
-		Guardian guardian2 = new Guardian(1002,"Jhon Wick",10000,6360,celdas2);
-		Guardian guardian3 = new Guardian(1003,"Arnold Schwarzenegger",2035,5700,celdas3);
-		Guardian guardian4 = new Guardian(1004,"Sylvester Stallone",8600,6100,celdas4);
-		Guardian guardian5 = new Guardian(1005,"Jean_Claude Van Damme",6700,7480,celdas5);
+guardian1 = Guardian(1001,"Chuck Norris",4500,5430,celdas1)
+guardian2 = Guardian(1002,"Jhon Wick",10000,6360,celdas2)
+guardian3 = Guardian(1003,"Arnold Schwarzenegger",2035,5700,celdas3)
+guardian4 = Guardian(1004,"Sylvester Stallone",8600,6100,celdas4)
+guardian5 = Guardian(1005,"Jean_Claude Van Damme",6700,7480,celdas5)
 		
-//		crearAntidelitos
-		Antidelito antidelito0 = new Antidelito(0, "nombre0", "descripcion0",1);
-		Antidelito antidelito1 = new Antidelito(1, "nombre1", "descripcion1",2);
-		Antidelito antidelito2 = new Antidelito(2, "nombre2", "descripcion2",3);
-		Antidelito antidelito3 = new Antidelito(3, "nombre3", "descripcion3",4);
-		Antidelito antidelito4 = new Antidelito(4, "nombre4", "descripcion4",5);
-		Antidelito antidelito5 = new Antidelito(5, "nombre5", "descripcion5",6);
-		Antidelito antidelito6 = new Antidelito(6, "nombre6", "descripcion6",7);
+#		crearAntidelitos
+antidelito0 = Antidelito(0, "nombre0", "descripcion0",1)
+antidelito1 = Antidelito(1, "nombre1", "descripcion1",2)
+antidelito2 = Antidelito(2, "nombre2", "descripcion2",3)
+antidelito3 = Antidelito(3, "nombre3", "descripcion3",4)
+antidelito4 = Antidelito(4, "nombre4", "descripcion4",5)
+antidelito5 = Antidelito(5, "nombre5", "descripcion5",6)
+antidelito6 = Antidelito(6, "nombre6", "descripcion6",7)
 		
-//		crearPeleas
-		Pelea pelea0 = new Pelea(0, genero.MASCULINO, prisionero0, prisionero1, "arma10", "arma20");
-		Pelea pelea1 = new Pelea(1, genero.MASCULINO, prisionero2, prisionero3, "arma11", "arma21");
-		Pelea pelea2 = new Pelea(2, genero.FEMENINO, prisionero4, prisionero5, "arma12", "arma22");
-		Pelea pelea3 = new Pelea(3, genero.FEMENINO, prisionero6, prisionero7, "arma13", "arma23")
+#		crearPeleas
+pelea0 = Pelea(0, genero.MASCULINO, prisionero0, prisionero1, "arma10", "arma20")
+pelea1 = Pelea(1, genero.MASCULINO, prisionero2, prisionero3, "arma11", "arma21")
+pelea2 = Pelea(2, genero.FEMENINO, prisionero4, prisionero5, "arma12", "arma22")
+pelea3 = Pelea(3, genero.FEMENINO, prisionero6, prisionero7, "arma13", "arma23")
