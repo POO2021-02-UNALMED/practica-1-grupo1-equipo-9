@@ -24,7 +24,7 @@ class Prisionero(Apostador):
         
         meses = 0
         for i in _delitos:
-            meses += _delitos[i].getTiempoCondena();
+            meses += _delitos[i].getTiempoCondena()
 
         self._finCondena = self._inicioCondena
         self.incrementarCondena(meses)
