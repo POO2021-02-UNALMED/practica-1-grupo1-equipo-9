@@ -1,3 +1,13 @@
+from gestorAplicacion.antidelito import Antidelito
+from gestorAplicacion.apostador import Apostador
+from gestorAplicacion.apuesta import Apuesta
+from gestorAplicacion.celda import Celda
+from gestorAplicacion.delito import Delito
+from gestorAplicacion.genero import genero
+from gestorAplicacion.pelea import Pelea
+from gestorAplicacion.prisionero import Prisionero
+
+
 Delito delito1 = new Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10);
 		Delito delito2 = new Delito(2, "Pelea callejera", "Enfrentarse fisicamente con otra persona o animal en lugares publicos", 1, 12);
 		Delito delito3 = new Delito(3, "3", "3", 6, 48);
@@ -52,6 +62,9 @@ Delito delito1 = new Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fr
 		Hashtable<Integer, Delito>  delitos66 = new Hashtable<>(); delitos66.put(delito7.getCodigo(), delito7); delitos66.put(delito8.getCodigo(), delito8); delitos66.put(delito9.getCodigo(), delito9);
 		Hashtable<Integer, Delito>  delitos77 = new Hashtable<>(); delitos77.put(delito8.getCodigo(), delito8); delitos77.put(delito5.getCodigo(), delito5); delitos77.put(delito10.getCodigo(), delito10);
 		
+#################################################################################################3
+
+
 		Prisionero prisionero0 = new Prisionero(0, "nombre0", 100, genero.MASCULINO, celda0, delitos00);
 		Prisionero prisionero1 = new Prisionero(1, "nombre1", 200, genero.MASCULINO, celda0, delitos11);
 		Prisionero prisionero2 = new Prisionero(2, "nombre2", 300, genero.MASCULINO, celda1, delitos22);
