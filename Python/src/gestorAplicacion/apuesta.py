@@ -1,5 +1,5 @@
-from prisionero import Prisionero
-from apostador import Apostador
+from gestorAplicacion.prisionero import Prisionero
+from gestorAplicacion.apostador import Apostador
 
 class Apuesta:
     _apuestas = {}

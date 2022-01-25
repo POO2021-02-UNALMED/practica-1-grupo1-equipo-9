@@ -1,8 +1,7 @@
-from prisionero import Prisionero
+from gestorAplicacion.prisionero import Prisionero
 from random import randint
 
 class Pelea:
-    import apuesta
     
     _peleas = {}
 
@@ -78,7 +77,7 @@ class Pelea:
     def setArmaLuchador2(self, armaLuchador2: str): self._armaLuchador2 = armaLuchador2
 	
     def getApuesta(self): return self._apuesta
-    def setApuesta(self, apuesta: apuesta.Apuesta): self._apuesta = apuesta
+    def setApuesta(self, apuesta): self._apuesta = apuesta
 	
     @classmethod
     def getPeleas(clc): return clc._peleas

@@ -1,4 +1,4 @@
-from apostador import Apostador
+from gestorAplicacion.apostador import Apostador
 from datetime import date, timedelta
 
 class Prisionero(Apostador):

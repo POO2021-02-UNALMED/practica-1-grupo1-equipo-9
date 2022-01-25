@@ -1,12 +1,11 @@
-from genero import genero
-from prisionero import Prisionero
+from gestorAplicacion.prisionero import Prisionero
 
 class Celda:
     _celdas = {}
     _celdasMASCULINAS = []
     _celdasFEMENINAS = []
 
-    def __init__(self, numero: int, genero: genero, largo: float, ancho: float, capMax: int):
+    def __init__(self, numero: int, genero, largo: float, ancho: float, capMax: int):
         self._numero = numero
         self._genero = genero
         self._LARGO = largo
@@ -16,9 +15,9 @@ class Celda:
 
         Celda._celdas[self._numero] = self
 
-        if self._genero == "MASCULINO":
+        if self._genero.value == "MASCULINO":
             Celda._celdasMASCULINAS.append(self._numero)
-        elif self._genero == "FEMENINO":
+        elif self._genero.value == "FEMENINO":
             Celda._celdasFEMENINAS.append(self._numero)
 
     def extraerPrisionero(self, prisionero: Prisionero):

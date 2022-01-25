@@ -1,6 +1,6 @@
-from apostador import Apostador
-from celda import Celda
-from prisionero import Prisionero
+from gestorAplicacion.apostador import Apostador
+from gestorAplicacion.celda import Celda
+from gestorAplicacion.prisionero import Prisionero
 
 class Guardian(Apostador):
     _guardianes = {}
