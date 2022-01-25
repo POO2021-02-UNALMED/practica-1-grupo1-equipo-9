@@ -1,12 +1,12 @@
-from gestorAplicacion.antidelito import Antidelito
-from gestorAplicacion.apostador import Apostador
-from gestorAplicacion.apuesta import Apuesta
-from gestorAplicacion.celda import Celda
-from gestorAplicacion.delito import Delito
-from gestorAplicacion.genero import genero
-from gestorAplicacion.pelea import Pelea
-from gestorAplicacion.prisionero import Prisionero
-from gestorAplicacion.guardian import Guardian
+from antidelito import Antidelito
+from apostador import Apostador
+from apuesta import Apuesta
+from celda import Celda
+from delito import Delito
+from genero import genero
+from pelea import Pelea
+from prisionero import Prisionero
+from guardian import Guardian
 
 
 delito1 = Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10)
