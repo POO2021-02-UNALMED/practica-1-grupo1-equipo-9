@@ -1,5 +1,5 @@
 from apostador import Apostador
-from datetime import date, timedelta
+from datetime import datetime, timedelta, date
 
 class Prisionero(Apostador):
     _delitos = {}
@@ -40,10 +40,10 @@ class Prisionero(Apostador):
         self.disminuirCondena(antidelito.getRebajaCondena())
 
     def incrementarCondena(self,meses):
-        self._finCondena = self._finCondena + timedelta(months=meses)
+        self._finCondena = self._finCondena + timedelta(weeks=meses*4)
 
     def disminuirCondena(self,meses):  
-        self._finCondena = self._finCondena - timedelta(months=meses)      
+        self._finCondena = self._finCondena - 4*timedelta(weeks=meses*4)      
 
     '''#override
     def __str__(self):'''
@@ -80,5 +80,7 @@ class Prisionero(Apostador):
     def setPrisioneros(cls, _prisioneros):
         cls._prisioneros = _prisioneros
 
-    '''override
-    def __str__(self):'''
+    def __str__(self) -> str:
+        return ("PRISIONERO: " + self._codigo + "\n" + "Genero: " + self._genero.value + "\n" 
+                + "Inicio condena: " + self._inicioCondena + "\n" 
+                + "Fin condena " + self._finCondena + "\n" )
