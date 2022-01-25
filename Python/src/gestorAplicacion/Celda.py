@@ -29,7 +29,16 @@ class Celda:
         self._prisioneros[prisionero.getIdentificacion()] = prisionero
 
     def __str__(self) -> str: #Decidir implementacion
-        pass
+        prisioneros = ""
+        for key in self._prisioneros:
+            prisioneros += str(key) + " "
+
+        return ("CELDA: " + str(self._numero) + "\n"
+        + "Género: " +  self._genero.value + "\n"
+        + "Largo: " + str(self._LARGO) + "\n"
+        + "Ancho: " + str(self._ANCHO) + "\n"
+        + "Capacidad Máxima: " + str(self._CAPMAX) + "\n"
+        + "Prisioneros en la Celda: " + prisioneros)
 
     def infoTraslados(self): #Decidir implementacion
         pass

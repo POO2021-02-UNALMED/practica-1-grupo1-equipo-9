@@ -24,10 +24,24 @@ class Guardian(Apostador):
         self._traslados.append(objetos)
 
     def listaTraslados(self): #Decidir implementacion
-        pass
+        trasladosString = []
+
+        for i in self._traslados:
+            mensaje = "Se trasladó al prisionero: " + str(i[1].getIdentificacion()) + "\n" + "Desde la celda: " + str(i[0].getNumero()) + "\n" + "A la celda: " + str(i[2].getNumero())
+            trasladosString.append(mensaje)
+
+        return trasladosString
 
     def __str__(self) -> str: #Decidir implementacion
-        pass
+        celdas = ""
+        for key in self._celdas:
+            celdas += str(key) + " "
+
+        return ("GUARDIAN: " + str(self.identificacion) + "\n"
+        + "Nombre: " + self.nombre + "\n"
+        + "Saldo: " + str(self.saldo) + "\n"
+        + "Salario: " + str(self._salario) + "\n"
+        + "Celdas a Cargo: " + celdas)
 
     def infoApostador(self): #Decidir implementacion
         pass
