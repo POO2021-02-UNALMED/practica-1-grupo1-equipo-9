@@ -80,5 +80,5 @@ class Celda:
     def getCeldasFEMENINAS(cls):
         return cls._celdasFEMENINAS
     @classmethod
-    def setCeldasMASCULINAS(cls, celdasFEMENINAS):
+    def setCeldasFEMENINAS(cls, celdasFEMENINAS):
         cls._celdasFEMENINAS = celdasFEMENINAS
