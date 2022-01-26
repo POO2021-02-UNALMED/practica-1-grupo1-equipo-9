@@ -3,8 +3,8 @@ from datetime import datetime, timedelta, date
 
 class Prisionero(Apostador):
     _prisioneros = {}
-    prisionerosMASCULINOS = []
-    prisionerosFEMENINOS = []
+    _prisionerosMASCULINOS = []
+    _prisionerosFEMENINOS = []
 
     def __init__(self, identificacion, nombre, saldo, _genero, _celda, _delitos: dict):
         Apostador.__init__(self, identificacion, nombre, saldo)
@@ -16,10 +16,10 @@ class Prisionero(Apostador):
         self._delitos = _delitos
 
         if self._genero.value == "MASCULINO":
-            Prisionero.prisionerosMASCULINOS.append(self.identificacion)
+            Prisionero._prisionerosMASCULINOS.append(self.identificacion)
 
         elif self._genero.value == "FEMENINO":
-            Prisionero.prisionerosFEMENINOS.append(self.identificacion) 
+            Prisionero._prisionerosFEMENINOS.append(self.identificacion) 
         
         meses = 0
         for i in _delitos.keys():
@@ -76,8 +76,23 @@ class Prisionero(Apostador):
     @classmethod
     def getPrisioneros(cls):
         return cls._prisioneros
+    @classmethod
     def setPrisioneros(cls, _prisioneros):
         cls._prisioneros = _prisioneros
+
+    @classmethod
+    def getPrisionerosMASCULINOS(cls):
+        return cls._prisionerosMASCULINOS
+    @classmethod
+    def setPrisionerosMASCULINOS(cls, _prisioneros):
+        cls._prisionerosMASCULINOS = _prisioneros
+
+    @classmethod
+    def getPrisionerosFEMENINOS(cls):
+        return cls._prisionerosFEMENINOS
+    @classmethod
+    def setPrisionerosFEMENINOS(cls, _prisioneros):
+        cls._prisionerosFEMENINOS = _prisioneros
 
     def __str__(self) -> str:
         return ("PRISIONERO: " + self._codigo + "\n" + "Genero: " + self._genero.value + "\n" 

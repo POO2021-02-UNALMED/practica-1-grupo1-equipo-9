@@ -35,10 +35,12 @@ class Delito:
     def setTiempoCondena(self, _tiempoCondena):
         self._tiempoCondena = _tiempoCondena
 
-    def getDelitos(self):
-        return self._delitos
-    def setDelitos(self, _delitos):
-        self._delitos = _delitos
+    @classmethod
+    def getDelitos(cls):
+        return cls._delitos
+    @classmethod
+    def setDelitos(cls, _delitos):
+        cls._delitos = _delitos
 
     '''override
     def __str__(self):'''          
