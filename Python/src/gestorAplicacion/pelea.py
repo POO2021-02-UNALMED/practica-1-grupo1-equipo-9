@@ -85,7 +85,7 @@ class Pelea:
     def setPeleas(clc, peleas: dict): clc._peleas = peleas
 
     def __str__(self) -> str:
-        return ("PELEA: " + self._codigo + "\n" + "Genero: " + self._genero.value + "\n" 
+        return ("PELEA: " + str(self._codigo) + "\n" + "Genero: " + self._genero.value + "\n" 
                 + "Luchador 1: " + self._luchador1.getNombre() +"\n"
                 + "Luchador 2: " + self._luchador2.getNombre() + "\n" 
                 + "Arma luchador 1: " + self._armaLuchador1 + "\n" 
