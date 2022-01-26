@@ -7,7 +7,7 @@ class Prisionero(Apostador):
     _prisionerosFEMENINOS = []
 
     def __init__(self, identificacion, nombre, saldo, _genero, _celda, _delitos: dict):
-        Apostador.__init__(self, identificacion, nombre, saldo)
+        super().__init__(identificacion, nombre, saldo)
         self._antidelitos = {}
         self._genero = _genero
         self._inicioCondena = date.today()
@@ -95,6 +95,7 @@ class Prisionero(Apostador):
         cls._prisionerosFEMENINOS = _prisioneros
 
     def __str__(self) -> str:
-        return ("PRISIONERO: " + self._codigo + "\n" + "Genero: " + self._genero.value + "\n" 
-                + "Inicio condena: " + self._inicioCondena + "\n" 
-                + "Fin condena " + self._finCondena + "\n" )
+        return ("Prisionero: "+ str(self.identificacion) + "\n" + "Genero: " + self._genero.value + "\n"
+                +"Inicio condena: " + str(self.getInicioCondena()) +"\n"
+                + "Fin condena: " + str(self.getFinCondena()) + "\n")
+    
