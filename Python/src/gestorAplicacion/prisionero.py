@@ -2,28 +2,27 @@ from gestorAplicacion.apostador import Apostador
 from datetime import datetime, timedelta, date
 
 class Prisionero(Apostador):
-    _delitos = {}
-    _antidelitos = {}
     _prisioneros = {}
     prisionerosMASCULINOS = []
     prisionerosFEMENINOS = []
 
-    def __init__(self, identificacion, nombre, saldo, _genero, _celda, _delitos):
+    def __init__(self, identificacion, nombre, saldo, _genero, _celda, _delitos: dict):
         Apostador.__init__(self, identificacion, nombre, saldo)
+        self._antidelitos = {}
         self._genero = _genero
         self._inicioCondena = date.today()
         self._celda = _celda 
         _celda.ingresarPrisionero(self)
         self._delitos = _delitos
 
-        if self._genero=="MASCULINO":
+        if self._genero.value == "MASCULINO":
             Prisionero.prisionerosMASCULINOS.append(self.identificacion)
 
-        elif self._genero=="FEMENINO":
+        elif self._genero.value == "FEMENINO":
             Prisionero.prisionerosFEMENINOS.append(self.identificacion) 
         
         meses = 0
-        for i in _delitos:
+        for i in _delitos.keys():
             meses += _delitos[i].getTiempoCondena()
 
         self._finCondena = self._inicioCondena
@@ -32,11 +31,11 @@ class Prisionero(Apostador):
         Prisionero._prisioneros[self.identificacion] = self
 
     def agregarDelito(self, delito):
-        Prisionero._delitos[delito.getCodigo()] = delito
+        self._delitos[delito.getCodigo()] = delito
         self.incrementarCondena(delito.getTiempoCondena())
 
     def agregarAntidelito(self, antidelito):
-        Prisionero._antidelitos[antidelito.getCodigo()] = antidelito
+        self._antidelitos[antidelito.getCodigo()] = antidelito
         self.disminuirCondena(antidelito.getRebajaCondena())
 
     def incrementarCondena(self,meses):
