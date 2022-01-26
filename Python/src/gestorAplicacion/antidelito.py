@@ -37,3 +37,9 @@ class Antidelito:
 
     def __str__(self) -> str: #Decidir implementacion
         pass
+
+    def __str__(self) -> str:
+        return ("Delito: "+ str(self._codigo) + "\n"  
+                + "Nombre: " + self.getNombre() + "\n"
+                + "Rebaja condena: " + str(self.getRebajaCondena()) + " meses" +"\n"
+                + "Descripcion: " + self.getDescripcion() + "\n")        
