@@ -16,8 +16,8 @@ class Apuesta:
     def resultadoApuesta(self):
         if self._pelea.getGanador() is None :
             return "La pelea con codigo " + str(self.getCodigo()) + " aun no tiene ganador"
-        if not self.getApostadores(self): 
-            return "La pelea con codigo " + str(self.getCodigo()) + "no tuvo apuestas"
+        if not self.getApostadores(): 
+            return "La pelea con codigo " + str(self.getCodigo()) + " no tuvo apuestas"
 
         resultadoMonto1 = "Pelea: " + str(self.getCodigo()) + "\nEl monto total recogido en la apuesta fue: " + str(self._montoTotal) + "\n"
         resultadoMonto2 = "El dinero total apostado por los ganadores de esta apuesta fue: " + str(self._montoTotalGanadores) + "\n\n"
@@ -30,8 +30,8 @@ class Apuesta:
 
         return resultadoMonto1 + resultadoMonto2 + resulta3 + resulta4
 
-    def resolverApuesta(self):
-        if not self.getApostadores(self): return
+    def _resolverApuesta(self):
+        if not self.getApostadores(): return
 
         montoTotal = 0
         totalGanadores = 0
@@ -54,13 +54,16 @@ class Apuesta:
 
                 self._estadisticas.append(
                     "Apostador con ID: " + str(apostador.getIdentificacion()) + "\t\t+" 
-                    + (ganancia - apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo()
+                    + str(round(ganancia - apuesta, 2)) + "\t\t" + "Saldo actual: " + str(round(apostador.getSaldo(),2))
                     )
             else:
                 self._estadisticas.append(
                     "Apostador con ID: " + str(apostador.getIdentificacion()) + "\t\t-" 
-                    + (apuesta) + "\t\t" + "Saldo actual: " + apostador.getSaldo()
+                    + str(apuesta) + "\t\t" + "Saldo actual: " + str(round(apostador.getSaldo(),2))
                     )
+
+        self._montoTotal = montoTotal
+        self._montoTotalGanadores = totalGanadores
         
 
 

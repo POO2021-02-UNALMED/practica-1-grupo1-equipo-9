@@ -22,7 +22,7 @@ class Pelea:
 
     def setGanador(self, prisionero: Prisionero):
         self._ganador = prisionero
-        self._apuesta.resolverApuesta()
+        self._apuesta._resolverApuesta()
 
     def getGanador(self): return self._ganador
 
@@ -59,7 +59,7 @@ class Pelea:
 
         ganador: Prisionero = Prisionero.getPrisioneros()[luchadores[0]]
         ganador.aumentarSaldo(1000)
-        combates.append("El prisionero "+ luchadores[0] + " es el ganador y recibio 1000 dolares")
+        combates.append("El prisionero "+ str(luchadores[0]) + " es el ganador y recibio 1000 dolares")
 
         return combates
 
