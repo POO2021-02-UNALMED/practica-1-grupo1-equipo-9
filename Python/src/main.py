@@ -3,6 +3,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 from menuPrincipal import MenuPrincipal
 import menuOpciones
+from ventanaUsuario import VentanaUsuario
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -95,7 +96,9 @@ img_sistema = ImageTk.PhotoImage(image_open)
 lbl_sistema = tk.Label(frm_p4, image=img_sistema)
 lbl_sistema.pack()
 lbl_sistema.bind("<Enter>", btn_imagenes_sistema_event)
-btn_sistema = tk.Button(frm_p4, text="Ingresar a sistema")
+
+
+btn_sistema = tk.Button(frm_p4, text="Ingresar a sistema", command= lambda: VentanaUsuario(window))
 btn_sistema.pack()
 
 
