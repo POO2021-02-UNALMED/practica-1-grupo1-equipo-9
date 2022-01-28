@@ -1,5 +1,4 @@
 from tkinter import *
-
 from menuPrincipal import MenuPrincipal
 
 class GestionarGuardian(Toplevel):
