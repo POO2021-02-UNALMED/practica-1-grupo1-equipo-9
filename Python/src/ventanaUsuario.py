@@ -1,5 +1,7 @@
 from tkinter import *
 from gestGuardianes import GestionarGuardian
+from menuPrincipal import MenuPrincipal
+
 
 class VentanaUsuario(Toplevel):
 
@@ -26,30 +28,24 @@ class VentanaUsuario(Toplevel):
         window.iconify()
 
     def crearMenu(self):
-        menubar = Menu(self)
 
-        menuArchiv = Menu(menubar)
-        menuProcyCons = Menu(menubar)
-        menuAyuda = Menu(menubar)
+        menubar = MenuPrincipal(self)
 
-        menubar.add_cascade(menu=menuArchiv, label='Archivo')
-        menubar.add_cascade(menu=menuProcyCons, label='Procesos y Consultas')
-        menubar.add_cascade(menu=menuAyuda, label='Ayuda')
-
-        menuArchiv.add_command(label="Aplicación", command=self.evento)
-        menuArchiv.add_command(label="Salir", command=self.salir)
-
-        menuProcyCons.add_command(label="Gestionar Guardianes", command=lambda: GestionarGuardian(self))
-        menuProcyCons.add_command(label="Gestionar Prisioneros", command=lambda: Toplevel())
-        menuProcyCons.add_command(label="Gestionar Delitos", command=lambda: Toplevel())
-        menuProcyCons.add_command(label="Gestionar Antidelitos", command=lambda: Toplevel())
-        menuProcyCons.add_command(label="Gestionar Peleas", command=lambda: Toplevel())
-        menuProcyCons.add_command(label="Gestionar Apuestas", command=lambda: Toplevel())
-
-        menuAyuda.add_command(label="Acerca de", command=self.evento)
+        menuArchiv = [  ("Aplicación", self.evento),
+                        ("Salir", self.salir) ]
+        menubar.add_menu_options("Archivo", menuArchiv)
         
+        menuProcyCons = [   ("Gestionar Guardianes", lambda: GestionarGuardian(self)),
+                            ("Gestionar Prisioneros", lambda: Toplevel()), 
+                            ("Gestionar Delitos", lambda: Toplevel()),
+                            ("Gestionar Antidelitos", lambda: Toplevel()),
+                            ("Gestionar Peleas", lambda: Toplevel()),
+                            ("Gestionar Apuestas", lambda: Toplevel())]
+        menubar.add_menu_options('Procesos y Consultas', menuProcyCons)
 
-        self['menu'] = menubar
+
+        menuAyuda = [ ("Acerca de", self.evento) ]
+        menubar.add_menu_options("Ayuda", menuAyuda)
 
     def evento(self):
         print("click!")
