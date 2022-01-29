@@ -1,21 +1,36 @@
-from tkinter import *
+import tkinter as tk
 from .menuBar import MenuBar
+from .fieldFrame import FieldFrame
 
-class GestionarGuardian(Toplevel):
+class GestionarGuardian(tk.Toplevel):
 
-    def __init__(self, window: Tk):
+    def __init__(self, window: tk.Tk):
         super().__init__(window)
         self.MASTER = window
 
-        self.disenno()
-        self.crearMenu()
+        self.crearContenido()
+        
 
         window.iconify()
 
-    def disenno(self):
-        self.geometry("850x500")
+    def crearContenido(self):
+        self.geometry("850x400")
         self.option_add("*tearOff", False)
         self.title("Gestion de Guardianes")
+        
+        self.crearMenu()
+
+        frm_inicial = FieldFrame(
+            self,
+            "Criterios",
+            ["Código", "Nombre", "Descripción", "Ubicación"],
+            "Valores",
+            ["", "", "", ""],
+            [True, True, True, True],
+            "Nombre del proceso o consulta",
+            "Descripción del detalle del proceso o la consulta"
+        )
+        frm_inicial.pack(fill=tk.X, expand=True)
 
 
     def crearMenu(self):
