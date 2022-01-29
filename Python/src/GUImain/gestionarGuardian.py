@@ -30,7 +30,7 @@ class GestionarGuardian(tk.Toplevel):
             "Nombre del proceso o consulta",
             "Descripción del detalle del proceso o la consulta"
         )
-        frm_inicial.pack(fill=tk.X, expand=True)
+        frm_inicial.pack(fill=tk.BOTH, expand=True)
 
 
     def crearMenu(self):

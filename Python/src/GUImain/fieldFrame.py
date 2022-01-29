@@ -20,25 +20,33 @@ class FieldFrame(tk.Frame):
         lbl_titulo_proceso.pack(side=tk.TOP)
         
         frm_descripcion_proceso = tk.Frame(self, borderwidth=2, relief="solid")
-        frm_descripcion_proceso.pack(fill=tk.X, expand=True)
+        frm_descripcion_proceso.pack(fill=tk.X, padx=10)
         lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text=descripcionProceso)
         lbl_descripcion_proceso.pack()
 
         frm_formulario = tk.Frame(self, borderwidth=1, relief="solid")
-        frm_formulario.pack(fill=tk.BOTH, expand=True)
+        frm_formulario.pack(fill=tk.BOTH, expand=True, padx=30)
         lbl_titulo_criterio = tk.Label(frm_formulario, text=tituloCriterios)
         lbl_titulo_criterio.grid(column=0, row=0)
         lbl_titulo_criterio = tk.Label(frm_formulario, text=tituloValores)
         lbl_titulo_criterio.grid(column=1, row=0)
         
+        self.entry_dict = {}
         row = 1
         for criterio, valor in list(zip(criterios, valores)):
             lbl_criterio = tk.Label(frm_formulario, text=criterio)
             lbl_criterio.grid(column=0, row=row)
             entry_valor = tk.Entry(frm_formulario)
             entry_valor.grid(column=1, row=row)
+            self.entry_dict[criterio] = entry_valor
 
             row += 1
+
+        btn_aceptar = tk.Button(frm_formulario, text="Aceptar")
+        btn_aceptar.grid(column=0, row=row)
+        btn_cancelar = tk.Button(frm_formulario, text="Cancelar")
+        btn_cancelar.grid(column=1, row=row)
+
 
 
     def getValue(self, criterio: str):
@@ -48,6 +56,7 @@ class FieldFrame(tk.Frame):
             criterio (str): el criterio cuyo valor se quiere obtener
 
         Returns:
-            [type]: el valor del criterio cuyo nombre es 'criterio'
+            str: el valor del criterio cuyo nombre es 'criterio'
         """
-        return criterio
+        criterio_valor = self.entry_dict[criterio].get()
+        return criterio_valor
