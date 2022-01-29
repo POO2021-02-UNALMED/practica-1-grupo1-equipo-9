@@ -1,5 +1,4 @@
 import tkinter as tk
-from typing import Any, Literal
 
 
 class FieldFrame(tk.Frame):
@@ -40,26 +39,6 @@ class FieldFrame(tk.Frame):
             entry_valor.grid(column=1, row=row)
 
             row += 1
-
-        # # Frame left
-        # frm_p1 = tk.Frame(self, borderwidth=2, relief="solid")
-        # frm_p1.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
-        # frm_p3 = tk.Frame(frm_p1)
-        # frm_p3.pack(fill=tk.X)
-        # lbl_bienvenida = tk.Label(frm_p3, text="Bienvenidos \nSistema de apuestas en la carcel X")
-        # lbl_bienvenida.pack(fill=tk.BOTH, expand=True)
-
-        # frm_p4 = tk.Frame(frm_p1, borderwidth=2, relief="solid")
-        # frm_p4.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
-        # image_open = Image.open(self.imagenes_sistema[0]).resize((320,320))
-        # img_sistema = ImageTk.PhotoImage(image_open)
-        # self.lbl_sistema = tk.Label(frm_p4, image=img_sistema)
-        # self.lbl_sistema.pack()
-        # self.lbl_sistema.bind("<Enter>", self.btn_imagenes_sistema_event)
-        # btn_sistema = tk.Button(frm_p4, text="Ingresar a sistema", command= lambda: ventanaUsuario.VentanaUsuario(self))
-        # btn_sistema.pack()
-
 
 
     def getValue(self, criterio: str):

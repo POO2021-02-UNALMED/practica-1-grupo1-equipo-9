@@ -1,10 +1,10 @@
 from tkinter import *
-from .gestAntidelitos import GestionarAntidelito
-from .gestApuestas import GestionarApuesta
-from .gestDelitos import GestionarDelito
+from .gestionarAntidelito import GestionarAntidelito
+from .gestionarApuesta import GestionarApuesta
+from .gestionarDelito import GestionarDelito
 from .gestionarGuardian import GestionarGuardian
-from .gestPeleas import GestionarPelea
-from .gestPrisioneros import GestionarPrisionero
+from .gestionarPelea import GestionarPelea
+from .gestionarPrisionero import GestionarPrisionero
 from .menuBar import MenuBar
 
 

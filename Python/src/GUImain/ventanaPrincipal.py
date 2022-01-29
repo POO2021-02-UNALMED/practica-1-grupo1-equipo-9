@@ -2,7 +2,7 @@ import os
 import settings
 import tkinter as tk
 from PIL import Image, ImageTk
-from . import menuOpciones, ventanaUsuario, menuBar
+from . import ventanaUsuario, menuBar
 
 
 class VentanaPrincipal(tk.Tk):
@@ -71,17 +71,17 @@ class VentanaPrincipal(tk.Tk):
         menu_principal = menuBar.MenuBar(self)
         # Menu Inicio
         menu_opciones = [
-            ("Descripción", menuOpciones.menu_descripcion_event),
+            ("Descripción", self.menu_descripcion_event),
             ("Salir", self.quit),
         ]
         menu_principal.add_menu_options("Inicio", menu_opciones)
 
         # Menu Dos para ejemplificar la creación de nuevos menus
         menu_opciones = [
-            ("Opcion 1", menuOpciones.opcion1),
-            ("Opcion 2", menuOpciones.opcion2),
-            ("Opcion 3", menuOpciones.opcion3),
-            ("Opcion 4", menuOpciones.opcion4),
+            ("Opcion 1", self.opcion1),
+            ("Opcion 2", self.opcion2),
+            ("Opcion 3", self.opcion3),
+            ("Opcion 4", self.opcion4),
         ]
         menu_principal.add_menu_options("Menu Dos", menu_opciones)
 
@@ -116,3 +116,18 @@ class VentanaPrincipal(tk.Tk):
         self.lbl_sistema.photo_ref = img_sistema
 
         self.imagenes_sistema_iter += 1
+
+    def menu_descripcion_event(self):
+        print("Descripción")
+
+    def opcion1(self):
+        print("Opcion 1")
+
+    def opcion2(self):
+        print("Opcion 2")
+
+    def opcion3(self):
+        print("Opcion 3")
+
+    def opcion4(self):
+        print("Opcion 4")
