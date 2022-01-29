@@ -1,5 +1,6 @@
 import pickle
 import os
+import settings
 from gestorAplicacion.antidelito import Antidelito
 from gestorAplicacion.apuesta import Apuesta
 from gestorAplicacion.celda import Celda
@@ -21,8 +22,7 @@ def serializar():
             "prisionerosFEMENINO": Prisionero.getPrisionerosFEMENINOS(),
             "prisionerosMASCULINO": Prisionero.getPrisionerosMASCULINOS()}
 
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    direccAux = os.path.join(BASE_DIR, "baseDatos")
+    direccAux = os.path.join(settings.BASE_DIR, "src", "baseDatos")
 
     for k, v in datos.items():
         picklefile = open( os.path.join(direccAux, k) , 'wb')

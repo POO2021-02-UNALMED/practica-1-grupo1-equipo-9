@@ -1,6 +1,6 @@
 from tkinter import *
-from gestGuardianes import GestionarGuardian
-from menuPrincipal import MenuPrincipal
+from .gestGuardianes import GestionarGuardian
+from .menuPrincipal import MenuBar
 
 
 class VentanaUsuario(Toplevel):
@@ -29,7 +29,7 @@ class VentanaUsuario(Toplevel):
 
     def crearMenu(self):
 
-        menubar = MenuPrincipal(self)
+        menubar = MenuBar(self)
 
         menuArchiv = [  ("Aplicación", self.evento),
                         ("Salir", self.salir) ]

@@ -1,5 +1,5 @@
 from tkinter import *
-from menuPrincipal import MenuPrincipal
+from .menuPrincipal import MenuBar
 
 class GestionarGuardian(Toplevel):
 
@@ -19,7 +19,7 @@ class GestionarGuardian(Toplevel):
 
 
     def crearMenu(self):
-        menubar = MenuPrincipal(self)
+        menubar = MenuBar(self)
 
         menuArchiv = [  ("Aplicación", self.evento),
                         ("Salir", self.salir) ]

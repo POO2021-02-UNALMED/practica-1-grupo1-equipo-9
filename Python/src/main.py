@@ -1,21 +1,19 @@
 import os
+import settings
 import tkinter as tk
+from GUImain import menuOpciones, menuPrincipal, ventanaUsuario
 from PIL import Image, ImageTk
-from menuPrincipal import MenuPrincipal
-import menuOpciones
-from ventanaUsuario import VentanaUsuario
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 info_desarrolladores = [
-    ("Desarrollador Uno", "Desarrollador Backed", "2 mes", os.path.join(BASE_DIR, "src", "dev1.png")),
-    ("Desarrollador Dos", "UI/UX", "1 mes", os.path.join(BASE_DIR, "src", "dev2.jpeg")),
+    ("Desarrollador Uno", "Desarrollador Backed", "2 mes", os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png")),
+    ("Desarrollador Dos", "UI/UX", "1 mes", os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg")),
 ]
 info_desarrolladores_iter = 1
 
 imagenes_sistema = [
-    os.path.join(BASE_DIR, "src", "dev1.png"),
-    os.path.join(BASE_DIR, "src", "dev2.jpeg")
+    os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
+    os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg")
 ]
 imagenes_sistema_iter = 1
 
@@ -62,7 +60,7 @@ window.geometry("850x400")
 window.option_add("*tearOff", False)
 window.title("Presentación")
 
-menu_principal = MenuPrincipal(window)
+menu_principal = menuPrincipal.MenuBar(window)
 # Menu Inicio
 menu_opciones = [
     ("Descripción", menuOpciones.menu_descripcion_event),
@@ -98,7 +96,7 @@ lbl_sistema.pack()
 lbl_sistema.bind("<Enter>", btn_imagenes_sistema_event)
 
 
-btn_sistema = tk.Button(frm_p4, text="Ingresar a sistema", command= lambda: VentanaUsuario(window))
+btn_sistema = tk.Button(frm_p4, text="Ingresar a sistema", command= lambda: ventanaUsuario.VentanaUsuario(window))
 btn_sistema.pack()
 
 

@@ -1,7 +1,7 @@
 from tkinter import *
 
 
-class MenuPrincipal(Menu):
+class MenuBar(Menu):
 
     def __init__(self, window) -> None:
         # Menu inicio
