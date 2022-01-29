@@ -1,7 +1,7 @@
 from tkinter import *
 from .menuBar import MenuBar
 
-class GestionarGuardian(Toplevel):
+class GestionarPelea(Toplevel):
 
     def __init__(self, window: Tk):
         super().__init__(window)
@@ -15,7 +15,7 @@ class GestionarGuardian(Toplevel):
     def disenno(self):
         self.geometry("850x500")
         self.option_add("*tearOff", False)
-        self.title("Gestion de Guardianes")
+        self.title("Gestion de Peleas")
 
 
     def crearMenu(self):
@@ -25,12 +25,10 @@ class GestionarGuardian(Toplevel):
                         ("Salir", self.salir) ]
         menubar.add_menu_options("Archivo", menuArchiv)
         
-        menuProcyCons = [   ("Ingresar Guardian", self.ingresarGuardian),
-                            ("Borrar Guardian", self.borrarGuardian), 
-                            ("Editar Guardian", self.editarGuardian),
-                            ("Listar Guardianes", self.listarGuardian),
-                            ("Trasladar Prisionero", self.trasladarPrisionero),
-                            ("Listar Trasladados", self.listarTraslado)]
+        menuProcyCons = [   ("Registrar Pelea", self.registrarPelea),
+                            ("Definir Pelea", self.definirPelea), 
+                            ("Listar Peleas", self.listarPelea),
+                            ("Battle Royale", self.battleRoyale)]
 
         menubar.add_menu_options('Procesos y Consultas', menuProcyCons)
 
@@ -38,22 +36,16 @@ class GestionarGuardian(Toplevel):
         menuAyuda = [ ("Acerca de", self.evento) ]
         menubar.add_menu_options("Ayuda", menuAyuda)
 
-    def ingresarGuardian(self):
+    def registrarPelea(self):
         pass
 
-    def borrarGuardian(self):
+    def definirPelea(self):
         pass
 
-    def editarGuardian(self):
+    def listarPelea(self):
         pass
 
-    def listarGuardian(self):
-        pass
-
-    def trasladarPrisionero(self):
-        pass
-
-    def listarTraslado(self):
+    def battleRoyale(self):
         pass
 
     def evento(self):

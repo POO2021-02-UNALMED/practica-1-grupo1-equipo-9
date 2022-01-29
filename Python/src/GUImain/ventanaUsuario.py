@@ -1,4 +1,10 @@
 from tkinter import *
+from GUImain.gestAntidelitos import GestionarAntidelito
+from GUImain.gestApuestas import GestionarApuesta
+from GUImain.gestDelitos import GestionarDelito
+from GUImain.gestPeleas import GestionarPelea
+
+from GUImain.gestPrisioneros import GestionarPrisionero
 from .gestGuardianes import GestionarGuardian
 from .menuBar import MenuBar
 
@@ -36,11 +42,11 @@ class VentanaUsuario(Toplevel):
         menubar.add_menu_options("Archivo", menuArchiv)
         
         menuProcyCons = [   ("Gestionar Guardianes", lambda: GestionarGuardian(self)),
-                            ("Gestionar Prisioneros", lambda: Toplevel()), 
-                            ("Gestionar Delitos", lambda: Toplevel()),
-                            ("Gestionar Antidelitos", lambda: Toplevel()),
-                            ("Gestionar Peleas", lambda: Toplevel()),
-                            ("Gestionar Apuestas", lambda: Toplevel())]
+                            ("Gestionar Prisioneros", lambda: GestionarPrisionero(self)), 
+                            ("Gestionar Delitos", lambda: GestionarDelito(self)),
+                            ("Gestionar Antidelitos", lambda: GestionarAntidelito(self)),
+                            ("Gestionar Peleas", lambda: GestionarPelea(self)),
+                            ("Gestionar Apuestas", lambda: GestionarApuesta(self))]
         menubar.add_menu_options('Procesos y Consultas', menuProcyCons)
 
 
