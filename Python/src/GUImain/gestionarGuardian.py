@@ -40,12 +40,13 @@ class GestionarGuardian(tk.Toplevel):
                         ("Salir", self.salir) ]
         menubar.add_menu_options("Archivo", menuArchiv)
         
-        menuProcyCons = [   ("Ingresar guardian", self.ingresarGuardian),
-                            ("Borrar guardian", self.borrarGuardian), 
-                            ("Editar guardian", self.editarGuardian),
-                            ("Listar guardianes", self.listarGuardian),
-                            ("Trasladar prisionero", self.trasladarPrisionero),
-                            ("Listar trasladados", self.listarTraslados)]
+        menuProcyCons = [   ("Ingresar Guardian", self.ingresarGuardian),
+                            ("Borrar Guardian", self.borrarGuardian), 
+                            ("Editar Guardian", self.editarGuardian),
+                            ("Listar Guardianes", self.listarGuardian),
+                            ("Trasladar Prisionero", self.trasladarPrisionero),
+                            ("Listar Trasladados", self.listarTraslado)]
+
         menubar.add_menu_options('Procesos y Consultas', menuProcyCons)
 
 
@@ -67,7 +68,7 @@ class GestionarGuardian(tk.Toplevel):
     def trasladarPrisionero(self):
         pass
 
-    def listarTraslados(self):
+    def listarTraslado(self):
         pass
 
     def evento(self):
