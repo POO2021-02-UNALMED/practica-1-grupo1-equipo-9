@@ -1,7 +1,7 @@
 import os
 import settings
 import tkinter as tk
-from GUImain import menuOpciones, menuPrincipal, ventanaUsuario
+from GUImain import menuOpciones, ventanaUsuario, menuBar
 from PIL import Image, ImageTk
 
 
@@ -60,7 +60,7 @@ window.geometry("850x400")
 window.option_add("*tearOff", False)
 window.title("Presentación")
 
-menu_principal = menuPrincipal.MenuBar(window)
+menu_principal = menuBar.MenuBar(window)
 # Menu Inicio
 menu_opciones = [
     ("Descripción", menuOpciones.menu_descripcion_event),

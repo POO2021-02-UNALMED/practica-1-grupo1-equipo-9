@@ -1,5 +1,5 @@
 from tkinter import *
-from .menuPrincipal import MenuBar
+from .menuBar import MenuBar
 
 class GestionarGuardian(Toplevel):
 

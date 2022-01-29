@@ -1,6 +1,6 @@
 from tkinter import *
 from .gestGuardianes import GestionarGuardian
-from .menuPrincipal import MenuBar
+from .menuBar import MenuBar
 
 
 class VentanaUsuario(Toplevel):
