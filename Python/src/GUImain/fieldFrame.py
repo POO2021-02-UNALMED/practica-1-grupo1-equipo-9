@@ -24,29 +24,32 @@ class FieldFrame(tk.Frame):
         lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text=descripcionProceso)
         lbl_descripcion_proceso.pack()
 
-        frm_formulario = tk.Frame(self, borderwidth=1, relief="solid")
-        frm_formulario.pack(fill=tk.BOTH, expand=True, padx=30)
-        lbl_titulo_criterio = tk.Label(frm_formulario, text=tituloCriterios)
-        lbl_titulo_criterio.grid(column=0, row=0)
-        lbl_titulo_criterio = tk.Label(frm_formulario, text=tituloValores)
-        lbl_titulo_criterio.grid(column=1, row=0)
+        frm_formulario = tk.Frame(self, borderwidth=1, relief="solid", padx=100, pady=10)
+        
+        fuente = "Helvetica 10 bold"
+        lbl_titulo_criterio = tk.Label(frm_formulario, text=tituloCriterios, font= fuente)
+        lbl_titulo_criterio.grid(column=0, row=0, padx=15, pady=15)
+        lbl_titulo_criterio = tk.Label(frm_formulario, text=tituloValores, font= fuente)
+        lbl_titulo_criterio.grid(column=1, row=0, padx=15, pady=15)
         
         self.entry_dict = {}
         row = 1
-        for criterio, valor in list(zip(criterios, valores)):
+        for criterio, valor, habil in list(zip(criterios, valores, habilitado)):
             lbl_criterio = tk.Label(frm_formulario, text=criterio)
-            lbl_criterio.grid(column=0, row=row)
-            entry_valor = tk.Entry(frm_formulario)
-            entry_valor.grid(column=1, row=row)
+            lbl_criterio.grid(column=0, row=row, padx=15, pady=5)
+            entry_valor = tk.Entry( frm_formulario, textvariable= tk.StringVar(value=valor),
+                                    justify=tk.CENTER, state= habil)
+            entry_valor.grid(column=1, row=row, padx=15, pady=5)
             self.entry_dict[criterio] = entry_valor
 
             row += 1
 
-        btn_aceptar = tk.Button(frm_formulario, text="Aceptar")
-        btn_aceptar.grid(column=0, row=row)
-        btn_cancelar = tk.Button(frm_formulario, text="Cancelar")
-        btn_cancelar.grid(column=1, row=row)
+        btn_aceptar = tk.Button(frm_formulario, text="Aceptar", font=fuente)
+        btn_aceptar.grid(column=0, row=row, padx=15, pady=15)
+        btn_cancelar = tk.Button(frm_formulario, text="Cancelar", font=fuente)
+        btn_cancelar.grid(column=1, row=row, padx=15, pady=15)
 
+        frm_formulario.pack(expand=True, padx=30)
 
 
     def getValue(self, criterio: str):

@@ -14,7 +14,7 @@ class GestionarGuardian(tk.Toplevel):
         window.iconify()
 
     def crearContenido(self):
-        self.geometry("850x400")
+        self.geometry("650x400")
         self.option_add("*tearOff", False)
         self.title("Gestion de Guardianes")
         
@@ -25,8 +25,8 @@ class GestionarGuardian(tk.Toplevel):
             "Criterios",
             ["Código", "Nombre", "Descripción", "Ubicación"],
             "Valores",
-            ["", "", "", ""],
-            [True, True, True, True],
+            ["a", "b", "c", "d"],
+            [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL],
             "Nombre del proceso o consulta",
             "Descripción del detalle del proceso o la consulta"
         )
