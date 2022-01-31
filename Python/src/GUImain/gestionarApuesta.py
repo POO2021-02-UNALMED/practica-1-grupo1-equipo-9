@@ -125,7 +125,19 @@ class GestionarApuesta(Toplevel):
         entry_Dinero.grid(column=1, row=3, padx=15, pady=5)
 
 
+        def borrar():
+            entry_Identificacion.delete(0,END)
+            entry_Identificacion.insert(0,"")
+            entry_Dinero.delete(0,END)
+            entry_Dinero.insert(0,"")
+            combox_Peleador.set("")
+            combox_Pelea.set("")
+            combox_Peleador["values"] = []
+
+
+
         def func_ingresarApostador():
+            from baseDatos.serializador import serializar
 
             # CHECK si algún campo está vacío
 
@@ -144,21 +156,20 @@ class GestionarApuesta(Toplevel):
 
             if apuesta > ap.getSaldo() :
                 pass
-                # Posible excepcion
+                # EXCEPCION
 
             pelea.getApuesta().agregarApostador(ap, luchador, apuesta)
-
+            # serializar()
             messagebox.showinfo("Confirmación", "Se ha registrado el apostador correctamente")
+            borrar()
 
             print("\n", peleas[idpelea], "\n", ap, "\n", luchador)
-
-
 
         # Botones
         fuente = "Helvetica 10 bold"
         btn_aceptar = Button(frm_formulario, text="Aceptar", font=fuente, command= func_ingresarApostador)
         btn_aceptar.grid(column=0, row=4, padx=15, pady=15)
-        btn_cancelar = Button(frm_formulario, text="Borrar", font=fuente, command= lambda: print("click"))
+        btn_cancelar = Button(frm_formulario, text="Borrar", font=fuente, command= borrar)
         btn_cancelar.grid(column=1, row=4, padx=15, pady=15)
 
 
@@ -186,9 +197,9 @@ class GestionarApuesta(Toplevel):
         self.currFrame = frm_resultadoApuestas
         frm_resultadoApuestas.pack()
 
-    def evento(self):
-        print("click!")
-
     def salir(self):
         self.MASTER.deiconify()
         self.destroy()
+    
+    def evento(self):
+        print("click!")
