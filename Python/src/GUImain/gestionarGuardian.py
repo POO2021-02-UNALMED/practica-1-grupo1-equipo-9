@@ -1,38 +1,26 @@
 import tkinter as tk
+from tkinter import *
 from .menuBar import MenuBar
 from .fieldFrame import FieldFrame
+from gestorAplicacion.guardian import Guardian
+from gestorAplicacion.celda import Celda
 
-class GestionarGuardian(tk.Toplevel):
+class GestionarGuardian(Toplevel):
 
-    def __init__(self, window: tk.Tk):
+    def __init__(self, window: Tk):
         super().__init__(window)
         self.MASTER = window
 
-        self.crearContenido()
-        
+        self.disenno()
+        self.crearMenu()
+        self.frmInicial()
 
         window.iconify()
 
-    def crearContenido(self):
+    def disenno(self):
         self.geometry("650x400")
         self.option_add("*tearOff", False)
         self.title("Gestion de Guardianes")
-        
-        self.crearMenu()
-
-        frm_inicial = FieldFrame(
-            self,
-            "Criterios",
-            ["Código", "Nombre", "Descripción", "Ubicación"],
-            "Valores",
-            ["a", "b", "", ""],
-            [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL],
-            "Nombre del proceso o consulta",
-            "Descripción del detalle del proceso o la consulta",
-            lambda: print("Aceptar")
-        )
-        frm_inicial.pack(fill=tk.BOTH, expand=True)
-
 
     def crearMenu(self):
         menubar = MenuBar(self)
@@ -50,12 +38,67 @@ class GestionarGuardian(tk.Toplevel):
 
         menubar.add_menu_options('Procesos y Consultas', menuProcyCons)
 
-
         menuAyuda = [ ("Acerca de", self.evento) ]
         menubar.add_menu_options("Ayuda", menuAyuda)
 
+    def frmInicial(self):
+        frmBase = Frame(self)
+
+        frm_titulo_proceso = Frame(frmBase)
+        frm_titulo_proceso.pack(side=TOP, fill=X, padx=10 ,pady= 10)
+
+        lbl_titulo_proceso = Label(frm_titulo_proceso, text="Gestión de los Guardianes", font=('Arial', 15))
+        lbl_titulo_proceso.pack()
+        
+        frm_descripcion_proceso = Frame(frmBase, borderwidth=2, relief="solid")
+        frm_descripcion_proceso.pack(fill=X, padx=10 ,pady= 10)
+
+        lbl_descripcion_proceso = Label(frm_descripcion_proceso,
+        text= """En esta ventana tendrá la posibilidad de gestionar todos los aspectos
+        relacionados con los guardianes en las instalaciones de la Cárcel Apuestera.""", 
+        font=('Arial', 10))
+        lbl_descripcion_proceso.pack(pady= 10)
+
+        frm_formulario = Frame(frmBase, borderwidth=1, relief="solid")
+        frm_formulario.pack(fill=X, pady= 10)
+        lbl_formulario = Label(frm_formulario,
+        text= """En el menú 'Procesos y Consultas' se encuentran las funcionalidades ofrecidas""", 
+        font=('Arial', 10))
+        lbl_formulario.pack(fill=X, padx=10 ,pady= 10)
+
+
+        self.currFrame = frmBase
+        frmBase.pack()
+
     def ingresarGuardian(self):
-        pass
+
+        def registro(nombre, saldo, salario, celdas):
+            celdas = celdas.split()
+            dictceldas = {}
+            for i in celdas:
+                dictceldas[int(i)] = Celda.getCeldas[int(i)]
+
+            Guardian(nombre, int(saldo), int(salario), dictceldas)
+
+        self.currFrame.pack_forget()
+
+        frm_ingresarGuardian = Frame(self)
+
+        frm_inicial = FieldFrame(
+            frm_ingresarGuardian,
+            "Criterios",
+            ["Código", "Nombre", "Saldo", "Salario", "Celdas"],
+            "Valores",
+            [str(len(Guardian.getGuardianes())+1001), "b", "", "", ""],
+            [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL],
+            "Ingresar Guardian",
+            "Registre los datos solicitados para ingresar al Guardian. \n Para el campo 'Celdas', digite los números de celdas separados por espacio",
+            registro(frm_inicial.getValue("Nombre"), frm_inicial.getValue("Saldo"), frm_inicial.getValue("Salario"), frm_inicial.getValue("Celdas"))
+        )
+        frm_inicial.pack(fill=tk.BOTH, expand=True)
+
+        self.currFrame = frm_ingresarGuardian
+        frm_ingresarGuardian.pack()
 
     def borrarGuardian(self):
         pass

@@ -107,11 +107,11 @@ celdas5[celda5.getNumero()] = celda5
 celdas5[celda8.getNumero()] = celda8
 celdas5[celda7.getNumero()] = celda7
 		
-guardian1 = Guardian(1001,"Chuck Norris",4500,5430,celdas1)
-guardian2 = Guardian(1002,"Jhon Wick",10000,6360,celdas2)
-guardian3 = Guardian(1003,"Arnold Schwarzenegger",2035,5700,celdas3)
-guardian4 = Guardian(1004,"Sylvester Stallone",8600,6100,celdas4)
-guardian5 = Guardian(1005,"Jean_Claude Van Damme",6700,7480,celdas5)
+guardian1 = Guardian("Chuck Norris",4500,5430,celdas1)
+guardian2 = Guardian("Jhon Wick",10000,6360,celdas2)
+guardian3 = Guardian("Arnold Schwarzenegger",2035,5700,celdas3)
+guardian4 = Guardian("Sylvester Stallone",8600,6100,celdas4)
+guardian5 = Guardian("Jean_Claude Van Damme",6700,7480,celdas5)
 		
 #		crearAntidelitos
 antidelito0 = Antidelito(0, "nombre0", "descripcion0",1)

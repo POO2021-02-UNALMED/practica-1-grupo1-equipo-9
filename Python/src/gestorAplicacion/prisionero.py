@@ -7,8 +7,9 @@ class Prisionero(Apostador):
     _prisionerosMASCULINOS = []
     _prisionerosFEMENINOS = []
 
-    def __init__(self, identificacion, nombre, saldo, _genero, _celda, _delitos: dict):
-        super().__init__(identificacion, nombre, saldo)
+    def __init__(self, nombre, saldo, _genero, _celda, _delitos: dict):
+        super().__init__(nombre, saldo)
+        self.identificacion = len(Prisionero._prisioneros) + 1
         self._antidelitos = {}
         self._genero = _genero
         self._inicioCondena = date.today()

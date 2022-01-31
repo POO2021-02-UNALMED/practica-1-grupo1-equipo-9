@@ -5,8 +5,9 @@ from gestorAplicacion.prisionero import Prisionero
 class Guardian(Apostador):
     _guardianes = {}
 
-    def __init__(self, identificacion: int, nombre: str, saldo: int, salario:int, celdas = None):
-        super().__init__(identificacion, nombre, saldo)
+    def __init__(self, nombre: str, saldo: int, salario:int, celdas = None):
+        super().__init__(nombre, saldo)
+        self.identificacion = len(Guardian._guardianes) + 1001
         self._salario = salario
         self._celdas = celdas
         self._traslados = []

@@ -1,6 +1,5 @@
 class Apostador:
-    def __init__(self, identificacion: int, nombre: str, saldo: int):
-        self.identificacion = identificacion
+    def __init__(self, nombre: str, saldo: int):
         self.nombre = nombre
         self.saldo = saldo
 
