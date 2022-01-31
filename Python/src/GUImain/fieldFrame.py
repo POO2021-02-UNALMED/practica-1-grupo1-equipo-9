@@ -4,8 +4,7 @@ import tkinter as tk
 class FieldFrame(tk.Frame):
 
     def __init__(   self, window, tituloCriterios, criterios, tituloValores, 
-                    valores, habilitado, tituloProceso, descripcionProceso,
-                    funcAceptar):
+                    valores, habilitado, tituloProceso, descripcionProceso):
         """crea un nuevo objeto de tipo FieldFrame
 
         Args:
@@ -47,13 +46,16 @@ class FieldFrame(tk.Frame):
             row += 1
 
         # Botón Aceptar
-        btn_aceptar = tk.Button(frm_formulario, text="Aceptar", font=fuente, command= funcAceptar)
+        btn_aceptar = tk.Button(frm_formulario, text="Aceptar", font=fuente)
         btn_aceptar.grid(column=0, row=row, padx=15, pady=15)
+        self.btn_aceptar = btn_aceptar
         btn_cancelar = tk.Button(frm_formulario, text="Borrar", font=fuente, command= self.funcBorrar)
         btn_cancelar.grid(column=1, row=row, padx=15, pady=15)
 
         frm_formulario.pack(expand=True, padx=30)
 
+    def set_command_btn_aceptar(self, command):
+        self.btn_aceptar.configure(command = command)
 
     def getValue(self, criterio: str):
         """[summary]

@@ -68,8 +68,6 @@ class Apuesta:
 
 
     def agregarApostador(self, apostador: Apostador, prisionero: Prisionero, apuesta: int):
-        if apuesta > apostador.getSaldo() : return # Posible excepcion
-
         apostador.reducirSaldo(apuesta)
         agregando = (apostador, prisionero, apuesta)
         self._apostadores.append(agregando)
