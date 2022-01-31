@@ -3,7 +3,9 @@ import tkinter as tk
 
 class FieldFrame(tk.Frame):
 
-    def __init__(self, window, tituloCriterios, criterios, tituloValores, valores, habilitado, tituloProceso, descripcionProceso):
+    def __init__(   self, window, tituloCriterios, criterios, tituloValores, 
+                    valores, habilitado, tituloProceso, descripcionProceso,
+                    funcAceptar):
         """crea un nuevo objeto de tipo FieldFrame
 
         Args:
@@ -17,12 +19,12 @@ class FieldFrame(tk.Frame):
         """
         super().__init__(window)
         lbl_titulo_proceso = tk.Label(self, text=tituloProceso)
-        lbl_titulo_proceso.pack(side=tk.TOP)
+        lbl_titulo_proceso.pack(side=tk.TOP, pady= 10)
         
         frm_descripcion_proceso = tk.Frame(self, borderwidth=2, relief="solid")
         frm_descripcion_proceso.pack(fill=tk.X, padx=10)
         lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text=descripcionProceso)
-        lbl_descripcion_proceso.pack()
+        lbl_descripcion_proceso.pack(pady= 10)
 
         frm_formulario = tk.Frame(self, borderwidth=1, relief="solid", padx=100, pady=10)
         
@@ -44,9 +46,10 @@ class FieldFrame(tk.Frame):
 
             row += 1
 
-        btn_aceptar = tk.Button(frm_formulario, text="Aceptar", font=fuente)
+        # Botón Aceptar
+        btn_aceptar = tk.Button(frm_formulario, text="Aceptar", font=fuente, command= funcAceptar)
         btn_aceptar.grid(column=0, row=row, padx=15, pady=15)
-        btn_cancelar = tk.Button(frm_formulario, text="Cancelar", font=fuente)
+        btn_cancelar = tk.Button(frm_formulario, text="Borrar", font=fuente, command= self.funcBorrar)
         btn_cancelar.grid(column=1, row=row, padx=15, pady=15)
 
         frm_formulario.pack(expand=True, padx=30)
@@ -63,3 +66,9 @@ class FieldFrame(tk.Frame):
         """
         criterio_valor = self.entry_dict[criterio].get()
         return criterio_valor
+
+    def funcBorrar(self):
+        for v in self.entry_dict.values():
+            if v["state"] == "normal":
+                v.delete(0,tk.END)
+                v.insert(0,"")

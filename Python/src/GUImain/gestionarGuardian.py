@@ -25,10 +25,11 @@ class GestionarGuardian(tk.Toplevel):
             "Criterios",
             ["Código", "Nombre", "Descripción", "Ubicación"],
             "Valores",
-            ["a", "b", "c", "d"],
+            ["a", "b", "", ""],
             [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL],
             "Nombre del proceso o consulta",
-            "Descripción del detalle del proceso o la consulta"
+            "Descripción del detalle del proceso o la consulta",
+            lambda: print("Aceptar")
         )
         frm_inicial.pack(fill=tk.BOTH, expand=True)
 
