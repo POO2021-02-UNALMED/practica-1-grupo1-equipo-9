@@ -63,22 +63,22 @@ delitos77 = {}; delitos77[delito8.getCodigo()] = delito8; delitos77[delito5.getC
 		
 #################################################################################################3
 
-prisionero0 = Prisionero(0, "nombre0", 100, genero.M, celda0, delitos00)
-prisionero1 = Prisionero(1, "nombre1", 200, genero.M, celda0, delitos11)
-prisionero2 = Prisionero(2, "nombre2", 300, genero.M, celda1, delitos22)
-prisionero3 = Prisionero(3, "nombre3", 100, genero.M, celda1, delitos33)
-prisionero4 = Prisionero(4, "nombre4", 200, genero.F, celda5, delitos44)
-prisionero5 = Prisionero(5, "nombre5", 300, genero.F, celda6, delitos55)
-prisionero6 = Prisionero(6, "nombre6", 400, genero.F, celda7, delitos66)
-prisionero7 = Prisionero(7, "nombre7", 500, genero.F, celda5, delitos77)
-prisionero8 = Prisionero(8, "nombre8", 400, genero.M, celda4, delitos00)
-prisionero9 = Prisionero(9, "nombre9", 700, genero.M, celda4, delitos55)
-prisionero10 = Prisionero(10, "nombre10", 1000, genero.M, celda3, delitos33)
-prisionero11 = Prisionero(11, "nombre11", 1200, genero.F, celda9, delitos77)
-prisionero12 = Prisionero(12, "nombre12", 200, genero.F, celda8, delitos66)
-prisionero13 = Prisionero(13, "nombre13", 120, genero.M, celda2, delitos66)
-prisionero14 = Prisionero(14, "nombre14", 50, genero.F, celda6, delitos77)
-prisionero15 = Prisionero(15, "nombre15", 0, genero.F, celda7, delitos44)
+prisionero0 = Prisionero("nombre0", 100, genero.M, celda0, delitos00)
+prisionero1 = Prisionero("nombre1", 200, genero.M, celda0, delitos11)
+prisionero2 = Prisionero("nombre2", 300, genero.M, celda1, delitos22)
+prisionero3 = Prisionero("nombre3", 100, genero.M, celda1, delitos33)
+prisionero4 = Prisionero("nombre4", 200, genero.F, celda5, delitos44)
+prisionero5 = Prisionero("nombre5", 300, genero.F, celda6, delitos55)
+prisionero6 = Prisionero("nombre6", 400, genero.F, celda7, delitos66)
+prisionero7 = Prisionero("nombre7", 500, genero.F, celda5, delitos77)
+prisionero8 = Prisionero("nombre8", 400, genero.M, celda4, delitos00)
+prisionero9 = Prisionero("nombre9", 700, genero.M, celda4, delitos55)
+prisionero10 = Prisionero("nombre10", 1000, genero.M, celda3, delitos33)
+prisionero11 = Prisionero("nombre11", 1200, genero.F, celda9, delitos77)
+prisionero12 = Prisionero("nombre12", 200, genero.F, celda8, delitos66)
+prisionero13 = Prisionero("nombre13", 120, genero.M, celda2, delitos66)
+prisionero14 = Prisionero("nombre14", 50, genero.F, celda6, delitos77)
+prisionero15 = Prisionero("nombre15", 0, genero.F, celda7, delitos44)
 		
 		
 #		crearGuardianes

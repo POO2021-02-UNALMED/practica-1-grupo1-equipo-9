@@ -72,14 +72,6 @@ class GestionarGuardian(Toplevel):
 
     def ingresarGuardian(self):
 
-        def registro(nombre, saldo, salario, celdas):
-            celdas = celdas.split()
-            dictceldas = {}
-            for i in celdas:
-                dictceldas[int(i)] = Celda.getCeldas[int(i)]
-
-            Guardian(nombre, int(saldo), int(salario), dictceldas)
-
         self.currFrame.pack_forget()
 
         frm_ingresarGuardian = Frame(self)
@@ -92,9 +84,18 @@ class GestionarGuardian(Toplevel):
             [str(len(Guardian.getGuardianes())+1001), "b", "", "", ""],
             [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL],
             "Ingresar Guardian",
-            "Registre los datos solicitados para ingresar al Guardian. \n Para el campo 'Celdas', digite los números de celdas separados por espacio",
-            registro(frm_inicial.getValue("Nombre"), frm_inicial.getValue("Saldo"), frm_inicial.getValue("Salario"), frm_inicial.getValue("Celdas"))
+            "Registre los datos solicitados para ingresar al Guardian. \n Para el campo 'Celdas', digite los números de celdas separados por espacio"
         )
+
+        def registro():
+            celdas = frm_inicial.getValue("Celdas").split()
+            dictceldas = {}
+            for i in celdas:
+                dictceldas[int(i)] = Celda.getCeldas()[int(i)]
+
+            print(Guardian(frm_inicial.getValue("Nombre"), int(frm_inicial.getValue("Saldo")), int(frm_inicial.getValue("Salario")), dictceldas))
+
+        frm_inicial.set_command_btn_aceptar(registro)
         frm_inicial.pack(fill=tk.BOTH, expand=True)
 
         self.currFrame = frm_ingresarGuardian
