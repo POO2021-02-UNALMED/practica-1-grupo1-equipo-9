@@ -13,7 +13,7 @@ class GestionarPelea(Toplevel):
         window.iconify()
 
     def disenno(self):
-        self.geometry("850x500")
+        self.geometry("650x400")
         self.option_add("*tearOff", False)
         self.title("Gestion de Peleas")
 
