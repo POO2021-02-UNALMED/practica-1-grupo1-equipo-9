@@ -1,6 +1,11 @@
 import tkinter as tk
-from .menuBar import MenuBar
-from .fieldFrame import FieldFrame
+from .utils.menuBar import MenuBar
+from .utils.fieldFrame import FieldFrame
+from .utils.table import Table
+from gestorAplicacion.pelea import Pelea
+from gestorAplicacion.prisionero import Prisionero
+
+
 
 class GestionarPelea(tk.Toplevel):
 
@@ -16,7 +21,7 @@ class GestionarPelea(tk.Toplevel):
 
 
     def disenno(self):
-        self.geometry("650x400")
+        # self.geometry("650x400")
         self.option_add("*tearOff", False)
         self.title("Gestion de Peleas")
 
@@ -28,10 +33,16 @@ class GestionarPelea(tk.Toplevel):
                         ("Salir", self.salir) ]
         menubar.add_menu_options("Archivo", menuArchiv)
         
-        menuProcyCons = [   ("Registrar Pelea", self.registrarPelea),
-                            ("Definir Pelea", self.definirPelea), 
-                            ("Listar Peleas", self.listarPelea),
-                            ("Battle Royale", self.battleRoyale)]
+        menuProcyCons = [
+            ("Registrar Pelea", [
+                ("Ingresar", self.registrar_pelea),
+                ("Consultar código prisionero", self.deep_consultar_codigo_prisionero),
+                ("Consultar armas disponibles", self.depp_consultar_armas_habilitadas)
+            ]),
+            ("Definir Pelea", self.definir_pelea), 
+            ("Listar Peleas", self.listar_pelea),
+            ("Battle Royale", self.battle_royale)
+        ]
 
         menubar.add_menu_options('Procesos y Consultas', menuProcyCons)
 
@@ -70,7 +81,7 @@ class GestionarPelea(tk.Toplevel):
         frmBase.pack()
 
 
-    def registrarPelea(self):
+    def registrar_pelea(self):
         
         self.currFrame.pack_forget()
 
@@ -93,13 +104,33 @@ class GestionarPelea(tk.Toplevel):
         self.currFrame = frm_registrarPelea
         frm_registrarPelea.pack()
 
-    def definirPelea(self):
+    def definir_pelea(self):
         pass
 
-    def listarPelea(self):
+    def listar_pelea(self):
         pass
 
-    def battleRoyale(self):
+    def battle_royale(self):
+        pass
+    
+    def deep_consultar_codigo_prisionero(self):
+        prisioneros = Prisionero.getPrisioneros()
+        data = []
+        for k, v in prisioneros.items():
+            data.append(
+                [
+                    v.identificacion,
+                    v.getGenero().value,
+                    v.getInicioCondena(),
+                    v.getFinCondena()
+                ]
+            )
+        top_level_window = tk.Toplevel(self)
+        tbl = Table(top_level_window, data)
+        
+
+
+    def depp_consultar_armas_habilitadas(self):
         pass
 
     def evento(self):
