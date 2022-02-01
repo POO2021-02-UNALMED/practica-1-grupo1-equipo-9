@@ -40,7 +40,4 @@ class Delito:
         return cls._delitos
     @classmethod
     def setDelitos(cls, _delitos):
-        cls._delitos = _delitos
-
-    '''override
-    def __str__(self):'''          
+        cls._delitos = _delitos       
