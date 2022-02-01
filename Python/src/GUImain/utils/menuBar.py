@@ -1,8 +1,7 @@
-from logging import root
-from tkinter import *
+import tkinter as tk
 
 
-class MenuBar(Menu):
+class MenuBar(tk.Menu):
 
     def __init__(self, window) -> None:
         # Menu inicio
@@ -11,11 +10,11 @@ class MenuBar(Menu):
 
     def add_menu_options(self, label: str, options: list):
         # Menu inicio opciones
-        menu_opciones = Menu()
+        menu_opciones = tk.Menu()
         for label_option, command_option in options:
             # Esto para poder colocar un segundo nivel de menu (submenus)
             if type(command_option) == list:
-                menu_opciones_deep = Menu()
+                menu_opciones_deep = tk.Menu()
                 for label_option_deep, command_option_deep in command_option:
                     menu_opciones_deep.add_command(label=label_option_deep, command=command_option_deep)
 

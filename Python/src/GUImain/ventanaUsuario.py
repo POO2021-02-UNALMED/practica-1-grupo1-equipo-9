@@ -5,7 +5,7 @@ from .gestionarDelito import GestionarDelito
 from .gestionarGuardian import GestionarGuardian
 from .gestionarPelea import GestionarPelea
 from .gestionarPrisionero import GestionarPrisionero
-from .menuBar import MenuBar
+from .utils.menuBar import MenuBar
 
 
 class VentanaUsuario(Toplevel):

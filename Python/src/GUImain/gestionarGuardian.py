@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
-from .menuBar import MenuBar
-from .fieldFrame import FieldFrame
+from .utils.menuBar import MenuBar
+from .utils.fieldFrame import FieldFrame
 from gestorAplicacion.guardian import Guardian
 from gestorAplicacion.celda import Celda
 

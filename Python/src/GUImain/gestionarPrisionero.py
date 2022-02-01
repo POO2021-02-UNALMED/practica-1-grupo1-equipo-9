@@ -1,5 +1,5 @@
 from tkinter import *
-from .menuBar import MenuBar
+from .utils.menuBar import MenuBar
 
 class GestionarPrisionero(Toplevel):
 

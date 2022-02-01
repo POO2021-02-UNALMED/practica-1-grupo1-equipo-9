@@ -1,8 +1,9 @@
 import os
+from .utils import menuBar
 import settings
 import tkinter as tk
 from PIL import Image, ImageTk
-from . import ventanaUsuario, menuBar
+from . import ventanaUsuario
 
 
 class VentanaPrincipal(tk.Tk):

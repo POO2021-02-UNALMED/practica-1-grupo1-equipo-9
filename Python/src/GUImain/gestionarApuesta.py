@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 
 from gestorAplicacion.apuesta import Apuesta
-from .menuBar import MenuBar
+from .utils.menuBar import MenuBar
 from tkinter import ttk
 from gestorAplicacion.prisionero import Prisionero
 from gestorAplicacion.guardian import Guardian

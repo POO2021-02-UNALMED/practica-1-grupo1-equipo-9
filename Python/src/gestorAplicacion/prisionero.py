@@ -51,6 +51,7 @@ class Prisionero(Apostador):
 
     def getGenero(self):
         return self._genero
+
     def setGenero(self, _genero):
         self._genero = _genero
 
