@@ -128,6 +128,24 @@ pelea1 = Pelea(1, genero.M, prisionero2, prisionero3, "arma11", "arma21")
 pelea2 = Pelea(2, genero.F, prisionero4, prisionero5, "arma12", "arma22")
 pelea3 = Pelea(3, genero.F, prisionero6, prisionero7, "arma13", "arma23")
 
+apuesta0 = pelea0.getApuesta()
+apuesta0.agregarApostador(prisionero6, prisionero0, 10)
+apuesta0.agregarApostador(prisionero7, prisionero0, 20)
+apuesta0.agregarApostador(prisionero8, prisionero0, 10)
+apuesta0.agregarApostador(guardian1, prisionero1, 20)
+apuesta0.agregarApostador(guardian2, prisionero1, 10)
+apuesta0.agregarApostador(guardian3, prisionero1, 10)
+pelea0.setGanador(prisionero0)
+
+apuesta1 = pelea1.getApuesta()
+apuesta1.agregarApostador(prisionero2, prisionero2, 10)
+apuesta1.agregarApostador(prisionero3, prisionero2, 20)
+apuesta1.agregarApostador(prisionero4, prisionero2, 10)
+apuesta1.agregarApostador(guardian4, prisionero3, 20)
+apuesta1.agregarApostador(guardian5, prisionero3, 10)
+apuesta1.agregarApostador(guardian1, prisionero3, 30)
+pelea1.setGanador(prisionero3)
+
 
 from baseDatos.serializador import serializar
 from baseDatos.deserializador import deserializar

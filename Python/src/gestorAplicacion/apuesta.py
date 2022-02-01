@@ -53,13 +53,13 @@ class Apuesta:
                 apostador.aumentarSaldo(ganancia)
 
                 self._estadisticas.append(
-                    "Apostador con ID: " + str(apostador.getIdentificacion()) + "\t\t+" 
-                    + str(round(ganancia - apuesta, 2)) + "\t\t" + "Saldo actual: " + str(round(apostador.getSaldo(),2))
+                    "Apostador con ID: " + str(apostador.getIdentificacion()) + "\t"*3 + "+" 
+                    + str(round(ganancia - apuesta, 2)) + "\t"*3 + "Saldo actual: " + str(round(apostador.getSaldo(),2))
                     )
             else:
                 self._estadisticas.append(
-                    "Apostador con ID: " + str(apostador.getIdentificacion()) + "\t\t-" 
-                    + str(apuesta) + "\t\t" + "Saldo actual: " + str(round(apostador.getSaldo(),2))
+                    "Apostador con ID: " + str(apostador.getIdentificacion()) + "\t"*3 + "-" 
+                    + str(apuesta) + "\t"*3 + "Saldo actual: " + str(round(apostador.getSaldo(),2))
                     )
 
         self._montoTotal = montoTotal
