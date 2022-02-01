@@ -77,15 +77,6 @@ class VentanaPrincipal(tk.Tk):
         ]
         menu_principal.add_menu_options("Inicio", menu_opciones)
 
-        # Menu Dos para ejemplificar la creación de nuevos menus
-        menu_opciones = [
-            ("Opcion 1", self.opcion1),
-            ("Opcion 2", self.opcion2),
-            ("Opcion 3", self.opcion3),
-            ("Opcion 4", self.opcion4),
-        ]
-        menu_principal.add_menu_options("Menu Dos", menu_opciones)
-
 
     # Button events
     def btn_desarrolladores_event(self, e):
