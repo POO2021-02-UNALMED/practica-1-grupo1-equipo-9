@@ -1,3 +1,4 @@
+from logging import root
 from tkinter import *
 
 
@@ -12,7 +13,17 @@ class MenuBar(Menu):
         # Menu inicio opciones
         menu_opciones = Menu()
         for label_option, command_option in options:
-            menu_opciones.add_command(label=label_option, command=command_option)
+            # Esto para poder colocar un segundo nivel de menu (submenus)
+            if type(command_option) == list:
+                menu_opciones_deep = Menu()
+                for label_option_deep, command_option_deep in command_option:
+                    menu_opciones_deep.add_command(label=label_option_deep, command=command_option_deep)
+
+                menu_opciones.add_cascade(menu=menu_opciones_deep, label=label_option)
+
+            else:    
+                menu_opciones.add_command(label=label_option, command=command_option)
+        
 
         self.add_cascade(menu=menu_opciones, label=label)
     
