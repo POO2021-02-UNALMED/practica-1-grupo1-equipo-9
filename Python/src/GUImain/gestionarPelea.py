@@ -127,9 +127,13 @@ class GestionarPelea(tk.Toplevel):
             pass
 
         # Validación del codigo de los prisioneros exista
-        # TODO: Buscar en la lista de prisioneros a ver si los codigos existen
-        prisionero1 = Prisionero.getPrisioneros()[int(codigo_prisionero1)]
-        prisionero2 = Prisionero.getPrisioneros()[int(codigo_prisionero2)]
+        try:
+            prisionero1 = Prisionero.getPrisioneros()[int(codigo_prisionero1)]
+            prisionero2 = Prisionero.getPrisioneros()[int(codigo_prisionero2)]
+        except KeyError:
+            # TODO: Mostrar mensaje diciendo que los codigos de los prisioneros no existen
+            print("El o los codigos de los prisionero no existen")
+            pass
 
         # Validación de armas
         # TODO: Validar que las armas existan
