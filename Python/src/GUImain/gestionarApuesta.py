@@ -1,6 +1,7 @@
-from faulthandler import disable
 from tkinter import *
 from tkinter import messagebox
+
+from gestorAplicacion.apuesta import Apuesta
 from .menuBar import MenuBar
 from tkinter import ttk
 from gestorAplicacion.prisionero import Prisionero
@@ -179,9 +180,6 @@ class GestionarApuesta(Toplevel):
         self.currFrame = frm_ingresarApostador
         frm_ingresarApostador.pack()
 
-
-
-
     def resultadoApuestas(self):
         self.currFrame.pack_forget()
 
@@ -193,7 +191,44 @@ class GestionarApuesta(Toplevel):
         lbl_titulo_proceso = Label(frm_titulo_proceso, text="Resultado Apuestas", font=('Arial', 15))
         lbl_titulo_proceso.pack()
 
-        
+        frm_descripcion_proceso = Frame(frm_resultadoApuestas, borderwidth=2, relief="solid", padx= 10)
+        frm_descripcion_proceso.pack(fill=X, padx=10 ,pady= 10)
+
+        lbl_descripcion_proceso = Label(frm_descripcion_proceso,
+        text= "Cada pelea registrada en el sistema tiene asociada una apuesta.\n" + 
+        "A continuación se listan los resultados de todas las apuestas:", 
+        font=('Arial', 10))
+        lbl_descripcion_proceso.pack(pady= 10)
+
+
+        # Lista---------------
+        container = ttk.Frame(frm_resultadoApuestas, borderwidth=1, relief="solid")
+        colores = ["gray70", "white"]
+        canvas = Canvas(container, width= 550, height= 250)
+        scrollbar = ttk.Scrollbar(container, orient="vertical", command=canvas.yview)
+        scrollable_frame = ttk.Frame(canvas)
+
+        scrollable_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(
+                scrollregion=canvas.bbox("all")
+            )
+        )
+
+        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        for apst in Apuesta.getApuestas().values():
+            resultado = apst.resultadoApuesta()
+            currLabel = Label(scrollable_frame, background= colores[0], text=resultado, width= 80)
+            colores.append(colores.pop(0))
+            currLabel.pack(fill=X)
+
+        container.pack()
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
         self.currFrame = frm_resultadoApuestas
         frm_resultadoApuestas.pack()
 

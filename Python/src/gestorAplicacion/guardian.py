@@ -49,8 +49,8 @@ class Guardian(Apostador):
 
     def getCeldas(self):
         return self._celdas
-    def agregarCelda(self, celda: Celda):
-        self._celdas[celda.getNumero()] = celda
+    def setCelda(self, celdas):
+        self._celdas = celdas
 
     def getSalario(self):
         return self._salario
