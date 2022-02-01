@@ -1,17 +1,14 @@
 import tkinter as tk
-from tkinter import *
-from tkinter import messagebox
 from tkinter import ttk
-
-from click import command
 from .menuBar import MenuBar
 from .fieldFrame import FieldFrame
 from gestorAplicacion.guardian import Guardian
 from gestorAplicacion.celda import Celda
 
-class GestionarGuardian(Toplevel):
 
-    def __init__(self, window: Tk):
+class GestionarGuardian(tk.Toplevel):
+
+    def __init__(self, window: tk.Tk):
         super().__init__(window)
         self.MASTER = window
 
@@ -46,29 +43,29 @@ class GestionarGuardian(Toplevel):
         menubar.add_menu_options("Ayuda", menuAyuda)
 
     def frmInicial(self):
-        frmBase = Frame(self)
+        frmBase = tk.Frame(self)
 
-        frm_titulo_proceso = Frame(frmBase)
-        frm_titulo_proceso.pack(side=TOP, fill=X, padx=10 ,pady= 10)
+        frm_titulo_proceso = tk.Frame(frmBase)
+        frm_titulo_proceso.pack(side=tk.TOP, fill=tk.X, padx=10 ,pady= 10)
 
-        lbl_titulo_proceso = Label(frm_titulo_proceso, text="Gestión de los Guardianes", font=('Arial', 15))
+        lbl_titulo_proceso = tk.Label(frm_titulo_proceso, text="Gestión de los Guardianes", font=('Arial', 15))
         lbl_titulo_proceso.pack()
         
-        frm_descripcion_proceso = Frame(frmBase, borderwidth=2, relief="solid")
-        frm_descripcion_proceso.pack(fill=X, padx=10 ,pady= 10)
+        frm_descripcion_proceso = tk.Frame(frmBase, borderwidth=2, relief="solid")
+        frm_descripcion_proceso.pack(fill=tk.X, padx=10 ,pady= 10)
 
-        lbl_descripcion_proceso = Label(frm_descripcion_proceso,
+        lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso,
         text= """En esta ventana tendrá la posibilidad de gestionar todos los aspectos
         relacionados con los guardianes en las instalaciones de la Cárcel Apuestera.""", 
         font=('Arial', 10))
         lbl_descripcion_proceso.pack(pady= 10)
 
-        frm_formulario = Frame(frmBase, borderwidth=1, relief="solid")
-        frm_formulario.pack(fill=X, pady= 10)
-        lbl_formulario = Label(frm_formulario,
+        frm_formulario = tk.Frame(frmBase, borderwidth=1, relief="solid")
+        frm_formulario.pack(fill=tk.X, pady= 10)
+        lbl_formulario = tk.Label(frm_formulario,
         text= """En el menú 'Procesos y Consultas' se encuentran las funcionalidades ofrecidas""", 
         font=('Arial', 10))
-        lbl_formulario.pack(fill=X, padx=10 ,pady= 10)
+        lbl_formulario.pack(fill=tk.X, padx=10 ,pady= 10)
 
 
         self.currFrame = frmBase
@@ -76,7 +73,7 @@ class GestionarGuardian(Toplevel):
 
     def ingresarGuardian(self):
         self.currFrame.pack_forget()
-        frm_ingresarGuardian = Frame(self)
+        frm_ingresarGuardian = tk.Frame(self)
 
 
         # Formulario --------------------------------------------------------------
@@ -101,7 +98,7 @@ class GestionarGuardian(Toplevel):
                 dictceldas[int(i)] = Celda.getCeldas()[int(i)]
 
             Guardian(frm_inicial.getValue("Nombre"), int(frm_inicial.getValue("Saldo")), int(frm_inicial.getValue("Salario")), dictceldas)
-            messagebox.showinfo("Confirmación", "Se ha registrado el Guardian correctamente")
+            tk.messagebox.showinfo("Confirmación", "Se ha registrado el Guardian correctamente")
             self.salir()
         
         #Hacer excepcion 
@@ -114,18 +111,18 @@ class GestionarGuardian(Toplevel):
 
     def borrarGuardian(self):
         self.currFrame.pack_forget()
-        frm_borrarGuardian = Frame(self)
+        frm_borrarGuardian = tk.Frame(self)
 
-        frm_titulo_proceso = Frame(frm_borrarGuardian)
-        frm_titulo_proceso.pack(side=TOP, fill=X, padx=10 ,pady= 10)
+        frm_titulo_proceso = tk.Frame(frm_borrarGuardian)
+        frm_titulo_proceso.pack(side=tk.TOP, fill=tk.X, padx=10 ,pady= 10)
 
-        lbl_titulo_proceso = Label(frm_titulo_proceso, text="Borrar Guardian", font=('Arial', 15))
+        lbl_titulo_proceso = tk.Label(frm_titulo_proceso, text="Borrar Guardian", font=('Arial', 15))
         lbl_titulo_proceso.pack()
         
-        frm_descripcion_proceso = Frame(frm_borrarGuardian, borderwidth=2, relief="solid", padx= 10)
-        frm_descripcion_proceso.pack(fill=X, padx=10 ,pady= 10)
+        frm_descripcion_proceso = tk.Frame(frm_borrarGuardian, borderwidth=2, relief="solid", padx= 10)
+        frm_descripcion_proceso.pack(fill=tk.X, padx=10 ,pady= 10)
 
-        lbl_descripcion_proceso = Label(frm_descripcion_proceso,
+        lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso,
         text= "A continuacón se mostrará una lista de los guardianes registrados en la carcel. \n"+
         "Seleccione un código de identificación del guardian que desea eliminar de la base de datos.", 
         font=('Arial', 10))
@@ -134,16 +131,16 @@ class GestionarGuardian(Toplevel):
 
         # Formulario --------------------------------------------------------------
 
-        frm_formulario = Frame(frm_borrarGuardian, borderwidth=1, relief="solid")
+        frm_formulario = tk.Frame(frm_borrarGuardian, borderwidth=1, relief="solid")
         guardianes = [k for (k, v) in Guardian.getGuardianes().items()]
-        Label(frm_formulario, text= "Código Guardian: ").grid(column=0, row=1, padx=15, pady=5)
-        combox_codigo = ttk.Combobox(frm_formulario, values=guardianes, justify=CENTER)
+        tk.Label(frm_formulario, text= "Código Guardian: ").grid(column=0, row=1, padx=15, pady=5)
+        combox_codigo = ttk.Combobox(frm_formulario, values=guardianes, justify=tk.CENTER)
         combox_codigo['state'] = 'readonly'
         combox_codigo.grid(column=1, row=1, padx=15, pady=5)
 
         def func_borrarGuardian():
             Guardian.getGuardianes().pop(int(combox_codigo.get()))
-            messagebox.showinfo("Confirmación", "Se ha eliminado al guardian " + combox_codigo.get() + " correctamente")
+            tk.messagebox.showinfo("Confirmación", "Se ha eliminado al guardian " + combox_codigo.get() + " correctamente")
             self.salir()
 
         def func_cancelar():
@@ -151,9 +148,9 @@ class GestionarGuardian(Toplevel):
 
         # Botones
         fuente = "Helvetica 10 bold"
-        btn_aceptar = Button(frm_formulario, text="Borrar", font=fuente, command= func_borrarGuardian)
+        btn_aceptar = tk.Button(frm_formulario, text="Borrar", font=fuente, command= func_borrarGuardian)
         btn_aceptar.grid(column=0, row=2, padx=15, pady=15)
-        btn_cancelar = Button(frm_formulario, text="Cancelar", font=fuente, command= func_cancelar)
+        btn_cancelar = tk.Button(frm_formulario, text="Cancelar", font=fuente, command= func_cancelar)
         btn_cancelar.grid(column=1, row=2, padx=15, pady=15)
 
         frm_formulario.pack(expand=True, padx=30)
@@ -164,15 +161,15 @@ class GestionarGuardian(Toplevel):
     def editarGuardian(self):
         global frm_principal
         self.currFrame.pack_forget()
-        frm_editarGuardian = Frame(self)
+        frm_editarGuardian = tk.Frame(self)
 
 
         # Formulario --------------------------------------------------------------
         
-        frm_formulario = Frame(frm_editarGuardian, borderwidth=1, relief="solid")
+        frm_formulario = tk.Frame(frm_editarGuardian, borderwidth=1, relief="solid")
         guardianes = [k for (k, v) in Guardian.getGuardianes().items()]
-        Label(frm_formulario, text= "Código Guardian: ").grid(column=0, row=1, padx=15, pady=5)
-        combox_codigo = ttk.Combobox(frm_formulario, values=guardianes, justify=CENTER)
+        tk.Label(frm_formulario, text= "Código Guardian: ").grid(column=0, row=1, padx=15, pady=5)
+        combox_codigo = ttk.Combobox(frm_formulario, values=guardianes, justify=tk.CENTER)
         combox_codigo['state'] = 'readonly'
         combox_codigo.grid(column=1, row=1, padx=15, pady=5)
 
@@ -241,7 +238,7 @@ class GestionarGuardian(Toplevel):
             #datosguardian.setSalario(int(frm_principal.getValue("Salario")))
             #datosguardian.setCeldas(dictceldas)
 
-            messagebox.showinfo("Confirmación", "Se han modificado correctamente los datos del guardian seleccionado")
+            tk.messagebox.showinfo("Confirmación", "Se han modificado correctamente los datos del guardian seleccionado")
             self.salir()
         
         frm_principal.set_command_btn_aceptar(registro)
