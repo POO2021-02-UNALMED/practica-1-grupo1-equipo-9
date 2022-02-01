@@ -46,9 +46,6 @@ class Prisionero(Apostador):
     def disminuirCondena(self,meses):  
         self._finCondena = self._finCondena - relativedelta(months=+meses)      
 
-    '''#override
-    def __str__(self):'''
-
     def getGenero(self):
         return self._genero
 
