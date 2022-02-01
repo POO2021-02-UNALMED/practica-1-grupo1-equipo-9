@@ -13,7 +13,7 @@ class GestionarDelito(Toplevel):
         window.iconify()
 
     def disenno(self):
-        self.geometry("850x500")
+        self.geometry("650x500")
         self.option_add("*tearOff", False)
         self.title("Gestion de Delitos")
 
