@@ -4,6 +4,7 @@ from .utils.fieldFrame import FieldFrame
 from .utils.table import Table
 from gestorAplicacion.pelea import Pelea
 from gestorAplicacion.prisionero import Prisionero
+from gestorAplicacion.genero import genero as genero_enum
 
 
 
@@ -35,9 +36,9 @@ class GestionarPelea(tk.Toplevel):
         
         menuProcyCons = [
             ("Registrar Pelea", [
-                ("Ingresar", self.registrar_pelea),
-                ("Consultar código prisionero", self.deep_consultar_codigo_prisionero),
-                ("Consultar armas disponibles", self.depp_consultar_armas_habilitadas)
+                ("Ingresar", self.frm_registrar_pelea),
+                ("Consultar código prisionero", self.deep_consultar_codigo_prisionero_event),
+                ("Consultar armas disponibles", self.depp_consultar_armas_habilitadas_event)
             ]),
             ("Definir Pelea", self.definir_pelea), 
             ("Listar Peleas", self.listar_pelea),
@@ -81,16 +82,16 @@ class GestionarPelea(tk.Toplevel):
         frmBase.pack()
 
 
-    def registrar_pelea(self):
+    def frm_registrar_pelea(self):
         
         self.currFrame.pack_forget()
 
         frm_registrarPelea = tk.Frame(self)
 
-        frm_inicial = FieldFrame(
+        self.frm_inicial = FieldFrame(
             frm_registrarPelea,
             "Criterios",
-            ["Código", "Género", "Código de primer prisionero", "Código de segundo prisionero", "Arma uno", "Arma dos"],
+            ["Código", "Género(M/F)", "Código prisionero 1", "Código prisionero 2", "Arma 1", "Arma 2"],
             "Valores",
             ["", "", "", "", "", ""],
             [tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL],
@@ -98,11 +99,45 @@ class GestionarPelea(tk.Toplevel):
             "Registre los datos de una pelea.\nPara este caso habilitamos un submenu para consultar los codigos de los prisioneros"
         )
         
-        # frm_inicial.set_command_btn_aceptar(registro)
-        frm_inicial.pack(fill=tk.BOTH, expand=True)
+        self.frm_inicial.set_command_btn_aceptar(self.registrar_pelea_event)
+        self.frm_inicial.pack(fill=tk.BOTH, expand=True)
 
         self.currFrame = frm_registrarPelea
         frm_registrarPelea.pack()
+
+
+    def registrar_pelea_event(self):
+        codigo = self.frm_inicial.getValue("Código")
+        genero = self.frm_inicial.getValue("Género(M/F)")
+        codigo_prisionero1 = self.frm_inicial.getValue("Código prisionero 1")
+        codigo_prisionero2 = self.frm_inicial.getValue("Código prisionero 2")
+        arma1 = self.frm_inicial.getValue("Arma 1")
+        arma2 = self.frm_inicial.getValue("Arma 2")
+
+        # Validación de codigo de nueva pelea
+        # TODO: Validar que el codigo de la nueva pelea no exista
+
+        # Validación de que la letra ingresada sea la correcta
+        if genero.lower() == "m":
+            genero = genero_enum.M
+        elif genero.lower() == "f":
+            genero  = genero_enum.F
+        else:
+            # TODO: Mostrar el campo en el cual aparecio un error en un cuadro de dialogo
+            pass
+
+        # Validación del codigo de los prisioneros exista
+        # TODO: Buscar en la lista de prisioneros a ver si los codigos existen
+        prisionero1 = Prisionero.getPrisioneros()[int(codigo_prisionero1)]
+        prisionero2 = Prisionero.getPrisioneros()[int(codigo_prisionero2)]
+
+        # Validación de armas
+        # TODO: Validar que las armas existan
+
+        pelea = Pelea(codigo, genero, prisionero1, prisionero2, "arma10", "arma20")
+        print(pelea)
+
+
 
     def definir_pelea(self):
         pass
@@ -113,9 +148,15 @@ class GestionarPelea(tk.Toplevel):
     def battle_royale(self):
         pass
     
-    def deep_consultar_codigo_prisionero(self):
+    def deep_consultar_codigo_prisionero_event(self):
         prisioneros = Prisionero.getPrisioneros()
-        data = []
+        header = [
+            "Código",
+            "Género",
+            "Inicio de condena",
+            "Fin de condena"
+        ]
+        data = [header]
         for k, v in prisioneros.items():
             data.append(
                 [
@@ -127,10 +168,9 @@ class GestionarPelea(tk.Toplevel):
             )
         top_level_window = tk.Toplevel(self)
         tbl = Table(top_level_window, data)
-        
 
 
-    def depp_consultar_armas_habilitadas(self):
+    def depp_consultar_armas_habilitadas_event(self):
         pass
 
     def evento(self):
