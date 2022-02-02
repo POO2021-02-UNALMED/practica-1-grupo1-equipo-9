@@ -18,7 +18,7 @@ class GestionarDelito(Toplevel):
         window.iconify()
 
     def disenno(self):
-        self.geometry("650x550")
+        self.geometry("700x550")
         self.option_add("*tearOff", False)
         self.title("Gestion de Delitos")
 
@@ -126,7 +126,6 @@ class GestionarDelito(Toplevel):
             else:
                 pass 
 
-
         def cancelar():
             self.salir()
 
@@ -165,15 +164,25 @@ class GestionarDelito(Toplevel):
         cbox_codigo=ttk.Combobox(frm_editar, values=delitos, justify=tk.CENTER, state="readonly")
         cbox_codigo.grid(column=1,row=1,padx=15,pady=5)
 
-        frm_ingresar=FieldFrame(frm_editarDelito, "Criterios", ["Código", "Nombre", "Descripción", "Nivel", "Tiempo Condena"], 
-         "Valores", [str(cbox_codigo.get()), None, None, None, None, None], [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL], "", "Modifique los datos que desea editar")
-
         frm_editar.pack(expand=True, padx=30)
+
+        frm_ingresar=FieldFrame(frm_editarDelito, "Criterios", ["Código", "Nombre", "Descripción", "Nivel", "Tiempo Condena"], 
+         "Valores", [None, None, None, None, None, None], [tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL], "", "Modifique los datos que desea editar")
+
+        def func_editarDelito():
+
+            Delito._delitos[int(cbox_codigo.get())].setNombre(frm_ingresar.getValue("Nombre"))
+            Delito._delitos[int(cbox_codigo.get())].setDescripcion(frm_ingresar.getValue("Descripción"))
+            Delito._delitos[int(cbox_codigo.get())].setNivel(int(frm_ingresar.getValue("Nivel")))
+            Delito._delitos[int(cbox_codigo.get())].setTiempoCondena(int(frm_ingresar.getValue("Tiempo Condena")))
+            tk.messagebox.showinfo(message="El delito ha sido editado correctamente")
+            self.salir()
+
+        frm_ingresar.set_command_btn_aceptar(func_editarDelito)
+
         frm_ingresar.pack(fill=tk.BOTH, expand=True)
         self.currFrame = frm_editarDelito
         frm_editarDelito.pack()
-
-#Delito.getDelitos[cbox_codigo.get()].getNombre()
 
     def listarDelito(self):
         self.currFrame.pack_forget()
@@ -195,7 +204,7 @@ class GestionarDelito(Toplevel):
 
         container=ttk.Frame(frm_listaDelitos, borderwidth=1, relief="solid")
         colores=["gray70", "white"]
-        canvas=Canvas(container, width=550, height=250)
+        canvas=Canvas(container, width=650, height=400)
         scrollbar=ttk.Scrollbar(container, orient="vertical", command=canvas.yview)
         scrollbar_frame=ttk.Frame(canvas)
 
@@ -209,7 +218,7 @@ class GestionarDelito(Toplevel):
         canvas.configure(yscrollcommand=scrollbar.set)
 
         for delito in Delito.getDelitos().values():
-            currLabel=Label(scrollbar_frame, background=colores[0], text=delito, width=100)
+            currLabel=Label(scrollbar_frame, background=colores[0], text=delito, width=95)
             colores.append(colores.pop(0))
             currLabel.pack(fill=tk.X)
 
