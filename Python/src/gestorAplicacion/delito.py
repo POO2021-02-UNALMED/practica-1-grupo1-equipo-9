@@ -41,3 +41,9 @@ class Delito:
     @classmethod
     def setDelitos(cls, _delitos):
         cls._delitos = _delitos       
+
+    def __str__(self) -> str:
+        return ("Delito: "+ str(self.getCodigo()) + "\n" + "Nombre: " + self.getNombre()+ "\n"
+                +"Descripción: " + self.getDescripcion() +"\n"
+                +"Nivel: " + str(self.getNivel()) + "\n"
+                + "Tiempo condena: " + str(self.getTiempoCondena()) + "\n")    
