@@ -139,18 +139,32 @@ class GestionarApuesta(Toplevel):
 
         def func_ingresarApostador():
             from baseDatos.serializador import serializar
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+            from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
 
-            # CHECK si algún campo está vacío
+            try:
+                ExceptionCampoVacio(entry_Identificacion.get(),
+                                    entry_Dinero.get(),
+                                    combox_Peleador.get(),
+                                    combox_Pelea.get())
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
 
             idApostador = int(entry_Identificacion.get())
-            if idApostador in Prisionero.getPrisioneros():
+            try:
+                ExceptionObjNoEncontrado(   "No se encontró apostador con este ID.", 
+                                            idApostador, Prisionero.getPrisioneros())
                 ap = Prisionero.getPrisioneros()[idApostador]
-            elif idApostador in Guardian.getGuardianes():
-                ap = Guardian.getGuardianes()[idApostador]
-            else:
-                # EXCEPCION
-                pass
-            
+            except:
+                try:
+                    ExceptionObjNoEncontrado(   "No se encontró apostador con este ID.", 
+                                                idApostador, Guardian.getGuardianes())
+                    ap = Guardian.getGuardianes()[idApostador]
+                except ExceptionObjNoEncontrado as f:
+                    f.messbox()
+                    return
+
             pelea = peleas[idpelea]
             apuesta = int(entry_Dinero.get())
             luchador = Prisionero.getPrisioneros()[int(combox_Peleador.get())]
