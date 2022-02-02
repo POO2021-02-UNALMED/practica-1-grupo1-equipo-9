@@ -1,4 +1,5 @@
 from gestorAplicacion.apostador import Apostador
+from gestorAplicacion.celda import Celda
 from datetime import date
 from dateutil.relativedelta import relativedelta
 
@@ -14,7 +15,7 @@ class Prisionero(Apostador):
         self._genero = _genero
         self._inicioCondena = date.today()
         self._celda = _celda 
-        _celda.ingresarPrisionero(self)
+        _celda.ingresarPrisionero(self) #no funciona
         self._delitos = _delitos
 
         if self._genero.value == "MASCULINO":
