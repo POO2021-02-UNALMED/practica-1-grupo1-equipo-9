@@ -8,6 +8,7 @@ from turtle import width
 
 from numpy import pad
 from gestorAplicacion.delito import Delito
+from gestorAplicacion.genero import genero
 from gestorAplicacion.antidelito import Antidelito
 from gestorAplicacion.prisionero import Prisionero
 from .utils.fieldFrame import FieldFrame
@@ -27,7 +28,7 @@ class GestionarPrisionero(tk.Toplevel):
         window.iconify()
 
     def disenno(self):
-        self.geometry("650x400")
+        self.geometry("650x450")
         self.option_add("*tearOff", False)
         self.title("Gestion de Prisioneros")
 
@@ -86,15 +87,22 @@ class GestionarPrisionero(tk.Toplevel):
 
         frm_ingresar=FieldFrame(frm_ingresarPrisionero, "Criterios", ["Identificación", "Nombre", "Saldo", "Género", "Celda", "Delitos"], 
          "Valores", [str(len(Prisionero.getPrisioneros())+1), None, None, None, None, None], [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL], 
-         "Ingresar Prisionero", "Ingrese los datos solicitados para registrar el prisionero \n" + "Para el campo 'Delitos', digite el código de los delitos separados por espacio" )
+         "Ingresar Prisionero", "Ingrese los datos solicitados para registrar el prisionero \n" + "Para el campo 'Género', digite M o F \n" + "Para el campo 'Delitos', digite el código de los delitos separados por espacio" )
 
         def registro():
 
             delitos=frm_ingresar.getValue("Delitos").split()
             ddelitos={}
+            
             for i in delitos:
                 ddelitos[int(i)]=Delito.getDelitos()[int(i)]
-            Prisionero(frm_ingresar.getValue("Nombre"), int(frm_ingresar.getValue("Saldo")), frm_ingresar.getValue("Género"), int(frm_ingresar.getValue("Celda")), ddelitos)
+
+            if(frm_ingresar.getValue("Género")=="M"):
+                gen= genero.M
+            elif(frm_ingresar.getValue("Género")=="F"):
+                gen= genero.F        
+
+            Prisionero(frm_ingresar.getValue("Nombre"), int(frm_ingresar.getValue("Saldo")), gen, int(frm_ingresar.getValue("Celda")), ddelitos)
             tk.messagebox.showinfo(message="El prisionero ha sido registrado correctamente")
             self.salir()
 
