@@ -1,5 +1,4 @@
 from gestorAplicacion.apostador import Apostador
-from gestorAplicacion.celda import Celda
 from datetime import date
 from dateutil.relativedelta import relativedelta
 
