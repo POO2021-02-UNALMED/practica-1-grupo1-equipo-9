@@ -18,7 +18,7 @@ class GestionarDelito(Toplevel):
         window.iconify()
 
     def disenno(self):
-        self.geometry("650x400")
+        self.geometry("650x550")
         self.option_add("*tearOff", False)
         self.title("Gestion de Delitos")
 
@@ -75,12 +75,12 @@ class GestionarDelito(Toplevel):
         frm_ingresarDelito=tk.Frame(self)
 
         frm_ingresar=FieldFrame(frm_ingresarDelito, "Criterios", ["Código", "Nombre", "Descripción", "Nivel", "Tiempo Condena"], 
-         "Valores", [None, None, None, None, None, None], [tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL], 
+         "Valores", [str(len(Delito.getDelitos())+1), None, None, None, None, None], [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL], 
          "Ingresar Delito", "Ingrese los datos solicitados para registrar el delito" )
 
         def registro():
 
-            Delito(int(frm_ingresar.getValue("Código")), frm_ingresar.getValue("Nombre"), frm_ingresar.getValue("Descripción"), int(frm_ingresar.getValue("Nivel")), int(frm_ingresar.getValue("Tiempo Condena")))
+            Delito(frm_ingresar.getValue("Nombre"), frm_ingresar.getValue("Descripción"), int(frm_ingresar.getValue("Nivel")), int(frm_ingresar.getValue("Tiempo Condena")))
             tk.messagebox.showinfo(message="El delito ha sido registrado correctamente")
             self.salir()
 
@@ -117,14 +117,14 @@ class GestionarDelito(Toplevel):
 
         def func_borrarDelito():
 
-            tk.messagebox.askyesno(message="¿Está seguro que desea eliminar el delito?")
+            warning= tk.messagebox.askyesno(message="¿Está seguro que desea eliminar el delito?")
 
-            if(False):
-                self.salir()
-            else:
+            if warning:
                 Delito.getDelitos().pop(int(cbox_codigo.get()))
                 tk.messagebox.showinfo(message="El delito ha sido eliminado correctamente")
-                self.salir() 
+                self.salir()
+            else:
+                pass 
 
 
         def cancelar():
@@ -141,10 +141,41 @@ class GestionarDelito(Toplevel):
         frm_borrarDelito.pack()
 
     def editarDelito(self):
-        pass
+        self.currFrame.pack_forget()
+
+        frm_editarDelito=tk.Frame(self)
+
+        frm_titulo_proceso=tk.Frame(frm_editarDelito)
+        frm_titulo_proceso.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+
+        lbl_titulo_proceso=tk.Label(frm_titulo_proceso, text="Editar Delito", font=('Arial', 15))
+        lbl_titulo_proceso.pack()
+
+        frm_descripcion_proceso=tk.Frame(frm_editarDelito, borderwidth=2, relief="solid")
+        frm_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
+
+        lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text="Seleccione el código del Delito que desea editar.", font=('Arial', 10))
+        lbl_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
+
+        frm_editar=tk.Frame(frm_editarDelito, borderwidth=1, relief="solid")
+
+        delitos=[k for (k,v) in Delito.getDelitos().items()]
+
+        tk.Label(frm_editar, text="Código: ").grid(column=0, row=1, padx=15, pady=5)
+        cbox_codigo=ttk.Combobox(frm_editar, values=delitos, justify=tk.CENTER, state="readonly")
+        cbox_codigo.grid(column=1,row=1,padx=15,pady=5)
+
+        frm_ingresar=FieldFrame(frm_editarDelito, "Criterios", ["Código", "Nombre", "Descripción", "Nivel", "Tiempo Condena"], 
+         "Valores", [str(cbox_codigo.get()), None, None, None, None, None], [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL], "", "Modifique los datos que desea editar")
+
+        frm_editar.pack(expand=True, padx=30)
+        frm_ingresar.pack(fill=tk.BOTH, expand=True)
+        self.currFrame = frm_editarDelito
+        frm_editarDelito.pack()
+
+#Delito.getDelitos[cbox_codigo.get()].getNombre()
 
     def listarDelito(self):
-        #agregar scroll horizontal
         self.currFrame.pack_forget()
 
         frm_listaDelitos=tk.Frame(self)
@@ -178,7 +209,7 @@ class GestionarDelito(Toplevel):
         canvas.configure(yscrollcommand=scrollbar.set)
 
         for delito in Delito.getDelitos().values():
-            currLabel=Label(scrollbar_frame, background=colores[0], text=delito, width=80)
+            currLabel=Label(scrollbar_frame, background=colores[0], text=delito, width=100)
             colores.append(colores.pop(0))
             currLabel.pack(fill=tk.X)
 
