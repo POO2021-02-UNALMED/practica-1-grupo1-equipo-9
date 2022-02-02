@@ -130,14 +130,14 @@ class GestionarPrisionero(tk.Toplevel):
 
         def func_borrarPrisionero():
 
-            tk.messagebox.askyesno(message="¿Está seguro que desea eliminar el prisionero?")
+            warning=tk.messagebox.askyesno(message="¿Está seguro que desea eliminar el prisionero?")
 
-            if(False):
-                self.salir()
-            else:
+            if warning:
                 Prisionero.getPrisioneros().pop(int(cbox_identificacion.get()))
                 tk.messagebox.showinfo(message="El prisionero ha sido eliminado correctamente")
-                self.salir() 
+                self.salir()
+            else:
+                pass
 
 
         def cancelar():
