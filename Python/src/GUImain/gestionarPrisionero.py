@@ -1,3 +1,4 @@
+from email import message
 from textwrap import fill
 import tkinter as tk
 from tkinter import Canvas, Label, ttk
@@ -85,10 +86,17 @@ class GestionarPrisionero(tk.Toplevel):
 
         frm_ingresar=FieldFrame(frm_ingresarPrisionero, "Criterios", ["Identificación", "Nombre", "Saldo", "Género", "Celda", "Delitos"], 
          "Valores", [str(len(Prisionero.getPrisioneros())+1), None, None, None, None, None], [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL], 
-         "Ingresar Prisionero", "Ingrese los datos solicitados para registrar el prisionero")
+         "Ingresar Prisionero", "Ingrese los datos solicitados para registrar el prisionero \n" + "Para el campo 'Delitos', digite el código de los delitos separados por espacio" )
 
         def registro():
-            pass
+
+            delitos=frm_ingresar.getValue("Delitos").split()
+            ddelitos={}
+            for i in delitos:
+                ddelitos[int(i)]=Delito.getDelitos()[int(i)]
+            Prisionero(frm_ingresar.getValue("Nombre"), int(frm_ingresar.getValue("Saldo")), frm_ingresar.getValue("Género"), int(frm_ingresar.getValue("Celda")), ddelitos)
+            tk.messagebox.showinfo(message="El prisionero ha sido registrado correctamente")
+            self.salir()
 
         frm_ingresar.set_command_btn_aceptar(registro)
         frm_ingresar.pack(fill=tk.BOTH, expand=True)
@@ -121,15 +129,19 @@ class GestionarPrisionero(tk.Toplevel):
 
 
         def func_borrarPrisionero():
-            messagebox.askyesno(message="¿Está seguro que desea eliminar el prisionero?")
 
-            if(True):
-                pass
+            tk.messagebox.askyesno(message="¿Está seguro que desea eliminar el prisionero?")
+
+            if(False):
+                self.salir()
             else:
-                pass   
+                Prisionero.getPrisioneros().pop(int(cbox_identificacion.get()))
+                tk.messagebox.showinfo(message="El prisionero ha sido eliminado correctamente")
+                self.salir() 
+
 
         def cancelar():
-            pass     
+            self.salir()
 
         fuente="Helvetica 10 bold"
         btn_aceptar = tk.Button(frm_borrar, text="Aceptar", font=fuente, command= func_borrarPrisionero)
@@ -155,20 +167,31 @@ class GestionarPrisionero(tk.Toplevel):
         frm_descripcion_proceso=tk.Frame(frm_agregarDelito, borderwidth=2, relief="solid")
         frm_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
 
-        lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text="Seleccione el código del delito que desea agregar", font=('Arial', 10))
+        lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text="Seleccione la identificación del prisionero y el código del delito que desea agregar", font=('Arial', 10))
         lbl_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
 
         frm_agregar=tk.Frame(frm_agregarDelito, borderwidth=1, relief="solid")
+
+        prisioneros=[k for (k,v) in Prisionero.getPrisioneros().items()]
         delitos=[k for (k,v) in Delito.getDelitos().items()]
 
-        tk.Label(frm_agregar, text="Código: ").grid(column=0, row=1, padx=15, pady=5)
-        cbox_identificacion=ttk.Combobox(frm_agregar, values=delitos, justify=tk.CENTER, state="readonly")
-        cbox_identificacion.grid(column=1,row=1,padx=15,pady=5)  
+        tk.Label(frm_agregar, text="Identificación: ").grid(column=0, row=1, padx=15, pady=5)
+        cbox_identificacion=ttk.Combobox(frm_agregar, values=prisioneros, justify=tk.CENTER, state="readonly")
+        cbox_identificacion.grid(column=1,row=1,padx=15,pady=5) 
+
+        tk.Label(frm_agregar, text="Código: ").grid(column=0, row=2, padx=15, pady=5)
+        cbox_codigo=ttk.Combobox(frm_agregar, values=delitos, justify=tk.CENTER, state="readonly")
+        cbox_codigo.grid(column=1,row=2,padx=15,pady=5)  
 
         def func_agregarDelito():
-            pass
+            prisionero= Prisionero.getPrisioneros()[int(cbox_identificacion.get())]
+            delito= Delito.getDelitos()[int(cbox_codigo.get())]
+            prisionero.agregarDelito(delito)
+            tk.messagebox.showinfo(message="El delito " + cbox_codigo.get()+" ha sido agregado al prisionero "+ cbox_identificacion.get()+ " correctamente")
+            self.salir() 
+
         def cancelar():
-            pass     
+            self.salir()
 
         fuente="Helvetica 10 bold"
         btn_aceptar = tk.Button(frm_agregar, text="Aceptar", font=fuente, command= func_agregarDelito)
@@ -194,20 +217,31 @@ class GestionarPrisionero(tk.Toplevel):
         frm_descripcion_proceso=tk.Frame(frm_agregarAntidelito, borderwidth=2, relief="solid")
         frm_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
 
-        lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text="Seleccione el código del antidelito que desea agregar", font=('Arial', 10))
+        lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text="Seleccione la identificación del prisionero y el código del delito que desea agregar", font=('Arial', 10))
         lbl_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
 
         frm_agregar=tk.Frame(frm_agregarAntidelito, borderwidth=1, relief="solid")
+
+        prisioneros=[k for (k,v) in Prisionero.getPrisioneros().items()]
         antidelitos=[k for (k,v) in Antidelito.getAntidelitos().items()]
 
-        tk.Label(frm_agregar, text="Código: ").grid(column=0, row=1, padx=15, pady=5)
-        cbox_identificacion=ttk.Combobox(frm_agregar, values=antidelitos, justify=tk.CENTER, state="readonly")
-        cbox_identificacion.grid(column=1,row=1,padx=15,pady=5)  
+        tk.Label(frm_agregar, text="Identificación: ").grid(column=0, row=1, padx=15, pady=5)
+        cbox_identificacion=ttk.Combobox(frm_agregar, values=prisioneros, justify=tk.CENTER, state="readonly")
+        cbox_identificacion.grid(column=1,row=1,padx=15,pady=5) 
+
+        tk.Label(frm_agregar, text="Código: ").grid(column=0, row=2, padx=15, pady=5)
+        cbox_codigo=ttk.Combobox(frm_agregar, values=antidelitos, justify=tk.CENTER, state="readonly")
+        cbox_codigo.grid(column=1,row=2,padx=15,pady=5)  
 
         def func_agregarAntidelito():
-            pass
+            prisionero= Prisionero.getPrisioneros()[int(cbox_identificacion.get())]
+            antidelito= Antidelito.getAntidelitos()[int(cbox_codigo.get())]
+            prisionero.agregarAntidelito(antidelito)
+            tk.messagebox.showinfo(message="El antidelito " + cbox_codigo.get()+" ha sido agregado al prisionero "+ cbox_identificacion.get()+ " correctamente")
+            self.salir() 
+
         def cancelar():
-            pass     
+            self.salir()     
 
         fuente="Helvetica 10 bold"
         btn_aceptar = tk.Button(frm_agregar, text="Aceptar", font=fuente, command= func_agregarAntidelito)
