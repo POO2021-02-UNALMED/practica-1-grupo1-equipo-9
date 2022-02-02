@@ -1,8 +1,8 @@
 class Delito:
     _delitos = {}
 
-    def __init__(self, _codigo, _nombre, _descripcion, _nivel, _tiempoCondena):
-        self._codigo = _codigo
+    def __init__(self, _nombre, _descripcion, _nivel, _tiempoCondena):
+        self._codigo = len(Delito._delitos) + 1
         self._nombre = _nombre
         self._descripcion = _descripcion 
         self._nivel = _nivel
