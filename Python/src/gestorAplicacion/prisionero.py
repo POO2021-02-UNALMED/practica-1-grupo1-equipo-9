@@ -8,13 +8,14 @@ class Prisionero(Apostador):
     _prisionerosFEMENINOS = []
 
     def __init__(self, nombre, saldo, _genero, _celda, _delitos: dict):
+        from gestorAplicacion.celda import Celda
         super().__init__(nombre, saldo)
         self.identificacion = len(Prisionero._prisioneros) + 1
         self._antidelitos = {}
         self._genero = _genero
         self._inicioCondena = date.today()
         self._celda = _celda 
-        _celda.ingresarPrisionero(self) #no funciona
+        Celda.getCeldas()[_celda].ingresarPrisionero(self)
         self._delitos = _delitos
 
         if self._genero.value == "MASCULINO":
