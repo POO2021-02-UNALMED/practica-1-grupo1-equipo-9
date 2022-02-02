@@ -1,8 +1,8 @@
 class Antidelito:
     _antidelitos = {}
 
-    def __init__(self, codigo: int, nombre: str, descripcion: str, rebajaCondena: int):
-        self._codigo = codigo
+    def __init__(self, nombre: str, descripcion: str, rebajaCondena: int):
+        self._codigo = len(Antidelito._antdelitos) + 1
         self._nombre = nombre
         self._descripcion = descripcion
         self._rebajaCondena = rebajaCondena
