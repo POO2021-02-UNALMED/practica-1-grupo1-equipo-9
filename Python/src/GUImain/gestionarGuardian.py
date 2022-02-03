@@ -96,6 +96,7 @@ class GestionarGuardian(tk.Toplevel):
         #RECORDAR Serializar
         def registro():
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
 
             celdas = frm_inicial.getValue("Celdas").split()
             dictceldas = {}
@@ -103,12 +104,27 @@ class GestionarGuardian(tk.Toplevel):
                 dictceldas[int(i)] = Celda.getCeldas()[int(i)]
 
             try:
-                ExceptionValorNegativo("El saldo no puede ser negativo.", int(frm_inicial.getValue("Saldo")))
+                ExceptionCampoVacio(frm_inicial.getValue("Nombre"),
+                                    frm_inicial.getValue("Saldo"),
+                                    frm_inicial.getValue("Salario"),
+                                    frm_inicial.getValue("Celdas"))
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
+
+            try:
+                ExceptionValorNegativo("El saldo no puede ser negativo.", float(frm_inicial.getValue("Saldo")))
             except ExceptionValorNegativo as f:
                 f.messbox()
                 return
 
-            Guardian(frm_inicial.getValue("Nombre"), int(frm_inicial.getValue("Saldo")), int(frm_inicial.getValue("Salario")), dictceldas)
+            try:
+                ExceptionValorNegativo("El salario no puede ser negativo.", float(frm_inicial.getValue("Salario")))
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return
+
+            Guardian(frm_inicial.getValue("Nombre"), float(frm_inicial.getValue("Saldo")), float(frm_inicial.getValue("Salario")), dictceldas)
             tk.messagebox.showinfo("Confirmación", "Se ha registrado el Guardian correctamente")
             self.salir()
         
@@ -202,11 +218,35 @@ class GestionarGuardian(tk.Toplevel):
         frm_principal.pack(fill=tk.BOTH, expand=True)
 
         #RECORDAR Serializar
-        def registro():
+        def registro():             
+            from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+
             celdas = frm_principal.getValue("Celdas").split()
             dictceldas = {}
             for i in celdas:
                 dictceldas[int(i)] = Celda.getCeldas()[int(i)]
+
+            try:
+                ExceptionCampoVacio(frm_principal.getValue("Nombre"),
+                                    frm_principal.getValue("Saldo"),
+                                    frm_principal.getValue("Salario"),
+                                    frm_principal.getValue("Celdas"))
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
+
+            try:
+                ExceptionValorNegativo("El saldo no puede ser negativo.", float(frm_principal.getValue("Saldo")))
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return
+
+            try:
+                ExceptionValorNegativo("El salario no puede ser negativo.", float(frm_principal.getValue("Salario")))
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return
 
             idenguard = combox_codigo.get()
             datosguardian = Guardian.getGuardianes()[int(idenguard)]

@@ -90,6 +90,23 @@ class GestionarAntidelito(Toplevel):
 
         #RECORDAR Serializar
         def registro():
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+            from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            
+            try:
+                ExceptionCampoVacio(frm_inicial.getValue("Nombre"),
+                                    frm_inicial.getValue("Descripción"),
+                                    frm_inicial.getValue("Rebaja de Condena"))
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
+
+            try:
+                ExceptionValorNegativo("La rebaja de condena no puede ser negativa", int(frm_inicial.getValue("Rebaja de Condena"))) 
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return
+
             Antidelito(frm_inicial.getValue("Nombre"), frm_inicial.getValue("Descripción"), int(frm_inicial.getValue("Rebaja de Condena")))
             tk.messagebox.showinfo("Confirmación", "Se ha registrado el Antidelito correctamente")
             self.salir()
@@ -184,6 +201,23 @@ class GestionarAntidelito(Toplevel):
 
         #RECORDAR Serializar
         def registro():
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+            from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            
+            try:
+                ExceptionCampoVacio(frm_principal.getValue("Nombre"),
+                                    frm_principal.getValue("Descripción"),
+                                    frm_principal.getValue("Rebaja de Condena"))
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
+
+            try:
+                ExceptionValorNegativo("La rebaja de condena no puede ser negativa", int(frm_principal.getValue("Rebaja de Condena"))) 
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return  
+
             codAntidelito = combox_codigo.get()
             datosAntidelito = Antidelito.getAntidelitos()[int(codAntidelito)]
 
