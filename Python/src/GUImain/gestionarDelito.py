@@ -162,70 +162,96 @@ class GestionarDelito(Toplevel):
         frm_borrarDelito.pack()
 
     def editarDelito(self):
+        global frm_principal
         self.currFrame.pack_forget()
+        frm_editarDelito = tk.Frame(self)
 
-        frm_editarDelito=tk.Frame(self)
 
-        frm_titulo_proceso=tk.Frame(frm_editarDelito)
-        frm_titulo_proceso.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+        # Formulario --------------------------------------------------------------
+        
+        frm_formulario = tk.Frame(frm_editarDelito, borderwidth=1, relief="solid")
+        antidelitos = [k for (k, v) in Delito.getDelitos().items()]
+        tk.Label(frm_formulario, text= "Código Delito: ").grid(column=0, row=1, padx=15, pady=5)
+        combox_codigo = ttk.Combobox(frm_formulario, values=antidelitos, justify=tk.CENTER)
+        combox_codigo['state'] = 'readonly'
+        combox_codigo.grid(column=1, row=1, padx=15, pady=5)
 
-        lbl_titulo_proceso=tk.Label(frm_titulo_proceso, text="Editar Delito", font=('Arial', 15))
-        lbl_titulo_proceso.pack()
+        frm_formulario.pack(expand=True, padx=30)
 
-        frm_descripcion_proceso=tk.Frame(frm_editarDelito, borderwidth=2, relief="solid")
-        frm_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
+        frm_principal = FieldFrame(
+            frm_editarDelito,
+            "Criterios", 
+            ["Código", "Nombre", "Descripción", "Nivel", "Tiempo Condena"], 
+            "Valores", 
+            ["", "", "", "", "", ""],
+            [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL],
+            "Editar Delito",
+            "Seleccione en la parte superior el código del Delito que desea modificar. \n" +
+            "Modifique solo los campos que desea editar del Delito.")
+        
+        frm_principal.pack(fill=tk.BOTH, expand=True)
 
-        lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text="Seleccione el código del Delito que desea editar.", font=('Arial', 10))
-        lbl_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
-
-        frm_editar=tk.Frame(frm_editarDelito, borderwidth=1, relief="solid")
-
-        delitos=[k for (k,v) in Delito.getDelitos().items()]
-
-        tk.Label(frm_editar, text="Código: ").grid(column=0, row=1, padx=15, pady=5)
-        cbox_codigo=ttk.Combobox(frm_editar, values=delitos, justify=tk.CENTER, state="readonly")
-        cbox_codigo.grid(column=1,row=1,padx=15,pady=5)
-
-        frm_editar.pack(expand=True, padx=30)
-
-        frm_ingresar=FieldFrame(frm_editarDelito, "Criterios", ["Código", "Nombre", "Descripción", "Nivel", "Tiempo Condena"], 
-         "Valores", [1, None, None, None, None, None], [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL], "", "Modifique los datos que desea editar")
-
-        def func_editarDelito():
+        #RECORDAR Serializar
+        def registro():
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
             
             try:
-                ExceptionCampoVacio(frm_ingresar.getValue("Nombre"),
-                                    frm_ingresar.getValue("Descripción"),
-                                    frm_ingresar.getValue("Nivel"),
-                                    frm_ingresar.getValue("Tiempo Condena"))
+                ExceptionCampoVacio(frm_principal.getValue("Nombre"),
+                                    frm_principal.getValue("Descripción"),
+                                    frm_principal.getValue("Nivel"),
+                                    frm_principal.getValue("Tiempo Condena"))
             except ExceptionCampoVacio as f:
                 f.messbox()
                 return
 
             try:
-                ExceptionValorNegativo("El nivel no puede ser negativo.", int(frm_ingresar.getValue("Nivel"))) 
+                ExceptionValorNegativo("El nivel no puede ser negativo.", int(frm_principal.getValue("Nivel"))) 
             except ExceptionValorNegativo as f:
                 f.messbox()
                 return  
             try:
-                ExceptionValorNegativo("El tiempo de condena no puede ser negativo.", int(frm_ingresar.getValue("Tiempo Condena")))    
+                ExceptionValorNegativo("El tiempo de condena no puede ser negativo.", int(frm_principal.getValue("Tiempo Condena")))    
             except ExceptionValorNegativo as f:
                 f.messbox()
                 return
 
 
-            Delito._delitos[int(cbox_codigo.get())].setNombre(frm_ingresar.getValue("Nombre"))
-            Delito._delitos[int(cbox_codigo.get())].setDescripcion(frm_ingresar.getValue("Descripción"))
-            Delito._delitos[int(cbox_codigo.get())].setNivel(int(frm_ingresar.getValue("Nivel")))
-            Delito._delitos[int(cbox_codigo.get())].setTiempoCondena(int(frm_ingresar.getValue("Tiempo Condena")))
+            Delito._delitos[int(combox_codigo.get())].setNombre(frm_principal.getValue("Nombre"))
+            Delito._delitos[int(combox_codigo.get())].setDescripcion(frm_principal.getValue("Descripción"))
+            Delito._delitos[int(combox_codigo.get())].setNivel(int(frm_principal.getValue("Nivel")))
+            Delito._delitos[int(combox_codigo.get())].setTiempoCondena(int(frm_principal.getValue("Tiempo Condena")))
             tk.messagebox.showinfo(message="El delito ha sido editado correctamente")
             self.salir()
 
-        frm_ingresar.set_command_btn_aceptar(func_editarDelito)
+        def fun_datanti(e):
+            global frm_principal
+            codDelito = combox_codigo.get()
+            datosDelito = Delito.getDelitos()[int(codDelito)]
 
-        frm_ingresar.pack(fill=tk.BOTH, expand=True)
+            frm_aux = FieldFrame(
+                frm_editarDelito,
+                "Criterios", 
+                ["Código", "Nombre", "Descripción", "Nivel", "Tiempo Condena"], 
+                "Valores", 
+                [str(datosDelito.getCodigo()),
+                 datosDelito.getNombre(),
+                 datosDelito.getDescripcion(),
+                 datosDelito.getNivel(),
+                 datosDelito.getTiempoCondena()],
+                [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL],
+                "Editar Delito",
+                "Seleccione en la parte superior el código del Delito que desea modificar. \n" +
+                "Modifique solo los campos que desea editar del Delito."
+            )
+
+            frm_principal.pack_forget()
+            frm_aux.pack(fill=tk.BOTH, expand=True)
+            frm_principal = frm_aux
+            frm_principal.set_command_btn_aceptar(registro)
+
+        combox_codigo.bind("<<ComboboxSelected>>", fun_datanti)
+        
         self.currFrame = frm_editarDelito
         frm_editarDelito.pack()
 
