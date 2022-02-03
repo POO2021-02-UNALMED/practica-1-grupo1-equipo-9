@@ -90,13 +90,26 @@ class GestionarPrisionero(tk.Toplevel):
          "Ingresar Prisionero", "Ingrese los datos solicitados para registrar el prisionero \n" + "Para el campo 'Género', digite M o F \n" + "Para el campo 'Delitos', digite el código de los delitos separados por espacio" )
 
         def registro():
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
+            from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
 
             delitos=frm_ingresar.getValue("Delitos").split()
             ddelitos={}
             
             for i in delitos:
                 ddelitos[int(i)]=Delito.getDelitos()[int(i)]
+
+
+            try:
+                ExceptionCampoVacio(frm_ingresar.getValue("Nombre"),
+                                    frm_ingresar.getValue("Saldo"),
+                                    frm_ingresar.getValue("Género"),
+                                    frm_ingresar.getValue("Celda"),
+                                    frm_ingresar.getValue("Delitos"))
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
 
             # Validación del género usando las clases Exception
             try:
@@ -111,6 +124,13 @@ class GestionarPrisionero(tk.Toplevel):
                 except ExceptionObjNoEncontrado as f:
                     f.messbox()
                     return 
+
+            try:
+                ExceptionValorNegativo("El saldo no puede ser negativo.", int(frm_ingresar.getValue("Saldo"))) 
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return       
+
 
             Prisionero(frm_ingresar.getValue("Nombre"), int(frm_ingresar.getValue("Saldo")), gen, int(frm_ingresar.getValue("Celda")), ddelitos)
             tk.messagebox.showinfo(message="El prisionero ha sido registrado correctamente")
@@ -202,6 +222,8 @@ class GestionarPrisionero(tk.Toplevel):
         cbox_codigo.grid(column=1,row=2,padx=15,pady=5)  
 
         def func_agregarDelito():
+            
+
             prisionero= Prisionero.getPrisioneros()[int(cbox_identificacion.get())]
             delito= Delito.getDelitos()[int(cbox_codigo.get())]
             prisionero.agregarDelito(delito)
@@ -252,6 +274,9 @@ class GestionarPrisionero(tk.Toplevel):
         cbox_codigo.grid(column=1,row=2,padx=15,pady=5)  
 
         def func_agregarAntidelito():
+            
+
+
             prisionero= Prisionero.getPrisioneros()[int(cbox_identificacion.get())]
             antidelito= Antidelito.getAntidelitos()[int(cbox_codigo.get())]
             prisionero.agregarAntidelito(antidelito)
