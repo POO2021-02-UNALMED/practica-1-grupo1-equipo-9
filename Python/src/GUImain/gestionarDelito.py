@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from .utils.menuBar import MenuBar
 from .utils.fieldFrame import FieldFrame
+from tkinter import messagebox
 from gestorAplicacion.delito import Delito
 
 class GestionarDelito(Toplevel):
@@ -274,7 +275,11 @@ class GestionarDelito(Toplevel):
         frm_listaDelitos.pack()
 
     def evento(self):
-        print("click!")
+        messagebox.showinfo(title="Integrantes", 
+        message="Beatriz Valentina Gomez Valencia \n"+
+        "Alejandro Salazar Mejía \n"+
+        "Juan Pablo Martínez Echavarría \n"+
+        "Hernan Camilo Rivera Arteaga")
 
     def salir(self):
         self.MASTER.deiconify()

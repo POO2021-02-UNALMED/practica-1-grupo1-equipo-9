@@ -5,6 +5,7 @@ from .utils.table import Table
 from gestorAplicacion.pelea import Pelea
 from gestorAplicacion.prisionero import Prisionero
 from gestorAplicacion.genero import genero as genero_enum
+from tkinter import messagebox
 
 
 
@@ -178,7 +179,11 @@ class GestionarPelea(tk.Toplevel):
         pass
 
     def evento(self):
-        print("click!")
+        messagebox.showinfo(title="Integrantes", 
+        message="Beatriz Valentina Gomez Valencia \n"+
+        "Alejandro Salazar Mejía \n"+
+        "Juan Pablo Martínez Echavarría \n"+
+        "Hernan Camilo Rivera Arteaga")
 
     def salir(self):
         self.MASTER.deiconify()

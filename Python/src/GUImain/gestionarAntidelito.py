@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter as tk
 from tkinter import Canvas, Label, ttk
 from .utils.menuBar import MenuBar
+from tkinter import messagebox
 
 from gestorAplicacion.antidelito import Antidelito
 from .utils.fieldFrame import FieldFrame
@@ -304,7 +305,11 @@ class GestionarAntidelito(Toplevel):
         frm_listaAntidelitos.pack()
 
     def evento(self):
-        print("click!")
+        messagebox.showinfo(title="Integrantes", 
+        message="Beatriz Valentina Gomez Valencia \n"+
+        "Alejandro Salazar Mejía \n"+
+        "Juan Pablo Martínez Echavarría \n"+
+        "Hernan Camilo Rivera Arteaga")
 
     def salir(self):
         self.MASTER.deiconify()

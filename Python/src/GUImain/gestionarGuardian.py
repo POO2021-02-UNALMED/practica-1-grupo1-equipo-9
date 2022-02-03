@@ -1,6 +1,8 @@
+from email import message
 from tkinter import *
 import tkinter as tk
 from tkinter import Canvas, Label, ttk
+from tkinter import messagebox
 
 from gestorAplicacion.prisionero import Prisionero
 from .utils.menuBar import MenuBar
@@ -508,7 +510,11 @@ class GestionarGuardian(tk.Toplevel):
         frm_listaTraslados.pack()
 
     def evento(self):
-        print("click!")
+        messagebox.showinfo(title="Integrantes", 
+        message="Beatriz Valentina Gomez Valencia \n"+
+        "Alejandro Salazar Mejía \n"+
+        "Juan Pablo Martínez Echavarría \n"+
+        "Hernan Camilo Rivera Arteaga")
 
     def salir(self):
         self.MASTER.deiconify()

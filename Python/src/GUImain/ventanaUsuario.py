@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from .gestionarAntidelito import GestionarAntidelito
 from .gestionarApuesta import GestionarApuesta
 from .gestionarDelito import GestionarDelito
@@ -57,7 +58,11 @@ class VentanaUsuario(Toplevel):
 
 
     def evento(self):
-        print("click!")
+        messagebox.showinfo(title="Integrantes", 
+        message="Beatriz Valentina Gomez Valencia \n"+
+        "Alejandro Salazar Mejía \n"+
+        "Juan Pablo Martínez Echavarría \n"+
+        "Hernan Camilo Rivera Arteaga")
 
 
     def salir(self):

@@ -342,7 +342,11 @@ class GestionarPrisionero(tk.Toplevel):
         frm_listaPrisioneros.pack()
 
     def evento(self):
-        print("click!")
+        messagebox.showinfo(title="Integrantes", 
+        message="Beatriz Valentina Gomez Valencia \n"+
+        "Alejandro Salazar Mejía \n"+
+        "Juan Pablo Martínez Echavarría \n"+
+        "Hernan Camilo Rivera Arteaga")
 
     def salir(self):
         self.MASTER.deiconify()
