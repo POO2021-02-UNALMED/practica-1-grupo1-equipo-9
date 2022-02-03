@@ -79,6 +79,28 @@ class GestionarDelito(Toplevel):
          "Ingresar Delito", "Ingrese los datos solicitados para registrar el delito" )
 
         def registro():
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+            from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            
+            try:
+                ExceptionCampoVacio(frm_ingresar.getValue("Nombre"),
+                                    frm_ingresar.getValue("Descripción"),
+                                    frm_ingresar.getValue("Nivel"),
+                                    frm_ingresar.getValue("Tiempo Condena"))
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
+
+            try:
+                ExceptionValorNegativo("El nivel no puede ser negativo.", int(frm_ingresar.getValue("Nivel"))) 
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return  
+            try:
+                ExceptionValorNegativo("El tiempo de condena no puede ser negativo.", int(frm_ingresar.getValue("Tiempo Condena")))    
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return
 
             Delito(frm_ingresar.getValue("Nombre"), frm_ingresar.getValue("Descripción"), int(frm_ingresar.getValue("Nivel")), int(frm_ingresar.getValue("Tiempo Condena")))
             tk.messagebox.showinfo(message="El delito ha sido registrado correctamente")
@@ -116,7 +138,6 @@ class GestionarDelito(Toplevel):
 
 
         def func_borrarDelito():
-
             warning= tk.messagebox.askyesno(message="¿Está seguro que desea eliminar el delito?")
 
             if warning:
@@ -167,9 +188,32 @@ class GestionarDelito(Toplevel):
         frm_editar.pack(expand=True, padx=30)
 
         frm_ingresar=FieldFrame(frm_editarDelito, "Criterios", ["Código", "Nombre", "Descripción", "Nivel", "Tiempo Condena"], 
-         "Valores", [None, None, None, None, None, None], [tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL], "", "Modifique los datos que desea editar")
+         "Valores", [1, None, None, None, None, None], [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL], "", "Modifique los datos que desea editar")
 
         def func_editarDelito():
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+            from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            
+            try:
+                ExceptionCampoVacio(frm_ingresar.getValue("Nombre"),
+                                    frm_ingresar.getValue("Descripción"),
+                                    frm_ingresar.getValue("Nivel"),
+                                    frm_ingresar.getValue("Tiempo Condena"))
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
+
+            try:
+                ExceptionValorNegativo("El nivel no puede ser negativo.", int(frm_ingresar.getValue("Nivel"))) 
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return  
+            try:
+                ExceptionValorNegativo("El tiempo de condena no puede ser negativo.", int(frm_ingresar.getValue("Tiempo Condena")))    
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return
+
 
             Delito._delitos[int(cbox_codigo.get())].setNombre(frm_ingresar.getValue("Nombre"))
             Delito._delitos[int(cbox_codigo.get())].setDescripcion(frm_ingresar.getValue("Descripción"))
