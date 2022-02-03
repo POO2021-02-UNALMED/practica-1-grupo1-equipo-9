@@ -152,7 +152,77 @@ class GestionarAntidelito(Toplevel):
         frm_borrarAntidelito.pack()
 
     def editarAntidelito(self):
-        pass
+        global frm_principal
+        self.currFrame.pack_forget()
+        frm_editarAntidelito = tk.Frame(self)
+
+
+        # Formulario --------------------------------------------------------------
+        
+        frm_formulario = tk.Frame(frm_editarAntidelito, borderwidth=1, relief="solid")
+        antidelitos = [k for (k, v) in Antidelito.getAntidelitos().items()]
+        tk.Label(frm_formulario, text= "Código Antidelito: ").grid(column=0, row=1, padx=15, pady=5)
+        combox_codigo = ttk.Combobox(frm_formulario, values=antidelitos, justify=tk.CENTER)
+        combox_codigo['state'] = 'readonly'
+        combox_codigo.grid(column=1, row=1, padx=15, pady=5)
+
+        frm_formulario.pack(expand=True, padx=30)
+
+        frm_principal = FieldFrame(
+            frm_editarAntidelito,
+            "Criterios",
+            ["Código", "Nombre", "Descripción", "Rebaja de Condena"],
+            "Valores",
+            ["", "", "", ""],
+            [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL],
+            "Editar Antidelito",
+            "Seleccione en la parte superior el código del antidelito que desea modificar. \n" +
+            "Modifique solo los campos que desea editar del antidelito."
+        )
+        
+        frm_principal.pack(fill=tk.BOTH, expand=True)
+
+        #RECORDAR Serializar
+        def registro():
+            codAntidelito = combox_codigo.get()
+            datosAntidelito = Antidelito.getAntidelitos()[int(codAntidelito)]
+
+            datosAntidelito.setNombre(frm_principal.getValue("Nombre"))
+            datosAntidelito.setDescripcion(frm_principal.getValue("Descripción"))
+            datosAntidelito.setRebajaCondena(int(frm_principal.getValue("Rebaja de Condena")))
+
+            tk.messagebox.showinfo("Confirmación", "Se han modificado correctamente los datos del antidelito seleccionado")
+            self.salir()
+
+        def fun_datanti(e):
+            global frm_principal
+            codAntidelito = combox_codigo.get()
+            datosAntidelito = Antidelito.getAntidelitos()[int(codAntidelito)]
+
+            frm_aux = FieldFrame(
+                frm_editarAntidelito,
+                "Criterios",
+                ["Código", "Nombre", "Descripción", "Rebaja de Condena"],
+                "Valores",
+                [str(datosAntidelito.getCodigo()), 
+                datosAntidelito.getNombre(),
+                datosAntidelito.getDescripcion(), 
+                str(datosAntidelito.getRebajaCondena())],
+                [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL],
+                "Editar Antidelito",
+                "Seleccione en la parte superior el código del antidelito que desea modificar. \n" +
+                "Modifique solo los campos que desea editar del antidelito."
+            )
+
+            frm_principal.pack_forget()
+            frm_aux.pack(fill=tk.BOTH, expand=True)
+            frm_principal = frm_aux
+            frm_principal.set_command_btn_aceptar(registro)
+
+        combox_codigo.bind("<<ComboboxSelected>>", fun_datanti)
+        
+        self.currFrame = frm_editarAntidelito
+        frm_editarAntidelito.pack()
 
     def listarAntidelito(self):
         self.currFrame.pack_forget()
