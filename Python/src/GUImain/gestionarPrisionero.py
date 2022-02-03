@@ -125,6 +125,19 @@ class GestionarPrisionero(tk.Toplevel):
                     f.messbox()
                     return 
 
+            '''try:
+                ExceptionObjNoEncontrado(   "No se encontró apostador con este ID.", 
+                                            idApostador, Prisionero.getPrisioneros())
+                ap = Prisionero.getPrisioneros()[idApostador]
+            except:
+                try:
+                    ExceptionObjNoEncontrado(   "No se encontró apostador con este ID.", 
+                                                idApostador, Guardian.getGuardianes())
+                    ap = Guardian.getGuardianes()[idApostador]
+                except ExceptionObjNoEncontrado as f:
+                    f.messbox()
+                    return       ''' 
+
             try:
                 ExceptionValorNegativo("El saldo no puede ser negativo.", int(frm_ingresar.getValue("Saldo"))) 
             except ExceptionValorNegativo as f:
@@ -167,6 +180,14 @@ class GestionarPrisionero(tk.Toplevel):
 
 
         def func_borrarPrisionero():
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+
+            try:
+                ExceptionCampoVacio(cbox_identificacion.get())
+
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
 
             warning=tk.messagebox.askyesno(message="¿Está seguro que desea eliminar el prisionero?")
 
@@ -222,7 +243,14 @@ class GestionarPrisionero(tk.Toplevel):
         cbox_codigo.grid(column=1,row=2,padx=15,pady=5)  
 
         def func_agregarDelito():
-            
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+
+            try:
+                ExceptionCampoVacio(cbox_codigo.get())
+
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
 
             prisionero= Prisionero.getPrisioneros()[int(cbox_identificacion.get())]
             delito= Delito.getDelitos()[int(cbox_codigo.get())]
@@ -257,7 +285,7 @@ class GestionarPrisionero(tk.Toplevel):
         frm_descripcion_proceso=tk.Frame(frm_agregarAntidelito, borderwidth=2, relief="solid")
         frm_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
 
-        lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text="Seleccione la identificación del prisionero y el código del delito que desea agregar", font=('Arial', 10))
+        lbl_descripcion_proceso = tk.Label(frm_descripcion_proceso, text="Seleccione la identificación del prisionero y el código del antidelito que desea agregar", font=('Arial', 10))
         lbl_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
 
         frm_agregar=tk.Frame(frm_agregarAntidelito, borderwidth=1, relief="solid")
@@ -274,9 +302,15 @@ class GestionarPrisionero(tk.Toplevel):
         cbox_codigo.grid(column=1,row=2,padx=15,pady=5)  
 
         def func_agregarAntidelito():
-            
+            from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
 
+            try:
+                ExceptionCampoVacio(cbox_codigo.get())
 
+            except ExceptionCampoVacio as f:
+                f.messbox()
+                return
+        
             prisionero= Prisionero.getPrisioneros()[int(cbox_identificacion.get())]
             antidelito= Antidelito.getAntidelitos()[int(cbox_codigo.get())]
             prisionero.agregarAntidelito(antidelito)
