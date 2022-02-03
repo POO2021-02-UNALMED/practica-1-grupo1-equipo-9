@@ -1,7 +1,7 @@
 from tkinter import messagebox
-from .exceptionC1 import ExceptionC1
+from .errorEnCampos import ErrorEnCampos
 
-class ExceptionCampoVacio(ExceptionC1):
+class ExceptionCampoVacio(ErrorEnCampos):
 
     def __init__(self, *values):
         super().__init__("ExceptionCampoVacio: Existe algún campo vacío")
@@ -16,10 +16,3 @@ class ExceptionCampoVacio(ExceptionC1):
     def messbox(self):
         messagebox.showwarning("ERROR!", self.error)
 
-
-
-if __name__ == "__main__":
-    try:
-        ExceptionCampoVacio(1,3,"dad","")
-    except ExceptionCampoVacio as f:
-        f.messbox()

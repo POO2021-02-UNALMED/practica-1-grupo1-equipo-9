@@ -1,7 +1,7 @@
 from tkinter import messagebox
-from .exceptionC2 import ExceptionC2
+from .errorInconsistencias import ErrorInconsistencias
 
-class ExceptionObjNoEncontrado(ExceptionC2):
+class ExceptionObjNoEncontrado(ErrorInconsistencias):
 
     def __init__(self, mensaje, dato, datos):
         mssg = "ExceptionObjNoEncontrado: " + mensaje

@@ -95,10 +95,18 @@ class GestionarGuardian(tk.Toplevel):
 
         #RECORDAR Serializar
         def registro():
+            from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+
             celdas = frm_inicial.getValue("Celdas").split()
             dictceldas = {}
             for i in celdas:
                 dictceldas[int(i)] = Celda.getCeldas()[int(i)]
+
+            try:
+                ExceptionValorNegativo("El saldo no puede ser negativo.", int(frm_inicial.getValue("Saldo")))
+            except ExceptionValorNegativo as f:
+                f.messbox()
+                return
 
             Guardian(frm_inicial.getValue("Nombre"), int(frm_inicial.getValue("Saldo")), int(frm_inicial.getValue("Salario")), dictceldas)
             tk.messagebox.showinfo("Confirmación", "Se ha registrado el Guardian correctamente")

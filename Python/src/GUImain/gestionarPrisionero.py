@@ -90,6 +90,7 @@ class GestionarPrisionero(tk.Toplevel):
          "Ingresar Prisionero", "Ingrese los datos solicitados para registrar el prisionero \n" + "Para el campo 'Género', digite M o F \n" + "Para el campo 'Delitos', digite el código de los delitos separados por espacio" )
 
         def registro():
+            from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
 
             delitos=frm_ingresar.getValue("Delitos").split()
             ddelitos={}
@@ -97,10 +98,19 @@ class GestionarPrisionero(tk.Toplevel):
             for i in delitos:
                 ddelitos[int(i)]=Delito.getDelitos()[int(i)]
 
-            if(frm_ingresar.getValue("Género")=="M"):
+            # Validación del género usando las clases Exception
+            try:
+                ExceptionObjNoEncontrado(   "Género inválido.", 
+                                            frm_ingresar.getValue("Género"), ["M"])
                 gen= genero.M
-            elif(frm_ingresar.getValue("Género")=="F"):
-                gen= genero.F        
+            except:
+                try:
+                    ExceptionObjNoEncontrado(   "Género inválido.", 
+                                                frm_ingresar.getValue("Género"), ["F"])
+                    gen= genero.F        
+                except ExceptionObjNoEncontrado as f:
+                    f.messbox()
+                    return 
 
             Prisionero(frm_ingresar.getValue("Nombre"), int(frm_ingresar.getValue("Saldo")), gen, int(frm_ingresar.getValue("Celda")), ddelitos)
             tk.messagebox.showinfo(message="El prisionero ha sido registrado correctamente")
