@@ -40,8 +40,8 @@ class Guardian(Apostador):
 
         return ("GUARDIAN: " + str(self.identificacion) + "\n"
         + "Nombre: " + self.nombre + "\n"
-        + "Saldo: " + str(self.saldo) + "\n"
-        + "Salario: " + str(self._salario) + "\n"
+        + "Saldo: " + str(round(self.saldo,2)) + "\n"
+        + "Salario: " + str(round(self._salario,2)) + "\n"
         + "Celdas a Cargo: " + celdas)
 
     def infoApostador(self): #Decidir implementacion

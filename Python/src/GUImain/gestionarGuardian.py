@@ -86,7 +86,7 @@ class GestionarGuardian(tk.Toplevel):
             "Criterios",
             ["Código", "Nombre", "Saldo", "Salario", "Celdas"],
             "Valores",
-            [str(len(Guardian.getGuardianes())+1001), "b", "", "", ""],
+            [str(len(Guardian.getGuardianes())+1001), "", "", "", ""],
             [tk.DISABLED, tk.NORMAL, tk.NORMAL, tk.NORMAL, tk.NORMAL],
             "Ingresar Guardian",
             "Registre los datos solicitados para ingresar al Guardian. \n"+
@@ -262,7 +262,7 @@ class GestionarGuardian(tk.Toplevel):
         frm_descripcion_proceso=tk.Frame(frm_listaGuardianes, borderwidth=2, relief="solid", padx=10)
         frm_descripcion_proceso.pack(fill=tk.X, padx=10, pady=10)
 
-        lbl_descipcion_proceso=tk.Label(frm_descripcion_proceso, text="A continuación podrá ver todos los guardianes registrados en la carcél",
+        lbl_descipcion_proceso=tk.Label(frm_descripcion_proceso, text="A continuación podrá ver todos los guardianes registrados en la cárcel",
         font=('Arial',10))
         lbl_descipcion_proceso.pack(pady=10)
 
