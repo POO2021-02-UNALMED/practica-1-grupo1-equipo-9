@@ -9,6 +9,7 @@ from turtle import width
 from numpy import pad
 from gestorAplicacion.delito import Delito
 from gestorAplicacion.genero import genero
+from gestorAplicacion.celda import Celda
 from gestorAplicacion.antidelito import Antidelito
 from gestorAplicacion.prisionero import Prisionero
 from .utils.fieldFrame import FieldFrame
@@ -125,18 +126,20 @@ class GestionarPrisionero(tk.Toplevel):
                     f.messbox()
                     return 
 
-            '''try:
-                ExceptionObjNoEncontrado(   "No se encontró apostador con este ID.", 
-                                            idApostador, Prisionero.getPrisioneros())
-                ap = Prisionero.getPrisioneros()[idApostador]
-            except:
-                try:
-                    ExceptionObjNoEncontrado(   "No se encontró apostador con este ID.", 
-                                                idApostador, Guardian.getGuardianes())
-                    ap = Guardian.getGuardianes()[idApostador]
+                '''try:
+                    for i in ddelitos.keys():
+                        ExceptionObjNoEncontrado(   "No se encontró delito con este código.", 
+                                            ddelitos[i], Delito.getDelitos())
                 except ExceptionObjNoEncontrado as f:
                     f.messbox()
-                    return       ''' 
+                    return'''
+
+            try:
+                ExceptionObjNoEncontrado(   "No se encontró celda con este código.", 
+                                            frm_ingresar.getValue("Celda"), Celda.getCeldas())
+            except ExceptionObjNoEncontrado as f:
+                    f.messbox()
+                    return
 
             try:
                 ExceptionValorNegativo("El saldo no puede ser negativo.", int(frm_ingresar.getValue("Saldo"))) 
