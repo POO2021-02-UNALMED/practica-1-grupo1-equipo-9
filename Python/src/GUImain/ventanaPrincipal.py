@@ -47,7 +47,7 @@ class VentanaPrincipal(tk.Tk):
         ),
         (
             "Camilo Rivera",
-            "Descripción",
+            "Estudiando de Ingeniería de Sistemas, con gusto por la seguridad de la información.",
             [
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "C1.jpeg"),
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
