@@ -199,7 +199,7 @@ class GestionarPelea(tk.Toplevel):
         # Validación de armas
         # TODO: Validar que las armas existan
 
-        pelea = Pelea(codigo, genero, prisionero1, prisionero2, arma1, arma2)
+        pelea = Pelea(int(codigo), genero, prisionero1, prisionero2, arma1, arma2)
         
         serializar()
         messagebox.showinfo("Confirmación", f"Se ha creado la pelea con Codigo: {pelea.getCodigo()}")
