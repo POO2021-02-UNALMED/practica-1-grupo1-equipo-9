@@ -84,7 +84,8 @@ class GestionarDelito(Toplevel):
         def registro():
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
-            
+            from GUImain.exceptionClasses.exceptionNoInt import ExceptionNoInt
+
             try:
                 ExceptionCampoVacio(frm_ingresar.getValue("Nombre"),
                                     frm_ingresar.getValue("Descripción"),
@@ -95,10 +96,23 @@ class GestionarDelito(Toplevel):
                 return
 
             try:
+                ExceptionNoInt("El campo nivel debe ser un entero.", frm_ingresar.getValue("Nivel"))
+            except ExceptionNoInt as f:
+                f.messbox()
+                return
+
+            try:
                 ExceptionValorNegativo("El nivel no puede ser negativo.", int(frm_ingresar.getValue("Nivel"))) 
             except ExceptionValorNegativo as f:
                 f.messbox()
                 return  
+
+            try:
+                ExceptionNoInt("El campo tiempo de condena debe ser un entero.", frm_ingresar.getValue("Tiempo Condena"))
+            except ExceptionNoInt as f:
+                f.messbox()
+                return
+
             try:
                 ExceptionValorNegativo("El tiempo de condena no puede ser negativo.", int(frm_ingresar.getValue("Tiempo Condena")))    
             except ExceptionValorNegativo as f:
@@ -201,6 +215,7 @@ class GestionarDelito(Toplevel):
         def registro():
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            from GUImain.exceptionClasses.exceptionNoInt import ExceptionNoInt
             
             try:
                 ExceptionCampoVacio(frm_principal.getValue("Nombre"),
@@ -212,10 +227,23 @@ class GestionarDelito(Toplevel):
                 return
 
             try:
+                ExceptionNoInt("El campo nivel debe ser un entero.", frm_principal.getValue("Nivel"))
+            except ExceptionNoInt as f:
+                f.messbox()
+                return
+
+            try:
                 ExceptionValorNegativo("El nivel no puede ser negativo.", int(frm_principal.getValue("Nivel"))) 
             except ExceptionValorNegativo as f:
                 f.messbox()
                 return  
+
+            try:
+                ExceptionNoInt("El tiempo de condena debe ser un entero.", frm_principal.getValue("Tiempo Condena"))
+            except ExceptionNoInt as f:
+                f.messbox()
+                return
+
             try:
                 ExceptionValorNegativo("El tiempo de condena no puede ser negativo.", int(frm_principal.getValue("Tiempo Condena")))    
             except ExceptionValorNegativo as f:
