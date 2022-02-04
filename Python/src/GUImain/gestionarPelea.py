@@ -5,9 +5,9 @@ from .utils.table import Table
 from gestorAplicacion.pelea import Pelea
 from gestorAplicacion.prisionero import Prisionero
 from gestorAplicacion.genero import genero as genero_enum
+from GUImain.exceptionClasses.exceptionInconsistenciaGeneros import ErrorInconsistenciaGeneros
 from tkinter import messagebox
 
-from GUImain.exceptionClasses.exceptionInconsistenciaGeneros import ErrorInconsistenciaGeneros
 
 
 
@@ -39,7 +39,7 @@ class GestionarPelea(tk.Toplevel):
         
         menuProcyCons = [
             ("Registrar Pelea", [
-                ("Ingresar", self.frm_registrar_pelea),
+                ("Ingresar", self.registrar_pelea_frm),
                 ("Consultar código prisionero", self.deep_consultar_codigo_prisionero_event),
                 ("Consultar armas disponibles", self.depp_consultar_armas_habilitadas_event)
             ]),
@@ -85,7 +85,7 @@ class GestionarPelea(tk.Toplevel):
         frmBase.pack()
 
 
-    def frm_registrar_pelea(self):
+    def registrar_pelea_frm(self):
         
         self.currFrame.pack_forget()
 
@@ -157,19 +157,34 @@ class GestionarPelea(tk.Toplevel):
         # Validación de armas
         # TODO: Validar que las armas existan
 
-        pelea = Pelea(codigo, genero, prisionero1, prisionero2, "arma10", "arma20")
+        pelea = Pelea(codigo, genero, prisionero1, prisionero2, arma1, arma2)
         print(pelea)
 
 
 
-    def definir_pelea(self):
+    def definir_pelea_frm(self):
         pass
 
-    def listar_pelea(self):
+
+    def definir_pelea_event(self):
         pass
 
-    def battle_royale(self):
+
+    def listar_pelea_frm(self):
         pass
+
+
+    def listar_pelea_event(self):
+        pass
+
+
+    def battle_royale_frm(self):
+        pass
+
+
+    def battle_royale_event(self):
+        pass
+
     
     def deep_consultar_codigo_prisionero_event(self):
         prisioneros = Prisionero.getPrisioneros()
@@ -196,12 +211,14 @@ class GestionarPelea(tk.Toplevel):
     def depp_consultar_armas_habilitadas_event(self):
         pass
 
+
     def evento(self):
         messagebox.showinfo(title="Integrantes", 
         message="Beatriz Valentina Gomez Valencia \n"+
         "Alejandro Salazar Mejía \n"+
         "Juan Pablo Martínez Echavarría \n"+
         "Hernan Camilo Rivera Arteaga")
+
 
     def salir(self):
         self.MASTER.deiconify()
