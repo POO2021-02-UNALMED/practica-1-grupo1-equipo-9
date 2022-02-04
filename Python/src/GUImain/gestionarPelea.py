@@ -165,7 +165,6 @@ class GestionarPelea(tk.Toplevel):
         print(pelea)
 
 
-
     def definir_pelea_frm(self):
         pass
 
@@ -193,13 +192,13 @@ class GestionarPelea(tk.Toplevel):
             ["Género", "Codigos de celda a escojer (ceperadas por comas)"],
             "Valores",
             [["M", "F"], ""],
-            [tk.NORMAL, tk.NORMAL],
+            [tk.READABLE, tk.NORMAL],
             [tk.ttk.Combobox, tk.Entry],
             "Ingresar Pelea",
             "Registre los datos de una pelea.\nPara este caso habilitamos un submenu para consultar los codigos de los prisioneros"
         )
         
-        self.frm_inicial.set_command_btn_aceptar(self.registrar_pelea_event)
+        self.frm_inicial.set_command_btn_aceptar(self.battle_royale_event)
         self.frm_inicial.pack(fill=tk.BOTH, expand=True)
 
         self.currFrame = frm_battleRoyale
@@ -207,7 +206,41 @@ class GestionarPelea(tk.Toplevel):
 
 
     def battle_royale_event(self):
-        pass
+        from baseDatos.serializador import serializar
+        
+        genero = self.frm_inicial.getValue("Género")
+        codigos_celdas = self.frm_inicial.getValue("Codigos de celda a escojer (ceperadas por comas)")
+
+        # Procesar entrada codigos_celdas
+        codigos_celdas = codigos_celdas.strip(",").strip(" ").replace(" ", "").split(",")
+
+        # Buscar objetos de Celda
+        celdas = Celda.getCeldas()
+        celdas_escojidas = [celdas[int(i)] for i in codigos_celdas]
+        
+        # Validar que todas las celdas sean del mismo genero
+        try:
+            for celda in celdas_escojidas:
+                ErrorInconsistenciaGeneros(f"El género de las celdas en el battlee royale deben ser {genero}",
+                                            celda.getGenero(), genero)
+                    
+        except ErrorInconsistenciaGeneros as f:
+            f.messbox()                
+            return
+
+        # try:
+        #     ErrorInconsistenciaGeneros("El género de la pelea es " + genero.value,
+        #                                 prisionero1.getGenero(), genero)
+        # except ErrorInconsistenciaGeneros as f:
+        #     f.messbox()                
+        #     return
+
+        combates = Pelea.battleRoyale(celdas_escojidas)
+        combates_msg = ""
+        for c in combates:
+            combates_msg += c + "\n"
+        serializar()
+        messagebox.showinfo("Confirmación", combates_msg)
 
     
     def deep_consultar_codigo_prisionero_event(self):
