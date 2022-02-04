@@ -35,7 +35,7 @@ class GestionarPelea(tk.Toplevel):
     def crearMenu(self):
         menubar = MenuBar(self)
 
-        menuArchiv = [  ("Aplicación", self.evento),
+        menuArchiv = [  ("Aplicación", self.frmInicial),
                         ("Salir", self.salir) ]
         menubar.add_menu_options("Archivo", menuArchiv)
         
@@ -63,6 +63,11 @@ class GestionarPelea(tk.Toplevel):
 
 
     def frmInicial(self):
+        try:
+            self.currFrame.pack_forget()
+        except AttributeError:
+            pass
+
         frmBase = tk.Frame(self)
 
         frm_titulo_proceso = tk.Frame(frmBase)

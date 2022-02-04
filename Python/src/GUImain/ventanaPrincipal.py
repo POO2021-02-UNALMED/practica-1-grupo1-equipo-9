@@ -85,16 +85,20 @@ class VentanaPrincipal(tk.Tk):
 
     def __init__(self):
         super().__init__()
+        self.diseno()
         self.crearContenido()
+        self.crearMenu()
         self.btn_imagenes_sistema_event()
         self.btn_desarrolladores_event()
+    
 
-    def crearContenido(self):
+    def diseno(self):
         self.geometry("1080x480")
         self.option_add("*tearOff", False)
         self.title("Presentación")
 
-        self.crearMenu()
+
+    def crearContenido(self):
 
         # Frame left
         frm_p1 = tk.Frame(self, borderwidth=2, relief="solid")
