@@ -141,6 +141,7 @@ class GestionarApuesta(Toplevel):
             from baseDatos.serializador import serializar
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
+            from GUImain.exceptionClasses.exceptionSalarioInsuficiente import ExceptionSalarioInsuficiente
 
             try:
                 ExceptionCampoVacio(entry_Identificacion.get(),
@@ -169,9 +170,11 @@ class GestionarApuesta(Toplevel):
             apuesta = int(entry_Dinero.get())
             luchador = Prisionero.getPrisioneros()[int(combox_Peleador.get())]
 
-            if apuesta > ap.getSaldo() :
-                pass
-                # EXCEPCION
+            try:
+                ExceptionSalarioInsuficiente(ap.getSaldo(), apuesta)
+            except ExceptionSalarioInsuficiente as f:
+                f.messbox()
+                return
 
             pelea.getApuesta().agregarApostador(ap, luchador, apuesta)
             # serializar()
