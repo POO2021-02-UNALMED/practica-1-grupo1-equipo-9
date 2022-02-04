@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter as tk
 from tkinter import messagebox
 from .gestionarAntidelito import GestionarAntidelito
 from .gestionarApuesta import GestionarApuesta
@@ -40,7 +41,7 @@ class VentanaUsuario(Toplevel):
 
         menubar = MenuBar(self)
 
-        menuArchiv = [  ("Aplicación", self.evento),
+        menuArchiv = [  ("Aplicación", self.menu_aplicacion_event),
                         ("Salir", self.salir) ]
         menubar.add_menu_options("Archivo", menuArchiv)
         
@@ -64,6 +65,39 @@ class VentanaUsuario(Toplevel):
         "Juan Pablo Martínez Echavarría \n"+
         "Hernan Camilo Rivera Arteaga")
 
+    def menu_aplicacion_event(self, e=None):
+
+        top_level_window = tk.Toplevel(self, width=100)
+        top_level_window.geometry("380x380")
+        top_level_window.title("Descripción")
+
+        frm_aplicacion = tk.Frame(top_level_window)
+        frm_aplicacion.pack(fill=tk.BOTH, expand=True)
+
+        # Titulo
+        lbl_tmp = tk.Label(
+            frm_aplicacion,
+            text="Sistema de apuestas en la carcel X",
+            padx=10,
+            font=tk.font.Font(frm_aplicacion, size=13, weight=tk.font.BOLD)
+        )
+        lbl_tmp.pack(fill=tk.BOTH, expand=True)
+
+        # Contenido
+        description_text = """
+        Gestión de todas las entidades involucradas en
+        la Cárcel Apuestera. \n
+        Ingrese, edite, borre y consulte los aspectos
+        de la entidad seleccionada con ayuda de las 
+        funciones diseñadas.
+        """
+
+        lbl_tmp = tk.Label(frm_aplicacion, text=description_text, padx=10)
+        lbl_tmp.pack(fill=tk.BOTH, expand=True)
+
+        # Versión
+        lbl_tmp = tk.Label(frm_aplicacion, text="Versión V0.0.1", padx=10)
+        lbl_tmp.pack(fill=tk.BOTH, expand=True)
 
     def salir(self):
         self.MASTER.deiconify()
