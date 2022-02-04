@@ -10,7 +10,7 @@ class Prisionero(Apostador):
     def __init__(self, nombre, saldo, _genero, _celda, _delitos: dict):
         from gestorAplicacion.celda import Celda
         super().__init__(nombre, saldo)
-        self.identificacion = len(Prisionero._prisioneros) + 1
+        self.identificacion = list(Prisionero._prisioneros.keys())[len(Prisionero._prisioneros)-1]+1
         self._antidelitos = {}
         self._genero = _genero
         self._inicioCondena = date.today()
