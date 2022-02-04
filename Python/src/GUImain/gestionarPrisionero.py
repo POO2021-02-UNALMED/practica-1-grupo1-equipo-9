@@ -95,15 +95,7 @@ class GestionarPrisionero(tk.Toplevel):
             from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
             from GUImain.exceptionClasses.exceptionInconsistenciaGeneros import ErrorInconsistenciaGeneros
-
-            delitos=frm_ingresar.getValue("Delitos").split()
-            ddelitos={}
             
-            for i in delitos:
-                ddelitos[int(i)]=Delito.getDelitos()[int(i)]
-
-            print(ddelitos)
-
             try:
                 ExceptionCampoVacio(frm_ingresar.getValue("Nombre"),
                                     frm_ingresar.getValue("Saldo"),
@@ -128,10 +120,13 @@ class GestionarPrisionero(tk.Toplevel):
                     f.messbox()
                     return 
 
+            ddelitos={}
+            delitos=frm_ingresar.getValue("Delitos").split()
             try:
-                for i in ddelitos.keys():
-                    ExceptionObjNoEncontrado(   "No se encontró delito con este código.", 
-                                                i, Delito.getDelitos().keys)                        
+                for i in delitos:
+                    ExceptionObjNoEncontrado(   "No se encontró delito con este código. ", 
+                                                int(i), Delito.getDelitos())      
+                    ddelitos[int(i)]=Delito.getDelitos()[int(i)]                                              
             except ExceptionObjNoEncontrado as f:
                 f.messbox()
                 return
