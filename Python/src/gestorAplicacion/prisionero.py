@@ -97,6 +97,7 @@ class Prisionero(Apostador):
 
     def __str__(self) -> str:
         return ("Prisionero: "+ str(self.identificacion) + "\n" + "Genero: " + self._genero.value + "\n"
+                +"Celda: "+ str(self.getCelda().getNumero())+ "\n"
                 +"Inicio condena: " + str(self.getInicioCondena()) +"\n"
                 + "Fin condena: " + str(self.getFinCondena()) + "\n")
     
