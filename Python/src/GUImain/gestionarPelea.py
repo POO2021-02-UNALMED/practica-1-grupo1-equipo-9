@@ -1,7 +1,9 @@
 import tkinter as tk
 from .utils.menuBar import MenuBar
 from .utils.fieldFrame import FieldFrame
+from .utils.fieldFrameWithEntryType import FieldFrameWithEntryType
 from .utils.table import Table
+from gestorAplicacion.celda import Celda
 from gestorAplicacion.pelea import Pelea
 from gestorAplicacion.prisionero import Prisionero
 from gestorAplicacion.genero import genero as genero_enum
@@ -41,11 +43,13 @@ class GestionarPelea(tk.Toplevel):
             ("Registrar Pelea", [
                 ("Ingresar", self.registrar_pelea_frm),
                 ("Consultar código prisionero", self.deep_consultar_codigo_prisionero_event),
-                ("Consultar armas disponibles", self.depp_consultar_armas_habilitadas_event)
             ]),
-            ("Definir Pelea", self.definir_pelea), 
-            ("Listar Peleas", self.listar_pelea),
-            ("Battle Royale", self.battle_royale)
+            ("Definir Pelea", self.definir_pelea_frm), 
+            ("Listar Peleas", self.listar_pelea_frm),
+            ("Battle Royale", [
+                ("Ingresar", self.battle_royale_frm),
+                ("Consultar código celdas", self.deep_consultar_codigo_celdas_event),
+            ])
         ]
 
         menubar.add_menu_options('Procesos y Consultas', menuProcyCons)
@@ -179,7 +183,27 @@ class GestionarPelea(tk.Toplevel):
 
 
     def battle_royale_frm(self):
-        pass
+        self.currFrame.pack_forget()
+
+        frm_battleRoyale = tk.Frame(self)
+
+        self.frm_inicial = FieldFrameWithEntryType(
+            frm_battleRoyale,
+            "Criterios",
+            ["Género", "Codigos de celda a escojer (ceperadas por comas)"],
+            "Valores",
+            [["M", "F"], ""],
+            [tk.NORMAL, tk.NORMAL],
+            [tk.ttk.Combobox, tk.Entry],
+            "Ingresar Pelea",
+            "Registre los datos de una pelea.\nPara este caso habilitamos un submenu para consultar los codigos de los prisioneros"
+        )
+        
+        self.frm_inicial.set_command_btn_aceptar(self.registrar_pelea_event)
+        self.frm_inicial.pack(fill=tk.BOTH, expand=True)
+
+        self.currFrame = frm_battleRoyale
+        frm_battleRoyale.pack()
 
 
     def battle_royale_event(self):
@@ -207,9 +231,29 @@ class GestionarPelea(tk.Toplevel):
         top_level_window = tk.Toplevel(self)
         tbl = Table(top_level_window, data)
 
-
-    def depp_consultar_armas_habilitadas_event(self):
-        pass
+    
+    def deep_consultar_codigo_celdas_event(self):
+        celdas = Celda.getCeldas()
+        header = [
+            "Código",
+            "Género",
+            "Largo",
+            "Ancho",
+            "Capacidad Máxima"
+        ]
+        data = [header]
+        for k, v in celdas.items():
+            data.append(
+                [
+                    v.getNumero(),
+                    v.getGenero().value,
+                    v.getLargo(),
+                    v.getAncho(),
+                    v.getCapMax()
+                ]
+            )
+        top_level_window = tk.Toplevel(self)
+        tbl = Table(top_level_window, data)
 
 
     def evento(self):
