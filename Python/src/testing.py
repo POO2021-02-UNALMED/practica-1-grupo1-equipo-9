@@ -7,16 +7,16 @@ from gestorAplicacion.prisionero import Prisionero
 from gestorAplicacion.guardian import Guardian
 
 
-delito1 = Delito(1, "Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10)
-delito2 = Delito(2, "Pelea callejera", "Enfrentarse fisicamente con otra persona o animal en lugares publicos", 1, 12)
-delito3 = Delito(3, "3", "3", 6, 48)
-delito4 = Delito(4, "4", "4", 8, 200)
-delito5 = Delito(5, "5", "5", 9, 360)
-delito6 = Delito(6, "6", "6", 3, 24)
-delito7 = Delito(7, "Batalla", "Participar en la batalla del Departamento de Misterios como mortifago", 5, 360)
-delito8 = Delito(8, "Batalla", "Participar en la batalla del Departamento de Misterios", 5, 50)
-delito9 = Delito(9, "9", "9", 7, 500)
-delito10 = Delito(10, "10", "10", 4, 10)
+delito1 = Delito("Robo", "Apropiarse de un bien ajeno de manera fraudulenta, empleando la fuera, violencia o intimidacion ", 2, 10)
+delito2 = Delito("Pelea callejera", "Enfrentarse fisicamente con otra persona o animal en lugares publicos", 1, 12)
+delito3 = Delito("3", "3", 6, 48)
+delito4 = Delito("4", "4", 8, 200)
+delito5 = Delito("5", "5", 9, 360)
+delito6 = Delito("6", "6", 3, 24)
+delito7 = Delito("Batalla", "Participar en la batalla del Departamento de Misterios como mortifago", 5, 360)
+delito8 = Delito("Batalla", "Participar en la batalla del Departamento de Misterios", 5, 50)
+delito9 = Delito("9", "9", 7, 500)
+delito10 = Delito("10", "10", 4, 10)
 		
 delitos1 = {}
 delitos1[delito1.getCodigo()] =  delito1
@@ -114,13 +114,13 @@ guardian4 = Guardian("Sylvester Stallone",8600,6100,celdas4)
 guardian5 = Guardian("Jean_Claude Van Damme",6700,7480,celdas5)
 		
 #		crearAntidelitos
-antidelito0 = Antidelito(0, "nombre0", "descripcion0",1)
-antidelito1 = Antidelito(1, "nombre1", "descripcion1",2)
-antidelito2 = Antidelito(2, "nombre2", "descripcion2",3)
-antidelito3 = Antidelito(3, "nombre3", "descripcion3",4)
-antidelito4 = Antidelito(4, "nombre4", "descripcion4",5)
-antidelito5 = Antidelito(5, "nombre5", "descripcion5",6)
-antidelito6 = Antidelito(6, "nombre6", "descripcion6",7)
+antidelito0 = Antidelito("nombre0", "descripcion0",1)
+antidelito1 = Antidelito("nombre1", "descripcion1",2)
+antidelito2 = Antidelito("nombre2", "descripcion2",3)
+antidelito3 = Antidelito("nombre3", "descripcion3",4)
+antidelito4 = Antidelito("nombre4", "descripcion4",5)
+antidelito5 = Antidelito("nombre5", "descripcion5",6)
+antidelito6 = Antidelito("nombre6", "descripcion6",7)
 		
 #		crearPeleas
 pelea0 = Pelea(0, genero.M, prisionero0, prisionero1, "arma10", "arma20")

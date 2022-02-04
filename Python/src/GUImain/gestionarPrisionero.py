@@ -94,6 +94,7 @@ class GestionarPrisionero(tk.Toplevel):
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            from GUImain.exceptionClasses.exceptionInconsistenciaGeneros import ErrorInconsistenciaGeneros
 
             delitos=frm_ingresar.getValue("Delitos").split()
             ddelitos={}
@@ -136,10 +137,18 @@ class GestionarPrisionero(tk.Toplevel):
 
             try:
                 ExceptionObjNoEncontrado(   "No se encontró celda con este código.", 
-                                            frm_ingresar.getValue("Celda"), Celda.getCeldas())
+                                            int(frm_ingresar.getValue("Celda")), Celda.getCeldas().keys())
+                celda = Celda.getCeldas()[int(frm_ingresar.getValue("Celda"))]
             except ExceptionObjNoEncontrado as f:
                     f.messbox()
                     return
+
+            try:
+                ErrorInconsistenciaGeneros("El género del prisionero y de la celda no coinciden.",
+                                            gen, celda.getGenero())
+            except ErrorInconsistenciaGeneros as f:
+                f.messbox()
+                return
 
             try:
                 ExceptionValorNegativo("El saldo no puede ser negativo.", int(frm_ingresar.getValue("Saldo"))) 
@@ -148,7 +157,7 @@ class GestionarPrisionero(tk.Toplevel):
                 return       
 
 
-            Prisionero(frm_ingresar.getValue("Nombre"), int(frm_ingresar.getValue("Saldo")), gen, int(frm_ingresar.getValue("Celda")), ddelitos)
+            Prisionero(frm_ingresar.getValue("Nombre"), int(frm_ingresar.getValue("Saldo")), gen, celda, ddelitos)
             tk.messagebox.showinfo(message="El prisionero ha sido registrado correctamente")
             self.salir()
 
