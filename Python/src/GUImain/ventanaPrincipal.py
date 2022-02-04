@@ -65,7 +65,7 @@ class VentanaPrincipal(tk.Tk):
                 os.path.join(settings.BASE_DIR, "src",
                              "GUImain", "assets", "C1.jpeg"),
                 os.path.join(settings.BASE_DIR, "src",
-                             "GUImain", "assets", "dev2.jpeg"),
+                             "GUImain", "assets", "C3.png"),
                 os.path.join(settings.BASE_DIR, "src",
                              "GUImain", "assets", "dev1.png"),
                 os.path.join(settings.BASE_DIR, "src",
@@ -77,9 +77,9 @@ class VentanaPrincipal(tk.Tk):
 
     imagenes_sistema = [
         os.path.join(settings.BASE_DIR, "src",
-                     "GUImain", "assets", "dev1.png"),
+                     "GUImain", "assets", "desc.png"),
         os.path.join(settings.BASE_DIR, "src",
-                     "GUImain", "assets", "dev2.jpeg")
+                     "GUImain", "assets", "dev2.jpeg"),
     ]
     imagenes_sistema_iter = 1
 
