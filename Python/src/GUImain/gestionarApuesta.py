@@ -30,7 +30,7 @@ class GestionarApuesta(Toplevel):
     def crearMenu(self):
         menubar = MenuBar(self)
 
-        menuArchiv = [  ("Aplicación", self.evento),
+        menuArchiv = [  ("Aplicación", self.frmInicial),
                         ("Salir", self.salir) ]
         menubar.add_menu_options("Archivo", menuArchiv)
         
@@ -44,6 +44,11 @@ class GestionarApuesta(Toplevel):
         menubar.add_menu_options("Ayuda", menuAyuda)
 
     def frmInicial(self):
+        try:
+            self.currFrame.pack_forget()
+        except AttributeError:
+            pass
+
         frmBase = Frame(self)
 
         frm_titulo_proceso = Frame(frmBase)
