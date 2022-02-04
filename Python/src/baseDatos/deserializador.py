@@ -29,6 +29,6 @@ def deserializar():
         pc = pickle.load(picklefile)
         v(pc)
         picklefile.close()
-        print(pc)
+        
 
         

@@ -11,7 +11,7 @@ class ExceptionNoInt(ErrorEnCampos):
 
     def checkValue(self, dato):
         try:
-            int(dato)
+            float(dato) 
         except:
             raise self
     

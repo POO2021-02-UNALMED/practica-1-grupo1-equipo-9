@@ -91,8 +91,10 @@ class GestionarAntidelito(Toplevel):
 
         #RECORDAR Serializar
         def registro():
+            from baseDatos.serializador import serializar
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            from GUImain.exceptionClasses.exceptionNoInt import ExceptionNoInt
             
             try:
                 ExceptionCampoVacio(frm_inicial.getValue("Nombre"),
@@ -103,12 +105,19 @@ class GestionarAntidelito(Toplevel):
                 return
 
             try:
+                ExceptionNoInt("El campo rebaja de condena debe ser un entero.", frm_inicial.getValue("Rebaja de Condena"))
+            except ExceptionNoInt as f:
+                f.messbox()
+                return
+
+            try:
                 ExceptionValorNegativo("La rebaja de condena no puede ser negativa", int(frm_inicial.getValue("Rebaja de Condena"))) 
             except ExceptionValorNegativo as f:
                 f.messbox()
                 return
 
             Antidelito(frm_inicial.getValue("Nombre"), frm_inicial.getValue("Descripción"), int(frm_inicial.getValue("Rebaja de Condena")))
+            serializar()
             tk.messagebox.showinfo("Confirmación", "Se ha registrado el Antidelito correctamente")
             self.salir()
         
@@ -150,7 +159,9 @@ class GestionarAntidelito(Toplevel):
         combox_codigo.grid(column=1, row=1, padx=15, pady=5)
 
         def func_borrarAntidelito():
+            from baseDatos.serializador import serializar
             Antidelito.getAntidelitos().pop(int(combox_codigo.get()))
+            serializar()
             tk.messagebox.showinfo("Confirmación", "Se ha eliminado el delito " + combox_codigo.get() + " correctamente")
             self.salir()
 
@@ -202,14 +213,22 @@ class GestionarAntidelito(Toplevel):
 
         #RECORDAR Serializar
         def registro():
+            from baseDatos.serializador import serializar
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            from GUImain.exceptionClasses.exceptionNoInt import ExceptionNoInt
             
             try:
                 ExceptionCampoVacio(frm_principal.getValue("Nombre"),
                                     frm_principal.getValue("Descripción"),
                                     frm_principal.getValue("Rebaja de Condena"))
             except ExceptionCampoVacio as f:
+                f.messbox()
+                return
+
+            try:
+                ExceptionNoInt("El campo rebaja de condena debe ser un entero.", frm_principal.getValue("Rebaja de Condena"))
+            except ExceptionNoInt as f:
                 f.messbox()
                 return
 
@@ -226,6 +245,7 @@ class GestionarAntidelito(Toplevel):
             datosAntidelito.setDescripcion(frm_principal.getValue("Descripción"))
             datosAntidelito.setRebajaCondena(int(frm_principal.getValue("Rebaja de Condena")))
 
+            serializar()
             tk.messagebox.showinfo("Confirmación", "Se han modificado correctamente los datos del antidelito seleccionado")
             self.salir()
 

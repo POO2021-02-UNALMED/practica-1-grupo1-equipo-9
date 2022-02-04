@@ -97,9 +97,11 @@ class GestionarGuardian(tk.Toplevel):
 
         #RECORDAR Serializar
         def registro():
+            from baseDatos.serializador import serializar
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
+            from GUImain.exceptionClasses.exceptionNoInt import ExceptionNoInt
 
             celdas = frm_inicial.getValue("Celdas").split()
             dictceldas = {}
@@ -114,8 +116,20 @@ class GestionarGuardian(tk.Toplevel):
                 return
 
             try:
+                ExceptionNoInt("El campo saldo debe ser un entero.", frm_inicial.getValue("Saldo"))
+            except ExceptionNoInt as f:
+                f.messbox()
+                return   
+
+            try:
                 ExceptionValorNegativo("El saldo no puede ser negativo.", float(frm_inicial.getValue("Saldo")))
             except ExceptionValorNegativo as f:
+                f.messbox()
+                return    
+
+            try:
+                ExceptionNoInt("El campo salario debe ser un entero.", frm_inicial.getValue("Salario"))
+            except ExceptionNoInt as f:
                 f.messbox()
                 return
 
@@ -123,7 +137,7 @@ class GestionarGuardian(tk.Toplevel):
                 ExceptionValorNegativo("El salario no puede ser negativo.", float(frm_inicial.getValue("Salario")))
             except ExceptionValorNegativo as f:
                 f.messbox()
-                return
+                return     
 
             try:
                 for i in celdas:
@@ -136,6 +150,7 @@ class GestionarGuardian(tk.Toplevel):
                 dictceldas[int(i)] = Celda.getCeldas()[int(i)]
 
             Guardian(frm_inicial.getValue("Nombre"), float(frm_inicial.getValue("Saldo")), float(frm_inicial.getValue("Salario")), dictceldas)
+            serializar()
             tk.messagebox.showinfo("Confirmación", "Se ha registrado el Guardian correctamente")
             self.salir()
         
@@ -177,7 +192,9 @@ class GestionarGuardian(tk.Toplevel):
         combox_codigo.grid(column=1, row=1, padx=15, pady=5)
 
         def func_borrarGuardian():
+            from baseDatos.serializador import serializar
             Guardian.getGuardianes().pop(int(combox_codigo.get()))
+            serializar()
             tk.messagebox.showinfo("Confirmación", "Se ha eliminado al guardian " + combox_codigo.get() + " correctamente")
             self.salir()
 
@@ -229,10 +246,12 @@ class GestionarGuardian(tk.Toplevel):
         frm_principal.pack(fill=tk.BOTH, expand=True)
 
         #RECORDAR Serializar
-        def registro():             
+        def registro(): 
+            from baseDatos.serializador import serializar            
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
+            from GUImain.exceptionClasses.exceptionNoInt import ExceptionNoInt
 
             celdas = frm_principal.getValue("Celdas").split()
             dictceldas = {}
@@ -247,8 +266,20 @@ class GestionarGuardian(tk.Toplevel):
                 return
 
             try:
+                ExceptionNoInt("El campo saldo debe ser un entero.", frm_principal.getValue("Saldo"))
+            except ExceptionNoInt as f:
+                f.messbox()
+                return   
+
+            try:
                 ExceptionValorNegativo("El saldo no puede ser negativo.", float(frm_principal.getValue("Saldo")))
             except ExceptionValorNegativo as f:
+                f.messbox()
+                return    
+
+            try:
+                ExceptionNoInt("El campo salario debe ser un entero.", frm_principal.getValue("Salario"))
+            except ExceptionNoInt as f:
                 f.messbox()
                 return
 
@@ -256,7 +287,7 @@ class GestionarGuardian(tk.Toplevel):
                 ExceptionValorNegativo("El salario no puede ser negativo.", float(frm_principal.getValue("Salario")))
             except ExceptionValorNegativo as f:
                 f.messbox()
-                return
+                return     
 
             try:
                 for i in celdas:
@@ -276,6 +307,7 @@ class GestionarGuardian(tk.Toplevel):
             datosguardian.setSalario(float(frm_principal.getValue("Salario")))
             datosguardian.setCeldas(dictceldas)
 
+            serializar()
             tk.messagebox.showinfo("Confirmación", "Se han modificado correctamente los datos del guardian seleccionado")
             self.salir()
 
@@ -424,10 +456,12 @@ class GestionarGuardian(tk.Toplevel):
         combox_codigop.bind("<<ComboboxSelected>>", getCeldas)
 
         def func_traslaPrisionero():
+            from baseDatos.serializador import serializar
             prisionero = Prisionero.getPrisioneros()[int(combox_codigop.get())]
             celda = Celda.getCeldas()[int(combox_numcelda.get())]
             guardian = Guardian.getGuardianes()[int(combox_codigog.get())]
             guardian.trasladarPrisionero(prisionero,celda)
+            serializar()
             tk.messagebox.showinfo("Confirmación", "Se ha trasladado al prisionero " + combox_codigop.get() + " correctamente")
             self.salir()
 
