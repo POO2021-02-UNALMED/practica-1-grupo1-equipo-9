@@ -114,7 +114,9 @@ class GestionarPelea(tk.Toplevel):
 
 
     def registrar_pelea_event(self):
-
+        from baseDatos.serializador import serializar
+        from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+        from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
 
         codigo = self.frm_inicial.getValue("Código")
         genero = self.frm_inicial.getValue("Género(M/F)")
@@ -123,8 +125,28 @@ class GestionarPelea(tk.Toplevel):
         arma1 = self.frm_inicial.getValue("Arma 1")
         arma2 = self.frm_inicial.getValue("Arma 2")
 
+        try:
+            ExceptionCampoVacio(
+                codigo,
+                genero,
+                codigo_prisionero1,
+                codigo_prisionero2,
+                arma1,
+                arma2
+            )
+        except ExceptionCampoVacio as f:
+            f.messbox()
+            return
+
+
         # Validación de codigo de nueva pelea
-        # TODO: Validar que el codigo de la nueva pelea no exista
+        # el codigo de la nueva pelea no debe existir
+        try:        
+            Pelea.getPeleas()[int(codigo)]
+            messagebox.showinfo("Validación", f"El codigo {codigo} de la pelea no debe existir")
+            return
+        except KeyError:
+            pass
 
         # Validación de que la letra ingresada sea la correcta
         if genero.lower() == "m":
@@ -136,14 +158,21 @@ class GestionarPelea(tk.Toplevel):
             pass
 
         # Validación del codigo de los prisioneros exista
+        prisioneros = Prisionero.getPrisioneros()
         try:
-            prisionero1 = Prisionero.getPrisioneros()[int(codigo_prisionero1)]
-            prisionero2 = Prisionero.getPrisioneros()[int(codigo_prisionero2)]
-        except KeyError:
-            # TODO: Mostrar mensaje diciendo que los codigos de los prisioneros no existen
-            print("El o los codigos de los prisionero no existen")
-            pass
+            ExceptionObjNoEncontrado(f"No se encontró apostador con el ID: {int(codigo_prisionero1)}", 
+                                        int(codigo_prisionero1), prisioneros)
+            ExceptionObjNoEncontrado(f"No se encontró apostador con el ID: {int(codigo_prisionero1)}", 
+                                        int(codigo_prisionero2), prisioneros)
+
+        except ExceptionObjNoEncontrado as f:
+            f.messbox()
+            return
         
+        prisionero1 = Prisionero.getPrisioneros()[int(codigo_prisionero1)]
+        prisionero2 = Prisionero.getPrisioneros()[int(codigo_prisionero2)]
+        
+        # Validación para que el genero de los dos prisioneros sea el mismo
         try:
             ErrorInconsistenciaGeneros("El género de los luchadores debe ser el mismo.",
                                         prisionero1.getGenero(), prisionero2.getGenero())
@@ -151,8 +180,9 @@ class GestionarPelea(tk.Toplevel):
             f.messbox()                
             return
 
+        # Validar que el genero de los prisioneros coincida con el de la pelea
         try:
-            ErrorInconsistenciaGeneros("El género de la pelea es " + genero.value,
+            ErrorInconsistenciaGeneros(f"El género de la pelea es {genero.value}, por tanto el de los prisioneros también debe ser {genero.value}",
                                         prisionero1.getGenero(), genero)
         except ErrorInconsistenciaGeneros as f:
             f.messbox()                
@@ -162,7 +192,9 @@ class GestionarPelea(tk.Toplevel):
         # TODO: Validar que las armas existan
 
         pelea = Pelea(codigo, genero, prisionero1, prisionero2, arma1, arma2)
-        print(pelea)
+        
+        serializar()
+        messagebox.showinfo("Confirmación", f"Se ha creado la pelea con Codigo: {pelea.getCodigo()}")
 
 
     def definir_pelea_frm(self):
@@ -174,7 +206,39 @@ class GestionarPelea(tk.Toplevel):
 
 
     def listar_pelea_frm(self):
-        pass
+        self.currFrame.pack_forget()
+
+        frm_registrarPelea = tk.Frame(self)
+
+        peleas = Pelea.getPeleas()
+        header = [
+            "Código",
+            "Género",
+            "Luchador1",
+            "Arma1",
+            "Luchador2",
+            "Arma2",
+            "Ganador"
+        ]
+        data = [header]
+        for k, v in peleas.items():
+            luchador1, luchador2 = v.getLuchadores()
+            data.append(
+                [
+                    v.getCodigo(),
+                    v.getGenero().value,
+                    luchador1.getNombre(),
+                    v.getArmaLuchador1(),
+                    luchador2.getNombre(),
+                    v.getArmaLuchador2(),
+                    "Aun no hay ganador" if not v.getGanador() else v.getGanador().getNombre()
+                ]
+            )
+
+        tbl = Table(frm_registrarPelea, data)
+
+        self.currFrame = frm_registrarPelea
+        frm_registrarPelea.pack()
 
 
     def listar_pelea_event(self):
@@ -207,9 +271,18 @@ class GestionarPelea(tk.Toplevel):
 
     def battle_royale_event(self):
         from baseDatos.serializador import serializar
+        from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
         
         genero = self.frm_inicial.getValue("Género")
         codigos_celdas = self.frm_inicial.getValue("Codigos de celda a escojer (ceperadas por comas)")
+
+        try:
+            ExceptionCampoVacio(genero,
+                                codigos_celdas)
+        except ExceptionCampoVacio as f:
+            f.messbox()
+            return
+
 
         # Procesar entrada codigos_celdas
         codigos_celdas = codigos_celdas.strip(",").strip(" ").replace(" ", "").split(",")
