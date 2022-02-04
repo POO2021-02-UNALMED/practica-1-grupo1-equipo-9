@@ -308,9 +308,9 @@ class GestionarPelea(tk.Toplevel):
         self.frm_inicial = FieldFrameWithEntryType(
             frm_battleRoyale,
             "Criterios",
-            ["Género", "Codigos de celda a escojer (ceperadas por comas)"],
+            ["Género", "Codigos de celda a escoger (separadas por comas)"],
             "Valores",
-            [["M", "F"], ""],
+            [[genero_enum.M.value, genero_enum.F.value], ""],
             [tk.READABLE, tk.NORMAL],
             [tk.ttk.Combobox, tk.Entry],
             "Battle Royale",
@@ -329,7 +329,7 @@ class GestionarPelea(tk.Toplevel):
         from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
         
         genero = self.frm_inicial.getValue("Género")
-        codigos_celdas = self.frm_inicial.getValue("Codigos de celda a escojer (ceperadas por comas)")
+        codigos_celdas = self.frm_inicial.getValue("Codigos de celda a escoger (separadas por comas)")
 
         try:
             ExceptionCampoVacio(genero,
@@ -346,15 +346,15 @@ class GestionarPelea(tk.Toplevel):
         celdas = Celda.getCeldas()
         celdas_escojidas = [celdas[int(i)] for i in codigos_celdas]
         
-        # Validar que todas las celdas sean del mismo genero
-        try:
-            for celda in celdas_escojidas:
-                ErrorInconsistenciaGeneros(f"El género de las celdas en el battlee royale deben ser {genero}",
-                                            celda.getGenero(), genero)
+        # # Validar que todas las celdas sean del mismo genero
+        # try:
+        #     for celda in celdas_escojidas:
+        #         ErrorInconsistenciaGeneros(f"El género de las celdas en el battlee royale deben ser {genero} {celda.getGenero().value}",
+        #                                     str(celda.getGenero().value), str(genero))
                     
-        except ErrorInconsistenciaGeneros as f:
-            f.messbox()                
-            return
+        # except ErrorInconsistenciaGeneros as f:
+        #     f.messbox()                
+        #     return
 
         # try:
         #     ErrorInconsistenciaGeneros("El género de la pelea es " + genero.value,
