@@ -9,8 +9,37 @@ from . import ventanaUsuario
 class VentanaPrincipal(tk.Tk):
 
     info_desarrolladores = [
-        ("Desarrollador Uno", "Desarrollador Backed", "2 mes", os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png")),
-        ("Desarrollador Dos", "UI/UX", "1 mes", os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg")),
+        (
+            "Juan Martinez",
+            "Descripción",
+            [
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP1.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP2.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP3.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP4.jpeg")
+            ]
+        ),
+        (
+            "Alejandro",
+            "Descripción",
+            [
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg")
+            ]
+        ),
+        (
+            "Valentina",
+            "Descripción",
+            [
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg")
+            ]
+        ),
+        (
+            "Camilo Rivera",
+            "Descripción",
+            [
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg")
+            ]
+        ),
     ]
     info_desarrolladores_iter = 1
 
@@ -53,16 +82,16 @@ class VentanaPrincipal(tk.Tk):
         frm_p5 = tk.Frame(frm_p2)
         frm_p5.pack(fill=tk.X)
         self.var_desarrolladores = tk.StringVar()
-        self.var_desarrolladores.set(f"""Nombre: {self.info_desarrolladores[0][0]}
-        Cargo: {self.info_desarrolladores[0][1]}
-        Experiencia: {self.info_desarrolladores[0][2]}""")
+        self.var_desarrolladores.set(
+            f"""{self.info_desarrolladores[0][0]}\n"""+
+            f"""{self.info_desarrolladores[0][1]}""")
         lbl_presentacion = tk.Label(frm_p5, textvariable=self.var_desarrolladores)
         lbl_presentacion.pack()
         lbl_presentacion.bind("<ButtonPress-1>", self.btn_desarrolladores_event)
 
         frm_p6 = tk.Frame(frm_p2, borderwidth=2, relief="solid")
         frm_p6.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
-        image_open = Image.open(self.info_desarrolladores[0][3]).resize((360,360))
+        image_open = Image.open(self.info_desarrolladores[0][2][0]).resize((360,360))
         img_desarrolladores = ImageTk.PhotoImage(image_open)
         self.lbl_image = tk.Label(frm_p6, image=img_desarrolladores)
         self.lbl_image.pack(fill=tk.BOTH, expand=True)
@@ -85,11 +114,11 @@ class VentanaPrincipal(tk.Tk):
             self.info_desarrolladores_iter = 0
 
         self.var_desarrolladores.set(
-            f"""Nombre: {self.info_desarrolladores[self.info_desarrolladores_iter][0]}
-        Cargo: {self.info_desarrolladores[self.info_desarrolladores_iter][1]}
-        Experiencia: {self.info_desarrolladores[self.info_desarrolladores_iter][2]}""")
+            f"""{self.info_desarrolladores[self.info_desarrolladores_iter][0]}\n"""+
+            f"""{self.info_desarrolladores[self.info_desarrolladores_iter][1]}"""
+        )
 
-        image_open = Image.open(self.info_desarrolladores[self.info_desarrolladores_iter][3]).resize((360,360))
+        image_open = Image.open(self.info_desarrolladores[self.info_desarrolladores_iter][2][0]).resize((360,360))
         img_desarrolladores = ImageTk.PhotoImage(image_open)
         self.lbl_image.config(image=img_desarrolladores)
         self.lbl_image.photo_ref = img_desarrolladores
