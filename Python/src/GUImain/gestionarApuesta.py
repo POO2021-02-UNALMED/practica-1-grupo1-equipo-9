@@ -23,7 +23,7 @@ class GestionarApuesta(Toplevel):
         window.iconify()
 
     def disenno(self):
-        self.geometry("650x400")
+        self.geometry("700x400")
         self.option_add("*tearOff", False)
         self.title("Gestion de Apuestas")
 
@@ -242,7 +242,7 @@ class GestionarApuesta(Toplevel):
 
         for apst in Apuesta.getApuestas().values():
             resultado = apst.resultadoApuesta()
-            currLabel = Label(scrollable_frame, background= colores[0], text=resultado, width= 80)
+            currLabel = Label(scrollable_frame, background= colores[0], text=resultado, width= 100)
             colores.append(colores.pop(0))
             currLabel.pack(fill=X)
 
