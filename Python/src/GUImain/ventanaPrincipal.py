@@ -49,10 +49,10 @@ class VentanaPrincipal(tk.Tk):
             "Camilo Rivera",
             "Descripción",
             [
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "C1.jpeg"),
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "C2.png"),
             ]
         ),
     ]
