@@ -177,11 +177,10 @@ class GestionarApuesta(Toplevel):
                 return
 
             pelea.getApuesta().agregarApostador(ap, luchador, apuesta)
-            # serializar()
+            serializar()
             messagebox.showinfo("Confirmación", "Se ha registrado el apostador correctamente")
             borrar()
 
-            print("\n", peleas[idpelea], "\n", ap, "\n", luchador)
 
         # Botones
         fuente = "Helvetica 10 bold"
