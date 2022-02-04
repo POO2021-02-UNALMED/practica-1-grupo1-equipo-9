@@ -44,7 +44,10 @@ class GestionarPelea(tk.Toplevel):
                 ("Ingresar", self.registrar_pelea_frm),
                 ("Consultar código prisionero", self.deep_consultar_codigo_prisionero_event),
             ]),
-            ("Definir Pelea", self.definir_pelea_frm), 
+            ("Definir Pelea", [
+                ("Ingresar", self.definir_pelea_frm)
+                ("Consultar código prisionero", self.deep_consultar_codigo_prisionero_event),
+            ]), 
             ("Listar Peleas", self.listar_pelea_frm),
             ("Battle Royale", [
                 ("Ingresar", self.battle_royale_frm),
@@ -198,11 +201,63 @@ class GestionarPelea(tk.Toplevel):
 
 
     def definir_pelea_frm(self):
-        pass
+        self.currFrame.pack_forget()
+
+        frm_definirPelea = tk.Frame(self)
+
+        self.frm_inicial = FieldFrame(
+            frm_definirPelea,
+            "Criterios",
+            ["Código Pelea", "Codigo de prisionero ganador"],
+            "Valores",
+            ["", ""],
+            [tk.NORMAL, tk.NORMAL],
+            "Definir Pelea",
+            "En esta funcionalidad se escoge arbitrariamente al ganador de una pelea"
+        )
+        
+        self.frm_inicial.set_command_btn_aceptar(self.definir_pelea_event)
+        self.frm_inicial.pack(fill=tk.BOTH, expand=True)
+
+        self.currFrame = frm_definirPelea
+        frm_definirPelea.pack()
 
 
     def definir_pelea_event(self):
-        pass
+        from baseDatos.serializador import serializar
+        from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+        from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
+        
+        codigo_pelea = self.frm_inicial.getValue("Codigo")
+        codigo_prisionero = self.frm_inicial.getValue("Codigo de prisionero ganador")
+
+        try:
+            ExceptionCampoVacio(codigo_pelea,
+                                codigo_prisionero)
+        except ExceptionCampoVacio as f:
+            f.messbox()
+            return
+
+        # Buscar objetos Pelea y Prisionero
+        peleas = Pelea.getPeleas()
+        prisioneros = Prisionero.getPrisioneros()
+        try:
+            ExceptionObjNoEncontrado(f"No se encontró la pelea con el ID: {int(codigo_pelea)}", 
+                                        int(codigo_pelea), peleas)
+            ExceptionObjNoEncontrado(f"No se encontró apostador con el ID: {int(codigo_prisionero)}", 
+                                        int(codigo_prisionero), prisioneros)
+
+        except ExceptionObjNoEncontrado as f:
+            f.messbox()
+            return
+
+        pelea = peleas[codigo_pelea]
+        ganador = prisioneros[codigo_prisionero]
+
+        pelea.setGanador(ganador)
+
+        serializar()
+        messagebox.showinfo("Confirmación", f"El ganador para la pelea es con codigo [{codigo_pelea}] el prisionero con el codigo [{codigo_prisionero}]")
 
 
     def listar_pelea_frm(self):
@@ -258,8 +313,8 @@ class GestionarPelea(tk.Toplevel):
             [["M", "F"], ""],
             [tk.READABLE, tk.NORMAL],
             [tk.ttk.Combobox, tk.Entry],
-            "Ingresar Pelea",
-            "Registre los datos de una pelea.\nPara este caso habilitamos un submenu para consultar los codigos de los prisioneros"
+            "Battle Royale",
+            "Lo prisioneros de los codigos de las celdas escogidas se enfrentan hasta que haya un solo ganados"
         )
         
         self.frm_inicial.set_command_btn_aceptar(self.battle_royale_event)
