@@ -71,6 +71,8 @@ class GestionarDelito(Toplevel):
         frmBase.pack()
 
     def ingresarDelito(self):
+        from baseDatos.serializador import serializar
+
         self.currFrame.pack_forget()
 
         frm_ingresarDelito=tk.Frame(self)
@@ -104,6 +106,7 @@ class GestionarDelito(Toplevel):
                 return
 
             Delito(frm_ingresar.getValue("Nombre"), frm_ingresar.getValue("Descripción"), int(frm_ingresar.getValue("Nivel")), int(frm_ingresar.getValue("Tiempo Condena")))
+            serializar()
             tk.messagebox.showinfo(message="El delito ha sido registrado correctamente")
             self.salir()
 
@@ -113,6 +116,7 @@ class GestionarDelito(Toplevel):
         frm_ingresarDelito.pack()
 
     def borrarDelito(self):
+        from baseDatos.serializador import serializar
         self.currFrame.pack_forget()
 
         frm_borrarDelito=tk.Frame(self)
@@ -144,6 +148,7 @@ class GestionarDelito(Toplevel):
             if warning:
                 Delito.getDelitos().pop(int(cbox_codigo.get()))
                 tk.messagebox.showinfo(message="El delito ha sido eliminado correctamente")
+                serializar()
                 self.salir()
             else:
                 pass 
@@ -163,9 +168,10 @@ class GestionarDelito(Toplevel):
 
     def editarDelito(self):
         global frm_principal
+        from baseDatos.serializador import serializar
+        
         self.currFrame.pack_forget()
         frm_editarDelito = tk.Frame(self)
-
 
         # Formulario --------------------------------------------------------------
         
@@ -221,6 +227,7 @@ class GestionarDelito(Toplevel):
             Delito._delitos[int(combox_codigo.get())].setDescripcion(frm_principal.getValue("Descripción"))
             Delito._delitos[int(combox_codigo.get())].setNivel(int(frm_principal.getValue("Nivel")))
             Delito._delitos[int(combox_codigo.get())].setTiempoCondena(int(frm_principal.getValue("Tiempo Condena")))
+            serializar()
             tk.messagebox.showinfo(message="El delito ha sido editado correctamente")
             self.salir()
 
