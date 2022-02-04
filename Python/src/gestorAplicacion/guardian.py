@@ -7,7 +7,7 @@ class Guardian(Apostador):
 
     def __init__(self, nombre: str, saldo: float, salario: float, celdas = None):
         super().__init__(nombre, saldo)
-        self.identificacion = len(Guardian._guardianes) + 1001
+        self.identificacion = list(Guardian._guardianes.keys())[len(Guardian._guardianes)-1]+1
         self._salario = salario
         self._celdas = celdas
         self._traslados = []

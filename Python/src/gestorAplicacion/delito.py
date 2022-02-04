@@ -2,7 +2,7 @@ class Delito:
     _delitos = {}
 
     def __init__(self, _nombre, _descripcion, _nivel, _tiempoCondena):
-        self._codigo = len(Delito._delitos) + 1
+        self._codigo = list(Delito._delitos.keys())[len(Delito._delitos)-1]+1
         self._nombre = _nombre
         self._descripcion = _descripcion 
         self._nivel = _nivel
