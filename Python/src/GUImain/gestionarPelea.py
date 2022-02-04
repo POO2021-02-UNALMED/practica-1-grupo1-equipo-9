@@ -198,6 +198,8 @@ class GestionarPelea(tk.Toplevel):
         
         serializar()
         messagebox.showinfo("Confirmación", f"Se ha creado la pelea con Codigo: {pelea.getCodigo()}")
+        self.frm_inicial.funcBorrar()
+
 
 
     def definir_pelea_frm(self):
@@ -258,12 +260,21 @@ class GestionarPelea(tk.Toplevel):
 
         serializar()
         messagebox.showinfo("Confirmación", f"El ganador para la pelea con codigo [{codigo_pelea}] es el prisionero con el codigo [{codigo_prisionero}]")
+        self.frm_inicial.funcBorrar()
 
 
     def listar_pelea_frm(self):
         self.currFrame.pack_forget()
 
-        frm_registrarPelea = tk.Frame(self)
+        frm_listarPeleas = tk.Frame(self)
+        
+        frm_top = tk.Frame(frm_listarPeleas)
+        frm_top.pack()
+        lbl_titulo_proceso = tk.Label(frm_top, text="Lista de peleas", font=('Arial', 15))
+        lbl_titulo_proceso.pack()
+
+        frm_bottom = tk.Frame(frm_listarPeleas)
+        frm_bottom.pack()
 
         peleas = Pelea.getPeleas()
         header = [
@@ -290,10 +301,10 @@ class GestionarPelea(tk.Toplevel):
                 ]
             )
 
-        tbl = Table(frm_registrarPelea, data)
+        tbl = Table(frm_bottom, data)
 
-        self.currFrame = frm_registrarPelea
-        frm_registrarPelea.pack()
+        self.currFrame = frm_listarPeleas
+        frm_listarPeleas.pack()
 
 
     def listar_pelea_event(self):
@@ -369,9 +380,21 @@ class GestionarPelea(tk.Toplevel):
             combates_msg += c + "\n"
         serializar()
         messagebox.showinfo("Confirmación", combates_msg)
+        self.frm_inicial.funcBorrar()
 
     
     def deep_consultar_codigo_prisionero_event(self):
+        top_level_window = tk.Toplevel(self)
+
+        frm_listarPrisioneros = tk.Frame(top_level_window)
+        frm_top = tk.Frame(frm_listarPrisioneros)
+        frm_top.pack()
+        lbl_titulo_proceso = tk.Label(frm_top, text="Lista de prisioneros", font=('Arial', 15))
+        lbl_titulo_proceso.pack()
+
+        frm_bottom = tk.Frame(frm_listarPrisioneros)
+        frm_bottom.pack()
+
         prisioneros = Prisionero.getPrisioneros()
         header = [
             "Código",
@@ -389,11 +412,23 @@ class GestionarPelea(tk.Toplevel):
                     v.getFinCondena()
                 ]
             )
-        top_level_window = tk.Toplevel(self)
-        tbl = Table(top_level_window, data)
+        
+        tbl = Table(frm_bottom, data)
+        frm_listarPrisioneros.pack()
 
     
     def deep_consultar_codigo_celdas_event(self):
+        top_level_window = tk.Toplevel(self)
+
+        frm_listarCeldas = tk.Frame(top_level_window)
+        frm_top = tk.Frame(frm_listarCeldas)
+        frm_top.pack()
+        lbl_titulo_proceso = tk.Label(frm_top, text="Lista de Celdas", font=('Arial', 15))
+        lbl_titulo_proceso.pack()
+
+        frm_bottom = tk.Frame(frm_listarCeldas)
+        frm_bottom.pack()
+
         celdas = Celda.getCeldas()
         header = [
             "Código",
@@ -413,8 +448,8 @@ class GestionarPelea(tk.Toplevel):
                     v.getCapMax()
                 ]
             )
-        top_level_window = tk.Toplevel(self)
-        tbl = Table(top_level_window, data)
+        tbl = Table(frm_bottom, data)
+        frm_listarCeldas.pack()
 
 
     def evento(self):
