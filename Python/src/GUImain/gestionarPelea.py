@@ -7,6 +7,8 @@ from gestorAplicacion.prisionero import Prisionero
 from gestorAplicacion.genero import genero as genero_enum
 from tkinter import messagebox
 
+from GUImain.exceptionClasses.exceptionInconsistenciaGeneros import ErrorInconsistenciaGeneros
+
 
 
 class GestionarPelea(tk.Toplevel):
@@ -108,6 +110,8 @@ class GestionarPelea(tk.Toplevel):
 
 
     def registrar_pelea_event(self):
+
+
         codigo = self.frm_inicial.getValue("Código")
         genero = self.frm_inicial.getValue("Género(M/F)")
         codigo_prisionero1 = self.frm_inicial.getValue("Código prisionero 1")
@@ -135,6 +139,20 @@ class GestionarPelea(tk.Toplevel):
             # TODO: Mostrar mensaje diciendo que los codigos de los prisioneros no existen
             print("El o los codigos de los prisionero no existen")
             pass
+        
+        try:
+            ErrorInconsistenciaGeneros("El género de los luchadores debe ser el mismo.",
+                                        prisionero1.getGenero(), prisionero2.getGenero())
+        except ErrorInconsistenciaGeneros as f:
+            f.messbox()                
+            return
+
+        try:
+            ErrorInconsistenciaGeneros("El género de la pelea es " + genero.value,
+                                        prisionero1.getGenero(), genero)
+        except ErrorInconsistenciaGeneros as f:
+            f.messbox()                
+            return
 
         # Validación de armas
         # TODO: Validar que las armas existan
