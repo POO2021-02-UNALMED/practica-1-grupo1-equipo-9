@@ -91,6 +91,7 @@ class GestionarPrisionero(tk.Toplevel):
          "Ingresar Prisionero", "Ingrese los datos solicitados para registrar el prisionero \n" + "Para el campo 'Género', digite M o F \n" + "Para el campo 'Delitos', digite el código de los delitos separados por espacio" )
 
         def registro():
+            from baseDatos.serializador import serializar
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
@@ -154,6 +155,7 @@ class GestionarPrisionero(tk.Toplevel):
 
 
             Prisionero(frm_ingresar.getValue("Nombre"), int(frm_ingresar.getValue("Saldo")), gen, celda, ddelitos)
+            serializar()
             tk.messagebox.showinfo(message="El prisionero ha sido registrado correctamente")
             self.salir()
 
@@ -188,6 +190,7 @@ class GestionarPrisionero(tk.Toplevel):
 
 
         def func_borrarPrisionero():
+            from baseDatos.serializador import serializar
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
 
             try:
@@ -201,6 +204,7 @@ class GestionarPrisionero(tk.Toplevel):
 
             if warning:
                 Prisionero.getPrisioneros().pop(int(cbox_identificacion.get()))
+                serializar()
                 tk.messagebox.showinfo(message="El prisionero ha sido eliminado correctamente")
                 self.salir()
             else:
@@ -251,6 +255,7 @@ class GestionarPrisionero(tk.Toplevel):
         cbox_codigo.grid(column=1,row=2,padx=15,pady=5)  
 
         def func_agregarDelito():
+            from baseDatos.serializador import serializar
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
 
             try:
@@ -263,6 +268,7 @@ class GestionarPrisionero(tk.Toplevel):
             prisionero= Prisionero.getPrisioneros()[int(cbox_identificacion.get())]
             delito= Delito.getDelitos()[int(cbox_codigo.get())]
             prisionero.agregarDelito(delito)
+            serializar()
             tk.messagebox.showinfo(message="El delito " + cbox_codigo.get()+" ha sido agregado al prisionero "+ cbox_identificacion.get()+ " correctamente")
             self.salir() 
 
@@ -310,6 +316,7 @@ class GestionarPrisionero(tk.Toplevel):
         cbox_codigo.grid(column=1,row=2,padx=15,pady=5)  
 
         def func_agregarAntidelito():
+            from baseDatos.serializador import serializar
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
 
             try:
@@ -322,6 +329,7 @@ class GestionarPrisionero(tk.Toplevel):
             prisionero= Prisionero.getPrisioneros()[int(cbox_identificacion.get())]
             antidelito= Antidelito.getAntidelitos()[int(cbox_codigo.get())]
             prisionero.agregarAntidelito(antidelito)
+            serializar()
             tk.messagebox.showinfo(message="El antidelito " + cbox_codigo.get()+" ha sido agregado al prisionero "+ cbox_identificacion.get()+ " correctamente")
             self.salir() 
 
