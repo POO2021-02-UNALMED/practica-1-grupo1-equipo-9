@@ -48,11 +48,10 @@ class FieldFrameWithEntryType(tk.Frame):
                 self.entry_dict[criterio] = entry_valor
 
             elif tkEntrada == tk.ttk.Combobox:
-                entry_valor = tk.StringVar()
                 
-                cmbx_tmp = tkEntrada(frm_formulario, textvariable=entry_valor, values=valor, state=habil)
-                cmbx_tmp.grid(column=1, row=row, padx=15, pady=5)
-                
+                entry_valor = tkEntrada(frm_formulario, values=valor, state=habil)
+                entry_valor.grid(column=1, row=row, padx=15, pady=5)
+
                 self.entry_dict[criterio] = entry_valor
 
             row += 1
@@ -82,7 +81,10 @@ class FieldFrameWithEntryType(tk.Frame):
         return criterio_valor
 
     def funcBorrar(self):
-        for v in self.entry_dict.values():
-            if v["state"] == "normal":
-                v.delete(0,tk.END)
-                v.insert(0,"")
+        for k, v in self.entry_dict.items():
+            if type(v) == tk.Entry:
+                if v["state"] == "normal":
+                    v.delete(0,tk.END)
+                    v.insert(0,"")
+            elif type(v) == tk.StringVar:
+                self.entry_dict[k].set("")
