@@ -96,7 +96,9 @@ class Prisionero(Apostador):
         cls._prisionerosFEMENINOS = _prisioneros
 
     def __str__(self) -> str:
-        return ("Prisionero: "+ str(self.identificacion) + "\n" + "Genero: " + self._genero.value + "\n"
+        return ("PRISIONERO: "+ str(self.identificacion) + "\n" 
+                + "Nombre: " + self.nombre + "\n"
+                + "Genero: " + self._genero.value + "\n"
                 +"Celda: "+ str(self.getCelda().getNumero())+ "\n"
                 +"Inicio condena: " + str(self.getInicioCondena()) +"\n"
                 + "Fin condena: " + str(self.getFinCondena()) + "\n")

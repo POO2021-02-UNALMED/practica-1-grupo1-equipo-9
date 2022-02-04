@@ -96,7 +96,8 @@ class GestionarPrisionero(tk.Toplevel):
             from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
             from GUImain.exceptionClasses.exceptionInconsistenciaGeneros import ErrorInconsistenciaGeneros
-            
+            from GUImain.exceptionClasses.exceptionNoInt import ExceptionNoInt
+
             try:
                 ExceptionCampoVacio(frm_ingresar.getValue("Nombre"),
                                     frm_ingresar.getValue("Saldo"),
@@ -144,6 +145,12 @@ class GestionarPrisionero(tk.Toplevel):
                 ErrorInconsistenciaGeneros("El género del prisionero y de la celda no coinciden.",
                                             gen, celda.getGenero())
             except ErrorInconsistenciaGeneros as f:
+                f.messbox()
+                return
+
+            try:
+                ExceptionNoInt("El campo saldo debe ser un entero.", frm_ingresar.getValue("Saldo"))
+            except ExceptionNoInt as f:
                 f.messbox()
                 return
 
