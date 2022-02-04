@@ -1,12 +1,7 @@
-from email import message
-from textwrap import fill
 import tkinter as tk
 from tkinter import Canvas, Label, ttk
 from tkinter import messagebox
-from tkinter import font
-from turtle import width
 
-from numpy import pad
 from gestorAplicacion.delito import Delito
 from gestorAplicacion.genero import genero
 from gestorAplicacion.celda import Celda
