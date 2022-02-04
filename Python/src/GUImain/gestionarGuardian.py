@@ -99,11 +99,10 @@ class GestionarGuardian(tk.Toplevel):
         def registro():
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+            from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
 
             celdas = frm_inicial.getValue("Celdas").split()
             dictceldas = {}
-            for i in celdas:
-                dictceldas[int(i)] = Celda.getCeldas()[int(i)]
 
             try:
                 ExceptionCampoVacio(frm_inicial.getValue("Nombre"),
@@ -125,6 +124,16 @@ class GestionarGuardian(tk.Toplevel):
             except ExceptionValorNegativo as f:
                 f.messbox()
                 return
+
+            try:
+                for i in celdas:
+                    ExceptionObjNoEncontrado("Las celdas ingresadas no existen.", int(i), Celda.getCeldas())
+            except ExceptionObjNoEncontrado as f:
+                f.messbox()
+                return
+
+            for i in celdas:
+                dictceldas[int(i)] = Celda.getCeldas()[int(i)]
 
             Guardian(frm_inicial.getValue("Nombre"), float(frm_inicial.getValue("Saldo")), float(frm_inicial.getValue("Salario")), dictceldas)
             tk.messagebox.showinfo("Confirmación", "Se ha registrado el Guardian correctamente")
@@ -223,11 +232,10 @@ class GestionarGuardian(tk.Toplevel):
         def registro():             
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
+            from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
 
             celdas = frm_principal.getValue("Celdas").split()
             dictceldas = {}
-            for i in celdas:
-                dictceldas[int(i)] = Celda.getCeldas()[int(i)]
 
             try:
                 ExceptionCampoVacio(frm_principal.getValue("Nombre"),
@@ -249,6 +257,16 @@ class GestionarGuardian(tk.Toplevel):
             except ExceptionValorNegativo as f:
                 f.messbox()
                 return
+
+            try:
+                for i in celdas:
+                    ExceptionObjNoEncontrado("Las celdas ingresadas no existen.", int(i), Celda.getCeldas())
+            except ExceptionObjNoEncontrado as f:
+                f.messbox()
+                return
+
+            for i in celdas:
+                dictceldas[int(i)] = Celda.getCeldas()[int(i)]
 
             idenguard = combox_codigo.get()
             datosguardian = Guardian.getGuardianes()[int(idenguard)]
