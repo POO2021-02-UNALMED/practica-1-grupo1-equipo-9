@@ -15,7 +15,7 @@ class Prisionero(Apostador):
         self._genero = _genero
         self._inicioCondena = date.today()
         self._celda = _celda 
-        Celda.getCeldas()[_celda].ingresarPrisionero(self)
+        _celda.ingresarPrisionero(self)
         self._delitos = _delitos
 
         if self._genero.value == "MASCULINO":
@@ -97,6 +97,7 @@ class Prisionero(Apostador):
 
     def __str__(self) -> str:
         return ("Prisionero: "+ str(self.identificacion) + "\n" + "Genero: " + self._genero.value + "\n"
+                +"Celda: "+ str(self.getCelda().getNumero())+ "\n"
                 +"Inicio condena: " + str(self.getInicioCondena()) +"\n"
                 + "Fin condena: " + str(self.getFinCondena()) + "\n")
     

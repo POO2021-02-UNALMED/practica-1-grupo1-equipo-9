@@ -9,6 +9,7 @@ from turtle import width
 from numpy import pad
 from gestorAplicacion.delito import Delito
 from gestorAplicacion.genero import genero
+from gestorAplicacion.celda import Celda
 from gestorAplicacion.antidelito import Antidelito
 from gestorAplicacion.prisionero import Prisionero
 from .utils.fieldFrame import FieldFrame
@@ -93,6 +94,7 @@ class GestionarPrisionero(tk.Toplevel):
             from GUImain.exceptionClasses.exceptionCampoVacio import ExceptionCampoVacio
             from GUImain.exceptionClasses.exceptionObjNoEncontrado import ExceptionObjNoEncontrado
             from GUImain.exceptionClasses.exceptionValorNegativo import ExceptionValorNegativo
+            from GUImain.exceptionClasses.exceptionInconsistenciaGeneros import ErrorInconsistenciaGeneros
 
             delitos=frm_ingresar.getValue("Delitos").split()
             ddelitos={}
@@ -125,18 +127,28 @@ class GestionarPrisionero(tk.Toplevel):
                     f.messbox()
                     return 
 
-            '''try:
-                ExceptionObjNoEncontrado(   "No se encontró apostador con este ID.", 
-                                            idApostador, Prisionero.getPrisioneros())
-                ap = Prisionero.getPrisioneros()[idApostador]
-            except:
-                try:
-                    ExceptionObjNoEncontrado(   "No se encontró apostador con este ID.", 
-                                                idApostador, Guardian.getGuardianes())
-                    ap = Guardian.getGuardianes()[idApostador]
+                '''try:
+                    for i in ddelitos.keys():
+                        ExceptionObjNoEncontrado(   "No se encontró delito con este código.", 
+                                            ddelitos[i], Delito.getDelitos())
                 except ExceptionObjNoEncontrado as f:
                     f.messbox()
-                    return       ''' 
+                    return'''
+
+            try:
+                ExceptionObjNoEncontrado(   "No se encontró celda con este código.", 
+                                            int(frm_ingresar.getValue("Celda")), Celda.getCeldas().keys())
+                celda = Celda.getCeldas()[int(frm_ingresar.getValue("Celda"))]
+            except ExceptionObjNoEncontrado as f:
+                    f.messbox()
+                    return
+
+            try:
+                ErrorInconsistenciaGeneros("El género del prisionero y de la celda no coinciden.",
+                                            gen, celda.getGenero())
+            except ErrorInconsistenciaGeneros as f:
+                f.messbox()
+                return
 
             try:
                 ExceptionValorNegativo("El saldo no puede ser negativo.", int(frm_ingresar.getValue("Saldo"))) 
@@ -145,7 +157,7 @@ class GestionarPrisionero(tk.Toplevel):
                 return       
 
 
-            Prisionero(frm_ingresar.getValue("Nombre"), int(frm_ingresar.getValue("Saldo")), gen, int(frm_ingresar.getValue("Celda")), ddelitos)
+            Prisionero(frm_ingresar.getValue("Nombre"), int(frm_ingresar.getValue("Saldo")), gen, celda, ddelitos)
             tk.messagebox.showinfo(message="El prisionero ha sido registrado correctamente")
             self.salir()
 
