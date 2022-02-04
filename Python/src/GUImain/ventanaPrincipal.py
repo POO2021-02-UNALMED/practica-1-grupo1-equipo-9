@@ -58,6 +58,12 @@ class VentanaPrincipal(tk.Tk):
     ]
     imagenes_sistema_iter = 1
 
+    def __init__(self):
+        super().__init__()
+        self.crearContenido()
+        self.btn_imagenes_sistema_event()
+        self.btn_desarrolladores_event()
+
     def crearContenido(self):
         self.geometry("850x400")
         self.option_add("*tearOff", False)
@@ -86,7 +92,7 @@ class VentanaPrincipal(tk.Tk):
 
         # Frame right
         frm_p2 = tk.Frame(self, borderwidth=2, relief="solid")
-        frm_p2.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+        frm_p2.pack(fill=tk.BOTH, expand=True)
 
         frm_p5 = tk.Frame(frm_p2)
         frm_p5.pack(fill=tk.X)
@@ -133,7 +139,7 @@ class VentanaPrincipal(tk.Tk):
 
 
     # Button events
-    def btn_desarrolladores_event(self, e):
+    def btn_desarrolladores_event(self, e=None):
         # Validación de iterador de lista de desarrollares
         if self.info_desarrolladores_iter >= len(self.info_desarrolladores):
             self.info_desarrolladores_iter = 0
@@ -152,7 +158,7 @@ class VentanaPrincipal(tk.Tk):
         self.info_desarrolladores_iter += 1
 
 
-    def btn_imagenes_sistema_event(self, e):
+    def btn_imagenes_sistema_event(self, e=None):
         # Validación de iterador de lista de desarrollares
         if self.imagenes_sistema_iter >= len(self.imagenes_sistema):
             self.imagenes_sistema_iter = 0
