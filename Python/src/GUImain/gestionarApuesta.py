@@ -220,7 +220,7 @@ class GestionarApuesta(Toplevel):
         # Lista---------------
         container = ttk.Frame(frm_resultadoApuestas, borderwidth=1, relief="solid")
         colores = ["gray70", "white"]
-        canvas = Canvas(container, width= 550, height= 250)
+        canvas = Canvas(container, width= 650, height= 250)
         scrollbar = ttk.Scrollbar(container, orient="vertical", command=canvas.yview)
         scrollable_frame = ttk.Frame(canvas)
 
