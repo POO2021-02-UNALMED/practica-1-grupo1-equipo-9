@@ -1,5 +1,4 @@
 import os
-from textwrap import fill
 from .utils import menuBar
 import settings
 import tkinter as tk
@@ -217,7 +216,7 @@ class VentanaPrincipal(tk.Tk):
             frm_descripcion,
             text="Sistema de apuestas en la carcel X",
             padx=10,
-            font=tk.font.Font(frm_descripcion, size=13, weight=tk.font.BOLD)
+            font=("Call of Ops Duty", 13)
         )
         lbl_tmp.pack(fill=tk.BOTH, expand=True)
 

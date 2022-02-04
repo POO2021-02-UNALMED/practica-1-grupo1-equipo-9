@@ -79,7 +79,7 @@ class VentanaUsuario(Toplevel):
             frm_aplicacion,
             text="Sistema de apuestas en la carcel X",
             padx=10,
-            font=tk.font.Font(frm_aplicacion, size=13, weight=tk.font.BOLD)
+            font=("Call of Ops Duty", 13)
         )
         lbl_tmp.pack(fill=tk.BOTH, expand=True)
 
