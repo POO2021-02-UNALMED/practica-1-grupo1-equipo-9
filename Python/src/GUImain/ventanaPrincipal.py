@@ -11,7 +11,10 @@ class VentanaPrincipal(tk.Tk):
     info_desarrolladores = [
         (
             "Juan Martinez",
-            "Descripción",
+            "Fiel creyente de la disciplina como camino para el éxito.\n"+
+            "Actualmente se encuentra adelantando sus estudios en Estadística e Ingeniería Mecánica.\n"+
+            "Es un apasionado por el área del conocimiento en general.\n"+
+            "Aficionado por la tecnología, especialmente el hardware sin dejar a un lado su amor por los deportes.\n",
             [
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP1.jpeg"),
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP2.jpeg"),
@@ -21,7 +24,8 @@ class VentanaPrincipal(tk.Tk):
         ),
         (
             "Alejandro",
-            "Descripción",
+            "Amante de la programación, y la matemática aplicada y pura.\n"+
+            "Una persona disciplinada y comprometida con el estudio.",
             [
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "Alejo1.jpg"),
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "Alejo2.jpg"),
@@ -31,7 +35,9 @@ class VentanaPrincipal(tk.Tk):
         ),
         (
             "Valentina",
-            "Descripción",
+            "Estudiante de estadística, con gusto por las matemáticas.\n"+
+            "Aficionada las artes marciales, con un continuo interés en el aprendizaje constante,\n"+
+            "también disfruta de la resolución de problemas mediante el uso de la computación y las matemáticas.",
             [
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "V1.jpg"),
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "V2.jpeg"),
@@ -65,7 +71,7 @@ class VentanaPrincipal(tk.Tk):
         self.btn_desarrolladores_event()
 
     def crearContenido(self):
-        self.geometry("850x400")
+        self.geometry("1080x480")
         self.option_add("*tearOff", False)
         self.title("Presentación")
 
