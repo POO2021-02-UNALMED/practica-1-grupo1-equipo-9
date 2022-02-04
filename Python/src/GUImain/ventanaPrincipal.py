@@ -16,28 +16,37 @@ class VentanaPrincipal(tk.Tk):
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP1.jpeg"),
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP2.jpeg"),
                 os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP3.jpeg"),
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP4.jpeg")
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "JP4.jpg")
             ]
         ),
         (
             "Alejandro",
             "Descripción",
             [
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg")
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
             ]
         ),
         (
             "Valentina",
             "Descripción",
             [
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg")
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
             ]
         ),
         (
             "Camilo Rivera",
             "Descripción",
             [
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg")
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
             ]
         ),
     ]
@@ -91,10 +100,26 @@ class VentanaPrincipal(tk.Tk):
 
         frm_p6 = tk.Frame(frm_p2, borderwidth=2, relief="solid")
         frm_p6.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
-        image_open = Image.open(self.info_desarrolladores[0][2][0]).resize((360,360))
-        img_desarrolladores = ImageTk.PhotoImage(image_open)
-        self.lbl_image = tk.Label(frm_p6, image=img_desarrolladores)
-        self.lbl_image.pack(fill=tk.BOTH, expand=True)
+
+        row = 0
+        col = 0
+        self.lbl_image_list = []
+        for i in range(4):
+            image_open = Image.open(self.info_desarrolladores[0][2][i]).resize((180, 180))
+            img_desarrolladores = ImageTk.PhotoImage(image_open)
+
+            lbl_tmp = tk.Label(frm_p6, image=img_desarrolladores)
+            self.lbl_image_list.append(lbl_tmp)
+            
+            lbl_tmp.grid(column=col, row=row)
+            if row == 0 and col == 0:
+                col = 1
+            elif row == 0 and col == 1:
+                row = 1
+                col = 0
+            else:
+                col = 1
+
 
 
     def crearMenu(self):
@@ -118,10 +143,11 @@ class VentanaPrincipal(tk.Tk):
             f"""{self.info_desarrolladores[self.info_desarrolladores_iter][1]}"""
         )
 
-        image_open = Image.open(self.info_desarrolladores[self.info_desarrolladores_iter][2][0]).resize((360,360))
-        img_desarrolladores = ImageTk.PhotoImage(image_open)
-        self.lbl_image.config(image=img_desarrolladores)
-        self.lbl_image.photo_ref = img_desarrolladores
+        for i in range(4):
+            image_open = Image.open(self.info_desarrolladores[self.info_desarrolladores_iter][2][i]).resize((180, 180))
+            img_desarrolladores = ImageTk.PhotoImage(image_open)
+            self.lbl_image_list[i].config(image=img_desarrolladores)
+            self.lbl_image_list[i].photo_ref = img_desarrolladores
 
         self.info_desarrolladores_iter += 1
 
