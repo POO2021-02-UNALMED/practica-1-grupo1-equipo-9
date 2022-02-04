@@ -23,20 +23,20 @@ class VentanaPrincipal(tk.Tk):
             "Alejandro",
             "Descripción",
             [
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "Alejo1.jpg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "Alejo2.jpg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "Alejo3.jpg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "Alejo4.jpg"),
             ]
         ),
         (
             "Valentina",
             "Descripción",
             [
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev2.jpeg"),
-                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "dev1.png"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "V1.jpg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "V2.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "V3.jpeg"),
+                os.path.join(settings.BASE_DIR, "src", "GUImain", "assets", "V4.jpeg"),
             ]
         ),
         (
