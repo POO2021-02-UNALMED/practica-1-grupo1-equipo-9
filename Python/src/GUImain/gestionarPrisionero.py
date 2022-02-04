@@ -102,6 +102,7 @@ class GestionarPrisionero(tk.Toplevel):
             for i in delitos:
                 ddelitos[int(i)]=Delito.getDelitos()[int(i)]
 
+            print(ddelitos)
 
             try:
                 ExceptionCampoVacio(frm_ingresar.getValue("Nombre"),
@@ -127,13 +128,13 @@ class GestionarPrisionero(tk.Toplevel):
                     f.messbox()
                     return 
 
-                '''try:
-                    for i in ddelitos.keys():
-                        ExceptionObjNoEncontrado(   "No se encontró delito con este código.", 
-                                            ddelitos[i], Delito.getDelitos())
-                except ExceptionObjNoEncontrado as f:
-                    f.messbox()
-                    return'''
+            try:
+                for i in ddelitos.keys():
+                    ExceptionObjNoEncontrado(   "No se encontró delito con este código.", 
+                                                i, Delito.getDelitos().keys)                        
+            except ExceptionObjNoEncontrado as f:
+                f.messbox()
+                return
 
             try:
                 ExceptionObjNoEncontrado(   "No se encontró celda con este código.", 
